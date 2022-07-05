@@ -1,0 +1,10 @@
+				@font-face {
+					font-family: 'nanumsquare';
+					src: url('/wp-content/uploads/useanyfont/9301NanumSquare.woff2') format('woff2'),
+						url('/wp-content/uploads/useanyfont/9301NanumSquare.woff') format('woff');
+					  font-display: auto;
+				}
+
+				.nanumsquare{font-family: 'nanumsquare' !important;}
+
+		

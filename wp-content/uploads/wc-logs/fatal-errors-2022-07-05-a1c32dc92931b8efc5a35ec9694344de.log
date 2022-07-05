@@ -1,0 +1,34 @@
+2022-07-05T02:25:58+00:00 CRITICAL Uncaught Error: Interface 'Monolog\ResettableInterface' not found in /Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system-pro/addons/google_classrooms/vendor/monolog/monolog/src/Monolog/Logger.php:28
+Stack trace:
+#0 /Applications/MAMP/htdocs/index.php(20): require()
+#1 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system-pro/addons/google_classrooms/vendor/monolog/monolog/src/Monolog/Logger.php, 줄 28)
+
+2022-07-05T02:27:46+00:00 CRITICAL Uncaught Error: Interface 'Monolog\ResettableInterface' not found in /Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system-pro/addons/google_classrooms/vendor/monolog/monolog/src/Monolog/Logger.php:28
+Stack trace:
+#0 /Applications/MAMP/htdocs/index.php(20): require()
+#1 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system-pro/addons/google_classrooms/vendor/monolog/monolog/src/Monolog/Logger.php, 줄 28)
+
+2022-07-05T02:36:10+00:00 CRITICAL Uncaught Error: Interface 'Monolog\ResettableInterface' not found in /Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system-pro/addons/google_classrooms/vendor/monolog/monolog/src/Monolog/Logger.php:28
+Stack trace:
+#0 /Applications/MAMP/htdocs/index.php(20): require()
+#1 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system-pro/addons/google_classrooms/vendor/monolog/monolog/src/Monolog/Logger.php, 줄 28)
+
+2022-07-05T03:05:06+00:00 CRITICAL Uncaught Error: Interface 'Monolog\ResettableInterface' not found in /Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system-pro/addons/google_classrooms/vendor/monolog/monolog/src/Monolog/Logger.php:28
+Stack trace:
+#0 /Applications/MAMP/htdocs/index.php(20): require()
+#1 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system-pro/addons/google_classrooms/vendor/monolog/monolog/src/Monolog/Logger.php, 줄 28)
+
+2022-07-05T05:19:33+00:00 CRITICAL Uncaught Error: Call to undefined method Monolog\Logger::addDebug() in /Applications/MAMP/htdocs/index.php:36
+Stack trace:
+#0 {main}
+  thrown(/Applications/MAMP/htdocs/index.php, 줄 36)
+
+2022-07-05T05:19:41+00:00 CRITICAL Uncaught Error: Call to undefined method Monolog\Logger::addDebug() in /Applications/MAMP/htdocs/index.php:36
+Stack trace:
+#0 {main}
+  thrown(/Applications/MAMP/htdocs/index.php, 줄 36)
+

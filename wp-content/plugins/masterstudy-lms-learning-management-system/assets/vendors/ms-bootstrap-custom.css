@@ -1,0 +1,62 @@
+/*Nav tabs*/
+.nav.nav-tabs {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    list-style: none !important;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+}
+
+.nav.nav-tabs > li {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 0;
+    flex: 1 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+.nav.nav-tabs > li > a {
+    display: block;
+    position: relative;
+}
+
+.tab-content > .tab-pane {
+    display: none;
+}
+
+.tab-content > .tab-pane.active {
+    display: block;
+}
+
+body .label {
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+/* progress bar */
+
+.progress-bar-success {
+    background-color: #5cb85c;
+}
+
+.woocommerce-checkout .woocommerce .shop_table.order_details th {
+    text-align: left;
+}
+
+.woocommerce-checkout .woocommerce .shop_table.order_details .product-total {
+    text-align: right;
+}
+
+.single-post a#cancel-comment-reply-link {
+    margin-left: 10px;
+}
+
+body #stm_lms_user_assignment .user_assingment_actions .btn.approve {
+    margin-right: 30px;
+    background-color: #17d292;
+}
+
+body #stm_lms_user_assignment .user_assingment_actions .btn.approve:hover {
+    background-color: #195ec8;
+}
