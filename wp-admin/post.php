@@ -33,7 +33,6 @@ $post_ID = $post_id;
  * @global WP_Post $post             Global post object.
  */
 global $post_type, $post_type_object, $post;
-var_dump($post);
 
 if ( $post_id ) {
 	$post = get_post( $post_id );
@@ -54,15 +53,18 @@ if ( isset( $_POST['deletepost'] ) ) {
 	$action = 'preview';
 }
 
-$sendback = wp_get_referer();
+$sendback = wp_get_referer(); // 현재 요청 URL과 같으면 false를 반환
 if ( ! $sendback ||
 	false !== strpos( $sendback, 'post.php' ) ||
 	false !== strpos( $sendback, 'post-new.php' ) ) {
 	if ( 'attachment' === $post_type ) {
 		$sendback = admin_url( 'upload.php' );
 	} else {
-		$sendback = admin_url( 'edit.php' );
-		if ( ! empty( $post_type ) ) {
+		$sendback = admin_url( 'edit.php' ); 
+		if ( ! empty( $post_type ) ) { 
+			// 이 함수를 사용하여 URL을 다시 작성하고 URL 쿼리에 쿼리 변수를 추가할 수 있습니다
+			// add_query_arg( 'key', 'value', 'http://example.com' );
+			// "http://localhost:8888/wp-admin/edit.php?post_type=stm-lessons"
 			$sendback = add_query_arg( 'post_type', $post_type, $sendback );
 		}
 	}

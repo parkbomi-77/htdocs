@@ -423,7 +423,7 @@ function edit_post( $post_data = null ) {
 
 	update_post_meta( $post_ID, '_edit_last', get_current_user_id() );
 
-	$success = wp_update_post( $translated );
+	$success = wp_update_post( $translated ); // 디비에 저장됨 
 
 	// If the save failed, see if we can sanity check the main fields and try again.
 	if ( ! $success && is_callable( array( $wpdb, 'strip_invalid_text_for_column' ) ) ) {
@@ -441,7 +441,7 @@ function edit_post( $post_data = null ) {
 	// Now that we have an ID we can fix any attachment anchor hrefs.
 	_fix_attachment_links( $post_ID );
 
-	wp_set_post_lock( $post_ID );
+	wp_set_post_lock( $post_ID ); //현재 사용자가 현재 편집 중인 게시물로 표시
 
 	if ( current_user_can( $ptype->cap->edit_others_posts ) && current_user_can( $ptype->cap->publish_posts ) ) {
 		if ( ! empty( $post_data['sticky'] ) ) {

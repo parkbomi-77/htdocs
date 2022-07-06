@@ -1,0 +1,6 @@
+2022-07-06T06:53:13+00:00 CRITICAL Uncaught Error: Using $this when not in object context in /Applications/MAMP/htdocs/wp-admin/edit-form-advanced.php:523
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-admin/post.php(209): require()
+#1 {main}
+  thrown(/Applications/MAMP/htdocs/wp-admin/edit-form-advanced.php, 줄 523)
+

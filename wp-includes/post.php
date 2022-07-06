@@ -4052,22 +4052,22 @@ function wp_insert_post( $postarr, $wp_error = false, $fire_after_hooks = true )
 		'post_date_gmt'         => '',
 	);
 
-	$postarr = wp_parse_args( $postarr, $defaults );
+	$postarr = wp_parse_args( $postarr, $defaults ); //이 함수는 문자열 또는 배열이 다른 배열로 병합될 수 있도록 WordPress 전체에서 사용됩니다.
 
 	unset( $postarr['filter'] );
 
-	$postarr = sanitize_post( $postarr, 'db' );
+	$postarr = sanitize_post( $postarr, 'db' ); //컨텍스트가 '원시'인 경우 게시물 개체 또는 배열은 정수 필드를 최소한으로 삭제합니다
 
 	// Are we updating or creating?
 	$post_ID = 0;
 	$update  = false;
 	$guid    = $postarr['guid'];
 
-	if ( ! empty( $postarr['ID'] ) ) {
+	if ( ! empty( $postarr['ID'] ) ) { 
 		$update = true;
 
 		// Get the post ID and GUID.
-		$post_ID     = $postarr['ID'];
+		$post_ID     = $postarr['ID']; // 새로만드는 포스트 아이디생성 
 		$post_before = get_post( $post_ID );
 
 		if ( is_null( $post_before ) ) {
@@ -4090,7 +4090,7 @@ function wp_insert_post( $postarr, $wp_error = false, $fire_after_hooks = true )
 	$post_content = $postarr['post_content'];
 	$post_excerpt = $postarr['post_excerpt'];
 
-	if ( isset( $postarr['post_name'] ) ) {
+	if ( isset( $postarr['post_name'] ) ) { //설정된 변수인지 확인하는 함수 
 		$post_name = $postarr['post_name'];
 	} elseif ( $update ) {
 		// For an update, don't modify the post_name if it wasn't supplied as an argument.
@@ -4163,7 +4163,7 @@ function wp_insert_post( $postarr, $wp_error = false, $fire_after_hooks = true )
 
 	/*
 	 * Create a valid post name. Drafts and pending posts are allowed to have
-	 * an empty post name.
+	 * an empty post name. 게시물 이름 만들기 
 	 */
 	if ( empty( $post_name ) ) {
 		if ( ! in_array( $post_status, array( 'draft', 'pending', 'auto-draft' ), true ) ) {
