@@ -206,6 +206,7 @@ switch ( $action ) {
 			enqueue_comment_hotkeys_js();
 		}
 
+		// require ABSPATH . 'wp-admin/edit-form-playtime.php';
 		require ABSPATH . 'wp-admin/edit-form-advanced.php';
 
 		break;

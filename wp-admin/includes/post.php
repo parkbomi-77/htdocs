@@ -28,6 +28,34 @@ function _wp_translate_postdata( $update = false, $post_data = null ) {
 		$post_data['ID'] = (int) $post_data['post_ID'];
 	}
 
+	if($post_data['playtime'] && $post_data['playname']){  
+		global $wpdb;
+		$id = (int)$post_data['post_ID'];
+		$time = $post_data['playtime'];
+		$name = $post_data['playname'];
+		// select로 wp_paly_time에 ID = post_ID 가 있는지 보고
+		$results = $wpdb->get_results( 'SELECT * FROM wp_play_time where posts_lesson_id ='.$id , OBJECT );	
+		if($results){ // 있으면 업데이트
+			// $results2 = $wpdb->get_results('UPDATE wp_play_time set posts_lesson_id = '.$id. 'where product_time ='.$time. 'and product_name ='.$name);
+			$results2 = $wpdb->update( 
+				'wp_play_time', 
+				array( 'product_time' => $post_data['playtime'],
+					'product_name' => $post_data['playname']
+				), 
+				array( 'posts_lesson_id' => $id ) 
+			);
+			
+		} else { // 없으면 인서트
+			$results2 = $wpdb->insert('wp_play_time', 
+						array(
+							'posts_lesson_id' => $post_data['post_ID'],
+							'product_time' => $post_data['playtime'],
+							'product_name' => $post_data['playname'],
+						));
+			
+		}
+	}
+
 	$ptype = get_post_type_object( $post_data['post_type'] );
 
 	if ( $update && ! current_user_can( 'edit_post', $post_data['ID'] ) ) {
@@ -423,7 +451,7 @@ function edit_post( $post_data = null ) {
 
 	update_post_meta( $post_ID, '_edit_last', get_current_user_id() );
 
-	$success = wp_update_post( $translated ); // 디비에 저장됨 
+	$success = wp_update_post( $translated ); // 
 
 	// If the save failed, see if we can sanity check the main fields and try again.
 	if ( ! $success && is_callable( array( $wpdb, 'strip_invalid_text_for_column' ) ) ) {

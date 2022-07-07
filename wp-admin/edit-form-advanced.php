@@ -650,7 +650,11 @@ do_action( 'edit_form_after_editor', $post );
 ?>
 </div><!-- /post-body-content -->
 
-<div id="postbox-container-1" class="postbox-container">
+ <div id="postbox-container-1" class="postbox-container">
+<!-- <input type="text" id="" name="playtime" value="ㅋㅋ" placeholder="00:00">
+<input type="text" id="" name="playname" placeholder="제품명 입력란(40)" value="ddddd"> -->
+<!-- <input type="submit" name="" value="상품등록시간 저장" class="playbox-save"> -->
+
 <?php
 
 if ( 'page' === $post_type ) {
@@ -682,6 +686,10 @@ do_meta_boxes( $post_type, 'side', $post );
 
 ?>
 </div>
+
+<?php
+require ABSPATH . 'wp-admin/edit-form-playtime.php';
+?>
 <div id="postbox-container-2" class="postbox-container">
 <?php
 
