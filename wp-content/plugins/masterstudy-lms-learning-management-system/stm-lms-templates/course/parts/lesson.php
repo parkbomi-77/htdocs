@@ -30,8 +30,6 @@ if (!empty($item_id)):
 	var_dump($results);
 
 	echo '<br>';
-	// $results = $wpdb->get_results( 'SELECT * FROM wp_posts where ID = 10578', OBJECT );	
-	// var_dump($results);
 
 
 
