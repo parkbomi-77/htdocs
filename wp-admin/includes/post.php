@@ -35,23 +35,81 @@ function _wp_translate_postdata( $update = false, $post_data = null ) {
 		$name = $post_data['playname'];
 		// select로 wp_paly_time에 ID = post_ID 가 있는지 보고
 		$results = $wpdb->get_results( 'SELECT * FROM wp_play_time where posts_lesson_id ='.$id , OBJECT );	
+		$hhh = $results[0]->ID;
 		if($results){ // 있으면 업데이트
-			// $results2 = $wpdb->get_results('UPDATE wp_play_time set posts_lesson_id = '.$id. 'where product_time ='.$time. 'and product_name ='.$name);
-			$results2 = $wpdb->update( 
-				'wp_play_time', 
-				array( 'product_time' => $post_data['playtime'],
-					'product_name' => $post_data['playname']
-				), 
-				array( 'posts_lesson_id' => $id ) 
-			);
+			$totalNum = count($results); // 기존 index 갯수 
+			$num = count($post_data['playboxNum']); // 수정하는 index 갯수
+
+			// 기존 index 갯수, 수정하는 index 갯수 똑같으면 업데이트
+			if($totalNum === $num){
+				for($i=0; $i<$num; $i++){
+					$wpdb->update( 
+						'wp_play_time', 
+						array( 'product_time' => $post_data['playtime'][$i],
+							'product_name' => $post_data['playname'][$i],
+						), 
+						array( 'posts_lesson_id' => $id,
+						'play_idx' => $post_data['playboxNum'][$i]
+						) 
+					);
+				}
+			}elseif($totalNum < $num){ // 넣으려는 값이 더 많으면 업데이트 + 인서트
+				for($i=0; $i<$totalNum; $i++){
+					$wpdb->update( 
+						'wp_play_time', 
+						array( 'product_time' => $post_data['playtime'][$i],
+							'product_name' => $post_data['playname'][$i],
+						), 
+						array( 'posts_lesson_id' => $id,
+						'play_idx' => $post_data['playboxNum'][$i]
+						 ) 
+					);
+				}
+				for($i=$totalNum; $i<$num; $i++){
+					$wpdb->insert('wp_play_time', 
+					array(
+						'posts_lesson_id' => $post_data['post_ID'],
+						'play_idx' => $post_data['playboxNum'][$i],
+						'product_time' => $post_data['playtime'][$i],
+						'product_name' => $post_data['playname'][$i],
+					));
+				}
+
+			}else{ // 넣으려는 값이 더 적은 경우 업데이트 + 딜리트 
+				for($i=0; $i<$num; $i++){
+					$wpdb->update( 
+						'wp_play_time', 
+						array( 'product_time' => $post_data['playtime'][$i],
+							'product_name' => $post_data['playname'][$i],
+						), 
+						array( 'posts_lesson_id' => $id,
+						'play_idx' => $post_data['playboxNum'][$i]
+						 ) 
+					);
+				}
+				for($i=$num; $i<$totalNum; $i++){
+					$idNum = $results[$i]->ID;
+					// $bb = $wpdb->query('SET SQL_SAFE_UPDATES = 0');
+					$wpdb->delete('wp_play_time', 
+					array(
+						'ID' => $idNum
+					));
+				}
+			}
 			
-		} else { // 없으면 인서트
-			$results2 = $wpdb->insert('wp_play_time', 
+			
+		} else { // 없으면? insert로 새로 생성해주기  
+			$num = count($post_data['playboxNum']);
+			// 배열값으로 들어온 데이터들 디비에 넣기 
+			for($i=0; $i<$num; $i++){
+				$wpdb->insert('wp_play_time', 
 						array(
 							'posts_lesson_id' => $post_data['post_ID'],
-							'product_time' => $post_data['playtime'],
-							'product_name' => $post_data['playname'],
+							'play_idx' => $post_data['playboxNum'][$i],
+							'product_time' => $post_data['playtime'][$i],
+							'product_name' => $post_data['playname'][$i],
 						));
+			}
 			
 		}
 	}

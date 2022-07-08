@@ -43,16 +43,17 @@
 
 
 <div class="playbox-container">
-    <form action="/Applications/MAMP/htdocs/wp-admin/playpost.php" method="post" id="playbox-form">
+    <!-- <form action="/Applications/MAMP/htdocs/wp-admin/playpost.php" method="post" id="playbox-form"> -->
         <p>vimeo 영상시간 : 상품등록</p>
         <div class="playbox-list">
             <div class="playbox">
                 <div class="playbox-num">1</div>
+                <input type="hidden" name="playboxNum[]" value="1">
                 <div class="playbox-time">
-                    <input type="text" id="" name="playtime" value="<?php echo esc_attr( $post->playtime ); ?>" placeholder="00:00">
+                    <input type="text" id="" name="playtime[]" value="<?php echo esc_attr( $post->playtime ); ?>" placeholder="00:00">
                 </div>
                 <div class="playbox-name">
-                    <input type="text" id="" name="playname" placeholder="제품명 입력란(40)" value="<?php echo esc_attr( $post->playname ); ?>">
+                    <input type="text" id="" name="playname[]" placeholder="제품명 입력란(40)" value="<?php echo esc_attr( $post->playname ); ?>">
                 </div>
                 <div class="playbox-trash" onclick="close_boxTag()">✖︎</div>
             </div>
@@ -61,14 +62,14 @@
             <div>+</div>
             <div>신규</div>
         </div>
-    </form> 
+    <!-- </form>  -->
 </div>
 
 
-
+<script src="https://code.jquery.com/jquery-latest.js"></script>
 <script>
 
-    let pTagCount = 2;
+    let Count = 2;
 
     function create_boxTag(){
     let playboxList = document.querySelector('.playbox-list');
@@ -76,25 +77,27 @@
     
     new_pTag.setAttribute('class', 'playbox');
     new_pTag.innerHTML = 
-                `<div class="playbox-num">${pTagCount}</div>
+                `<div class="playbox-num">${Count}</div>
+                <input type="hidden" name="playboxNum[]" value=${Count}>
                 <div class="playbox-time">
-                    <input type="text" id="" name="playtime" value="<?php echo esc_attr( $post->playtime ); ?>" placeholder="00:00">
+                    <input type="text" id="" name="playtime[]" value="<?php echo esc_attr( $post->playtime ); ?>" placeholder="00:00">
                 </div>
                 <div class="playbox-name">
-                    <input type="text" id="" name="playname" placeholder="제품명 입력란(40)" value="<?php echo esc_attr( $post->playname ); ?>">
+                    <input type="text" id="" name="playname[]" placeholder="제품명 입력란(40)" value="<?php echo esc_attr( $post->playname ); ?>">
                 </div>
                 <div class="playbox-trash" onclick="close_boxTag()">✖︎</div>`
     
      playboxList.appendChild(new_pTag);
     
-     pTagCount++;
+     Count++;
     }
 
     function close_boxTag(){
         let playboxList = document.querySelector('.playbox-list');
         let deletebox = document.querySelector('.playbox-list').lastChild;
         playboxList.removeChild(deletebox);
-        pTagCount = pTagCount-1;
+        Count = Count-1;
     }
+
 </script>
 
