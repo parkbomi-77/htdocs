@@ -67,13 +67,13 @@
                 <div class="playbox-time">
                     <input type="text" id="" name="playtime[]" 
                     value="<?php echo esc_attr( $post->playtime ); ?>" placeholder="00:00" maxlength="5"
-                    onKeyup="inputTimeColon(this)">
+                    onKeyup="inputTimeColon(this)" required>
                 </div>
                 <div class="playbox-name">
-                    <input type="text" id="" name="playname[]" placeholder="제품명 입력란(40)" value="<?php echo esc_attr( $post->playname ); ?>">
+                    <input type="text" id="" name="playname[]" placeholder="제품명 입력란(40)" value="<?php echo esc_attr( $post->playname ); ?>" required>
                 </div>
                 <div class="playbox-link">
-                    <input type="text" id="" name="playlink[]" placeholder="제품링크(40)" value="<?php echo esc_attr( $post->playlink ); ?>">
+                    <input type="text" id="" name="playlink[]" placeholder="제품링크(40)" value="<?php echo esc_attr( $post->playlink ); ?>" required>
                 </div>
                 <div class="playbox-trash" onclick="close_boxTag()">✖︎</div>
             </div>
@@ -93,13 +93,13 @@
                                 <div class="playbox-num">'.$results[$i]->play_idx.'</div>
                                 <input type="hidden" name="playboxNum[]" value="'.$results[$i]->play_idx.'">
                                 <div class="playbox-time">
-                                    <input type="text" id="" name="playtime[]" value="'.$results[$i]->product_time.'" maxlength="5" placeholder="00:00" onKeyup="inputTimeColon(this)">
+                                    <input type="text" id="" name="playtime[]" value="'.$results[$i]->product_time.'" maxlength="5" placeholder="00:00" onKeyup="inputTimeColon(this)" required>
                                 </div>
                                 <div class="playbox-name">
-                                    <input type="text" id="" name="playname[]" placeholder="제품명 입력란(40)" value="'.$results[$i]->product_name.'">
+                                    <input type="text" id="" name="playname[]" placeholder="제품명 입력란(40)" value="'.$results[$i]->product_name.'" required>
                                 </div>
                                 <div class="playbox-link">
-                                    <input type="text" id="" name="playlink[]" placeholder="제품링크(40)" value="'.$results[$i]->product_link.'">
+                                    <input type="text" id="" name="playlink[]" placeholder="제품링크(40)" value="'.$results[$i]->product_link.'" required>
                                 </div>
                                 <div class="playbox-trash" onclick="close_boxTag()">✖︎</div>
                             </div>';
@@ -135,13 +135,13 @@
                 `<div class="playbox-num">${Count}</div>
                 <input type="hidden" name="playboxNum[]" value=${Count}>
                 <div class="playbox-time">
-                    <input type="text" id="" name="playtime[]" value="<?php echo esc_attr( $post->playtime ); ?>" maxlength="5" placeholder="00:00" onKeyup="inputTimeColon(this)">
+                    <input type="text" id="" name="playtime[]" value="<?php echo esc_attr( $post->playtime ); ?>" maxlength="5" placeholder="00:00" onKeyup="inputTimeColon(this)" required>
                 </div>
                 <div class="playbox-name">
-                    <input type="text" id="" name="playname[]" placeholder="제품명 입력란(40)" value="<?php echo esc_attr( $post->playname ); ?>">
+                    <input type="text" id="" name="playname[]" placeholder="제품명 입력란(40)" value="<?php echo esc_attr( $post->playname ); ?>" required>
                 </div>
                 <div class="playbox-link">
-                    <input type="text" id="" name="playlink[]" placeholder="제품링크(40)" value="<?php echo esc_attr( $post->playlink ); ?>">
+                    <input type="text" id="" name="playlink[]" placeholder="제품링크(40)" value="<?php echo esc_attr( $post->playlink ); ?>" required>
                 </div>
                 <div class="playbox-trash" onclick="close_boxTag()">✖︎</div>`
     

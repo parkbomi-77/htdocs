@@ -37,7 +37,8 @@ function _wp_translate_postdata( $update = false, $post_data = null ) {
 		$name = $post_data['playname'];
 		// select로 wp_paly_time에 ID = post_ID 가 있는지 보고
 		$results = $wpdb->get_results( 'SELECT * FROM wp_play_time where posts_lesson_id ='.$id , OBJECT );	
-		if($results){ // 있으면 업데이트
+		// 있으면 업데이트
+		if($results){ 
 			$totalNum = count($results); // 기존 index 갯수 
 			$num = count($post_data['playboxNum']); // 수정하는 index 갯수
 
@@ -102,8 +103,8 @@ function _wp_translate_postdata( $update = false, $post_data = null ) {
 				}
 			}
 			
-			
-		} else { // 없으면? insert로 새로 생성해주기  
+		// 없으면? insert로 새로 생성해주기 
+		} else {  
 			$num = count($post_data['playboxNum']);
 			// 배열값으로 들어온 데이터들 디비에 넣기 
 			for($i=0; $i<$num; $i++){
