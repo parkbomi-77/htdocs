@@ -31,7 +31,11 @@ function _wp_translate_postdata( $update = false, $post_data = null ) {
 	if($post_data['playtime'] && $post_data['playname']){  
 		global $wpdb;
 		$id = (int)$post_data['post_ID'];
-		$time = $post_data['playtime'];
+		// 콜론형식으로 들어온 재생시간을 초로 전환하기
+		$time = $post_data['playtime']; 
+        // $minute = replaceTime.substring(0, 2);      
+        // $seconds = replaceTime.substring(3, 5); 
+		
 		$name = $post_data['playname'];
 		// select로 wp_paly_time에 ID = post_ID 가 있는지 보고
 		$results = $wpdb->get_results( 'SELECT * FROM wp_play_time where posts_lesson_id ='.$id , OBJECT );	
@@ -47,6 +51,7 @@ function _wp_translate_postdata( $update = false, $post_data = null ) {
 						'wp_play_time', 
 						array( 'product_time' => $post_data['playtime'][$i],
 							'product_name' => $post_data['playname'][$i],
+							'product_link' => $post_data['playlink'][$i],
 						), 
 						array( 'posts_lesson_id' => $id,
 						'play_idx' => $post_data['playboxNum'][$i]
@@ -59,6 +64,7 @@ function _wp_translate_postdata( $update = false, $post_data = null ) {
 						'wp_play_time', 
 						array( 'product_time' => $post_data['playtime'][$i],
 							'product_name' => $post_data['playname'][$i],
+							'product_link' => $post_data['playlink'][$i],
 						), 
 						array( 'posts_lesson_id' => $id,
 						'play_idx' => $post_data['playboxNum'][$i]
@@ -72,6 +78,7 @@ function _wp_translate_postdata( $update = false, $post_data = null ) {
 						'play_idx' => $post_data['playboxNum'][$i],
 						'product_time' => $post_data['playtime'][$i],
 						'product_name' => $post_data['playname'][$i],
+						'product_link' => $post_data['playlink'][$i],
 					));
 				}
 
@@ -81,6 +88,7 @@ function _wp_translate_postdata( $update = false, $post_data = null ) {
 						'wp_play_time', 
 						array( 'product_time' => $post_data['playtime'][$i],
 							'product_name' => $post_data['playname'][$i],
+							'product_link' => $post_data['playlink'][$i],
 						), 
 						array( 'posts_lesson_id' => $id,
 						'play_idx' => $post_data['playboxNum'][$i]
@@ -108,6 +116,7 @@ function _wp_translate_postdata( $update = false, $post_data = null ) {
 							'play_idx' => $post_data['playboxNum'][$i],
 							'product_time' => $post_data['playtime'][$i],
 							'product_name' => $post_data['playname'][$i],
+							'product_link' => $post_data['playlink'][$i],
 						));
 			}
 			

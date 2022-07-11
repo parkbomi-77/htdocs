@@ -21,9 +21,15 @@
     width: 100%;
 }
 .playbox-name {
-    width: 70%;
+    width: 30%;
 }
 .playbox-name input{
+    width: 100%;
+}
+.playbox-link{
+    width: 70%;
+}
+.playbox-link input{
     width: 100%;
 }
 .playbox-trash{
@@ -66,6 +72,9 @@
                 <div class="playbox-name">
                     <input type="text" id="" name="playname[]" placeholder="제품명 입력란(40)" value="<?php echo esc_attr( $post->playname ); ?>">
                 </div>
+                <div class="playbox-link">
+                    <input type="text" id="" name="playlink[]" placeholder="제품링크(40)" value="<?php echo esc_attr( $post->playlink ); ?>">
+                </div>
                 <div class="playbox-trash" onclick="close_boxTag()">✖︎</div>
             </div>
         </div>
@@ -88,6 +97,9 @@
                                 </div>
                                 <div class="playbox-name">
                                     <input type="text" id="" name="playname[]" placeholder="제품명 입력란(40)" value=" '.$results[$i]->product_name.'">
+                                </div>
+                                <div class="playbox-link">
+                                    <input type="text" id="" name="playlink[]" placeholder="제품링크(40)" value=" '.$results[$i]->product_link.'">
                                 </div>
                                 <div class="playbox-trash" onclick="close_boxTag()">✖︎</div>
                             </div>';
@@ -113,7 +125,6 @@
 <script type="text/javascript">
 
     var Count = <?php echo $num; ?>+1;
-    console.log(Count)
 
     function create_boxTag(){
     let playboxList = document.querySelector('.playbox-list');
@@ -128,6 +139,9 @@
                 </div>
                 <div class="playbox-name">
                     <input type="text" id="" name="playname[]" placeholder="제품명 입력란(40)" value="<?php echo esc_attr( $post->playname ); ?>">
+                </div>
+                <div class="playbox-link">
+                    <input type="text" id="" name="playlink[]" placeholder="제품링크(40)" value="<?php echo esc_attr( $post->playlink ); ?>">
                 </div>
                 <div class="playbox-trash" onclick="close_boxTag()">✖︎</div>`
     
