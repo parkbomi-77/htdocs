@@ -96,10 +96,10 @@
                                     <input type="text" id="" name="playtime[]" value="'.$results[$i]->product_time.'" maxlength="5" placeholder="00:00" onKeyup="inputTimeColon(this)">
                                 </div>
                                 <div class="playbox-name">
-                                    <input type="text" id="" name="playname[]" placeholder="제품명 입력란(40)" value=" '.$results[$i]->product_name.'">
+                                    <input type="text" id="" name="playname[]" placeholder="제품명 입력란(40)" value="'.$results[$i]->product_name.'">
                                 </div>
                                 <div class="playbox-link">
-                                    <input type="text" id="" name="playlink[]" placeholder="제품링크(40)" value=" '.$results[$i]->product_link.'">
+                                    <input type="text" id="" name="playlink[]" placeholder="제품링크(40)" value="'.$results[$i]->product_link.'">
                                 </div>
                                 <div class="playbox-trash" onclick="close_boxTag()">✖︎</div>
                             </div>';

@@ -28,7 +28,7 @@ function _wp_translate_postdata( $update = false, $post_data = null ) {
 		$post_data['ID'] = (int) $post_data['post_ID'];
 	}
 
-	if($post_data['playtime'] && $post_data['playname']){  
+	if($post_data['playtime'] && $post_data['playname'] && $post_data['playlink']){  
 		global $wpdb;
 		$id = (int)$post_data['post_ID'];
 		// 콜론형식으로 들어온 재생시간을 초로 전환하기
@@ -37,7 +37,6 @@ function _wp_translate_postdata( $update = false, $post_data = null ) {
 		$name = $post_data['playname'];
 		// select로 wp_paly_time에 ID = post_ID 가 있는지 보고
 		$results = $wpdb->get_results( 'SELECT * FROM wp_play_time where posts_lesson_id ='.$id , OBJECT );	
-		$hhh = $results[0]->ID;
 		if($results){ // 있으면 업데이트
 			$totalNum = count($results); // 기존 index 갯수 
 			$num = count($post_data['playboxNum']); // 수정하는 index 갯수
