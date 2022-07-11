@@ -93,7 +93,7 @@
                                 <div class="playbox-num">'.$results[$i]->play_idx.'</div>
                                 <input type="hidden" name="playboxNum[]" value="'.$results[$i]->play_idx.'">
                                 <div class="playbox-time">
-                                    <input type="text" id="" name="playtime[]" value="'.$results[$i]->product_time.'" maxlength="5" onKeyup="inputTimeColon(this)">
+                                    <input type="text" id="" name="playtime[]" value="'.$results[$i]->product_time.'" maxlength="5" placeholder="00:00" onKeyup="inputTimeColon(this)">
                                 </div>
                                 <div class="playbox-name">
                                     <input type="text" id="" name="playname[]" placeholder="제품명 입력란(40)" value=" '.$results[$i]->product_name.'">
@@ -135,7 +135,7 @@
                 `<div class="playbox-num">${Count}</div>
                 <input type="hidden" name="playboxNum[]" value=${Count}>
                 <div class="playbox-time">
-                    <input type="text" id="" name="playtime[]" value="<?php echo esc_attr( $post->playtime ); ?>" maxlength="5" onKeyup="inputTimeColon(this)">
+                    <input type="text" id="" name="playtime[]" value="<?php echo esc_attr( $post->playtime ); ?>" maxlength="5" placeholder="00:00" onKeyup="inputTimeColon(this)">
                 </div>
                 <div class="playbox-name">
                     <input type="text" id="" name="playname[]" placeholder="제품명 입력란(40)" value="<?php echo esc_attr( $post->playname ); ?>">

@@ -25,12 +25,8 @@ if (!empty($item_id)):
 	));
 
 
-	global $wpdb;
-	$results = $wpdb->update($wpdb->posts,array("post_title"=>"22"),array("ID"=>$item_id));
-	var_dump($results);
-
-	echo '<br>';
-
+	// global $wpdb;
+	// $results = $wpdb->update($wpdb->posts,array("post_title"=>"22"),array("ID"=>$item_id));
 
 
 	if ($q->have_posts()): ?>

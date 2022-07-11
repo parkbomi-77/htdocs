@@ -33,8 +33,6 @@ function _wp_translate_postdata( $update = false, $post_data = null ) {
 		$id = (int)$post_data['post_ID'];
 		// 콜론형식으로 들어온 재생시간을 초로 전환하기
 		$time = $post_data['playtime']; 
-        // $minute = replaceTime.substring(0, 2);      
-        // $seconds = replaceTime.substring(3, 5); 
 		
 		$name = $post_data['playname'];
 		// select로 wp_paly_time에 ID = post_ID 가 있는지 보고
