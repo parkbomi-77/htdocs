@@ -35,6 +35,9 @@
 .playbox-trash{
     font: 30px;
 }
+.playbox-trash:hover{
+    cursor: pointer;
+}
 /* 신규 추가 버튼 */
 .playbox-add{
     display: flex;
@@ -75,7 +78,7 @@
                 <div class="playbox-link">
                     <input type="text" id="" name="playlink[]" placeholder="제품링크(40)" value="<?php echo esc_attr( $post->playlink ); ?>" required>
                 </div>
-                <div class="playbox-trash" onclick="close_boxTag()">✖︎</div>
+                <div class="playbox-trash" onclick="close_boxTag()" style="font-size:23px;">✖︎</div>
             </div>
         </div>
         <div class="playbox-add" onclick="create_boxTag()">
@@ -101,7 +104,7 @@
                                 <div class="playbox-link">
                                     <input type="text" id="" name="playlink[]" placeholder="제품링크(40)" value="'.$results[$i]->product_link.'" required>
                                 </div>
-                                <div class="playbox-trash" onclick="close_boxTag()">✖︎</div>
+                                <div class="playbox-trash" onclick="close_boxTag()" style="font-size:23px;">✖︎</div>
                             </div>';
             $play_box = $play_box.$add_play_box ;
         }
@@ -143,7 +146,7 @@
                 <div class="playbox-link">
                     <input type="text" id="" name="playlink[]" placeholder="제품링크(40)" value="<?php echo esc_attr( $post->playlink ); ?>" required>
                 </div>
-                <div class="playbox-trash" onclick="close_boxTag()">✖︎</div>`
+                <div class="playbox-trash" onclick="close_boxTag()" style="font-size:23px;">✖︎</div>`
     
      playboxList.appendChild(new_pTag);
     
