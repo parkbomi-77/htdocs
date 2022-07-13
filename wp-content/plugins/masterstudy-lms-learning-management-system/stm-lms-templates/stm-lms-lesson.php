@@ -85,25 +85,29 @@ if ($has_access or $has_preview):
             <?php if ($item_content) : ?>
                 <div id="stm-lms-lessons">
                     <div class="stm-lms-course__content">
-
-                        <?php STM_LMS_Templates::show_lms_template('lesson/content_top_wrapper_start', compact('lesson_type')); ?>
-                        <?php STM_LMS_Templates::show_lms_template('lesson/content_top', compact('post_id', 'item_id')); ?>
-                        <?php STM_LMS_Templates::show_lms_template('lesson/content_top_wrapper_end', compact('lesson_type')); ?>
-
-                        <div class="stm-lms-course__content_wrapper">
-                            <?php STM_LMS_Templates::show_lms_template('lesson/content_wrapper_start', compact('lesson_type')); ?>
-
-                            <?php echo apply_filters('stm_lms_lesson_content', STM_LMS_Templates::load_lms_template(
-                                'course/parts/' . $content_type,
-                                compact('post_id', 'item_id', 'is_previewed')
-                            ), $post_id, $item_id); ?>
-
-                            <?php STM_LMS_Templates::show_lms_template('lesson/content_wrapper_end', compact('lesson_type', 'item_id')); ?>
+                        <div class="sample111">
+                            <?php STM_LMS_Templates::show_lms_template('lesson/content_top_wrapper_start', compact('lesson_type')); ?>
+                            <?php STM_LMS_Templates::show_lms_template('lesson/content_top', compact('post_id', 'item_id')); ?>
+                            <?php STM_LMS_Templates::show_lms_template('lesson/content_top_wrapper_end', compact('lesson_type')); ?>
+    
+                            <div class="stm-lms-course__content_wrapper">
+                                <?php STM_LMS_Templates::show_lms_template('lesson/content_wrapper_start', compact('lesson_type')); ?>
+    
+                                <?php echo apply_filters('stm_lms_lesson_content', STM_LMS_Templates::load_lms_template(
+                                    'course/parts/' . $content_type,
+                                    compact('post_id', 'item_id', 'is_previewed')
+                                ), $post_id, $item_id); ?>
+    
+                                <?php STM_LMS_Templates::show_lms_template('lesson/content_wrapper_end', compact('lesson_type', 'item_id')); ?>
+                               
+                            </div>
                         </div>
+                        <?php  require "/Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system/stm-lms-templates/course/parts/temp.php"; ?>    
                     </div>
                 </div>
-
-            <?php endif; ?>
+                
+                <?php endif; ?>
+                
 
             <?php echo apply_filters('stm_lms_course_item_content', $content = '', $post_id, $item_id); ?>
         </div>

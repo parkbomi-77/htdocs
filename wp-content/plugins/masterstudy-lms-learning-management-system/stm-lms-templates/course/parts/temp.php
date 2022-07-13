@@ -1,48 +1,77 @@
-<div class="stm-lms-course__lesson-content__box">
-        <style>
-            #box {
-                width: 100%;
-                height: 250px;
-                background-color: rgb(228, 171, 37);
-                padding: 10px;
-            }
-            #box div {
-                margin: 2px;
-                justify-content: space-between;
-                display: flex;
-            }
-            /* #no1 {
-                width: 100%;
-                background-color: rgb(97,84,80);
-                border-color: darkcyan;
-                display : none;
-            } */
-        </style>
-    <!-- 재생시간 테이블 가져와서 뿌리기 -->
-</div>
-        <div id="box">
-            <p> 제품 구입하기 </p>
-            <?php
-                global $wpdb, $post;
-                // lesson 글에 해당하는 재생시간등록 결과 불러오기 
-                $results = $wpdb->get_results($wpdb->prepare("SELECT * from wp_play_time where posts_lesson_id = $post->ID"));
-                // var_dump($results[0]->product_time);
 
-                if($results){
-                    $num = count($results);
-                    for($i=0; $i<$num; $i++){ ?>
-                        <div id= <?php echo $results[$i]->play_idx ?> style="display:none"> 
-                            <div>
-                                <?php echo $results[$i]->product_name ?> 
-                            </div>
-                            <div>
-                                <a href=<?php echo $results[$i]->product_link ?> target="_blank">장바구니 담기</a>
-                            </div>
-                        </div>
-                        
-            <?php   }
-                } ?>
-        </div>
+<!-- <link rel="stylesheet" href="/Applications/MAMP/htdocs/wp-content/plugins/duplicator/assets/css/fontawesome-all.min.css"> -->
+<div id="box">
+    <style>
+        .stm-lms-course__content{
+            display:flex;
+            justify-content: center;
+        }
+        .sample111{
+            width: 1200px;
+        }
+
+        #box {
+            width: 28%;
+            height: 658px;
+            background-color: rgb(17, 17, 19);
+
+            border: 2px solid rgb(17, 17, 19);
+            margin-top: 135px;
+            margin-left: -15px;
+        }
+        #box>p{
+            padding: 8px 11px;
+            font-size: 16px;
+            background-color: black;
+            margin-bottom: 0;
+            color: tan;
+        }
+        
+        #box>div {
+            justify-content: space-between;
+            display: flex;
+            background-color: rgb(19, 21, 24);
+            align-items: center;
+            padding: 2px 22px 2px 17px;
+            border-top: solid black;
+            font-size: 15px;
+            font-weight: 500;
+            color: #d6d6d6;
+            height: 90px;
+        }
+        #box>div:hover {
+            background-color: rgb(59, 62, 59);
+        }
+        .box-cart{
+            font-size: 20px;
+        }
+        .box-cart i{
+            color: #d6d6d6;
+        }
+    </style>
+
+    <p> <i class="fa-solid fa-store"></i> store</p>
+    <?php
+        global $wpdb, $post;
+        // lesson 글에 해당하는 재생시간등록 결과 불러오기 
+        $results = $wpdb->get_results($wpdb->prepare("SELECT * from wp_play_time where posts_lesson_id = $post->ID"));
+        // var_dump($results[0]->product_time);
+
+        if($results){
+            $num = count($results);
+            for($i=0; $i<$num; $i++){ ?>
+                <div id= <?php echo $results[$i]->play_idx ?> style="display:none"> 
+                    <div>
+                        <?php echo $results[$i]->product_name ?> 
+                    </div>
+                    <div class="box-cart">
+                        <a href=<?php echo $results[$i]->product_link ?> target="_blank"> <i class="fa-solid fa-cart-shopping"></i> </a>
+                    </div>
+                </div>
+                
+    <?php   }
+        } ?>
+</div>
 
 
 <script src="https://player.vimeo.com/api/player.js"></script>

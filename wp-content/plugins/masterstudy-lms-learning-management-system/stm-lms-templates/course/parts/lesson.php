@@ -48,7 +48,7 @@ if (!empty($item_id)):
 		<?php wp_reset_postdata(); ?>
 
 		<?php endif; ?>
-		<?php  include ("temp.php"); ?>  
+		<!-- temp.php 자리이동함 -->
 
 
 <?php endif;
