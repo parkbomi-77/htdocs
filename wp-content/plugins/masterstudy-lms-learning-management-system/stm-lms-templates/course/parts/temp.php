@@ -1,5 +1,3 @@
-
-<!-- <link rel="stylesheet" href="/Applications/MAMP/htdocs/wp-content/plugins/duplicator/assets/css/fontawesome-all.min.css"> -->
 <div id="box">
     <style>
         .stm-lms-course__content{
@@ -14,17 +12,20 @@
             width: 28%;
             height: 658px;
             background-color: rgb(17, 17, 19);
-
             border: 2px solid rgb(17, 17, 19);
             margin-top: 135px;
             margin-left: -15px;
         }
+        #box>p i {
+            font-size: 17px;
+        }
         #box>p{
-            padding: 8px 11px;
-            font-size: 16px;
+            padding:9px 15px 5px;
+            font-size: 18px;
             background-color: black;
             margin-bottom: 0;
-            color: tan;
+            color: #e1b475;
+            font-weight: 600;
         }
         
         #box>div {
@@ -75,16 +76,10 @@
 
 
 <script src="https://player.vimeo.com/api/player.js"></script>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
 <script> 
     const iframe = document.querySelector("iframe");
     const player = new Vimeo.Player(iframe);
-
-    const show = (idNum) => {
-        document.getElementById(idNum).style.display = "flex"
-    }
-    const hidden = (idNum) => {
-        document.getElementById(idNum).style.display = "none"
-    }
 
     let TotalPlayingTime = 0; //전체 재생시간 
     player.getDuration().then((duration) => {
