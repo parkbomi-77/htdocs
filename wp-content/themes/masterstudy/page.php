@@ -5,8 +5,11 @@
     .wish_table_body{
         text-align: center;
     }
+    .wish_table_trash{
+        border: 0;
+        background-color: white;
+    }
 </style>
-
 
 <?php
 $style = (defined('STM_POST_TYPE')) ? 'post_type_exist' : 'text_block';
@@ -26,46 +29,51 @@ get_header(); ?>
                 $tr = "";
                 for($i = 0; $i<$num; $i++){
                     $tr = $tr.
-                    "<tr>
-                        <td>".$results[$i]->ID."</td>
-                        <td>".$results[$i]->item_id."</td>
-                        <td>".$results[$i]->quantity."</td>
-                        <td>".$results[$i]->price."</td>
-                        <td class='wish_table_trash'><i class='fa-solid fa-trash'></i></td>
-                    </tr>";
+                    "
+                    <form name='wishlist' action='../page-delete.php' method='POST'>
+                        <tr>
+                            <input type='hidden' name='user_id' value='".$results[$i]->user_id ."'>
+                            <input type='hidden' name='item_id' value='".$results[$i]->item_id ."'>
+                            <td>".($i+1)."</td>
+                            <td class='wish_table_trash_item'>".$results[$i]->item_id."</td>
+                            <td>".$results[$i]->quantity."</td>
+                            <td>".$results[$i]->price."</td>
+                            <td><button class='wish_table_trash' type='submit' onclick='trash(this)'><i class='fa-solid fa-trash'></i></button></td>
+                        </tr>
+                    </form>
+                    ";
                 }
 
-                echo "
-            <table>
-                <colgroup>
-                  <col style='width:50px'>
-                  <col style='width:65%'>
-                  <col style='width:80px'>
-                  <col style='width:60px'>
-                  <col style='width:80px'>
-                </colgroup>
-                <thead class='wish_table_head'>
-                  <tr>
-                    <th scope='col'>
-                        no.
-                    </th>
-                    <th scope='col'>
-                        제품명
-                    </th>
-                    <th scope='col'>
-                        수량
-                    </th>
-                    <th scope='col'>
-                      가격
-                    </th>
-                    <th scope='col';>
-                      삭제버튼
-                    </th>
-                  </tr>
-                </thead>
-                <tbody class='wish_table_body'>".$tr.
-                  "</tbody>
-              </table>";
+                echo "<table>
+                        <colgroup>
+                        <col style='width:50px'>
+                        <col style='width:65%'>
+                        <col style='width:80px'>
+                        <col style='width:60px'>
+                        <col style='width:80px'>
+                        </colgroup>
+                        <thead class='wish_table_head'>
+                        <tr>
+                            <th scope='col'>
+                                no.
+                            </th>
+                            <th scope='col'>
+                                제품명
+                            </th>
+                            <th scope='col'>
+                                수량
+                            </th>
+                            <th scope='col'>
+                            가격
+                            </th>
+                            <th scope='col';>
+                            삭제버튼
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody class='wish_table_body'>".$tr.
+                        "</tbody>
+                    </table>";
             }
 
         ?>
@@ -99,3 +107,31 @@ get_header(); ?>
     </div>
 
 <?php get_footer(); ?>
+
+
+<script>
+    function trash (e) {
+        // 테이블 바디에서 해당 행 삭제
+        let playboxList = document.querySelector('.wish_table_body');
+        playboxList.removeChild(e.parentNode);
+
+        // 해당 제품명 item_id 알아내기 
+
+        // 안내문
+        // if(confirm("삭제 하시겠습니까?") == true){
+
+        // }else{
+        //     return;
+        // }
+        
+    }
+
+
+</script>
+
+
+
+
+
+
+
