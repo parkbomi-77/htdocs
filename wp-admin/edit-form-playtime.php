@@ -7,9 +7,13 @@
     margin: 2px 0;
 }
 .playbox{
-    width: 70%;
+    width: 900px;
     display: flex;
     align-items : center;
+}
+.playbox-num{
+    text-align: center;
+    width: 21px;
 }
 .playbox>div{
     margin: 0 1px;
@@ -21,15 +25,9 @@
     width: 100%;
 }
 .playbox-name {
-    width: 30%;
+    width: 45%;
 }
-.playbox-name input{
-    width: 100%;
-}
-.playbox-link{
-    width: 70%;
-}
-.playbox-link input{
+.playbox-name select{
     width: 100%;
 }
 .playbox-trash{
@@ -45,7 +43,7 @@
     align-items : center;
     border : 1px solid rgba(23, 27, 29, 0.4);
     border-radius: 5px;
-    width: 70%;
+    width: 606px;
     height: 30px;
 }
 </style>
@@ -57,7 +55,16 @@
     // lesson 글에 해당하는 재생시간등록 결과 불러오기 
     $results = $wpdb->get_results($wpdb->prepare("SELECT * from wp_play_time where posts_lesson_id = $post->ID"));
     $num = count($results);
-    
+    $product = $wpdb->get_results($wpdb->prepare("SELECT * from wp_product_list"));
+    $productnum = count($product);
+    // $zzz =  $product[0]->ID;
+
+    $option = '';
+    for($i=0; $i<$productnum; $i++){
+        $add_option = '<option value = "'.$product[$i]->ID.'">'.$product[$i]->product_name.'</option>';
+        $option = $option.$add_option;
+    }
+
     // 새로 등록할시 !  
     if(!$results){
 ?> 
@@ -73,10 +80,12 @@
                     onKeyup="inputTimeColon(this)" required>
                 </div>
                 <div class="playbox-name">
-                    <input type="text" id="" name="playname[]" placeholder="제품명 입력란(40)" value="" required>
-                </div>
-                <div class="playbox-link">
-                    <input type="text" id="" name="playlink[]" placeholder="제품링크(40)" value="" required>
+                    <select name = "playname[]">
+                        <option value = "" selected>제품 선택</option>
+                        <?php
+                            echo $option;
+                        ?>
+                    </select>
                 </div>
                 <div class="playbox-trash" onclick="close_boxTag(this)" style="font-size:23px;">✖︎</div>
             </div>
@@ -90,8 +99,16 @@
     <!-- 기존 설정 수정할시 화면에 띄우기 -->
     <?php } else { 
     // play_box를 붙히는 형식 
+        $option = '';
+        for($i=0; $i<$productnum; $i++){
+            $add_option = '<option value = "'.$product[$i]->ID.'">'.$product[$i]->product_name.'</option>';
+            $option = $option.$add_option;
+        }
+
         $play_box = '';
         for($i = 0; $i < $num; $i++){
+            $productname = $wpdb->get_results($wpdb->prepare("SELECT * from wp_product_list where ID =".$results[$i]->product_list_id ));
+
             $add_play_box = ' <div class="playbox">
                                 <div class="playbox-num">'.$results[$i]->play_idx.'</div>
                                 <input type="hidden" name="playboxNum[]" value="'.$results[$i]->play_idx.'">
@@ -99,15 +116,18 @@
                                     <input type="text" id="" name="playtime[]" value="'.$results[$i]->product_time.'" maxlength="5" placeholder="00:00" onKeyup="inputTimeColon(this)" required>
                                 </div>
                                 <div class="playbox-name">
-                                    <input type="text" id="" name="playname[]" placeholder="제품명 입력란(40)" value="'.$results[$i]->product_name.'" required>
-                                </div>
-                                <div class="playbox-link">
-                                    <input type="text" id="" name="playlink[]" placeholder="제품링크(40)" value="'.$results[$i]->product_link.'" required>
+                                    <select name = "playname[]">
+                                        <option value = "'.$results[$i]->product_list_id.'" selected>'.$productname[0]->product_name.'</option>
+                                        '.$option.'
+                                    </select>
                                 </div>
                                 <div class="playbox-trash" onclick="close_boxTag(this)" style="font-size:23px;">✖︎</div>
                             </div>';
             $play_box = $play_box.$add_play_box ;
+
         }
+
+
             echo ('<div class="playbox-container">
                         <p>vimeo 영상시간 : 상품등록</p>
                         <div class="playbox-list">
@@ -126,35 +146,37 @@
 
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
-    var Count = <?php echo $num; ?>+1;
+    var idxnum = <?php echo $num; ?>;
     function create_boxTag(){
     let playboxList = document.querySelector('.playbox-list');
     let new_pTag = document.createElement('div');
     
     new_pTag.setAttribute('class', 'playbox');
     new_pTag.innerHTML = 
-                `<div class="playbox-num">${Count}</div>
-                <input type="hidden" name="playboxNum[]" value=${Count}>
+                `<div class="playbox-num">${idxnum+1}</div>
+                <input type="hidden" name="playboxNum[]" value=${idxnum+1}>
                 <div class="playbox-time">
                     <input type="text" id="" name="playtime[]" value="<?php echo esc_attr( $post->playtime ); ?>" maxlength="5" placeholder="00:00" onKeyup="inputTimeColon(this)" required>
                 </div>
                 <div class="playbox-name">
-                    <input type="text" id="" name="playname[]" placeholder="제품명 입력란(40)" value="" required>
-                </div>
-                <div class="playbox-link">
-                    <input type="text" id="" name="playlink[]" placeholder="제품링크(40)" value="" required>
+                    <select name = "playname[]">
+                            <option value = "" selected>제품 선택</option>
+                            <?php
+                                echo $option;
+                            ?>
+                    </select>
                 </div>
                 <div class="playbox-trash" onclick="close_boxTag(this)" style="font-size:23px;">✖︎</div>`
     
      playboxList.appendChild(new_pTag);
     
-     Count++;
+     idxnum++;
     }
 
     function close_boxTag(e){
         let playboxList = document.querySelector('.playbox-list');
         playboxList.removeChild(e.parentNode);
-        Count = Count-1;
+        idxnum = idxnum-1;
     }
 
 

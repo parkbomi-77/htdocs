@@ -49,7 +49,6 @@ function _wp_translate_postdata( $update = false, $post_data = null ) {
 						'wp_play_time', 
 						array( 'product_time' => $post_data['playtime'][$i],
 							'product_name' => $post_data['playname'][$i],
-							'product_link' => $post_data['playlink'][$i],
 						), 
 						array( 'posts_lesson_id' => $id,
 						'play_idx' => $i+1
@@ -62,7 +61,6 @@ function _wp_translate_postdata( $update = false, $post_data = null ) {
 						'wp_play_time', 
 						array( 'product_time' => $post_data['playtime'][$i],
 							'product_name' => $post_data['playname'][$i],
-							'product_link' => $post_data['playlink'][$i],
 						), 
 						array( 'posts_lesson_id' => $id,
 						'play_idx' => $i+1
@@ -76,7 +74,6 @@ function _wp_translate_postdata( $update = false, $post_data = null ) {
 						'play_idx' => $i+1,
 						'product_time' => $post_data['playtime'][$i],
 						'product_name' => $post_data['playname'][$i],
-						'product_link' => $post_data['playlink'][$i],
 					));
 				}
 
@@ -86,7 +83,6 @@ function _wp_translate_postdata( $update = false, $post_data = null ) {
 						'wp_play_time', 
 						array( 'product_time' => $post_data['playtime'][$i],
 							'product_name' => $post_data['playname'][$i],
-							'product_link' => $post_data['playlink'][$i],
 						), 
 						array( 'posts_lesson_id' => $id,
 						'play_idx' => $i+1
@@ -114,7 +110,6 @@ function _wp_translate_postdata( $update = false, $post_data = null ) {
 							'play_idx' => $i+1,
 							'product_time' => $post_data['playtime'][$i],
 							'product_name' => $post_data['playname'][$i],
-							'product_link' => $post_data['playlink'][$i],
 						));
 			}
 			
