@@ -74,19 +74,22 @@
 
         if($results){
             $num = count($results);
-            for($i=0; $i<$num; $i++){ ?>
+            for($i=0; $i<$num; $i++){ 
+                $productname = $wpdb->get_results($wpdb->prepare("SELECT * from wp_product_list where ID =".$results[$i]->product_list_id));
+                ?>
                 <div id= <?php echo $results[$i]->play_idx ?> style="display:none"> 
                 <form id="wishform" method='POST' target="iframe1" 
                 action='/wp-content/plugins/masterstudy-lms-learning-management-system/stm-lms-templates/course/parts/temp_submit.php'>
                     <iframe id="iframe1" name="iframe1" style="display:none"></iframe>
                     <div class="box-flex">
                         <div>
-                            <?php echo $results[$i]->product_name ?> 
+                            <?php echo $productname[0]->product_name ?> 
                         </div>
                         <div class="box-cart">
                             <!-- 유저 아이디, 상품명 디비로 전달 -->
                             <input type="hidden" name="user_id" value="<?php echo $current_user->ID ?>">
-                            <input type="hidden" name="item_id" value="<?php echo $results[$i]->product_name ?>">
+                            <input type="hidden" name="item_id" value="<?php echo $results[$i]->product_list_id ?>">
+                            <input type="hidden" name="product_name" value="<?php echo $productname[0]->product_name ?>">
                             <button type='submit'><i class="fa-solid fa-cart-shopping"></i></button>
                         </div>
                     </div>

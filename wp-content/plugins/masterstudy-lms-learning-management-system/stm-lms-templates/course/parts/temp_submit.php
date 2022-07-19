@@ -5,6 +5,8 @@ require_once( $_SERVER['DOCUMENT_ROOT'].'/wp-load.php' );
 
 $user_id = $_POST['user_id'];
 $item_id = $_POST['item_id'];
+$product_name = $_POST['product_name'];
+
 //수량,가격 일단 하드코딩
 $quantity = 1;
 $price = 1000;
@@ -22,6 +24,7 @@ if($results){ // 중복이 있으면 ??????
         array(
             'user_id' => $user_id,
             'item_id' => $item_id,
+            'product_name' => $product_name,
             'quantity' => $quantity,
             'price' => $price,
         )
@@ -30,8 +33,4 @@ if($results){ // 중복이 있으면 ??????
 }
 
 
-// $prevPage = $_SERVER['HTTP_REFERER'];
-// // 변수에 이전페이지 정보를 저장
-
-// header('location:'.$prevPage);
 ?>

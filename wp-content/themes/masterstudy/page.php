@@ -35,7 +35,7 @@ get_header(); ?>
                             <input type='hidden' name='user_id' value='".$results[$i]->user_id ."'>
                             <input type='hidden' name='item_id' value='".$results[$i]->item_id ."'>
                             <td>".($i+1)."</td>
-                            <td class='wish_table_trash_item'>".$results[$i]->item_id."</td>
+                            <td class='wish_table_trash_item'>".$results[$i]->product_name."</td>
                             <td>".$results[$i]->quantity."</td>
                             <td>".$results[$i]->price."</td>
                             <td><button class='wish_table_trash' type='submit' onclick='trash(this)'><i class='fa-solid fa-trash'></i></button></td>
