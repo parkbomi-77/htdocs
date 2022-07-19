@@ -10,11 +10,11 @@
 
         #box {
             width: 28%;
-            height: 658px;
             background-color: rgb(17, 17, 19);
             border: 2px solid rgb(17, 17, 19);
             margin-top: 135px;
             margin-left: -15px;
+            margin-right: 13px;
         }
         #box>p i {
             font-size: 17px;
@@ -58,6 +58,10 @@
             background-color: rgba(16,17,19,0);
             border: 0;
         }
+
+        @media screen and (max-width: 1632px) {
+
+        }
     </style>
 
 
@@ -73,7 +77,6 @@
             for($i=0; $i<$num; $i++){ ?>
                 <div id= <?php echo $results[$i]->play_idx ?> style="display:none"> 
                 <form id="wishform" method='POST' target="iframe1" 
-
                 action='/wp-content/plugins/masterstudy-lms-learning-management-system/stm-lms-templates/course/parts/temp_submit.php'>
                     <iframe id="iframe1" name="iframe1" style="display:none"></iframe>
                     <div class="box-flex">
@@ -138,14 +141,5 @@
     }
 
    let interval = setInterval(getCurrentTime, 500);
-
-    // function confirm() {
-    //     alert("장바구니에 담겼습니다!")
-    // }
-    // function checkIt(){
-    //     if(){
-
-    //     }
-    // }
 
 </script>

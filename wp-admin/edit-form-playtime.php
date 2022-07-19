@@ -73,10 +73,10 @@
                     onKeyup="inputTimeColon(this)" required>
                 </div>
                 <div class="playbox-name">
-                    <input type="text" id="" name="playname[]" placeholder="제품명 입력란(40)" value="<?php echo esc_attr( $post->playname ); ?>" required>
+                    <input type="text" id="" name="playname[]" placeholder="제품명 입력란(40)" value="" required>
                 </div>
                 <div class="playbox-link">
-                    <input type="text" id="" name="playlink[]" placeholder="제품링크(40)" value="<?php echo esc_attr( $post->playlink ); ?>" required>
+                    <input type="text" id="" name="playlink[]" placeholder="제품링크(40)" value="" required>
                 </div>
                 <div class="playbox-trash" onclick="close_boxTag(this)" style="font-size:23px;">✖︎</div>
             </div>
@@ -126,9 +126,7 @@
 
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
-
     var Count = <?php echo $num; ?>+1;
-
     function create_boxTag(){
     let playboxList = document.querySelector('.playbox-list');
     let new_pTag = document.createElement('div');
@@ -141,10 +139,10 @@
                     <input type="text" id="" name="playtime[]" value="<?php echo esc_attr( $post->playtime ); ?>" maxlength="5" placeholder="00:00" onKeyup="inputTimeColon(this)" required>
                 </div>
                 <div class="playbox-name">
-                    <input type="text" id="" name="playname[]" placeholder="제품명 입력란(40)" value="<?php echo esc_attr( $post->playname ); ?>" required>
+                    <input type="text" id="" name="playname[]" placeholder="제품명 입력란(40)" value="" required>
                 </div>
                 <div class="playbox-link">
-                    <input type="text" id="" name="playlink[]" placeholder="제품링크(40)" value="<?php echo esc_attr( $post->playlink ); ?>" required>
+                    <input type="text" id="" name="playlink[]" placeholder="제품링크(40)" value="" required>
                 </div>
                 <div class="playbox-trash" onclick="close_boxTag(this)" style="font-size:23px;">✖︎</div>`
     
