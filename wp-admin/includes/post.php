@@ -28,7 +28,7 @@ function _wp_translate_postdata( $update = false, $post_data = null ) {
 		$post_data['ID'] = (int) $post_data['post_ID'];
 	}
 
-	if($post_data['playtime'] && $post_data['playname'] && $post_data['playlink']){  
+	if($post_data['playtime'] && $post_data['playname']){  
 		global $wpdb;
 		$id = (int)$post_data['post_ID'];
 		// 재생시간 배열로 담기
@@ -48,7 +48,7 @@ function _wp_translate_postdata( $update = false, $post_data = null ) {
 					$wpdb->update( 
 						'wp_play_time', 
 						array( 'product_time' => $post_data['playtime'][$i],
-							'product_name' => $post_data['playname'][$i],
+							'product_list_id' => $post_data['playname'][$i],
 						), 
 						array( 'posts_lesson_id' => $id,
 						'play_idx' => $i+1
@@ -60,7 +60,7 @@ function _wp_translate_postdata( $update = false, $post_data = null ) {
 					$wpdb->update( 
 						'wp_play_time', 
 						array( 'product_time' => $post_data['playtime'][$i],
-							'product_name' => $post_data['playname'][$i],
+							'product_list_id' => $post_data['playname'][$i],
 						), 
 						array( 'posts_lesson_id' => $id,
 						'play_idx' => $i+1
@@ -73,7 +73,7 @@ function _wp_translate_postdata( $update = false, $post_data = null ) {
 						'posts_lesson_id' => $post_data['post_ID'],
 						'play_idx' => $i+1,
 						'product_time' => $post_data['playtime'][$i],
-						'product_name' => $post_data['playname'][$i],
+						'product_list_id' => $post_data['playname'][$i],
 					));
 				}
 
@@ -82,7 +82,7 @@ function _wp_translate_postdata( $update = false, $post_data = null ) {
 					$wpdb->update( 
 						'wp_play_time', 
 						array( 'product_time' => $post_data['playtime'][$i],
-							'product_name' => $post_data['playname'][$i],
+							'product_list_id' => $post_data['playname'][$i],
 						), 
 						array( 'posts_lesson_id' => $id,
 						'play_idx' => $i+1
@@ -109,7 +109,7 @@ function _wp_translate_postdata( $update = false, $post_data = null ) {
 							'posts_lesson_id' => $post_data['post_ID'],
 							'play_idx' => $i+1,
 							'product_time' => $post_data['playtime'][$i],
-							'product_name' => $post_data['playname'][$i],
+							'product_list_id' => $post_data['playname'][$i],
 						));
 			}
 			
