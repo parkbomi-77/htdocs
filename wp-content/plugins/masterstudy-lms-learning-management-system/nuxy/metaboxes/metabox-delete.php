@@ -13,6 +13,7 @@ for($i=0; $i<$num; $i++){
 }
 
 $prevPage = $_SERVER['HTTP_REFERER'];
-header('location:'.$prevPage);
+$location ='location:'.$prevPage.'#registrationbox';
+header($location);
 
 ?>

@@ -13,3 +13,5 @@ require_once STM_LMS_PATH . '/settings/main_settings/payout.php';
 require_once STM_LMS_PATH . '/settings/main_settings/gdpr.php';
 require_once STM_LMS_PATH . '/settings/main_settings/shortcodes.php';
 require_once STM_LMS_PATH . '/settings/main_settings/float_menu.php';
+require_once STM_LMS_PATH . '/settings/main_settings/registration.php';
+

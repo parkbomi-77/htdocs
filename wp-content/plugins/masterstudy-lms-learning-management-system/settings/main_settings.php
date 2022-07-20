@@ -30,6 +30,7 @@ add_filter('wpcfto_options_page_setup', function ($setups) {
             'payout' => stm_lms_settings_payout_section(),
             'gdpr' => stm_lms_settings_gdpr_section(),
             'stm_lms_shortcodes' => stm_lms_settings_shortcodes_section(),
+            'registrationbox' => stm_lms_registration(),
         )
     );
 

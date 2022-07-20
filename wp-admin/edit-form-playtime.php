@@ -76,7 +76,7 @@
                 <input type="hidden" name="playboxNum[]" value="1">
                 <div class="playbox-time">
                     <input type="text" id="" name="playtime[]" 
-                    value="<?php echo esc_attr( $post->playtime ); ?>" placeholder="00:00" maxlength="5"
+                    value="<?php echo esc_attr( $post->playtime ); ?>" placeholder="00:00" maxlength="8"
                     onKeyup="inputTimeColon(this)" required>
                 </div>
                 <div class="playbox-name">
@@ -113,7 +113,7 @@
                                 <div class="playbox-num">'.$results[$i]->play_idx.'</div>
                                 <input type="hidden" name="playboxNum[]" value="'.$results[$i]->play_idx.'">
                                 <div class="playbox-time">
-                                    <input type="text" id="" name="playtime[]" value="'.$results[$i]->product_time.'" maxlength="5" placeholder="00:00" onKeyup="inputTimeColon(this)" required>
+                                    <input type="text" id="" name="playtime[]" value="'.$results[$i]->product_time.'" maxlength="8" placeholder="00:00" onKeyup="inputTimeColon(this)" required>
                                 </div>
                                 <div class="playbox-name">
                                     <select name = "playname[]">
@@ -156,7 +156,7 @@
                 `<div class="playbox-num">${idxnum+1}</div>
                 <input type="hidden" name="playboxNum[]" value=${idxnum+1}>
                 <div class="playbox-time">
-                    <input type="text" id="" name="playtime[]" value="<?php echo esc_attr( $post->playtime ); ?>" maxlength="5" placeholder="00:00" onKeyup="inputTimeColon(this)" required>
+                    <input type="text" id="" name="playtime[]" value="<?php echo esc_attr( $post->playtime ); ?>" maxlength="8" placeholder="00:00" onKeyup="inputTimeColon(this)" required>
                 </div>
                 <div class="playbox-name">
                     <select name = "playname[]">
@@ -183,9 +183,9 @@
     // 재생시간 콜론(:) 으로 입력받는 함수 
     function inputTimeColon(time) {
         let replaceTime = time.value.replace(/\:/g, "");
-
-        let minute = replaceTime.substring(0, 2);      // 선언한 변수 hours에 시간값을 담는다.
-        let seconds = replaceTime.substring(2, 4);    // 선언한 변수 minute에 분을 담는다.
+        
+        let minute = replaceTime.substring(0, 2);      
+        let seconds = replaceTime.substring(2, 4);    
 
         if(isFinite(minute + seconds) == false) {
             alert("문자는 입력하실 수 없습니다.");
@@ -198,6 +198,47 @@
                 return false;
         }
         time.value = minute + ":" + seconds;
+        // if(time.length === 5){
+        //     let replaceTime = time.value.replace(/\:/g, "");
+    
+        //     let minute = replaceTime.substring(0, 2);      
+        //     let seconds = replaceTime.substring(2, 4);    
+    
+        //     if(isFinite(minute + seconds) == false) {
+        //         alert("문자는 입력하실 수 없습니다.");
+        //         time.value = "00:00";
+        //         return false;
+        //     }
+    
+        //     if(seconds > 59 ) {
+        //             alert("초는 1분단위 아래로 입력해주세요.");
+        //             return false;
+        //     }
+        //     time.value = minute + ":" + seconds;
+        // }else {
+        //     let replaceTime = time.value.replace(/\:/g, "");
+    
+        //     let hour = replaceTime.substring(0, 2);      
+        //     let minute = replaceTime.substring(2, 4);      
+        //     let seconds = replaceTime.substring(4, 6);    
+    
+        //     if(isFinite(minute + seconds) == false) {
+        //         alert("문자는 입력하실 수 없습니다.");
+        //         time.value = "00:00";
+        //         return false;
+        //     }
+        //     if(minute > 59 ) {
+        //             alert("분은 60분 단위 아래로 입력해주세요.");
+        //             return false;
+        //     }
+    
+        //     if(seconds > 59 ) {
+        //             alert("초는 60초 단위 아래로 입력해주세요.");
+        //             return false;
+        //     }
+        //     time.value = hour + ":" + minute + ":" + seconds;
+        // }
+
     }
 
 </script>
