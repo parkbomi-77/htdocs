@@ -56,6 +56,6 @@
 
     $prevPage = $_SERVER['HTTP_REFERER'];
     // 변수에 이전페이지 정보를 저장
-
-    header('location:'.$prevPage);
+    $location ='location:'.$prevPage.'#registrationbox';
+    header($location);
 ?>
