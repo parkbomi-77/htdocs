@@ -211,7 +211,11 @@ if ( empty( $metabox_id ) ) {
 						if(!$results){
 						?> 
 						<div class="registration-container">
-							<p>판매할 상품 리스트</p>
+							<p>판매 상품 리스트</p>
+							<div class="registration-title">
+								<div class="registration-title-name"> < 제품명 > </div>
+								<div class="registration-title-link"> < 제품 링크 > </div>
+							</div>
 							<div class="registration-list">
 								<div class="registration-div">
 									<input type="checkbox" name="deletecheck">
@@ -251,7 +255,11 @@ if ( empty( $metabox_id ) ) {
 								$registration_box = $registration_box.$add_registration_box ;
 							}
 								echo ('<div class="registration-container">
-											<p>판매할 상품 리스트</p>
+											<p>판매 상품 리스트</p>
+											<div class="registration-title">
+												<div class="registration-title-name"> < 제품명 > </div>
+												<div class="registration-title-link"> < 제품 링크 > </div>
+											</div>
 											<div class="registration-list">
 												'.$registration_box.'
 											</div>

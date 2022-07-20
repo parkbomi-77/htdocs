@@ -98,3 +98,16 @@
 .closebox:hover{
     cursor: pointer;
 }
+.registration-title{
+    display: flex;
+    justify-content: space-around;
+    padding: 2px 0;
+}
+.registration-title-name{
+    width: 80%;
+    text-align: center;
+}
+.registration-title-link{
+    width: 53%;
+    text-align: center;
+}
