@@ -67,7 +67,7 @@
     align-items: center;
     border: 1px solid rgb(134 142 146 / 40%);
     border-radius: 5px;
-    width: 90.7%;
+    width: 90.6%;
     height: 35px;
     position: inherit;
     left: 53px;
@@ -86,7 +86,7 @@
     border: none;
     width: 93px;
     height: 35px;
-    border-radius: 16px;
+    border-radius: 4px;
     color: antiquewhite;
     font-weight: 500;
     float: right;
@@ -96,11 +96,11 @@
     border: none;
     width: 93px;
     height: 35px;
-    border-radius: 16px;
+    border-radius: 4px;
     color: antiquewhite;
     font-weight: 500;
     float: right;
-    margin-left: 5px;
+    margin-left: 2px;
 }
 .registration_save_btn:hover{
     cursor: pointer;
@@ -146,6 +146,6 @@
 }
 .registration-inputbox{
     position: absolute;
-    right: 47px;
+    right: 5.2%;
     bottom: 59px;
 }

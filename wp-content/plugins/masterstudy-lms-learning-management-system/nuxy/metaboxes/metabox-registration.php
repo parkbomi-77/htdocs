@@ -73,16 +73,18 @@
                                 <div>+</div>
                                 <div>신규</div>
                             </div>
+
+                            <div class="registration-inputbox">
+                                <input class="registration_delete_btn" type="submit" onclick="deletebtn()"
+                                value="DELETE" formaction="/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-delete.php">
+                                <input class="registration_save_btn" type="submit" onclick="savebtn()"
+                                value="SAVE" formaction="/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-display-save.php" >
+                            </div>
                         </div>');
         
             }
     ?>
-<div class="registration-inputbox">
-    <input class="registration_delete_btn" type="submit" onclick="deletebtn()"
-    value="DELETE" formaction="/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-delete.php">
-    <input class="registration_save_btn" type="submit" onclick="savebtn()"
-    value="SAVE" formaction="/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-display-save.php" >
-</div>
+
 
 </form>
 
