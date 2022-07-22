@@ -1,0 +1,23 @@
+2022-07-19T07:10:04+00:00 CRITICAL syntax error, unexpected '=>' (T_DOUBLE_ARROW)(/Applications/MAMP/htdocs/wp-admin/edit-form-playtime.php, 줄 83)
+
+2022-07-19T07:13:53+00:00 CRITICAL Uncaught Error: Cannot use object of type stdClass as array in /Applications/MAMP/htdocs/wp-admin/edit-form-playtime.php:62
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-admin/edit-form-advanced.php(692): require()
+#1 /Applications/MAMP/htdocs/wp-admin/post.php(210): require('/Applications/M...')
+#2 {main}
+  thrown(/Applications/MAMP/htdocs/wp-admin/edit-form-playtime.php, 줄 62)
+
+2022-07-19T07:54:28+00:00 CRITICAL Uncaught Error: Object of class stdClass could not be converted to string in /Applications/MAMP/htdocs/wp-admin/edit-form-playtime.php:112
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-admin/edit-form-advanced.php(692): require()
+#1 /Applications/MAMP/htdocs/wp-admin/post.php(210): require('/Applications/M...')
+#2 {main}
+  thrown(/Applications/MAMP/htdocs/wp-admin/edit-form-playtime.php, 줄 112)
+
+2022-07-19T07:54:33+00:00 CRITICAL Uncaught Error: Object of class stdClass could not be converted to string in /Applications/MAMP/htdocs/wp-admin/edit-form-playtime.php:112
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-admin/edit-form-advanced.php(692): require()
+#1 /Applications/MAMP/htdocs/wp-admin/post.php(210): require('/Applications/M...')
+#2 {main}
+  thrown(/Applications/MAMP/htdocs/wp-admin/edit-form-playtime.php, 줄 112)
+
