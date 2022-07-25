@@ -30,7 +30,7 @@ get_header(); ?>
                 for($i = 0; $i<$num; $i++){
                     $tr = $tr.
                     "
-                    <form name='wishlist' action='../page-delete.php' method='POST'>
+                    <form name='wishlist' method='POST'>
                         <tr>
                             <input type='hidden' name='user_id' value='".$results[$i]->user_id ."'>
                             <input type='hidden' name='item_id' value='".$results[$i]->item_id ."'>
@@ -38,7 +38,8 @@ get_header(); ?>
                             <td class='wish_table_trash_item'>".$results[$i]->product_name."</td>
                             <td>".$results[$i]->quantity."</td>
                             <td>".$results[$i]->price."</td>
-                            <td><button class='wish_table_trash' type='submit' onclick='trash(this)'><i class='fa-solid fa-trash'></i></button></td>
+                            <td><button class='wish_table_trash' type='submit' onclick='trash(this)' formaction='../page-delete.php'><i class='fa-solid fa-trash'></i></button></td>
+                            <td><button class='wish_table_trash' type='submit' formaction='../page-shop.php'><i class='fa-solid fa-shop'></i></button></td>
                         </tr>
                     </form>
                     ";
@@ -50,6 +51,7 @@ get_header(); ?>
                         <col style='width:65%'>
                         <col style='width:80px'>
                         <col style='width:60px'>
+                        <col style='width:80px'>
                         <col style='width:80px'>
                         </colgroup>
                         <thead class='wish_table_head'>
@@ -67,7 +69,10 @@ get_header(); ?>
                             가격
                             </th>
                             <th scope='col';>
-                            삭제버튼
+                            삭제
+                            </th>
+                            <th scope='col';>
+                            구입
                             </th>
                         </tr>
                         </thead>
@@ -114,16 +119,6 @@ get_header(); ?>
         // 테이블 바디에서 해당 행 삭제
         let playboxList = document.querySelector('.wish_table_body');
         playboxList.removeChild(e.parentNode);
-
-        // 해당 제품명 item_id 알아내기 
-
-        // 안내문
-        // if(confirm("삭제 하시겠습니까?") == true){
-
-        // }else{
-        //     return;
-        // }
-        
     }
 
 

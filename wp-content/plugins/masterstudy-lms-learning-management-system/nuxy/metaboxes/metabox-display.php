@@ -154,8 +154,10 @@ if ( empty( $metabox_id ) ) {
 								<?php $is_group_item = false; ?>
 
 								<?php
-								if(!$section['fields']){ //내가 만든 product registration
+								if($section['fields']['type'] === 'registration'){ //내가 만든 product registration
 									include "/Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-registration.php";
+								}else if($section['fields']['type'] === 'gnuboard_inflow') {
+									include "/Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-gnuboard.php";
 								}
 								foreach ( $section['fields'] as $field_name => $field ) {
 
