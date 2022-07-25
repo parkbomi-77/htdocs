@@ -1,6 +1,9 @@
 <?php
 include_once('./_common.php');
 
+$aaa = $_SERVER['HTTP_REFERER'];
+//"http://localhost:8888/page-shop.php"
+
 if (G5_IS_MOBILE) {
     include_once(G5_MSHOP_PATH.'/item.php');
     return;
