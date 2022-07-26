@@ -158,29 +158,30 @@ if ( empty( $metabox_id ) ) {
 									include "/Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-registration.php";
 								}else if($section['fields']['type'] === 'gnuboard_inflow') {
 									include "/Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-gnuboard.php";
-								}
-								foreach ( $section['fields'] as $field_name => $field ) {
-
-									if ( isset( $field['group'] ) && 'started' === $field['group'] ) {
-										$is_group_item = true;
-									}
-
-									$field['is_group_item'] = $is_group_item;
-
-									if ( ! empty( $field['pre_open'] ) && $field['pre_open'] ) {
-										wpcfto_metaboxes_preopen_field( $section, $section_name, $field, $field_name );
-										continue;
-									}
-
-									if ( ! empty( $field['group'] ) ) {
-										wpcfto_metaboxes_display_group_field( $section, $section_name, $field, $field_name );
-										if ( 'ended' === $field['group'] ) {
-											$is_group_item = false;
+								}else {
+									foreach ( $section['fields'] as $field_name => $field ) {
+	
+										if ( isset( $field['group'] ) && 'started' === $field['group'] ) {
+											$is_group_item = true;
 										}
-										continue;
-									}
-
-									wpcfto_metaboxes_display_single_field( $section, $section_name, $field, $field_name );
+	
+										$field['is_group_item'] = $is_group_item;
+	
+										if ( ! empty( $field['pre_open'] ) && $field['pre_open'] ) {
+											wpcfto_metaboxes_preopen_field( $section, $section_name, $field, $field_name );
+											continue;
+										}
+	
+										if ( ! empty( $field['group'] ) ) {
+											wpcfto_metaboxes_display_group_field( $section, $section_name, $field, $field_name );
+											if ( 'ended' === $field['group'] ) {
+												$is_group_item = false;
+											}
+											continue;
+										}
+	
+										wpcfto_metaboxes_display_single_field( $section, $section_name, $field, $field_name );
+								}
 
 								}
 								?>
