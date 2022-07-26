@@ -1,3 +1,11 @@
+<style>
+    .attachment-full {
+        width: 300px;
+        height: 320px;
+        object-fit: cover;
+    }
+</style>
+
 <?php
 /**
  * The template for displaying product content within loops
