@@ -1,10 +1,10 @@
 <?php
 include_once('./_common.php');
 
-// 벳스쿨에서 보내온 코드 쿠키에 저장하기 - 시간 : 한달 
+// 벳스쿨에서 보내온 코드 쿠키에 저장하기 - 한달, 루트경로
 $vetschoolcode = $_GET;
 if($vetschoolcode['code']){
-    setcookie('vetschoolcode',$vetschoolcode['code'],time() + 86400 * 30);
+    setcookie('vetschoolcode',$vetschoolcode['code'],time() + 86400 * 30, "/");
 }
 
 //"http://localhost:8888/page-shop.php"
