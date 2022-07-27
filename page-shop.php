@@ -11,10 +11,10 @@ global $wpdb;
 $results = $wpdb->get_results($wpdb->prepare("SELECT * from wp_product_list where ID =".$item_id));
 
 //디비에 있는 링크
-$bb = $results[0]->product_link;
+$code = $results[0]->product_code;
 
-//쇼핑몰 상세페이지링크 하드코딩
-$aa = 'http://localhost:8888/practice/gnuboard/shop/item.php?it_id=1658398347';
+//쇼핑몰 상세페이지링크 하드코딩. 아이템ID 동적으로 넣어야함 .. product_id
+$aa = 'http://localhost:8888/practice/gnuboard/shop/item.php?it_id='.$code.'&code=vet';
 
 //현재 페이지 "location.href='링크 주소'"
 
@@ -25,8 +25,8 @@ echo "<script>window.open('".$aa."')</script>";
 $prevPage = $_SERVER['HTTP_REFERER'];
 $location = $prevPage.'#registrationbox';
 
-echo "<script>
-document.location.href='".$location."';
-</script>";
+// echo "<script>
+// document.location.href='".$location."';
+// </script>";
 
 ?>

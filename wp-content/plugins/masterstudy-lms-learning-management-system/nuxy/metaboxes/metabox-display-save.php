@@ -25,14 +25,14 @@
                 array(
                     'product_id' => $i+1,
                     'product_name' => $registrationname[$i],
-                    'product_link' => $registrationlink[$i],
+                    'product_code' => $registrationlink[$i],
                 ));
             } else {
                 $wpdb->update( 
                 'wp_product_list', 
                 array('product_id' => $i+1,
                     'product_name' => $registrationname[$i],
-                    'product_link' => $registrationlink[$i],
+                    'product_code' => $registrationlink[$i],
                 ), 
                 array( 'ID' => $registrationID[$i]
                 ));
@@ -48,7 +48,7 @@
                     array(
                         'product_id' => $i+1,
                         'product_name' => $registrationname[$i],
-                        'product_link' => $registrationlink[$i],
+                        'product_code' => $registrationlink[$i],
                     ));
         }
         

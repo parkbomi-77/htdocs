@@ -16,8 +16,8 @@
             <p> product list </p>
             <div class="registration-title">
                 <div class="registration-title-num"> no. </div>
-                <div class="registration-title-name"> < product name > </div>
-                <div class="registration-title-link"> < link > </div>
+                <div class="registration-title-name"> < product_name > </div>
+                <div class="registration-title-link"> < product_code > </div>
             </div>
             <div class="registration-list">
                 <div class="registration-div">
@@ -54,7 +54,7 @@
                                         <input type="text" id="" name="registrationname[]" placeholder="제품명 입력란(40)" value="'.$results[$i]->product_name.'">
                                     </div>
                                     <div class="registration-link" id="registration-link2">
-                                        <input type="text" id="" name="registrationlink[]" placeholder="제품링크(40)" value="'.$results[$i]->product_link.'">
+                                        <input type="text" id="" name="registrationlink[]" placeholder="제품링크(40)" value="'.$results[$i]->product_code.'">
                                     </div>
                                 </div>';
                 $registration_box = $registration_box.$add_registration_box ;
@@ -63,8 +63,8 @@
                             <p> product list </p>
                             <div class="registration-title">
                                 <div class="registration-title-num"> no. </div>
-                                <div class="registration-title-name"> < product name > </div>
-                                <div class="registration-title-link"> < link > </div>
+                                <div class="registration-title-name"> < product_name > </div>
+                                <div class="registration-title-link"> < product_code > </div>
                             </div>
                             <div class="registration-list">
                                 '.$registration_box.'
