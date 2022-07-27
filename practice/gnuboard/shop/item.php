@@ -5,6 +5,8 @@ include_once('./_common.php');
 $vetschoolcode = $_GET;
 if($vetschoolcode['code']){
     setcookie('vetschoolcode',$vetschoolcode['code'],time() + 86400 * 30, "/");
+}else if($member['mb_vetcode']){
+    setcookie('vetschoolcode',$member['mb_vetcode'],time() + 86400 * 30, "/");
 }
 
 //"http://localhost:8888/page-shop.php"
