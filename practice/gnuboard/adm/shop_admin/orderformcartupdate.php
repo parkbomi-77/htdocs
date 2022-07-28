@@ -152,6 +152,10 @@ for ($i=0; $i<$cnt; $i++)
                 and ct_id  = '$ct_id' ";
     sql_query($sql);
 
+    // ct_status 변경될때 시간 기록
+    $statustime = "update {$g5['g5_shop_cart_table']} set ct_status_time = '$now|$REMOTE_ADDR' where od_id = '$od_id' and ct_id  = '$ct_id' ";
+    sql_query($statustime);
+
     // it_id를 배열에 저장
     if($ct_status == '주문' || $ct_status == '취소' || $ct_status == '반품' || $ct_status == '품절' || $ct_status == '완료')
         $arr_it_id[] = $ct['it_id'];
