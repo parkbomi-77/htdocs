@@ -100,7 +100,7 @@
           dots: dots,
           items: per_row,
           autoplay: false,
-          loop: loop,
+          loop: true,
           slideBy: 1,
           mouseDrag: mouseDrag,
           smartSpeed: 400,
