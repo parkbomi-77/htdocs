@@ -19,7 +19,7 @@ function stm_load_theme_ss()
 	wp_enqueue_style('select2', get_template_directory_uri() . '/assets/css/select2.min.css', NULL, STM_THEME_VERSION, 'all');
 	wp_enqueue_style('fancybox', get_template_directory_uri() . '/assets/vendors/jquery.fancybox.min.css', NULL, STM_THEME_VERSION, 'all');
 	wp_enqueue_style('animate', get_template_directory_uri() . '/assets/css/animate.css', NULL, STM_THEME_VERSION, 'all');
-	wp_enqueue_style('stm_theme_styles', get_template_directory_uri() . '/assets/css/styles.css', NULL, STM_THEME_VERSION, 'all');
+	wp_enqueue_style('stm_theme_styles', get_template_directory_uri() . '/assets/css/styles.css?after', NULL, STM_THEME_VERSION, 'all');
 	stm_module_styles('stm_layout_styles', stm_get_layout(), 'stm_theme_styles');
 	wp_register_style('owl.carousel', get_template_directory_uri() . '/assets/css/owl.carousel.min.css', NULL, STM_THEME_VERSION, 'all');
 
