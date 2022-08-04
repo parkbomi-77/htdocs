@@ -96,7 +96,7 @@ CREATE TABLE `vetschool`.`wp_play_time` (
 
 
 
-  // require 'vendor/autoload.php';
+  <!-- // require 'vendor/autoload.php';
 require "/Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system-pro/addons/google_classrooms/vendor/autoload.php";
 
 use Monolog\Logger as Logger;
@@ -117,4 +117,4 @@ $log->info('API Request Started.', array('path' => $_REQUEST['_url']));
 
 // Error 와 warnig 은 출력
 $log->ALERT('Error log');
-$log->EMERGENCY('Warning log');
+$log->EMERGENCY('Warning log'); -->
