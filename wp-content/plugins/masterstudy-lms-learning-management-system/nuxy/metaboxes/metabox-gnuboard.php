@@ -20,15 +20,24 @@
     // 더미데이터
     let site = ["http://localhost:8888/practice/gnuboard/vetschoolapi.php"]
     function changeState(e) { //select value 값으로 url 구분하여 불러오기 
-        $.ajax({
-            url: site[e],
-            type: "get",
-        }).done(function(data) {
-            let datadata = ''
-            for(let i=0; i<data.length; i++){
-                datadata = datadata + "<p>"+data[i].userID+"</p>"
-            }
-            $('#name').html(datadata)
-        });
+        if(e !== "none"){
+            $.ajax({
+                url: site[e],
+                type: "get",
+            }).done(function(data) {
+                console.log(data);
+                let datadata = ''
+                for(let i=0; i<data.length; i++){
+                    datadata = datadata 
+                    + "<p>"+data[i].userID+"</p>"
+                    + "<p>"+data[i].price+"원</p>"
+                    + "<p>"+data[i].product_name+"</p>"
+                    + "<p>"+data[i].qty+" 개</p>"
+                    + "<p>"+data[i].date+"</p>"
+
+                }
+                $('#name').html(datadata)
+            });
+        }
     }
 </script>

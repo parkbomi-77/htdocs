@@ -156,6 +156,28 @@ for ($i=0; $i<$cnt; $i++)
     $statustime = "update {$g5['g5_shop_cart_table']} set ct_status_time = '$now|$REMOTE_ADDR' where od_id = '$od_id' and ct_id  = '$ct_id' ";
     sql_query($statustime);
 
+    $sql = "select * from g5_shop_cart where od_id = '$od_id' and ct_id  = '$ct_id' ";
+    $result = sql_fetch($sql);
+    if($result['ct_vetcode'] === 'vet'){
+        var_dump("zzzz");
+
+        function post($url, $fields){
+            $post_field_string = http_build_query($fields, '', '&');
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $post_field_string);
+            curl_setopt($ch, CURLOPT_POST, true);
+            $response = curl_exec($ch);
+            curl_close ($ch);
+            return $response;
+        }
+
+        post('http://localhost:8888/sample.php', $result);
+    }
+
     // it_id를 배열에 저장
     if($ct_status == '주문' || $ct_status == '취소' || $ct_status == '반품' || $ct_status == '품절' || $ct_status == '완료')
         $arr_it_id[] = $ct['it_id'];

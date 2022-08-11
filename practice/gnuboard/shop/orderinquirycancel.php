@@ -134,6 +134,27 @@ if($od['od_tno']) {
 // 장바구니 자료 취소
 sql_query(" update {$g5['g5_shop_cart_table']} set ct_status = '취소' where od_id = '$od_id' ");
 
+$sql2 = "select * from g5_shop_cart where od_id = '$od_id' ";
+$result2 = sql_fetch($sql2);
+if($result2['ct_vetcode'] === 'vet'){
+
+    function post($url, $fields){
+        $post_field_string = http_build_query($fields, '', '&');
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $post_field_string);
+        curl_setopt($ch, CURLOPT_POST, true);
+        $response = curl_exec($ch);
+        curl_close ($ch);
+        return $response;
+    }
+
+    post('http://localhost:8888/sample.php', $result2);
+}
+
 // 주문 취소
 $cancel_memo = addslashes(strip_tags($cancel_memo));
 $cancel_price = $od['od_cart_price'];

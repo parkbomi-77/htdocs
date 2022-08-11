@@ -111,6 +111,28 @@ if($act == "buy")
 }
 else if ($act == "alldelete") // 모두 삭제이면
 {
+
+    // $sql2 = "select * from g5_shop_cart where od_id = '$od_id' ";
+    // $result2 = sql_fetch($sql2);
+    // if($result2['ct_vetcode'] === 'vet'){
+
+    //     function post($url, $fields){
+    //         $post_field_string = http_build_query($fields, '', '&');
+    //         $ch = curl_init();
+    //         curl_setopt($ch, CURLOPT_URL, $url);
+    //         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    //         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+    //         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    //         curl_setopt($ch, CURLOPT_POSTFIELDS, $post_field_string);
+    //         curl_setopt($ch, CURLOPT_POST, true);
+    //         $response = curl_exec($ch);
+    //         curl_close ($ch);
+    //         return $response;
+    //     }
+
+    //     post('http://localhost:8888/sample.php', $result2);
+    // }
+
     $sql = " delete from {$g5['g5_shop_cart_table']}
               where od_id = '$tmp_cart_id' ";
     sql_query($sql);
@@ -280,7 +302,7 @@ else // 장바구니에 담기
         // 장바구니에 Insert
         $comma = '';
         $sql = " INSERT INTO {$g5['g5_shop_cart_table']}
-                        ( od_id, mb_id, it_id, it_name, it_sc_type, it_sc_method, it_sc_price, it_sc_minimum, it_sc_qty, ct_status, ct_price, ct_point, ct_point_use, ct_stock_use, ct_option, ct_qty, ct_notax, io_id, io_type, io_price, ct_time, ct_ip, ct_send_cost, ct_direct, ct_select, ct_select_time, ct_vetcode )
+                        ( od_id, mb_id, it_id, it_name, it_sc_type, it_sc_method, it_sc_price, it_sc_minimum, it_sc_qty, ct_status, ct_price, ct_point, ct_point_use, ct_stock_use, ct_option, ct_qty, ct_notax, io_id, io_type, io_price, ct_time, ct_ip, ct_send_cost, ct_direct, ct_select, ct_select_time, ct_vetcode, ct_status_time)
                     VALUES ";
 
         for($k=0; $k<$opt_count; $k++) {
@@ -359,14 +381,36 @@ else // 장바구니에 담기
             
             $io_value = sql_real_escape_string(strip_tags($io_value));
             $remote_addr = get_real_client_ip();
+            $now = G5_TIME_YMDHIS;
 
-            $sql .= $comma."( '$tmp_cart_id', '{$member['mb_id']}', '{$it['it_id']}', '".addslashes($it['it_name'])."', '{$it['it_sc_type']}', '{$it['it_sc_method']}', '{$it['it_sc_price']}', '{$it['it_sc_minimum']}', '{$it['it_sc_qty']}', '쇼핑', '{$it['it_price']}', '$point', '0', '0', '$io_value', '$ct_qty', '{$it['it_notax']}', '$io_id', '$io_type', '$io_price', '".G5_TIME_YMDHIS."', '$remote_addr', '$ct_send_cost', '$sw_direct', '$ct_select', '$ct_select_time', '$vetcookie')";
+            $sql .= $comma."( '$tmp_cart_id', '{$member['mb_id']}', '{$it['it_id']}', '".addslashes($it['it_name'])."', '{$it['it_sc_type']}', '{$it['it_sc_method']}', '{$it['it_sc_price']}', '{$it['it_sc_minimum']}', '{$it['it_sc_qty']}', '쇼핑', '{$it['it_price']}', '$point', '0', '0', '$io_value', '$ct_qty', '{$it['it_notax']}', '$io_id', '$io_type', '$io_price', '".G5_TIME_YMDHIS."', '$remote_addr', '$ct_send_cost', '$sw_direct', '$ct_select', '$ct_select_time', '$vetcookie', '$now|$REMOTE_ADDR')";
             $comma = ' , ';
             $ct_count++;
         }
 
         if($ct_count > 0)
             sql_query($sql);
+
+            $sql = "select * from g5_shop_cart where od_id = '$tmp_cart_id' ";
+            $result = sql_fetch($sql);
+            if($result['ct_vetcode'] === 'vet'){
+        
+                function post($url, $fields){
+                    $post_field_string = http_build_query($fields, '', '&');
+                    $ch = curl_init();
+                    curl_setopt($ch, CURLOPT_URL, $url);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+                    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_field_string);
+                    curl_setopt($ch, CURLOPT_POST, true);
+                    $response = curl_exec($ch);
+                    curl_close ($ch);
+                    return $response;
+                }
+        
+                post('http://localhost:8888/sample.php', $result);
+            }
     }
 }
 

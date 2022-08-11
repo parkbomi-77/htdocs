@@ -3,7 +3,7 @@
 
     // g5_shop_cart 장바구니 테이블 가져오기 
     include_once('./_common.php');
-    $sql = "select * from g5_shop_cart";
+    $sql = "select * from g5_shop_cart where ct_vetcode = 'vet'";
     $result = sql_query($sql);
 
     header("Content-Type: application/json");
@@ -13,7 +13,10 @@
         // row변수안에 배열로 값이들어온다.
         $json = array(
             'userID' => $row['mb_id'], 
-            'product_name' => $row['it_name']
+            'product_name' => $row['it_name'],
+            'price' => $row['ct_price'],
+            'qty' => $row['ct_qty'],
+            'date' => $row['ct_status_time']
         );
 
         //dataarr배열에 담기

@@ -654,6 +654,27 @@ $sql = "update {$g5['g5_shop_cart_table']}
            and ct_select = '1' ";
 $result = sql_query($sql, false);
 
+$sql2 = "select * from g5_shop_cart where od_id = '$od_id' ";
+$result2 = sql_fetch($sql2);
+if($result2['ct_vetcode'] === 'vet'){
+
+    function post($url, $fields){
+        $post_field_string = http_build_query($fields, '', '&');
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $post_field_string);
+        curl_setopt($ch, CURLOPT_POST, true);
+        $response = curl_exec($ch);
+        curl_close ($ch);
+        return $response;
+    }
+
+    post('http://localhost:8888/sample.php', $result2);
+}
+
 // 주문정보 입력 오류시 결제 취소
 if(!$result) {
     if($tno) {
