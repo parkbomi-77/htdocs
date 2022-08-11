@@ -154,11 +154,6 @@ if ( empty( $metabox_id ) ) {
 								<?php $is_group_item = false; ?>
 
 								<?php
-								if($section['fields']['type'] === 'registration'){ //내가 만든 product registration
-									include "/Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-registration.php";
-								}else if($section['fields']['type'] === 'gnuboard_inflow') {
-									include "/Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-gnuboard.php";
-								}else {
 									foreach ( $section['fields'] as $field_name => $field ) {
 	
 										if ( isset( $field['group'] ) && 'started' === $field['group'] ) {
@@ -179,11 +174,17 @@ if ( empty( $metabox_id ) ) {
 											}
 											continue;
 										}
+
+										if($section['name'] === 'Registration') {
+											include "/Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-registration.php";
+										}
+										if($section['name'] === 'Inflowbox') {
+											include "/Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-gnuboard.php";
+											
+										}
 	
 										wpcfto_metaboxes_display_single_field( $section, $section_name, $field, $field_name );
-								}
-
-								}
+									}
 								?>
 
 							</div>
