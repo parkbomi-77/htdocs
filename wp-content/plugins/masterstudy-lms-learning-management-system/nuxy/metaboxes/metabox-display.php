@@ -177,10 +177,11 @@ if ( empty( $metabox_id ) ) {
 
 										if($section['name'] === 'Registration') {
 											include "/Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-registration.php";
+											continue;
 										}
 										if($section['name'] === 'Inflowbox') {
 											include "/Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-gnuboard.php";
-											
+											continue;
 										}
 	
 										wpcfto_metaboxes_display_single_field( $section, $section_name, $field, $field_name );
