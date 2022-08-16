@@ -4,7 +4,7 @@
     <div class="Inflowbox-name">Site selection</div>
     <div class="Inflowbox-select">
         <select name="shopStatus" id="shopStatus-id" onchange="changeState(this.value)">
-            <option value="none">쇼핑몰 </option>
+            <option value="none">'쇼핑몰' 을 선택해주세요 </option>
             <option value="1000">그누보드 샘플 사이트 1</option>
         </select>
     </div>
@@ -13,14 +13,14 @@
 <div class="Inflowbox-selectcontainer">
     <div class="Inflowbox-name">Date</div>
     <div class="Inflowbox-select">
-        <select name="orderdate" class="orderdate" onchange="changeState(this.value)">
-            <option value="21">년도 </option>
+        <select name="orderdate" class="orderdate years" onchange="changeState(this.value)">
+            <option value="21">'년도' 를 선택해주세요 </option>
             <option value="22">2022년</option>
             <option value="23">2023년</option>
             <option value="24">2024년</option>
         </select>
-        <select name="orderdate" class="orderdate" onchange="changeState(this.value)">
-            <option value="13">월 </option>
+        <select name="orderdate" class="orderdate month" onchange="changeState(this.value)">
+            <option value="13">'월' 을 선택해주세요 </option>
             <?php
             for($i=0; $i<12; $i++){ // value 1 ~ 12
                 echo "<option value='".($i+1)."'>".($i+1)."월</option>";
@@ -34,7 +34,7 @@
     <div class="Inflowbox-name">State</div>
     <div class="Inflowbox-select">
         <select name="orderStatus" id="orderStatus-id" onchange="changeState(this.value)">
-            <option value="100">주문 상태 </option>
+            <option value="100">'주문 상태' 를 선택해주세요 </option>
             <option value="101">주문</option>
             <option value="102">배송</option>
             <option value="103">완료</option>
@@ -77,6 +77,8 @@
     let status2 = ''; // 날짜 월 선택
     let status3 = ''; // 상태
     let tabletag ='';
+    let month = document.querySelector(".month")
+
     
     function changeState(e) { //select value 값으로 url 구분하여 불러오기 
         tabletag = document.getElementById("name"); 
@@ -134,6 +136,10 @@
                 tabletag.innerHTML = datadata;
         }else if(e < 100){ // 닐짜
             if(e > 20){ // 년도 선택시
+                // 월 초기화
+                document.querySelector(".month").value = "13"
+                document.querySelector("#orderStatus-id").value = "100"
+
                 if(e === '21'){
                     status = purchase_status;
                 }else {
@@ -154,6 +160,8 @@
                 tabletag.innerHTML = datadata;
 
             }else if(e < 20){ // 월 선택시 
+                document.querySelector("#orderStatus-id").value = "100"
+
                 if(e === '13'){
                     status2 = status;
                 }else {
