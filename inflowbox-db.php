@@ -5,7 +5,7 @@
 
     global $wpdb;
     $code = $_POST['code']; // 쇼핑몰 코드
-    $results = $wpdb->get_results($wpdb->prepare("SELECT * from wp_purchase_status where mall_code =".$code));
+    $results = $wpdb->get_results($wpdb->prepare("SELECT * from wp_purchase_status where mall_code =".$code." and status in ('완료', '배송', '주문', '취소');" ));
 
     $aaa = count($results);
     header("Content-Type: application/json");

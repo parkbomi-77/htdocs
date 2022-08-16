@@ -173,11 +173,16 @@
 }
 .Inflowbox-select {
     width: 60%;
+    display: flex;
 }
 .Inflowbox-select select{
     width: 100%;
     max-width: 100%;
     line-height: 1;
+}
+.Inflowbox-select .orderdate{
+    width: 50%;
+
 }
 .Inflowbox-container{
     width: 100%;
