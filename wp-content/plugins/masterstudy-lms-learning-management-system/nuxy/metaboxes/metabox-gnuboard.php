@@ -62,11 +62,15 @@
         <tbody  id="name">
         </tbody>
     </table>
-
+    <div class="download-btn" onclick="exportExcel()">download</div>
 </div>
 
 <!-- 가져오는  -->
 <script src="//code.jquery.com/jquery.min.js"></script>
+<!-- Sheet JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.14.3/xlsx.full.min.js"></script>
+<!--FileSaver savaAs 이용 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
 <script>
     let purchase_status = ''; // 쇼핑몰 선택 
     let status = ''; // 날짜 년도 선택
@@ -174,6 +178,44 @@
             $('#name').html("")
         }
 
+    }
+    function exportExcel(){ 
+    // step 1. workbook 생성
+    var wb = XLSX.utils.book_new();
+
+    // step 2. 시트 만들기 
+    var newWorksheet = excelHandler.getWorksheet();
+
+    // step 3. workbook에 새로만든 워크시트에 이름을 주고 붙인다.  
+    XLSX.utils.book_append_sheet(wb, newWorksheet, excelHandler.getSheetName());
+
+    // step 4. 엑셀 파일 만들기 
+    var wbout = XLSX.write(wb, {bookType:'xlsx',  type: 'binary'});
+
+    // step 5. 엑셀 파일 내보내기 
+    saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), excelHandler.getExcelFileName());
+    }
+
+    var excelHandler = {
+        getExcelFileName : function(){
+            return 'table-test.xlsx';	//파일명
+        },
+        getSheetName : function(){
+            return 'Table Test Sheet';	//시트명
+        },
+        getExcelData : function(){
+            return document.getElementById('inflowtable'); 	//TABLE id
+        },
+        getWorksheet : function(){
+            return XLSX.utils.table_to_sheet(this.getExcelData());
+        }
+    }
+
+    function s2ab(s) { 
+    var buf = new ArrayBuffer(s.length); //convert s to arrayBuffer
+    var view = new Uint8Array(buf);  //create uint8array as viewer
+    for (var i=0; i<s.length; i++) view[i] = s.charCodeAt(i) & 0xFF; //convert to octet
+    return buf;    
     }
 </script>
 

@@ -190,6 +190,7 @@
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
     padding: 20px;
+    position: relative;
 }
 
 #inflowtable {
@@ -211,3 +212,21 @@
     padding: 1em .5em;
     vertical-align: middle;
   }
+
+.download-btn {
+    background-color: #237ae6;
+    width: 110px;
+    position: absolute;
+    line-height: 2.4rem;
+    text-align: center;
+    border-radius: 9px;
+    color: #f6faf2;
+    right: 20px;
+    font-size: 15px;
+    margin-top: 8px;
+    box-shadow: 0 2px 5px rgb(43 42 42 / 30%);
+    border: 1px solid #237ae6;
+}
+.download-btn:hover{
+    cursor: pointer;
+}
