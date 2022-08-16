@@ -20,7 +20,11 @@ $sql2 = "UPDATE wp_purchase_status set status='".$_POST['ct_status']."', qty=".$
 if($results){ //있으면 업데이트
     $results1 = $wpdb->get_results($wpdb->prepare($sql2));
 }else { //없으면 인서트 
-    $results2 = $wpdb->get_results($wpdb->prepare($sql));
+    // 등록된 제품만 insert 하도록 ! 등록한 제품이 아니면 패스
+    $itItem = $wpdb->get_results($wpdb->prepare("SELECT * FROM wp_product_list where product_code =".$_POST['it_id'] ));
+    if($itItem){
+        $results2 = $wpdb->get_results($wpdb->prepare($sql));
+    }
 }
 
 
