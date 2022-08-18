@@ -298,7 +298,10 @@ else // 장바구니에 담기
             $ct_select_time = '0000-00-00 00:00:00';
         }
 
-        $vetcookie = $_COOKIE['vetschoolcode'];
+        $vetcookie = $_COOKIE['vc']; // 인코딩되어있는 값. 디코딩 해야함 
+        $decryption = openssl_decrypt(base64_decode($vetcookie),"AES-256-CFB", 'vetschoolsecretkey', 0);
+        $decryptioncode = substr($decryption, 0, 3);
+
         // 장바구니에 Insert
         $comma = '';
         $sql = " INSERT INTO {$g5['g5_shop_cart_table']}
@@ -383,7 +386,7 @@ else // 장바구니에 담기
             $remote_addr = get_real_client_ip();
             $now = G5_TIME_YMDHIS;
 
-            $sql .= $comma."( '$tmp_cart_id', '{$member['mb_id']}', '{$it['it_id']}', '".addslashes($it['it_name'])."', '{$it['it_sc_type']}', '{$it['it_sc_method']}', '{$it['it_sc_price']}', '{$it['it_sc_minimum']}', '{$it['it_sc_qty']}', '쇼핑', '{$it['it_price']}', '$point', '0', '0', '$io_value', '$ct_qty', '{$it['it_notax']}', '$io_id', '$io_type', '$io_price', '".G5_TIME_YMDHIS."', '$remote_addr', '$ct_send_cost', '$sw_direct', '$ct_select', '$ct_select_time', '$vetcookie', '$now|$REMOTE_ADDR')";
+            $sql .= $comma."( '$tmp_cart_id', '{$member['mb_id']}', '{$it['it_id']}', '".addslashes($it['it_name'])."', '{$it['it_sc_type']}', '{$it['it_sc_method']}', '{$it['it_sc_price']}', '{$it['it_sc_minimum']}', '{$it['it_sc_qty']}', '쇼핑', '{$it['it_price']}', '$point', '0', '0', '$io_value', '$ct_qty', '{$it['it_notax']}', '$io_id', '$io_type', '$io_price', '".G5_TIME_YMDHIS."', '$remote_addr', '$ct_send_cost', '$sw_direct', '$ct_select', '$ct_select_time', '$decryptioncode', '$now|$REMOTE_ADDR')";
             $comma = ' , ';
             $ct_count++;
         }

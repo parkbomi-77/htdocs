@@ -246,7 +246,7 @@ if ($w == '') {
                      mb_8 = '{$mb_8}',
                      mb_9 = '{$mb_9}',
                      mb_10 = '{$mb_10}',
-                     mb_vetcode = '{$_COOKIE["vetschoolcode"]}'
+                     mb_vetcode = '{$_COOKIE["vc"]}'
                      {$sql_certify} ";
 
     // 이메일 인증을 사용하지 않는다면 이메일 인증시간을 바로 넣는다
