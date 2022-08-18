@@ -27,6 +27,24 @@
                     'product_name' => $registrationname[$i],
                     'product_code' => $registrationlink[$i],
                 ));
+
+                // 그누보드 쇼핑몰 shop_item DB에 광고여부 1로 업데이트 시켜주는 로직  http://localhost:8888/practice/gnuboard/product_list 
+                $postdata = http_build_query(
+                    array(
+                        'product_code' => $registrationlink[$i]
+                    )
+                );
+                $opts = array('http' =>
+                    array(
+                        'method' => 'POST',
+                        'header' => 'Content-type: application/x-www-form-urlencoded',
+                        'content' => $postdata
+                    )
+                );
+                $context = stream_context_create($opts);
+                file_get_contents('http://localhost:8888/practice/gnuboard/product_list.php', false, $context);
+
+
             } else {
                 $wpdb->update( 
                 'wp_product_list', 
@@ -36,6 +54,21 @@
                 ), 
                 array( 'ID' => $registrationID[$i]
                 ));
+
+                $postdata = http_build_query(
+                    array(
+                        'product_code' => $registrationlink[$i]
+                    )
+                );
+                $opts = array('http' =>
+                    array(
+                        'method' => 'POST',
+                        'header' => 'Content-type: application/x-www-form-urlencoded',
+                        'content' => $postdata
+                    )
+                );
+                $context = stream_context_create($opts);
+                file_get_contents('http://localhost:8888/practice/gnuboard/product_list.php', false, $context);
             }
         }
         
@@ -50,9 +83,26 @@
                         'product_name' => $registrationname[$i],
                         'product_code' => $registrationlink[$i],
                     ));
+            $postdata = http_build_query(
+                array(
+                    'product_code' => $registrationlink[$i]
+                )
+            );
+            $opts = array('http' =>
+                array(
+                    'method' => 'POST',
+                    'header' => 'Content-type: application/x-www-form-urlencoded',
+                    'content' => $postdata
+                )
+            );
+            $context = stream_context_create($opts);
+            file_get_contents('http://localhost:8888/practice/gnuboard/product_list.php', false, $context);
         }
         
     }
+
+
+
 
     $prevPage = $_SERVER['HTTP_REFERER'];
     // 변수에 이전페이지 정보를 저장
