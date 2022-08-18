@@ -111,7 +111,7 @@ $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목�
     <tr>
         <th scope="col"><?php echo subject_sort_link("it_id", $qstr, 1); ?>상품코드</a></th>
         <th scope="col"><?php echo subject_sort_link("it_name"); ?>상품명</a></th>
-        <th scope="col"><?php echo subject_sort_link("it_type1", $qstr, 1); ?>광고<br>상품</a></th>
+        <th scope="col"><?php echo subject_sort_link("it_1_subj", $qstr, 1); ?>광고<br>상품</a></th>
         <th scope="col">관리</th>
     </tr>
     </thead>
@@ -129,7 +129,7 @@ $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목�
         <td class="td_left"><a href="<?php echo $href; ?>"><?php echo get_it_image($row['it_id'], 50, 50); ?><?php echo cut_str(stripslashes($row['it_name']), 60, "&#133"); ?></a></td>
         <td class="td_chk2">
             <label for="type1_<?php echo $i; ?>" class="sound_only">광고상품</label>
-            <input type="checkbox" name="it_type1[<?php echo $i; ?>]" value="1" id="type1_<?php echo $i; ?>" <?php echo ($row['it_type1'] ? 'checked' : ''); ?>>
+            <input type="checkbox" name="it_1_subj[<?php echo $i; ?>]" value="1" id="type1_<?php echo $i; ?>" <?php echo ($row['it_1_subj'] ? 'checked' : ''); ?>>
         </td>
         <td class="td_mng td_mng_s">
             <a href="./itemform.php?w=u&amp;it_id=<?php echo $row['it_id']; ?>&amp;ca_id=<?php echo $row['ca_id']; ?>&amp;<?php echo $qstr; ?>" class="btn btn_03"><span class="sound_only"><?php echo cut_str(stripslashes($row['it_name']), 60, "&#133"); ?> </span>수정</a>
@@ -145,9 +145,9 @@ $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목�
     </table>
 </div>
 
-<div class="btn_confirm03 btn_confirm">
+<!-- <div class="btn_confirm03 btn_confirm">
     <input type="submit" value="일괄수정" class="btn_submit">
-</div>
+</div> -->
 </form>
 
 <?php echo get_paging(G5_IS_MOBILE ? $config['cf_mobile_pages'] : $config['cf_write_pages'], $page, $total_page, "{$_SERVER['SCRIPT_NAME']}?$qstr&amp;page="); ?>
