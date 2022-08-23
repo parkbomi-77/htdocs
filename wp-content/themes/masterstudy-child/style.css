@@ -68,7 +68,7 @@
         display: block;
     }
     .woocommerce-message .button:after {
-        display: none;
+        display: none; 
     }
     .shop_table > tbody > tr td.actions {
         padding-left: 15px;

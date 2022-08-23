@@ -2,11 +2,11 @@
 	.bbse-layer-popup .bg {z-index:2147483646;position:absolute; top:0; left:0; width:100%; height:100%;}
 	.bbse-layer-popup .btn-popup input[type='checkbox'] {width: 15px;height: 15px;position: relative;top: -1px;vertical-align: middle;margin-right: 3px;}
 	.bbse-layer-popup .free_popup_layer{z-index:2147483647;}
-	.bbse-layer-popup .btn-popup{z-index:2147483647;}
+	.bbse-layer-popup .btn-popup{z-index:2147483647; position: absolute; bottom: 5px;}
 
 /* POST RULES */
 #BBSE-POPUP-CONTENT,
-#BBSE-POPUP-CONTENT * {font-family: '³ª´®°íµñ','NanumGothic','Nanum Gothic','±¼¸²',gulim,'µ¸¿ò',Dotum,AppleGothic,Arial, Helvetica, sans-serif,FontAwesome;word-break:break-all}
+#BBSE-POPUP-CONTENT * {font-family: 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½','NanumGothic','Nanum Gothic','ï¿½ï¿½ï¿½ï¿½',gulim,'ï¿½ï¿½ï¿½ï¿½',Dotum,AppleGothic,Arial, Helvetica, sans-serif,FontAwesome;word-break:break-all}
 
 #BBSE-POPUP-CONTENT h1 {clear:both;line-height:1.4em; font-size:2em;margin:0.67em 0}
 #BBSE-POPUP-CONTENT h2 {clear:both;line-height:1.86em;font-size:1.5em;margin:0.60em 0}
