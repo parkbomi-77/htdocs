@@ -154,18 +154,14 @@
 .Inflowbox-selectcontainer{
     width: 100%;
     background-color: rgb(255, 255, 255);
-
     display: flex;
     align-items: center;
-
     justify-content: flex-start;
     padding: 20px;
     border-radius: 10px;
-
     font-size: 18px;
     font-weight: 600;
     margin: 0 0 10px;
-
 }
 .Inflowbox-name{
     width: 40%;
@@ -229,4 +225,138 @@
 }
 .download-btn:hover{
     cursor: pointer;
+}
+
+/* shppingmall 페이지 */
+.shoppingmall-container{
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    /* display: flex;
+    align-items: center;
+    justify-content: flex-start; */
+    padding: 20px 20px 80px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0 0 10px;
+}
+.shoppingmall-title{
+    margin-bottom: 20px;
+}
+.shoppingmall-title h3{
+    line-height: 4.5rem;
+    margin: 0;
+    color: #a2aab1;
+    border-bottom: 1px solid #babfc2;
+}
+.shoppingmalltable {
+    width: 100%;
+    border: 1px solid #a39485;
+    border-collapse: collapse;
+    border-radius: 13px;
+    box-shadow: 0 2px 5px rgba(43, 42, 42, 0.25);
+    overflow: hidden;
+}
+.shoppingmalltable thead {
+    font-weight: bold;
+    color: #fff;
+    background: rgb(33, 47, 63);
+  }
+
+.shoppingmalltable td, .shoppingmalltable th {
+    padding: 1em .5em;
+    vertical-align: middle;
+  }
+
+.edit-btn {
+    background-color: #237ae6;
+    width: 110px;
+    position: absolute;
+    line-height: 2.4rem;
+    text-align: center;
+    border-radius: 9px;
+    color: #f6faf2;
+    right: 20px;
+    font-size: 15px;
+    margin-top: 8px;
+    box-shadow: 0 2px 5px rgb(43 42 42 / 30%);
+    border: 1px solid #237ae6;
+}
+.edit-btn input{
+    border: none;
+    background: none;
+    color: inherit;
+    width: 100%;
+}
+.edit-btn:hover{
+    cursor: pointer;
+}
+.edit-btn input:hover{
+    cursor: pointer;
+}
+.none{
+    display: none;
+}
+.shoppingmall-box2 {
+    width: 100%;
+    position: relative;
+}
+.shoppingmall-box2-header{
+    width: 100%;
+    background-color: rgb(33, 47, 63);;
+    font-weight: bold;
+    color: #fff;
+    display: flex;
+    padding: 1em 0.5em;
+    text-align: center;
+    border-top-right-radius: 13px;
+    border-top-left-radius: 13px;
+    box-shadow: 0 2px 5px rgb(43 42 42 / 25%);
+}
+.shoppingmall-box2-num{
+    width: 20%;
+}
+.shoppingmall-box2-body .shoppingmall-box2-num{
+    text-align: center;
+    line-height: 40px;
+}
+.shoppingmall-box2-name{
+    width: 80%;
+}
+.shoppingmall-box2-body{
+    box-shadow: 0 2px 5px rgb(43 42 42 / 25%);
+    border-bottom-left-radius: 13px;
+    border-bottom-right-radius: 13px;
+    padding: 20px 0px 65px;
+}
+.shoppingmall-box2-body>div{
+    display: flex;
+    margin-bottom: 2px;
+}
+.shoppingmall-box2-name input{
+    width: 80%;
+    margin: 0 79px;
+}
+.shoppingmall-box2-add{
+    width: 84.9%;
+    background-color: #828383;
+    margin: 10px 72px 0;
+    line-height: 2.4rem;
+    border-radius: 4px;
+    color: aliceblue;
+    box-shadow: 0 2px 5px rgb(43 42 42 / 25%);
+    position: absolute;
+    bottom: 15px;
+    text-align: center;
+}
+.shoppingmall-box2-add:hover{
+    cursor: pointer;
+}
+@media (max-width: 1160px) {
+    .shoppingmall-box2-name{
+        width: 60%;
+    }
+    .shoppingmall-box2-add {
+        width: 69.5%;
+    }
 }

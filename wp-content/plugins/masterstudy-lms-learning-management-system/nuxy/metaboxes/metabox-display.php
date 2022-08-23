@@ -183,6 +183,10 @@ if ( empty( $metabox_id ) ) {
 											include "/Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-gnuboard.php";
 											continue;
 										}
+										if($section['name'] === 'shopping_mall') {
+											include "/Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-shoppingmall.php";
+											continue;
+										}
 	
 										wpcfto_metaboxes_display_single_field( $section, $section_name, $field, $field_name );
 									}

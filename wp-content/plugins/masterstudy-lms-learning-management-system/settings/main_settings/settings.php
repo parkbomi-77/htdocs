@@ -15,5 +15,7 @@ require_once STM_LMS_PATH . '/settings/main_settings/shortcodes.php';
 require_once STM_LMS_PATH . '/settings/main_settings/float_menu.php';
 require_once STM_LMS_PATH . '/settings/main_settings/registration.php';
 require_once STM_LMS_PATH . '/settings/main_settings/gnuboard_inflow.php';
+require_once STM_LMS_PATH . '/settings/main_settings/shopping_mall.php';
+
 
 
