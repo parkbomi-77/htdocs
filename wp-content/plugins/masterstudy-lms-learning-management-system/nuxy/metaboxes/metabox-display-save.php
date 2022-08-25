@@ -28,6 +28,7 @@
                     'product_name' => $registrationname[$i],
                     'product_code' => $registrationlink[$i],
                     'mall_code' => $registrationmall[$i],
+                    'adv_state' => 1,
                 ));
 
                 // 그누보드 쇼핑몰 shop_item DB에 광고여부 1로 업데이트 시켜주는 로직  http://localhost:8888/practice/gnuboard/product_list 
@@ -86,6 +87,7 @@
                         'product_name' => $registrationname[$i],
                         'product_code' => $registrationlink[$i],
                         'mall_code' => $registrationmall[$i],
+                        'adv_state' => 1,
                     ));
             $postdata = http_build_query(
                 array(
@@ -104,8 +106,6 @@
         }
         
     }
-
-
 
 
     $prevPage = $_SERVER['HTTP_REFERER'];

@@ -1,24 +1,21 @@
+<?php
+    global $wpdb, $post;
+    $mallResults = $wpdb->get_results($wpdb->prepare("SELECT * from wp_shoppingmall"));
+    $mallResults[0]->code;
+    $mallResults[0]->name;
 
-<!-- <select name="shoppingMallList"> -->
-    <?php
-        global $wpdb, $post;
-        $mallResults = $wpdb->get_results($wpdb->prepare("SELECT * from wp_shoppingmall"));
-        $mallResults[0]->code;
-        $mallResults[0]->name;
-
-    $option = '';
-    for($i=0; $i<count($mallResults); $i++){
-        $option = $option."<option value='{$mallResults[$i]->code}'>{$mallResults[$i]->name}</option>";
-    }
-    ?>
-<!-- </select> -->
+$option = '';
+for($i=0; $i<count($mallResults); $i++){
+    $option = $option."<option value='{$mallResults[$i]->code}'>{$mallResults[$i]->name}</option>";
+}
+?>
 
 <form method="post" class="registrationform">
     <?php
 
         global $wpdb, $post;
         // 등록한 제품 list 불러오기
-        $results = $wpdb->get_results($wpdb->prepare("SELECT * from wp_product_list"));
+        $results = $wpdb->get_results($wpdb->prepare("SELECT * from wp_product_list where adv_state = 1"));
         $num = count($results);
 
         // 첫 등록할시 !  

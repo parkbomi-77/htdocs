@@ -25,10 +25,19 @@ for($i=0; $i<$num; $i++){
 
 
     // 벳스쿨 광고상품 DB에서 삭제 
-    $wpdb->delete('wp_product_list', 
-    array(
-        'ID' => $deletecheck[$i]
-    ));
+    // $wpdb->delete('wp_product_list', 
+    // array(
+    //     'ID' => $deletecheck[$i]
+    // ));
+
+    // 벳스쿨 광고상품 DB에서 광고여부 0으로 변경 
+    $wpdb->update( 
+        'wp_product_list', 
+        array(
+            'adv_state' => 0,
+        ), 
+        array( 'ID' => $deletecheck[$i]
+        ));
 }
 
 $prevPage = $_SERVER['HTTP_REFERER'];
