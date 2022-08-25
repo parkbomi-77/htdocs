@@ -6,7 +6,6 @@
 .playbox-container>div {
     margin: 2px 0;
 }
-.playbox{
     max-width: 900px;
     display: flex;
     align-items : center;
