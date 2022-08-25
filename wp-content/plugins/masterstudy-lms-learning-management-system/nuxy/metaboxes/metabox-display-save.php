@@ -5,6 +5,7 @@
     
     $registrationID = $_POST['registrationID'];
     $registrationNum = $_POST['registrationNum'];
+    $registrationmall = $_POST['shoppingMallList']; // 쇼핑몰코드
     $registrationname = $_POST['registrationname'];
     $registrationlink = $_POST['registrationlink'];
 
@@ -26,6 +27,7 @@
                     'product_id' => $i+1,
                     'product_name' => $registrationname[$i],
                     'product_code' => $registrationlink[$i],
+                    'mall_code' => $registrationmall[$i],
                 ));
 
                 // 그누보드 쇼핑몰 shop_item DB에 광고여부 1로 업데이트 시켜주는 로직  http://localhost:8888/practice/gnuboard/product_list 
@@ -51,6 +53,7 @@
                 array('product_id' => $i+1,
                     'product_name' => $registrationname[$i],
                     'product_code' => $registrationlink[$i],
+                    'mall_code' => $registrationmall[$i],
                 ), 
                 array( 'ID' => $registrationID[$i]
                 ));
@@ -82,6 +85,7 @@
                         'product_id' => $i+1,
                         'product_name' => $registrationname[$i],
                         'product_code' => $registrationlink[$i],
+                        'mall_code' => $registrationmall[$i],
                     ));
             $postdata = http_build_query(
                 array(
