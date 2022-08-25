@@ -6,6 +6,7 @@
 .playbox-container>div {
     margin: 2px 0;
 }
+.playbox{
     max-width: 900px;
     display: flex;
     align-items : center;
@@ -67,7 +68,7 @@
     // lesson 글에 해당하는 재생시간등록 결과 불러오기 
     $results = $wpdb->get_results($wpdb->prepare("SELECT * from wp_play_time where posts_lesson_id = $post->ID"));
     $num = count($results);
-    $product = $wpdb->get_results($wpdb->prepare("SELECT * from wp_product_list"));
+    $product = $wpdb->get_results($wpdb->prepare("SELECT * from wp_product_list where adv_state = 1"));
     $productnum = count($product);
 
     // $product = array_filter($product, )
