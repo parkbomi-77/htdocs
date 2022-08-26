@@ -24,11 +24,16 @@ for($i=0; $i<$num; $i++){
     file_get_contents('http://localhost:8888/practice/gnuboard/product_list.php', false, $context);
 
 
-    // 벳스쿨 광고상품 DB에서 삭제 
-    // $wpdb->delete('wp_product_list', 
-    // array(
-    //     'ID' => $deletecheck[$i]
-    // ));
+    $playtimerow = $wpdb->get_results($wpdb->prepare("SELECT * from wp_play_time where product_list_id ={$deletecheck[$i]}"));
+
+    for($i=0; $i<count($playtimerow); $i++){
+        // 영상 재생시간에 맞는 제품 노출 리스트 DB에서 삭제 
+        $wpdb->delete('wp_play_time', 
+        array(
+            'ID' => $playtimerow[$i]->ID
+        ));
+    }
+
 
     // 벳스쿨 광고상품 DB에서 광고여부 0으로 변경 
     $wpdb->update( 

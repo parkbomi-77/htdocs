@@ -132,7 +132,7 @@
 
 
             $add_play_box = ' <div class="playbox">
-                                <div class="playbox-num">'.$results[$i]->play_idx.'</div>
+                                <div class="playbox-num">'.($i+1).'</div>
                                 <input type="hidden" name="playboxNum[]" value="'.$results[$i]->play_idx.'">
                                 <div class="playbox-mall">
                                     <span>'.$mallname[0]->name.'</span>
@@ -206,6 +206,12 @@
         let playboxList = document.querySelector('.playbox-list');
         playboxList.removeChild(e.parentNode);
         idxnum = idxnum-1;
+        let numtag = document.querySelectorAll(".playbox-num")
+        // num 다시 정렬 
+        for(let i=0; i<numtag.length; i++){
+            console.log(numtag[i]);
+            numtag[i].innerHTML = i+1;
+        }
     }
 
 

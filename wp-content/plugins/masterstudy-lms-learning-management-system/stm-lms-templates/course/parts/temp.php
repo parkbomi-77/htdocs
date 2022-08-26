@@ -69,7 +69,7 @@
     <?php
         global $wpdb, $post;
         // lesson 글에 해당하는 재생시간등록 결과 && 현재 광고중인 제품만 노출되도록 하기
-        $results = $wpdb->get_results($wpdb->prepare("SELECT * FROM wp_play_time inner join wp_product_list on wp_play_time.ID = wp_product_list.ID where wp_product_list.adv_state = 1 and wp_play_time.posts_lesson_id = $post->ID"));
+        $results = $wpdb->get_results($wpdb->prepare("SELECT * FROM wp_play_time inner join wp_product_list on wp_play_time.product_list_id = wp_product_list.ID where wp_product_list.adv_state = 1 and wp_play_time.posts_lesson_id = $post->ID"));
         $current_user = wp_get_current_user();
 
         if($results){
