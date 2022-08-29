@@ -63,13 +63,12 @@ $sql  = " select mb_id,
                 ct_status,
                 ct_select_time
           $sql_common
-           where ct_vetcode= 'vet' 
            limit $from_record, $rows ";
 $result = sql_query($sql);
 
 $total = " select FORMAT(sum(ct_price),'#,#') 
         $sql_common
-        where ct_vetcode= 'vet';
+       
         ";
 $result2 = sql_fetch($total);
 $result2["FORMAT(sum(ct_price),'#,#')"];
