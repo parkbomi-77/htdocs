@@ -40,7 +40,7 @@ $from_record = ($page - 1) * $rows; // 시작 열을 구함
 if (!$sst)
 {
     $sst  = "ca_id";
-    $sod = "asc";
+    $sod = "asc"; // 오름차순 
 }
 $sql_order = "order by $sst $sod";
 
