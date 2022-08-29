@@ -67,7 +67,12 @@ $sql  = " select mb_id,
            limit $from_record, $rows ";
 $result = sql_query($sql);
 
-
+$total = " select FORMAT(sum(ct_price),'#,#') 
+        $sql_common
+        where ct_vetcode= 'vet';
+        ";
+$result2 = sql_fetch($total);
+$result2["FORMAT(sum(ct_price),'#,#')"];
 
 $qstr  = $qstr.'&amp;sca='.$sca.'&amp;page='.$page.'&amp;save_stx='.$stx;
 
@@ -179,6 +184,12 @@ $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목�
         echo '<tr><td colspan="8" class="empty_table"><span>자료가 없습니다.</span></td></tr>';
     ?>
     </tbody>
+    <tfoot>
+        <tr>
+            <th scope="row" colspan='4'>Totals</th>
+            <td colspan='3'><?php echo $result2["FORMAT(sum(ct_price),'#,#')"] ?>원</td>
+        </tr>
+    </tfoot>
     </table>
 </div>
 
