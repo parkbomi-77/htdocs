@@ -61,6 +61,12 @@
         </thead>
         <tbody  id="name">
         </tbody>
+        <tfoot>
+            <tr>
+                <th scope="row" colspan='4'>총 액</th>
+                <td colspan='3' id="tabletotal">원</td>
+            </tr>
+        </tfoot>
     </table>
     <div class="download-btn" onclick="exportExcel()">download</div>
 </div>
@@ -91,9 +97,12 @@
                     code : e,
                 },
             }).done(function(data) {
+                let totaltd= document.querySelector("#tabletotal")
+                let total = 0;
                 purchase_status = data;
                 let datadata = ''
                 for(let i=0; i<data.length; i++){
+                    total = total + (data[i].qty)*(data[i].price)
                     datadata = datadata 
                     + "<tr><td>"+data[i].user_id+"</td>"
                     + "<td>"+data[i].it_name+"</td>"
@@ -104,8 +113,12 @@
                     + "<td>"+data[i].status+"</td></tr>"
                 }
                 tabletag.innerHTML = datadata;
+                totaltd.innerText = total+"원"
             });
-        }else if(e >= 100) { // 상태 선택
+        }else if(e >= 100) { // 주문 상태 선택
+            let totaltd= document.querySelector("#tabletotal")
+            let total = 0;
+
             let code;
             if(e > 100){
                 if(e === '101'){
@@ -124,6 +137,8 @@
             
             let datadata = ''
             for(let i=0; i<status3.length; i++){
+                total = total + (status3[i].qty)*(status3[i].price)
+
                 datadata = datadata 
                 + "<tr><td>"+status3[i].user_id+"</td>"
                 + "<td>"+status3[i].it_name+"</td>"
@@ -134,8 +149,14 @@
                 + "<td>"+status3[i].status+"</td></tr>"
             }
                 tabletag.innerHTML = datadata;
+                totaltd.innerText = total+"원"
+
         }else if(e < 100){ // 닐짜
+            let totaltd= document.querySelector("#tabletotal")
+
             if(e > 20){ // 년도 선택시
+                let total = 0;
+
                 // 월 초기화
                 document.querySelector(".month").value = "13"
                 document.querySelector("#orderStatus-id").value = "100"
@@ -148,6 +169,7 @@
                 }
                 let datadata = ''
                 for(let i=0; i<status.length; i++){
+                    total = total + (status[i].qty)*(status[i].price);
                     datadata = datadata 
                     + "<tr><td>"+status[i].user_id+"</td>"
                     + "<td>"+status[i].it_name+"</td>"
@@ -158,9 +180,12 @@
                     + "<td>"+status[i].status+"</td></tr>"
                 }
                 tabletag.innerHTML = datadata;
+                totaltd.innerText = total+"원"
+
 
             }else if(e < 20){ // 월 선택시 
                 document.querySelector("#orderStatus-id").value = "100"
+                let total = 0;
 
                 if(e === '13'){
                     status2 = status;
@@ -170,6 +195,7 @@
                 }
                 let datadata = ''
                 for(let i=0; i<status2.length; i++){
+                    total = total + (status[i].qty)*(status[i].price);
                     datadata = datadata 
                     + "<tr><td>"+status2[i].user_id+"</td>"
                     + "<td>"+status2[i].it_name+"</td>"
@@ -180,6 +206,8 @@
                     + "<td>"+status2[i].status+"</td></tr>"
                 }
                 tabletag.innerHTML = datadata;
+                totaltd.innerText = total+"원"
+
             }
  
         }else {
