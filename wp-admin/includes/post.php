@@ -28,8 +28,8 @@ function _wp_translate_postdata( $update = false, $post_data = null ) {
 		$post_data['ID'] = (int) $post_data['post_ID'];
 	}
 
+	global $wpdb;
 	if($post_data['playtime'] && $post_data['playname']){  
-		global $wpdb;
 		$id = (int)$post_data['post_ID'];
 		// 재생시간 배열로 담기
 		$time = $post_data['playtime']; 
@@ -113,6 +113,17 @@ function _wp_translate_postdata( $update = false, $post_data = null ) {
 						));
 			}
 			
+		}
+	}else { // 전부다 삭제한 경우
+		$post_data['ID'];
+		$zz = 'SELECT * FROM wp_play_time where posts_lesson_id ='.$post_data['ID'];
+		$results = $wpdb->get_results( 'SELECT * FROM wp_play_time where posts_lesson_id ='.$post_data['ID'] , OBJECT );	
+		for($i=0; $i<count($results); $i++){
+			$idNum = $results[$i]->ID;
+			$wpdb->delete('wp_play_time', 
+			array(
+				'ID' => $idNum
+			));
 		}
 	}
 
