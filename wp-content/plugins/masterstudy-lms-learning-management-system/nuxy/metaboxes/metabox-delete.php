@@ -33,7 +33,16 @@ for($i=0; $i<$num; $i++){
             'ID' => $playtimerow[$i]->ID
         ));
     }
-
+    
+    //유저 장바구니 리스트에서도 삭제하기
+    $cartrow = $wpdb->get_results($wpdb->prepare("SELECT * from wp_wish_list where item_id ={$deletecheck[$i]}"));
+    for($i=0; $i<count($cartrow); $i++){
+        // 영상 재생시간에 맞는 제품 노출 리스트 DB에서 삭제 
+        $wpdb->delete('wp_wish_list', 
+        array(
+            'ID' => $cartrow[$i]->ID
+        ));
+    }
 
     // 벳스쿨 광고상품 DB에서 광고여부 0으로 변경 
     $wpdb->update( 
