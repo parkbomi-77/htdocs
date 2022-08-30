@@ -61,7 +61,7 @@
         </thead>
         <tbody  id="name">
         </tbody>
-        <tfoot>
+        <tfoot class="tfoottag">
             <tr>
                 <th scope="row" colspan='4'>총 액</th>
                 <td colspan='3' id="tabletotal">원</td>
