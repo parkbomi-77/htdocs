@@ -159,7 +159,7 @@ $mshop_categories = get_shop_category_array(true);
 	                <ul id="hd_tnb" class="cate">
 	                    <li class="bd"><a href="<?php echo G5_SHOP_URL; ?>/mypage.php">마이페이지</a></li>
 	                    <li class="bd"><a href="<?php echo G5_SHOP_URL; ?>/orderinquiry.php">주문내역</a></li>
-	                    <li class="bd"><a href="<?php echo G5_SHOP_URL; ?>/couponzone.php">쿠폰존</a></li>
+	                    <!-- <li class="bd"><a href="<?php echo G5_SHOP_URL; ?>/couponzone.php">쿠폰존</a></li> -->
 	                    <li class="bd"><a href="<?php echo G5_BBS_URL; ?>/faq.php">FAQ</a></li>
 	                    <li><a href="<?php echo G5_BBS_URL; ?>/qalist.php">1:1문의</a></li>
 	                    <li><a href="<?php echo G5_SHOP_URL; ?>/personalpay.php">개인결제</a></li>

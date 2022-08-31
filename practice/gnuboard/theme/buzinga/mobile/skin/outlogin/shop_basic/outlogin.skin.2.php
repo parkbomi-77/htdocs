@@ -41,15 +41,15 @@ for($k=0; $cp=sql_fetch_array($res); $k++) {
                 </a>
             </li>
 
-            <li>
+            <!-- <li>
                 <a href="<?php echo G5_SHOP_URL ?>/coupon.php" target="_blank" id="ol_after_coupon" class="win_scrap"><i class="far fa-newspaper"></i>쿠폰<strong><?php echo number_format($cp_count); ?> 장</strong></a>
-            </li>
+            </li> -->
             <li><a href="<?php echo G5_SHOP_URL; ?>/mypage.php"><i class="fas fa-user"></i>마이페이지</a></li>
             <li><a href="<?php echo G5_BBS_URL; ?>/faq.php"><i class="far fa-question-circle"></i>FAQ</a></li>
             <li><a href="<?php echo G5_BBS_URL; ?>/qalist.php"><i class="fas fa-comments"></i>1:1문의</a></li>
             <li><a href="<?php echo G5_SHOP_URL; ?>/personalpay.php"><i class="far fa-credit-card"></i>개인결제</a></li>
             <li><a href="<?php echo G5_SHOP_URL; ?>/itemuselist.php"><i class="fas fa-camera-retro"></i>사용후기</a></li>
-            <li><a href="<?php echo G5_SHOP_URL; ?>/couponzone.php"><i class="fas fa-gift"></i>쿠폰존</a></li>
+            <!-- <li><a href="<?php echo G5_SHOP_URL; ?>/couponzone.php"><i class="fas fa-gift"></i>쿠폰존</a></li> -->
             <?php if ($is_admin) {  ?>
             <li><a href="<?php echo G5_ADMIN_URL ?>/shop_admin/"><i class="fas fa-user-cog"></i>관리자</a></li>
 	        <?php } ?>
