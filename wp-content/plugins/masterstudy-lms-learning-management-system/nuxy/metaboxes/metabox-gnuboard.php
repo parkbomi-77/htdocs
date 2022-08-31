@@ -1,11 +1,21 @@
+<?php
+    define( 'SHORTINIT', true );
+    require_once( $_SERVER['DOCUMENT_ROOT'].'/wp-load.php' );
+    global $wpdb;
+    $results = $wpdb->get_results($wpdb->prepare("SELECT * FROM wp_shoppingmall"));
 
+?>
 
 <div class="Inflowbox-selectcontainer">
     <div class="Inflowbox-name">Site selection</div>
     <div class="Inflowbox-select">
         <select name="shopStatus" id="shopStatus-id" onchange="changeState(this.value)">
             <option value="none">'쇼핑몰' 을 선택해주세요 </option>
-            <option value="1000">그누보드 샘플 사이트 1</option>
+            <?php
+                for($i=0; $i<count($results); $i++){
+                    echo "<option value='{$results[$i]->code}'>{$results[$i]->name}</option>";
+                }
+            ?>
         </select>
     </div>
 </div>
