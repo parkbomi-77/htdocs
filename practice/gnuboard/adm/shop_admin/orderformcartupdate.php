@@ -28,6 +28,20 @@ $mod_history = '';
 $cnt = (isset($_POST['ct_id']) && is_array($_POST['ct_id'])) ? count($_POST['ct_id']) : 0;
 $arr_it_id = array();
 
+function post($url, $fields){
+    $post_field_string = http_build_query($fields, '', '&');
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_field_string);
+    curl_setopt($ch, CURLOPT_POST, true);
+    $response = curl_exec($ch);
+    curl_close ($ch);
+    return $response;
+}
+
 for ($i=0; $i<$cnt; $i++)
 {
     $k = isset($_POST['ct_chk'][$i]) ? (int) $_POST['ct_chk'][$i] : '';
@@ -159,21 +173,6 @@ for ($i=0; $i<$cnt; $i++)
     $sql = "select * from g5_shop_cart where od_id = '$od_id' and ct_id  = '$ct_id' ";
     $result = sql_fetch($sql);
     if($result['ct_vetcode'] === 'vet'){
-        var_dump("zzzz");
-
-        function post($url, $fields){
-            $post_field_string = http_build_query($fields, '', '&');
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $post_field_string);
-            curl_setopt($ch, CURLOPT_POST, true);
-            $response = curl_exec($ch);
-            curl_close ($ch);
-            return $response;
-        }
 
         post('http://localhost:8888/sample.php', $result);
     }
