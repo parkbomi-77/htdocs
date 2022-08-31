@@ -22,6 +22,10 @@
 
         for($i=0; $i<$num; $i++){
             if($registrationID[$i] === "0"){ // 새로들어온 거면? 인서트 
+                // 쇼핑몰코드로 쇼핑몰링크 얻어내기
+                $mallcode = $wpdb->get_results($wpdb->prepare("SELECT * from wp_shoppingmall where code =".$registrationmall[$i]));
+                $link = $mallcode[0]->link2;
+
                 $wpdb->insert('wp_product_list', 
                 array(
                     'product_id' => $i+1,
@@ -45,10 +49,14 @@
                     )
                 );
                 $context = stream_context_create($opts);
-                file_get_contents('http://localhost:8888/practice/gnuboard/product_list.php', false, $context);
+                file_get_contents($link, false, $context);
 
 
             } else {
+                // 쇼핑몰코드로 쇼핑몰링크 얻어내기
+                $mallcode = $wpdb->get_results($wpdb->prepare("SELECT * from wp_shoppingmall where code =".$registrationmall[$i]));
+                $link = $mallcode[0]->link2;
+
                 $wpdb->update( 
                 'wp_product_list', 
                 array('product_id' => $i+1,
@@ -72,7 +80,7 @@
                     )
                 );
                 $context = stream_context_create($opts);
-                file_get_contents('http://localhost:8888/practice/gnuboard/product_list.php', false, $context);
+                file_get_contents($link, false, $context);
             }
         }
         
@@ -81,6 +89,10 @@
         $num = count($registrationNum);
         // 배열값으로 들어온 데이터들 디비에 넣기 
         for($i=0; $i<$num; $i++){
+                // 쇼핑몰코드로 쇼핑몰링크 얻어내기
+                $mallcode = $wpdb->get_results($wpdb->prepare("SELECT * from wp_shoppingmall where code =".$registrationmall[$i]));
+                $link = $mallcode[0]->link2;
+
             $wpdb->insert('wp_product_list', 
                     array(
                         'product_id' => $i+1,
@@ -102,7 +114,7 @@
                 )
             );
             $context = stream_context_create($opts);
-            file_get_contents('http://localhost:8888/practice/gnuboard/product_list.php', false, $context);
+            file_get_contents($link, false, $context);
         }
         
     }

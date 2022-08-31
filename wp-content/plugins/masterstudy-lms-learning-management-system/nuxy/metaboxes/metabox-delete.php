@@ -6,8 +6,15 @@ define( 'SHORTINIT', true );
 require_once( $_SERVER['DOCUMENT_ROOT'].'/wp-load.php' );
 
 for($i=0; $i<$num; $i++){
+    
     $results = $wpdb->get_results($wpdb->prepare("SELECT * from wp_product_list where ID={$deletecheck[$i]}"));
     $results2 = $results[0] -> product_code;
+    $results3 = $results[0] -> mall_code;
+    
+    // 쇼핑몰코드로 쇼핑몰링크 얻어내기
+    $mallcode = $wpdb->get_results($wpdb->prepare("SELECT * from wp_shoppingmall where code =".$results3));
+    $link = $mallcode[0]->link2;
+    
     $postdata = http_build_query(
         array(
             'delete_code' => $results2
@@ -21,7 +28,7 @@ for($i=0; $i<$num; $i++){
         )
     );
     $context = stream_context_create($opts);
-    file_get_contents('http://localhost:8888/practice/gnuboard/product_list.php', false, $context);
+    file_get_contents($link, false, $context);
 
 
     $playtimerow = $wpdb->get_results($wpdb->prepare("SELECT * from wp_play_time where product_list_id ={$deletecheck[$i]}"));
