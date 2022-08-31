@@ -335,6 +335,8 @@ else // 장바구니에 담기
                 if((int)$it['it_price'] + (int)$io_price < 0)
                     alert('구매금액이 음수인 상품은 구매할 수 없습니다.');
             }
+            $remote_addr = get_real_client_ip();
+            $now = G5_TIME_YMDHIS;
 
             // 동일옵션의 상품이 있으면 수량 더함
             $sql2 = " select ct_id, io_type, ct_qty
@@ -356,9 +358,10 @@ else // 장바구니에 담기
                 {
                     alert($io_value." 의 재고수량이 부족합니다.\\n\\n현재 재고수량 : " . number_format($tmp_it_stock_qty) . " 개");
                 }
-
+                // 날짜도 넣기 !!! 
                 $sql3 = " update {$g5['g5_shop_cart_table']}
-                            set ct_qty = ct_qty + '$ct_qty'
+                            set ct_qty = ct_qty + '$ct_qty',
+                            ct_status_time = '$now|$REMOTE_ADDR'
                             where ct_id = '{$row2['ct_id']}' ";
                 sql_query($sql3);
                 continue;
@@ -386,18 +389,17 @@ else // 장바구니에 담기
                 $ct_send_cost = 1; // 착불
             
             $io_value = sql_real_escape_string(strip_tags($io_value));
-            $remote_addr = get_real_client_ip();
-            $now = G5_TIME_YMDHIS;
+
 
             //장바구니에 담을때 벳스쿨광고중인 제품이만 vet 코드넣기 
             $sql5 = "SELECT * from g5_shop_item where it_id =".$it_id;
             $sql5result = sql_fetch($sql5);
-            if($sql5result['it_1_subj'] === 1){ // 광고중이면
+            if($sql5result['it_1_subj'] === "1"){ // 광고중이면
                 $sql .= $comma."( '$tmp_cart_id', '{$member['mb_id']}', '{$it['it_id']}', '".addslashes($it['it_name'])."', '{$it['it_sc_type']}', '{$it['it_sc_method']}', '{$it['it_sc_price']}', '{$it['it_sc_minimum']}', '{$it['it_sc_qty']}', '쇼핑', '{$it['it_price']}', '$point', '0', '0', '$io_value', '$ct_qty', '{$it['it_notax']}', '$io_id', '$io_type', '$io_price', '".G5_TIME_YMDHIS."', '$remote_addr', '$ct_send_cost', '$sw_direct', '$ct_select', '$ct_select_time', '$decryptioncode', '$now|$REMOTE_ADDR')";
             }else {
                 $sql .= $comma."( '$tmp_cart_id', '{$member['mb_id']}', '{$it['it_id']}', '".addslashes($it['it_name'])."', '{$it['it_sc_type']}', '{$it['it_sc_method']}', '{$it['it_sc_price']}', '{$it['it_sc_minimum']}', '{$it['it_sc_qty']}', '쇼핑', '{$it['it_price']}', '$point', '0', '0', '$io_value', '$ct_qty', '{$it['it_notax']}', '$io_id', '$io_type', '$io_price', '".G5_TIME_YMDHIS."', '$remote_addr', '$ct_send_cost', '$sw_direct', '$ct_select', '$ct_select_time', '', '$now|$REMOTE_ADDR')";
             }
-
+            // '$now|$REMOTE_ADDR'
             // $sql .= $comma."( '$tmp_cart_id', '{$member['mb_id']}', '{$it['it_id']}', '".addslashes($it['it_name'])."', '{$it['it_sc_type']}', '{$it['it_sc_method']}', '{$it['it_sc_price']}', '{$it['it_sc_minimum']}', '{$it['it_sc_qty']}', '쇼핑', '{$it['it_price']}', '$point', '0', '0', '$io_value', '$ct_qty', '{$it['it_notax']}', '$io_id', '$io_type', '$io_price', '".G5_TIME_YMDHIS."', '$remote_addr', '$ct_send_cost', '$sw_direct', '$ct_select', '$ct_select_time', '$decryptioncode', '$now|$REMOTE_ADDR')";
             $comma = ' , ';
             $ct_count++;
