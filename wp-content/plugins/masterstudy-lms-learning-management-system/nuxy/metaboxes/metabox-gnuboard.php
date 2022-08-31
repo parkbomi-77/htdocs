@@ -36,9 +36,10 @@
         <select name="orderStatus" id="orderStatus-id" onchange="changeState(this.value)">
             <option value="100">'주문 상태' 를 선택해주세요 </option>
             <option value="101">주문</option>
-            <option value="102">배송</option>
+            <!-- <option value="102">배송</option> -->
             <option value="103">완료</option>
-            <option value="104">취소</option>
+            <!-- <option value="104">취소</option> -->
+            <!-- <option value="105">최종 완료</option> -->
         </select>
     </div>
 </div>
@@ -123,12 +124,8 @@
             if(e > 100){
                 if(e === '101'){
                     code = '주문';
-                }else if(e === '102'){
-                    code = '배송';
                 }else if(e === '103'){
                     code = '완료';
-                }else if(e === '104'){
-                    code = '취소';
                 }
                 status3 = status2.filter(el => el.status === code)
             }else if(e === '100'){
