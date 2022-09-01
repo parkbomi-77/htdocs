@@ -9,6 +9,7 @@
             <td>'.($i+1).'</td>
             <td>'.$results[$i]->name.'</td>
             <td>'.$results[$i]->link.'</td>
+            <td>'.$results[$i]->link2.'</td>
             <td id="shoppingmall-box-btn">
                 <button class="shoppingmall-box-edit" onclick="edit(this)" value="'.$results[$i]->name.'"><i class="fas fa-edit"></i></button>
                 <button class="shoppingmall-box-del" onclick="del(this)" value="'.$results[$i]->code.'"><i class="fas fa-times-circle"></i></button>
@@ -32,9 +33,10 @@
     <div class="shoppingmall-box">
         <table style="text-align:center;" class="shoppingmalltable">
             <colgroup>
-                <col width="10%">
-                <col width="30%">
-                <col width="47%">
+                <col width="5%">
+                <col width="16%">
+                <col width="34%">
+                <col width="34%">
                 <col width="13%">
             </colgroup>
             <thead>
@@ -42,6 +44,7 @@
                     <th>no.</th>
                     <th>name</th>
                     <th>link</th>
+                    <th>link2</th>
                     <th></th>
                 </tr>
             </thead>
@@ -61,7 +64,7 @@
                 <div class="shoppingmall-box2-num">no.</div>
                 <div class="shoppingmall-box2-name">name</div>
                 <div class="shoppingmall-box2-link">link</div>
-
+                <div class="shoppingmall-box2-link">link2</div>
             </div>
             <div class="shoppingmall-box2-body">
                 <?php
@@ -70,6 +73,7 @@
                             <div class="shoppingmall-box2-num">'.($i+1).'</div>
                             <div class="shoppingmall-box2-name"><input type="text" name="name[]"></div>
                             <div class="shoppingmall-box2-link"><input type="text" name="link[]"></div>
+                            <div class="shoppingmall-box2-link"><input type="text" name="link2[]"></div>
                         </div>';
                 }
                 ?>
@@ -103,6 +107,7 @@
                 <div class="shoppingmall-box2-num">${i}</div>
                 <div class="shoppingmall-box2-name"><input type="text"></div>
                 <div class="shoppingmall-box2-link"><input type="text"></div>
+                <div class="shoppingmall-box2-link"><input type="text"></div>
             </div>`
         }
         // document.parent.appendChild(addChild);
@@ -113,12 +118,14 @@
             let trtag = e.parentElement.parentElement;
             let name = trtag.children[1];
             let link = trtag.children[2];
-            let btn = trtag.children[3];
+            let link2 = trtag.children[3];
+            let btn = trtag.children[4];
             let code = btn.children[1].value;
-            console.log(btn.children[1].value)
+            console.log(trtag)
       
-            name.innerHTML = `<input type="text" style="width:98%" name="name" value="${e.value}">`
+            name.innerHTML = `<input type="text" style="width:98%;" name="name" value="${e.value}">`
             link.innerHTML = `<input type="text" style="width:100%" name="link" value="${link.innerHTML}">`
+            link2.innerHTML = `<input type="text" style="width:100%" name="link" value="${link2.innerHTML}">`
             btn.innerHTML = 
             `<button type="submit" class="shoppingmall-edit-confirm" onclick="editsave(this)" value="${code}"><i class="fas fa-check"></i></button>
             <button type="submit" class="shoppingmall-edit-confirm" onclick="reset(this)" value="${code}"><i class="fas fa-redo"></i></i></button>`
@@ -148,6 +155,8 @@
         let new_name = name.children[0].value;
         let link = trtag.children[2];
         let new_link = link.children[0].value;
+        let link2 = trtag.children[3];
+        let new_link2 = link2.children[0].value;
         let newcode = e.value;
         console.log(newcode);
 
@@ -159,7 +168,8 @@
                 data: {
                     newcode,
                     newname : new_name,
-                    newlink : new_link
+                    newlink : new_link,
+                    newlink2 : new_link2
                 },
             })
             state = "";
@@ -177,12 +187,15 @@
         let reset_name = name.children[0].value;
         let link = trtag.children[2];
         let reset_link = link.children[0].value;
-        let btn = trtag.children[3];
+        let link2 = trtag.children[3];
+        let reset_link2 = link2.children[0].value;
+        let btn = trtag.children[4];
         let code = e.value;
 
         trtag.innerHTML = `<td>${reset_num}</td>
             <td>${reset_name}</td>
             <td>${reset_link}</td>
+            <td>${reset_link2}</td>
             <td id="shoppingmall-box-btn">
                 <button class="shoppingmall-box-edit" onclick="edit(this)" value="${reset_name}"><i class="fas fa-edit"></i></button>
                 <button class="shoppingmall-box-del" onclick="del(this)" value="${code}"><i class="fas fa-times-circle"></i></button>

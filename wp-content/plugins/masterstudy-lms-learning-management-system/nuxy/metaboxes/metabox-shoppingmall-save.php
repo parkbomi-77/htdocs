@@ -13,6 +13,8 @@ $editcode = $_POST['editcode'];
 $newcode = $_POST['newcode'];
 $newname = $_POST['newname'];
 $newlink = $_POST['newlink'];
+$newlink2 = $_POST['newlink2'];
+
 
 
 
@@ -20,14 +22,11 @@ if($delcode){ // 삭제 요청
     $wpdb->get_results($wpdb->prepare("DELETE FROM wp_shoppingmall where (code ='".$delcode."')"));
 }else if($editcode){ // 수정 사항 보여주기 요청
     $results = $wpdb->get_results($wpdb->prepare("SELECT * from wp_shoppingmall where code ='".$editcode."' "));
-    // echo $results['code'];
-    // echo $results['name'];
-    // echo $results['link'];
     $dataArray[0] = '삽입 성공';
     echo json_encode($dataArray);
 }else if($newcode){ // 수정사항 저장하기 
     $zzx = "UPDATE wp_shoppingmall set name= '".$newname."', link='".$newlink."' where code ='".$newcode."' ";
-    $wpdb->get_results($wpdb->prepare("UPDATE wp_shoppingmall set name= '".$newname."', link='".$newlink."' where code ='".$newcode."' "));
+    $wpdb->get_results($wpdb->prepare("UPDATE wp_shoppingmall set name= '".$newname."', link='".$newlink."', link2='".$newlink2."' where code ='".$newcode."' "));
 }else {
     // 광고의뢰 쇼핑몰 리스트 빈 값은 걸러내기
     function empty_ ($var) {
