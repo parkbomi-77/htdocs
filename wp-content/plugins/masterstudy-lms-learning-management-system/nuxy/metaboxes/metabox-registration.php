@@ -25,9 +25,9 @@ for($i=0; $i<count($mallResults); $i++){
             <p> product list </p>
             <div class="registration-title">
                 <div class="registration-title-num"> no. </div>
-                <div class="registration-title-mall"> < shoppingmall_name > </div>
-                <div class="registration-title-name"> < product_name > </div>
-                <div class="registration-title-link"> < product_code > </div>
+                <div class="registration-title-mall"> shoppingmall_name </div>
+                <div class="registration-title-name"> product_name </div>
+                <div class="registration-title-link"> product_code </div>
             </div>
             <div class="registration-list">
                 <div class="registration-div">
@@ -88,6 +88,11 @@ for($i=0; $i<count($mallResults); $i++){
                                     <div class="registration-link" id="registration-link2">
                                         <input type="text" id="" name="registrationlink[]" placeholder="제품 코드(40)" value="'.$results[$i]->product_code.'">
                                     </div>
+                                    <div class="registration-check">
+                                        <div style="display:none">'.$results[$i]->mall_code.'</div>
+                                        <div style="display:none">'.$results[$i]->product_code.'</div>
+                                        <button onclick="check(this)"><i class="fas fa-share"></i></button>
+                                    </div>
                                 </div>';
                 $registration_box = $registration_box.$add_registration_box ;
             }
@@ -95,9 +100,9 @@ for($i=0; $i<count($mallResults); $i++){
                             <p> product list </p>
                             <div class="registration-title">
                                 <div class="registration-title-num"> no. </div>
-                                <div class="registration-title-mall"> < shoppingmall_name > </div>
-                                <div class="registration-title-name"> < product_name > </div>
-                                <div class="registration-title-link"> < product_code > </div>
+                                <div class="registration-title-mall"> shoppingmall_name </div>
+                                <div class="registration-title-name"> product_name </div>
+                                <div class="registration-title-link"> product_code </div>
                             </div>
                             <div class="registration-list">
                                 '.$registration_box.'
@@ -153,7 +158,7 @@ for($i=0; $i<count($mallResults); $i++){
                     <div class="registration-link" id="registration-link2">
                         <input type="text" id="" name="registrationlink[]" placeholder="제품 코드(40)" value="<?php echo esc_attr( $post->playlink ); ?>" required>
                     </div>
-                    <div class="playbox-trash2" onclick="close_registrationTag(this)" style="font-size:23px;">➖</div>`
+                    <div class="playbox-trash2" onclick="close_registrationTag(this)" style="font-size:23px;"></div>`
         
         registrationList.appendChild(new_pTag);
         
@@ -171,6 +176,27 @@ for($i=0; $i<count($mallResults); $i++){
 
     function deletebtn() {
         alert("삭제합니다.");
+    }
+    function check(e) {
+        // 클릭한 행의 쇼핑몰 코드
+        let mallConnect = e.parentNode.children;
+
+        $.ajax({
+            url: 'http://localhost:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-registration-check.php',
+            type: 'POST',
+            data: { //
+                code: mallConnect[0].innerText,
+                productId: mallConnect[1].innerText
+            },
+            dataType: 'text',
+            success: function(data) {
+                // console.log(data);
+                window.open(data);
+            }, // 요청 완료 시    
+            error: function(jqXHR) {}, // 요청 실패.    
+            complete: function(jqXHR) {} // 요청의 실패, 성공과 상관 없이 완료 될 경우 호출
+        });
+
     }
 
 
