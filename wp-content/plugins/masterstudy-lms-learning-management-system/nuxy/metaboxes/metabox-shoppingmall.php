@@ -1,6 +1,6 @@
 <?php
     global $wpdb;
-    $results = $wpdb->get_results($wpdb->prepare("SELECT * from wp_shoppingmall"));
+    $results = $wpdb->get_results($wpdb->prepare("SELECT * from wp_shoppingmall where state = 1"));
 
     if($results){ // 벳스쿨쪽으로 광고의뢰한 쇼핑몰이 있을 경우 
         $mall_lists = "";
@@ -19,8 +19,7 @@
         }
     }else { // 벳스쿨쪽으로 광고의뢰한 쇼핑몰이 없을 경우 
         $mall_lists="<tr>
-                        <td></td>
-                        <td>현재 광고를 의뢰한 쇼핑몰이 없습니다.</td>
+                        <td colspan='5'>현재 광고를 의뢰한 쇼핑몰이 없습니다.</td>
                     <tr>";
     }
 ?>
