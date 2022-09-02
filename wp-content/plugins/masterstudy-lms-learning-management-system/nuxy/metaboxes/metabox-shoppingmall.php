@@ -60,32 +60,35 @@
     <div class="shoppingmall-box2 none">
         <form action="http://localhost:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-shoppingmall-save.php" method="post">
             <div class="shoppingmall-box2-header">
-                <div class="shoppingmall-box2-num">no.</div>
-                <div class="shoppingmall-box2-name">name</div>
+                <!-- <div class="shoppingmall-box2-name">name</div>
                 <div class="shoppingmall-box2-link">link</div>
-                <div class="shoppingmall-box2-link">link2</div>
+                <div class="shoppingmall-box2-link">link2</div> -->
+                add shoppingmall
             </div>
             <div class="shoppingmall-box2-body">
-                <?php
-                for($i=0; $i<10; $i++){
-                    echo '<div class="shoppingmall-box2-row">
-                            <div class="shoppingmall-box2-num">'.($i+1).'</div>
-                            <div class="shoppingmall-box2-name"><input type="text" name="name[]"></div>
-                            <div class="shoppingmall-box2-link"><input type="text" name="link[]"></div>
-                            <div class="shoppingmall-box2-link"><input type="text" name="link2[]"></div>
-                        </div>';
-                }
-                ?>
-                <input type="hidden" value="">
+                 <div class="shoppingmall-box2-row">
+                    <div class="shoppingmall-box2-name">
+                        <label for="mallname">쇼핑몰 이름 : </label>
+                        <input type="text" name="name[]" id="mallname" onchange="mallnamecheck(this)">
+                        <div class="overlapno none">* 사용할 수 있는 쇼핑몰명 입니다.</div>
+                        <div class="overlap none">* 중복된 쇼핑몰명 입니다.</div>
+                    </div>
+                    <div class="shoppingmall-box2-link">
+                        <label for="link">쇼핑몰 url (상세페이지용) : </label>
+                        <input type="text" name="link[]" id="link">
+                        <div class="overlapno none">* 사용할 수 있는 링크주소 입니다.</div>
+                        <div class="overlap none">* 중복된 링크주소 입니다.</div>
+                    </div>
+                    <div class="shoppingmall-box2-link">
+                        <label for="link2">쇼핑몰 api링크 (임시) : </label>
+                        <input type="text" name="link2[]" id="link2">
+                    </div>
+                </div>
             </div>
-            
-            
-            <div class="shoppingmall-box2-add" onclick="inadd()">add</div>
             <div class="back-btn" onclick="back()">back</div>
-            <div class="edit-btn" ><input type="submit" id="" value="save"></div>
+            <div class="save-btn" ><input type="submit" id="" value="save"></div>
         </form>
     </div>
-    
 </div>
 
 
@@ -97,21 +100,21 @@
         document.querySelector(".shoppingmall-box").classList.add('none');
         document.querySelector(".shoppingmall-box2").classList.remove('none');
     }
-    function inadd(){
-        let parent = document.querySelector(".shoppingmall-box2-body");
-        let child = parent.childElementCount + 1;
-        let addChild = ''
-        for(let i=child; i<child+10; i++){
-            addChild = addChild + `<div>
-                <div class="shoppingmall-box2-num">${i}</div>
-                <div class="shoppingmall-box2-name"><input type="text"></div>
-                <div class="shoppingmall-box2-link"><input type="text"></div>
-                <div class="shoppingmall-box2-link"><input type="text"></div>
-            </div>`
-        }
-        // document.parent.appendChild(addChild);
-        $(parent).append(addChild);
-    }
+    // function inadd(){
+    //     let parent = document.querySelector(".shoppingmall-box2-body");
+    //     let child = parent.childElementCount + 1;
+    //     let addChild = ''
+    //     for(let i=child; i<child+10; i++){
+    //         addChild = addChild + `<div>
+    //             <div class="shoppingmall-box2-num">${i}</div>
+    //             <div class="shoppingmall-box2-name"><input type="text"></div>
+    //             <div class="shoppingmall-box2-link"><input type="text"></div>
+    //             <div class="shoppingmall-box2-link"><input type="text"></div>
+    //         </div>`
+    //     }
+    //     // document.parent.appendChild(addChild);
+    //     $(parent).append(addChild);
+    // }
     function edit(e) {
         if(state === ''){
             let trtag = e.parentElement.parentElement;
@@ -204,6 +207,25 @@
     function back() {
         document.querySelector(".shoppingmall-box").classList.remove('none');
         document.querySelector(".shoppingmall-box2").classList.add('none');
+    }
+    function mallnamecheck(e) {
+        console.log(e.value)
+        // console.log(e.parentElement.children[2].classList.remove('none'))
+        $.ajax({
+            url: "http://localhost:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-shoppingmall-check.php",
+            type: "post",
+            dataType : 'text',
+            data: {
+                mallname : e.value,
+            },
+        }).done((data) => {
+            console.log(data);
+            if(data === '통과'){
+                e.parentElement.children[2].classList.remove('none')
+            }else if(data === '중복'){
+                e.parentElement.children[3].classList.remove('none')
+            }
+        })
     }
 
 </script>

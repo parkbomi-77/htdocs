@@ -268,14 +268,12 @@
 .shoppingmall-container{
     width: 100%;
     background-color: rgb(255, 255, 255);
-    /* display: flex;
-    align-items: center;
-    justify-content: flex-start; */
     padding: 20px 20px 80px;
     border-radius: 10px;
     font-size: 13px;
     font-weight: 600;
     margin: 0 0 10px;
+    height: 595px;
 }
 .shoppingmall-title{
     margin-bottom: 20px;
@@ -321,18 +319,19 @@
 }
 
 .edit-btn {
-    background-color: #237ae6;
+    background-color: #546374;
     width: 110px;
     position: absolute;
     line-height: 2.4rem;
     text-align: center;
     border-radius: 9px;
     color: #f6faf2;
-    right: 20px;
+    right: 21px;
+    bottom: 66px;
     font-size: 15px;
     margin-top: 8px;
     box-shadow: 0 2px 5px rgb(43 42 42 / 30%);
-    border: 1px solid #237ae6;
+    border: 1px solid #546374;
 }
 .edit-btn input{
     border: none;
@@ -353,12 +352,13 @@
     line-height: 2.4rem;
     text-align: center;
     border-radius: 9px;
-    color: #195ec8;
-    right: 135px;
+    color: #546374;
+    right: 165px;
+    bottom: 20px;
     font-size: 15px;
     margin-top: 8px;
     box-shadow: 0 2px 5px rgb(43 42 42 / 30%);
-    border: 1px solid #237ae6;
+    border: 1px solid #546374;
 }
 .back-btn input{
     border: none;
@@ -372,6 +372,27 @@
 .back-btn input:hover{
     cursor: pointer;
 }
+.save-btn{
+    background-color: #546374;
+    width: 110px;
+    position: absolute;
+    line-height: 2.4rem;
+    text-align: center;
+    border-radius: 9px;
+    color: #f6faf2;
+    right: 49px;
+    bottom: 20px;
+    font-size: 15px;
+    margin-top: 8px;
+    box-shadow: 0 2px 5px rgb(43 42 42 / 30%);
+    border: 1px solid #546374;
+}
+.save-btn input{
+    border: none;
+    background: none;
+    color: inherit;
+    width: 100%;
+}
 .none{
     display: none;
 }
@@ -382,15 +403,17 @@
     white-space: nowrap;
 } */
 .shoppingmall-box2 {
-    width: 100%;
+    width: 70%;
     position: relative;
+    z-index: 3;
+    bottom: 48px;
+    left: 16%;
 }
 .shoppingmall-box2-header{
-    width: 100%;
     background-color: rgb(33, 47, 63);;
     font-weight: bold;
+    font-size: initial;
     color: #fff;
-    display: flex;
     padding: 1em 0.5em;
     text-align: center;
     border-top-right-radius: 13px;
@@ -405,28 +428,52 @@
     line-height: 40px;
 }
 .shoppingmall-box2-name{
-    width: 25%;
+    width: 100%;
 }
 .shoppingmall-box2-link{
-    width: 31%;
+    width: 100%;
+    margin: 16px 0;
 }
 .shoppingmall-box2-body{
     box-shadow: 0 2px 5px rgb(43 42 42 / 25%);
     border-bottom-left-radius: 13px;
     border-bottom-right-radius: 13px;
-    padding: 20px 0px 65px;
+    padding: 14px 5px 60px;
+    background-color: white;
 }
-.shoppingmall-box2-body>div{
-    display: flex;
-    margin-bottom: 2px;
+.shoppingmall-box2-row{
+    margin: 20px 47px;
 }
+
 .shoppingmall-box2-name input{
     width: 100%;
-    margin: 0 0px;
 }
 .shoppingmall-box2-link input{
-    width: 98.1%;
-    margin: 0 6px;
+    width: 100%;
+}
+.shoppingmall-box2-name .overlapno{
+    color: #2abd0d;
+    font-weight: 500;
+    text-align: end;
+    margin-top: 2px;
+}
+.shoppingmall-box2-link .overlapno{
+    color: #2abd0d;
+    font-weight: 500;
+    text-align: end;
+    margin-top: 2px;
+}
+.shoppingmall-box2-name .overlap{
+    color: #ff0000;
+    font-weight: 500;
+    text-align: end;
+    margin-top: 2px;
+}
+.shoppingmall-box2-link .overlap{
+    color: #ff0000;
+    font-weight: 500;
+    text-align: end;
+    margin-top: 2px;
 }
 .shoppingmall-box2-add{
     width: 88.2%;
