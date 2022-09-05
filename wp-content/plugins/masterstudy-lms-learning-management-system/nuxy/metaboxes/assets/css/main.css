@@ -66,7 +66,7 @@
 }
 .registration-check{
     position: absolute;
-    right: 30px;
+    right: 36px;
 }
 .registration-check button{
     width: 37px;
@@ -354,7 +354,7 @@
     border-radius: 9px;
     color: #546374;
     right: 165px;
-    bottom: 20px;
+    bottom: 15px;
     font-size: 15px;
     margin-top: 8px;
     box-shadow: 0 2px 5px rgb(43 42 42 / 30%);
@@ -381,7 +381,7 @@
     border-radius: 9px;
     color: #f6faf2;
     right: 49px;
-    bottom: 20px;
+    bottom: 15px;
     font-size: 15px;
     margin-top: 8px;
     box-shadow: 0 2px 5px rgb(43 42 42 / 30%);
@@ -392,6 +392,7 @@
     background: none;
     color: inherit;
     width: 100%;
+    cursor: pointer;
 }
 .none{
     display: none;
@@ -403,18 +404,26 @@
     white-space: nowrap;
 } */
 .shoppingmall-box2 {
-    width: 70%;
+    /* width: 70%;
     position: relative;
-    z-index: 3;
     bottom: 48px;
-    left: 16%;
+    left: 16%; */
+    position: absolute;
+    top: 150px;
+    left: 200px;
+    z-index: 999;
+    width: 520px;
+    
+}
+#popup{
+    cursor: move;
 }
 .shoppingmall-box2-header{
     background-color: rgb(33, 47, 63);;
     font-weight: bold;
     font-size: initial;
     color: #fff;
-    padding: 1em 0.5em;
+    padding: 13px 0.5em;
     text-align: center;
     border-top-right-radius: 13px;
     border-top-left-radius: 13px;
@@ -438,7 +447,7 @@
     box-shadow: 0 2px 5px rgb(43 42 42 / 25%);
     border-bottom-left-radius: 13px;
     border-bottom-right-radius: 13px;
-    padding: 14px 5px 60px;
+    padding: 14px 5px 50px;
     background-color: white;
 }
 .shoppingmall-box2-row{
@@ -489,6 +498,13 @@
 }
 .shoppingmall-box2-add:hover{
     cursor: pointer;
+}
+.blankcheck {
+    color: #e70d0d;
+    position: absolute;
+    bottom: 59px;
+    right: 52px;
+    font-size: smaller;
 }
 @media (max-width: 1260px) {
     .shoppingmall-box2-name{

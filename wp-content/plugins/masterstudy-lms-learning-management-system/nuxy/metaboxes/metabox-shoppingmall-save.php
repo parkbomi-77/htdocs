@@ -50,22 +50,19 @@ if($delcode){ // 삭제 요청
     echo json_encode($dataArray);
 }else if($newcode){ // 수정사항 저장하기 
     $wpdb->get_results($wpdb->prepare("UPDATE wp_shoppingmall set name= '".$newname."', link='".$newlink."', link2='".$newlink2."' where code ='".$newcode."' "));
-}else {
+}else { // 새 쇼핑몰 등록
     // 광고의뢰 쇼핑몰 리스트 빈 값은 걸러내기
-    function empty_ ($var) {
-        if($var !== ""){
-            return $var;
-        }
-    }
-    $newmall = array_filter($mall, "empty_");
+    // function empty_ ($var) {
+    //     if($var !== ""){
+    //         return $var;
+    //     }
+    // }
+    // $newmall = array_filter($mall, "empty_");
     
-    $results = $wpdb->get_results($wpdb->prepare("SELECT * from wp_shoppingmall"));
-    $num = count($results)-1;
-    $nodenum = $results[$num]->code;
-    
-    for($i=0; $i<count($newmall); $i++){
-        $ppp = $wpdb->get_results($wpdb->prepare("INSERT INTO wp_shoppingmall (name,link, link2, state) VALUES ('{$newmall[$i]}','{$link[$i]}','{$link2[$i]}',1);"));
-    }
+    // $results = $wpdb->get_results($wpdb->prepare("SELECT * from wp_shoppingmall"));
+    // $num = count($results)-1;
+    // $nodenum = $results[$num]->code;
+    $ppp = $wpdb->get_results($wpdb->prepare("INSERT INTO wp_shoppingmall (name,link, link2, state) VALUES ('{$mall}','{$link}','{$link2}',1);"));
 }
 
 

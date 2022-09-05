@@ -65,22 +65,23 @@
 <?php
 
     global $wpdb, $post;
-    // lesson 글에 해당하는 재생시간등록 결과 불러오기 
+    // lesson 영상 재생시간에 등록된 제품리스트 
     $results = $wpdb->get_results($wpdb->prepare("SELECT * from wp_play_time where posts_lesson_id = $post->ID"));
     $num = count($results);
+    // 광고할 제품 리스트
     $product = $wpdb->get_results($wpdb->prepare("SELECT * from wp_product_list where adv_state = 1"));
     $productnum = count($product);
 
-    // $product = array_filter($product, )
 
 
+    // 제품 옵션 선택 리스트 
     $option = '';
     for($i=0; $i<$productnum; $i++){
         $add_option = '<option value = "'.$product[$i]->ID.'">'.$product[$i]->product_name.'</option>';
         $option = $option.$add_option;
     }
 
-    // 새로 등록할시 !  
+    // 처음 새로 등록할시 !  
     if(!$results){
 ?> 
     <div class="playbox-container">
@@ -89,14 +90,17 @@
             <div class="playbox">
                 <div class="playbox-num">1</div>
                 <input type="hidden" name="playboxNum[]" value="1">
-                <div class="playbox-mall">
-                    <span>--shopping mall name--</span>
-                </div>
+
                 <div class="playbox-time">
                     <input type="text" id="" name="playtime[]" 
                     value="<?php echo esc_attr( $post->playtime ); ?>" placeholder="00:00" maxlength="8"
                     onKeyup="inputTimeColon(this)" required>
                 </div>
+
+                <div class="playbox-mall">
+                    <span>--shopping mall name--</span>
+                </div>
+
                 <div class="playbox-name">
                     <select name = "playname[]" onchange="product(this)">
                         <option value = "" selected>제품 선택</option>
@@ -105,6 +109,7 @@
                         ?>
                     </select>
                 </div>
+
                 <div class="playbox-trash" onclick="close_boxTag(this)" style="font-size:23px;">✖︎</div>
             </div>
         </div>

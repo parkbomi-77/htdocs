@@ -57,8 +57,8 @@
     </div>
 
     <!-- 수정할때 -->
-    <div class="shoppingmall-box2 none">
-        <form action="http://localhost:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-shoppingmall-save.php" method="post">
+    <div class="shoppingmall-box2 none" id="popup">
+        <form action="http://localhost:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-shoppingmall-save.php" method="post" name="box2form" onsubmit="return box2submit(this)">
             <div class="shoppingmall-box2-header">
                 <!-- <div class="shoppingmall-box2-name">name</div>
                 <div class="shoppingmall-box2-link">link</div>
@@ -69,24 +69,25 @@
                  <div class="shoppingmall-box2-row">
                     <div class="shoppingmall-box2-name">
                         <label for="mallname">쇼핑몰 이름 : </label>
-                        <input type="text" name="name[]" id="mallname" onchange="mallnamecheck(this)">
+                        <input type="text" name="name" id="mallname" onchange="mallnamecheck(this)">
                         <div class="overlapno none">* 사용할 수 있는 쇼핑몰명 입니다.</div>
                         <div class="overlap none">* 중복된 쇼핑몰명 입니다.</div>
                     </div>
                     <div class="shoppingmall-box2-link">
                         <label for="link">쇼핑몰 url (상세페이지용) : </label>
-                        <input type="text" name="link[]" id="link">
+                        <input type="text" name="link" id="link" onchange="linkcheck(this)">
                         <div class="overlapno none">* 사용할 수 있는 링크주소 입니다.</div>
                         <div class="overlap none">* 중복된 링크주소 입니다.</div>
                     </div>
                     <div class="shoppingmall-box2-link">
                         <label for="link2">쇼핑몰 api링크 (임시) : </label>
-                        <input type="text" name="link2[]" id="link2">
+                        <input type="text" name="link2" id="link2">
                     </div>
                 </div>
             </div>
             <div class="back-btn" onclick="back()">back</div>
             <div class="save-btn" ><input type="submit" id="" value="save"></div>
+            <div class="blankcheck none">비어있는 칸이 있습니다</div>
         </form>
     </div>
 </div>
@@ -97,24 +98,17 @@
     let state = ''
 
     function add(){
-        document.querySelector(".shoppingmall-box").classList.add('none');
+        // document.querySelector(".shoppingmall-box").classList.add('none');
         document.querySelector(".shoppingmall-box2").classList.remove('none');
+
+        $("#popup").draggable({containment : "window"});
+        // let popupmove = document.querySelector('#popup')
+        // console.log(popupmove);
+        // popupmove.addEventlistener("mousmove", function(e) {
+        //     popupmaove.style.left = e.clientX + 'px';
+        //     popupmove.style.top = e.clientY + 'px';
+        // })
     }
-    // function inadd(){
-    //     let parent = document.querySelector(".shoppingmall-box2-body");
-    //     let child = parent.childElementCount + 1;
-    //     let addChild = ''
-    //     for(let i=child; i<child+10; i++){
-    //         addChild = addChild + `<div>
-    //             <div class="shoppingmall-box2-num">${i}</div>
-    //             <div class="shoppingmall-box2-name"><input type="text"></div>
-    //             <div class="shoppingmall-box2-link"><input type="text"></div>
-    //             <div class="shoppingmall-box2-link"><input type="text"></div>
-    //         </div>`
-    //     }
-    //     // document.parent.appendChild(addChild);
-    //     $(parent).append(addChild);
-    // }
     function edit(e) {
         if(state === ''){
             let trtag = e.parentElement.parentElement;
@@ -209,8 +203,6 @@
         document.querySelector(".shoppingmall-box2").classList.add('none');
     }
     function mallnamecheck(e) {
-        console.log(e.value)
-        // console.log(e.parentElement.children[2].classList.remove('none'))
         $.ajax({
             url: "http://localhost:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-shoppingmall-check.php",
             type: "post",
@@ -219,14 +211,64 @@
                 mallname : e.value,
             },
         }).done((data) => {
-            console.log(data);
             if(data === '통과'){
                 e.parentElement.children[2].classList.remove('none')
+                e.parentElement.children[3].classList.add('none')
             }else if(data === '중복'){
                 e.parentElement.children[3].classList.remove('none')
+                e.parentElement.children[2].classList.add('none')
             }
         })
     }
+    function linkcheck(e) {
+        $.ajax({
+            url: "http://localhost:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-shoppingmall-check.php",
+            type: "post",
+            dataType : 'text',
+            data: {
+                link : e.value,
+            },
+        }).done((data) => {
+            if(data === '통과'){
+                e.parentElement.children[2].classList.remove('none')
+                e.parentElement.children[3].classList.add('none')
+            }else if(data === '중복'){
+                e.parentElement.children[3].classList.remove('none')
+                e.parentElement.children[2].classList.add('none')
+            }
+        })
+    }
+    // 엔터로 submit 막기 
+    document.addEventListener('keydown', function(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+    };
+    }, true);
+ 
+    function box2submit(e) {
+        let namevalue = document.getElementById('mallname').value;
+        let linkvalue = document.getElementById('link').value;
+        let linkvalue2 = document.getElementById('link2').value;
+        let blankcheck = document.querySelector(".blankcheck");
+
+        if(!(namevalue && linkvalue && linkvalue2)){ // 빈 칸이 있을 경우
+            blankcheck.classList.remove('none')
+            return false;
+        }else { // 빈칸없이 다 들어왔을 경우 중복검사 
+            let overlapcheck = [...document.querySelectorAll(".overlapno")]; // all 
+            let overlap = overlapcheck.every((data) => {
+                return !(data.classList.contains('none'))
+            })
+            if(overlap){ // 중복검사 통과
+                return true;
+            }else {
+                return false;
+            }
+        }
+    }
+
+
+
 
 </script>
 

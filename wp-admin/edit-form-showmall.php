@@ -3,7 +3,6 @@ global $wpdb;
 require_once( $_SERVER['DOCUMENT_ROOT'].'/wp-load.php' );
 
 $id = $_POST['ID'];
-$zzzzz = "SELECT * from wp_product_list where ID =".$id;
 $result = $wpdb->get_results($wpdb->prepare("SELECT * from wp_product_list where ID =".$id));
 $code = $result[0]->mall_code;
 
