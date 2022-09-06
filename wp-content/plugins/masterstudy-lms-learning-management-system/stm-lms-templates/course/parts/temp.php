@@ -90,6 +90,7 @@
                             <input type="hidden" name="user_id" value="<?php echo $current_user->ID ?>">
                             <input type="hidden" name="item_id" value="<?php echo $results[$i]->product_list_id ?>">
                             <input type="hidden" name="product_name" value="<?php echo $productname[0]->product_name ?>">
+                            <button type="submit" formaction="/page-shop.php"><i class="fas fa-shopping-bag"></i></button>
                             <button type='submit'><i class="fa-solid fa-cart-shopping"></i></button>
                         </div>
                     </div>
