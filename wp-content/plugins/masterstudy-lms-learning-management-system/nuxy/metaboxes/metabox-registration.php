@@ -1,6 +1,6 @@
 <?php
     global $wpdb, $post;
-    $mallResults = $wpdb->get_results($wpdb->prepare("SELECT * from wp_shoppingmall"));
+    $mallResults = $wpdb->get_results($wpdb->prepare("SELECT * from wp_shoppingmall where state =1"));
     $mallResults[0]->code;
     $mallResults[0]->name;
 
@@ -42,11 +42,12 @@ for($i=0; $i<count($mallResults); $i++){
                         </select>
                     </div>
                     <div class="registration-name" id="registration-name2">
-                        <input type="text" id="" name="registrationname[]" placeholder="제품명 입력(40)" value="">
+                        <input type="text" id="" name="registrationname[]" placeholder="제품명 입력란(40)" value="">
                     </div>
                     <div class="registration-link" id="registration-link2">
                         <input type="text" id="" name="registrationlink[]" placeholder="제품 코드(40)" value="">
                     </div>
+                    <div class="playbox-trash2" onclick="close_registrationTag(this)" style="font-size:23px;"><i class="fas fa-minus"></i></div>
                 </div>
             </div>
             <div class="registration-add" onclick="create_registration_Tag()">
@@ -57,7 +58,7 @@ for($i=0; $i<count($mallResults); $i++){
             <div class="registration-inputbox">
                 <input class="registration_delete_btn" type="submit" onclick="deletebtn()"
                 value="DELETE" formaction="/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-delete.php">
-                <input class="registration_save_btn" type="submit" onclick="savebtn()"
+                <input class="registration_save_btn" type="submit" onclick="savebtn(this)"
                 value="SAVE" formaction="/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-display-save.php" >
             </div>
 
@@ -115,7 +116,7 @@ for($i=0; $i<count($mallResults); $i++){
                             <div class="registration-inputbox">
                                 <input class="registration_delete_btn" type="submit" onclick="deletebtn()"
                                 value="DELETE" formaction="/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-delete.php">
-                                <input class="registration_save_btn" type="submit" onclick="savebtn()"
+                                <input class="registration_save_btn" type="submit" onclick="savebtn(this)"
                                 value="SAVE" formaction="/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-display-save.php" >
                             </div>
                         </div>');
@@ -158,7 +159,7 @@ for($i=0; $i<count($mallResults); $i++){
                     <div class="registration-link" id="registration-link2">
                         <input type="text" id="" name="registrationlink[]" placeholder="제품 코드(40)" value="<?php echo esc_attr( $post->playlink ); ?>" required>
                     </div>
-                    <div class="playbox-trash2" onclick="close_registrationTag(this)" style="font-size:23px;"></div>`
+                    <div class="playbox-trash2" onclick="close_registrationTag(this)" style="font-size:23px;"><i class="fas fa-minus"></i></div>`
         
         registrationList.appendChild(new_pTag);
         
@@ -170,7 +171,8 @@ for($i=0; $i<count($mallResults); $i++){
         Count = Count-1;
     }
 
-    function savebtn() {
+    function savebtn(e) {
+        console.log(e);
         alert("저장합니다.");
     }
 

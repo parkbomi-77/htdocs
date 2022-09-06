@@ -2,7 +2,7 @@
     define( 'SHORTINIT', true );
     require_once( $_SERVER['DOCUMENT_ROOT'].'/wp-load.php' );
     global $wpdb;
-    $results = $wpdb->get_results($wpdb->prepare("SELECT * FROM wp_shoppingmall"));
+    $results = $wpdb->get_results($wpdb->prepare("SELECT * FROM wp_shoppingmall where state =1"));
 
 ?>
 
