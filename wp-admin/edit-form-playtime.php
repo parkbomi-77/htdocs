@@ -90,15 +90,15 @@
             <div class="playbox">
                 <div class="playbox-num">1</div>
                 <input type="hidden" name="playboxNum[]" value="1">
+                
+                <div class="playbox-mall">
+                    <span>--shopping mall name--</span>
+                </div>
 
                 <div class="playbox-time">
                     <input type="text" id="" name="playtime[]" 
                     value="<?php echo esc_attr( $post->playtime ); ?>" placeholder="00:00" maxlength="8"
                     onKeyup="inputTimeColon(this)" required>
-                </div>
-
-                <div class="playbox-mall">
-                    <span>--shopping mall name--</span>
                 </div>
 
                 <div class="playbox-name">

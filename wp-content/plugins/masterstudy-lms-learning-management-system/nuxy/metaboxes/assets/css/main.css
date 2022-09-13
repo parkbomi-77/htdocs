@@ -12,7 +12,7 @@
 }
 .registration-container {
     width: 100%;
-    padding: 9px 20px 119px;
+    padding: 9px 25px 119px 15px;
     background-color: white;
     border-radius: 12px;
     position: relative;
@@ -33,6 +33,7 @@
 }
 .registration-div>div{
     margin: 0 1.5px;
+    position: relative;
 }
 .registration-time {
     width: 20%;
@@ -59,6 +60,20 @@
 .registration-link{
     width: 15%;
 }
+.possible{
+    font-size: 11px;
+    color: rgb(3 167 11);
+    right: 3px;
+    top: 2px;
+    position: absolute;
+}
+.impossible{
+    font-size: 11px;
+    color: rgb(255 0 0);
+    right: 3px;
+    top: 2px;
+    position: absolute;
+}
 #registration-link2 input{
     width: 100%;
     height: 34px;
@@ -66,15 +81,25 @@
 }
 .registration-check{
     position: absolute;
-    right: 36px;
+    right: 0px;
 }
-.registration-check button{
+.registration-check .edit{
     width: 37px;
     height: 34px;
     border-radius: 5px;
     border: none;
     background-color: #595757;
     color: #edecea;
+}
+.registration-check .move{
+    width: 37px;
+    height: 34px;
+    border-radius: 5px;
+    border: none;
+    background-color: #323232;
+    color: #edecea;
+    position: absolute;
+    right: -38px;
 }
 .registration-check button:hover{
     cursor: pointer;
@@ -90,18 +115,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid rgb(134 142 146 / 40%);
+    border: 1px solid rgb(191 191 191 / 40%);
     border-radius: 5px;
-    width: 90.6%;
+    width: 273px;
     height: 35px;
-    position: inherit;
-    left: 53px;
+    position: absolute;
+    left: 69px;
+    bottom: 54px;
     background-color: #cfcfcf96;
+    margin-top: 18px;
 }
 .playbox-trash2{
     position: absolute;
-    top: 7px;
-    right: 45px;
+    right: -6px;
     cursor: pointer;
 }
 .registration_save_btn{
@@ -173,13 +199,20 @@
 }
 .registration-inputbox{
     position: absolute;
-    right: 5.2%;
-    bottom: 59px;
+    left: 344px;
+    bottom: 54px;
 }   
 @media (max-width: 1300px) {
     .registration-title{
         display: none;
     }
+    .registration-add{
+        width: 140px;
+    }
+    .registration-inputbox{
+        left: 211px;
+    }
+
 }
 .tfoottag{
     background-color: #e4e4e4;
@@ -442,6 +475,7 @@
 .shoppingmall-box2-link{
     width: 100%;
     margin: 16px 0;
+    position: relative;
 }
 .shoppingmall-box2-body{
     box-shadow: 0 2px 5px rgb(43 42 42 / 25%);
@@ -459,6 +493,10 @@
 }
 .shoppingmall-box2-link input{
     width: 100%;
+}
+.shoppingmall-box2-name select{
+    width: 100%;
+    max-width: 26rem;
 }
 .shoppingmall-box2-name .overlapno{
     color: #2abd0d;
@@ -506,10 +544,11 @@
     right: 52px;
     font-size: smaller;
 }
-@media (max-width: 1260px) {
+@media (max-width: 1440px) {
     .shoppingmall-box2-name{
         width: 60%;
     }
+
     .shoppingmall-box2-add {
         width: 22%;
         border-radius: 8px;
@@ -519,4 +558,56 @@
     #shoppingmall-box-btn button{
         width: 41%;
     }
+    .registration-div {
+        width: 95%;
+    }
+}
+.editform{
+    position: absolute;
+    top: 150px;
+    left: 200px;
+    z-index: 999;
+    width: 520px;
+
+}
+.editform-back-btn{
+    background-color: #fcfffc;
+    width: 110px;
+    position: absolute;
+    line-height: 2.4rem;
+    text-align: center;
+    border-radius: 9px;
+    color: #546374;
+    right: 165px;
+    bottom: 15px;
+    font-size: 15px;
+    margin-top: 8px;
+    box-shadow: 0 2px 5px rgb(43 42 42 / 30%);
+    border: 1px solid #546374;
+}
+.editform-back-btn:hover{
+    cursor: pointer;
+}
+
+.editform-save-btn{
+    background-color: #546374;
+    width: 110px;
+    position: absolute;
+    line-height: 2.4rem;
+    text-align: center;
+    border-radius: 9px;
+    color: #f6faf2;
+    right: 49px;
+    bottom: 15px;
+    font-size: 15px;
+    margin-top: 8px;
+    box-shadow: 0 2px 5px rgb(43 42 42 / 30%);
+    border: 1px solid #546374;
+}
+.editform-save-btn input{
+    border: none;
+    background: none;
+    color: inherit;
+    width: 100%;
+    cursor: pointer;
 }
