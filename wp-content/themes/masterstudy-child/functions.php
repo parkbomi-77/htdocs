@@ -6,3 +6,8 @@
 
 		
 	}
+
+	function codem_prevent_auto_login_after_register( $user_id ) {
+		wp_logout();
+		}
+		add_action( 'msm_user_registered', 'codem_prevent_auto_login_after_register' );
