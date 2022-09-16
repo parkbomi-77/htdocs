@@ -6,8 +6,9 @@
 
 		
 	}
-
 	function codem_prevent_auto_login_after_register( $user_id ) {
-		wp_logout();
+		if($_FILES['inputfield#0']){ //일반회원을 제외한 수의사, 수의대생만 자동로그인 방지
+			wp_logout();
 		}
-		add_action( 'msm_user_registered', 'codem_prevent_auto_login_after_register' );
+	}
+add_action( 'msm_user_registered', 'codem_prevent_auto_login_after_register' );
