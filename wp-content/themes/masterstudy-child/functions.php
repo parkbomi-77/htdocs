@@ -12,3 +12,9 @@
 		}
 	}
 add_action( 'msm_user_registered', 'codem_prevent_auto_login_after_register' );
+
+add_filter('woocommerce_save_account_details_required_fields', 'woocommerce_save_account_details_required_fields', 10, 1);
+function woocommerce_save_account_details_required_fields($fields = array()) {
+unset($fields['account_last_name']);
+return $fields;
+}
