@@ -92,7 +92,7 @@ function wc_get_account_menu_items() {
 		'edit-address'    => get_option( 'woocommerce_myaccount_edit_address_endpoint', 'edit-address' ),
 		'payment-methods' => get_option( 'woocommerce_myaccount_payment_methods_endpoint', 'payment-methods' ),
 		'edit-account'    => get_option( 'woocommerce_myaccount_edit_account_endpoint', 'edit-account' ),
-		'customer-logout' => get_option( 'woocommerce_logout_endpoint', 'customer-logout' ),
+		// 'customer-logout' => get_option( 'woocommerce_logout_endpoint', 'customer-logout' ),
 	);
 
 	$items = array(
@@ -102,7 +102,7 @@ function wc_get_account_menu_items() {
 		'edit-address'    => _n( 'Addresses', 'Address', (int) wc_shipping_enabled(), 'woocommerce' ),
 		'payment-methods' => __( 'Payment methods', 'woocommerce' ),
 		'edit-account'    => __( 'Account details', 'woocommerce' ),
-		'customer-logout' => __( 'Logout', 'woocommerce' ),
+		// 'customer-logout' => __( 'Logout', 'woocommerce' ),
 	);
 
 	// Remove missing endpoints.
