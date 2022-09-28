@@ -102,40 +102,90 @@ get_template_part( 'partials/title_box' ); ?>
         <?php wc_get_template_part( 'global/helpbar' ); ?>
         <div class="stm_archive_product_inner_grid_content">
             <?php
+            global $wpdb;
+            // 현재 접속한 회원등급 확인 
+            $userroles = $current_user->roles; 
+            $rolesstate = $userroles[0];
 
-            if( have_posts() ) : ?>
-
-                <?php woocommerce_product_loop_start(); ?>
-
-                <?php while ( have_posts() ) : the_post(); ?>
-
-                    <?php if( $layout_products == 'list' ): ?>
-                        <?php if( !$enable_shop ): ?>
-                            <div class="stm_woo_archive_view_type_list">
+            if($rolesstate === "administrator" || $rolesstate === "student_role" || $rolesstate === "vet_role"): // 관리자, 수의사, 수의대생일때는 다 보여준다
+                if( have_posts() ) : ?>
+    
+                    <?php woocommerce_product_loop_start(); ?>
+                    
+                    <?php while ( have_posts() ) : the_post(); ?>
+                        <?php if( $layout_products == 'list' ): ?>
+                            <?php if( !$enable_shop ): ?>
+                                <div class="stm_woo_archive_view_type_list">
+                            <?php endif; ?>
+                            <?php wc_get_template_part( 'content', 'product-list' ); ?>
+                            <?php if( !$enable_shop ): ?>
+                                </div>
+                            <?php endif; ?>
+                        <?php else: ?>
+    
+                            <?php wc_get_template_part( 'content', 'product' ); ?>
+    
                         <?php endif; ?>
-                        <?php wc_get_template_part( 'content', 'product-list' ); ?>
-                        <?php if( !$enable_shop ): ?>
-                            </div>
+                    <?php // endif; ?>
+                        
+    
+                    <?php endwhile; // end of the loop. ?>
+    
+                    <?php woocommerce_product_loop_end(); ?>
+    
+                    <div class="multiseparator <?php echo esc_attr( $layout_products ); ?>"></div>
+    
+                    <?php do_action( 'woocommerce_after_shop_loop' ); /* Pagination */ ?>
+    
+                <?php elseif( !woocommerce_product_loop() ) : ?>
+    
+                    <?php wc_get_template( 'loop/no-products-found.php' ); ?>
+    
+                <?php endif; ?>
+             
+            <?php else: // 일반회원, 비회원일 경우 ?> 
+
+                <?php if( have_posts() ) : ?>
+    
+                    <?php woocommerce_product_loop_start(); ?>
+                    
+                    <?php while ( have_posts() ) : the_post(); 
+                    // wp_postmeta 테이블에서 post아이디 && meta value가 general_members인것. 회원에게 공개된 포스티만 보여주기 
+                    $results = $wpdb->get_results($wpdb->prepare("SELECT * from wp_postmeta where post_id =".$post->ID." and meta_value='general_members'"));?>
+                    <?php if($results): ?>
+                        <?php if( $layout_products == 'list' ): ?>
+                            <?php if( !$enable_shop ): ?>
+                                <div class="stm_woo_archive_view_type_list">
+                            <?php endif; ?>
+                            <?php wc_get_template_part( 'content', 'product-list' ); ?>
+                            <?php if( !$enable_shop ): ?>
+                                </div>
+                            <?php endif; ?>
+                        <?php else: ?>
+    
+                            <?php wc_get_template_part( 'content', 'product' ); ?>
+    
                         <?php endif; ?>
-                    <?php else: ?>
-
-                        <?php wc_get_template_part( 'content', 'product' ); ?>
-
                     <?php endif; ?>
+                        
+    
+                    <?php endwhile; // end of the loop. ?>
+    
+                    <?php woocommerce_product_loop_end(); ?>
+    
+                    <div class="multiseparator <?php echo esc_attr( $layout_products ); ?>"></div>
+    
+                    <?php do_action( 'woocommerce_after_shop_loop' ); /* Pagination */ ?>
+    
+                <?php elseif( !woocommerce_product_loop() ) : ?>
+    
+                    <?php wc_get_template( 'loop/no-products-found.php' ); ?>
+    
+                <?php endif; ?>
 
-                <?php endwhile; // end of the loop. ?>
+            <?php endif; ?> 
+            
 
-                <?php woocommerce_product_loop_end(); ?>
-
-                <div class="multiseparator <?php echo esc_attr( $layout_products ); ?>"></div>
-
-                <?php do_action( 'woocommerce_after_shop_loop' ); /* Pagination */ ?>
-
-            <?php elseif( !woocommerce_product_loop() ) : ?>
-
-                <?php wc_get_template( 'loop/no-products-found.php' ); ?>
-
-            <?php endif; ?>
 
         </div> <!-- stm_product_inner_grid_content -->
         <?php echo wp_kses_post( $content_after ); ?>
