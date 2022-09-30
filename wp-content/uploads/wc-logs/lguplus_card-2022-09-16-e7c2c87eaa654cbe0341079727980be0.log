@@ -1,0 +1,30 @@
+09-16-2022 @ 10:20:47 - Process Payment Response : fail
+09-16-2022 @ 10:20:47 - [오류] [PAFW-ERR-S053] 사용자가 결제를 취소하였습니다
+Array
+(
+    [type] => fail
+    [res_cd] => S053
+    [res_msg] => 사용자가 결제를 취소하였습니다
+    [transaction_id] => TLGUPLUS20220916012036e68537ab65d187c7aa99
+    [order_id] => 10865
+    [woocommerce-login-nonce] => 
+    [_wpnonce] => 
+    [woocommerce-reset-password-nonce] => 
+)
+
+09-16-2022 @ 10:20:47 - Redirect : Checkout
+09-16-2022 @ 10:31:19 - Process Payment Response : fail
+09-16-2022 @ 10:31:19 - [오류] [PAFW-ERR-S053] 사용자가 결제를 취소하였습니다
+Array
+(
+    [type] => fail
+    [res_cd] => S053
+    [res_msg] => 사용자가 결제를 취소하였습니다
+    [transaction_id] => TLGUPLUS20220916013024b464d061a7dee218f1d7
+    [order_id] => 10865
+    [woocommerce-login-nonce] => 
+    [_wpnonce] => 
+    [woocommerce-reset-password-nonce] => 
+)
+
+09-16-2022 @ 10:31:19 - Redirect : Checkout
