@@ -545,9 +545,9 @@
     font-size: smaller;
 }
 @media (max-width: 1440px) {
-    .shoppingmall-box2-name{
+    /* .shoppingmall-box2-name{
         width: 60%;
-    }
+    } */
 
     .shoppingmall-box2-add {
         width: 22%;

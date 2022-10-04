@@ -34,6 +34,9 @@
     font-weight: 700;
     color: #8e8c8c;
 }
+.playbox-mall select{
+    width: 100%;
+}
 .playbox-name {
     width: 44.5%;
 }
@@ -63,27 +66,34 @@
 
 
 <?php
-
     global $wpdb, $post;
-    // lesson 영상 재생시간에 등록된 제품리스트 
-    $results = $wpdb->get_results($wpdb->prepare("SELECT * from wp_play_time where posts_lesson_id = $post->ID"));
-    $num = count($results);
-    // 광고할 제품 리스트
-    $product = $wpdb->get_results($wpdb->prepare("SELECT * from wp_product_list where adv_state = 1"));
-    $productnum = count($product);
 
+    // 해당 lesson 포스터 영상 재생시간에 설정한 제품리스트가 있으면 play_time 테이블, 제품명, 쇼핑몰명 가져오기
+    $resultrow = $wpdb->get_results($wpdb->prepare("
+        SELECT t.ID, t.posts_lesson_id, t.play_idx, t.product_time, l.product_name, s.name
+        FROM wp_play_time as t
+        join wp_product_list as l
+        on t.product_list_id = l.ID
+        join wp_shoppingmall as s
+        on l.mall_code = s.code
+        where t.posts_lesson_id =".$post->ID
+    ));
 
+    // $results = $wpdb->get_results($wpdb->prepare("SELECT * from wp_play_time where posts_lesson_id = $post->ID"));
+    $num = count($resultrow);
 
-    // 제품 옵션 선택 리스트 
-    $option = '';
-    for($i=0; $i<$productnum; $i++){
-        $add_option = '<option value = "'.$product[$i]->ID.'">'.$product[$i]->product_name.'</option>';
-        $option = $option.$add_option;
+    // 광고활성화 되어있는 쇼핑몰 리스트 불러오기
+    $shoppingmall = $wpdb->get_results($wpdb->prepare("SELECT * from wp_shoppingmall where state = 1"));
+    $shoppingmallnum = count($shoppingmall);
+    // 제품 선택 리스트 생성. 옵션태그. 
+    $sp_option = '';
+    for($i=0; $i<$shoppingmallnum; $i++){
+        $add_option = '<option value = "'.$shoppingmall[$i]->code.'">'.$shoppingmall[$i]->name.'</option>';
+        $sp_option = $sp_option.$add_option;
     }
 
-    // 처음 새로 등록할시 !  
-    if(!$results){
-?> 
+    // 해당 lesson 포스터 영상에 제품 첫 등록일때
+    if(!$resultrow){ ?> 
     <div class="playbox-container">
         <p>vimeo 영상시간 : 상품등록</p>
         <div class="playbox-list">
@@ -91,22 +101,24 @@
                 <div class="playbox-num">1</div>
                 <input type="hidden" name="playboxNum[]" value="1">
                 
-                <div class="playbox-mall">
-                    <span>--shopping mall name--</span>
-                </div>
-
                 <div class="playbox-time">
                     <input type="text" id="" name="playtime[]" 
                     value="<?php echo esc_attr( $post->playtime ); ?>" placeholder="00:00" maxlength="8"
                     onKeyup="inputTimeColon(this)" required>
                 </div>
 
-                <div class="playbox-name">
-                    <select name = "playname[]" onchange="product(this)">
-                        <option value = "" selected>제품 선택</option>
+                <div class="playbox-mall">
+                    <select name = "playmall[]" onchange="productfilter(this)">
+                        <option value = "" selected>쇼핑몰 선택</option>
                         <?php
-                            echo $option;
+                            echo $sp_option;
                         ?>
+                    </select>
+                </div>
+
+                <div class="playbox-name">
+                    <select name = "playname[]" >
+                        <option value = "" selected>제품 선택</option>
                     </select>
                 </div>
 
@@ -119,36 +131,29 @@
         </div>
     </div>
     <?php $num++; ?>
-    <!-- 기존 설정 수정할시 화면에 띄우기 -->
+
+    <!-- 해당 lesson 포스터 영상에 제품이 등록되어있을때 -->
     <?php } else { 
-    // play_box를 붙히는 형식 
-        $option = '';
-        for($i=0; $i<$productnum; $i++){
-            $add_option = '<option value = "'.$product[$i]->ID.'">'.$product[$i]->product_name.'</option>';
-            $option = $option.$add_option;
-        }
-
+        // play_box -> 영상재생시간에 제품 등록하는 행(row)들 
         $play_box = '';
-        // 디비에 저장되어있는 제품 목록 꺼내올때
+
+        // num -> 해당 포스터에 등록된 제품 수 
         for($i = 0; $i < $num; $i++){
-            $productname = $wpdb->get_results($wpdb->prepare("SELECT * from wp_product_list where ID =".$results[$i]->product_list_id ));
-            $code = $productname[0]->mall_code;
-            $mallname = $wpdb->get_results($wpdb->prepare("SELECT * from wp_shoppingmall where code =".$code ));
-
-
-            $add_play_box = ' <div class="playbox">
+            $add_play_box = '<div class="playbox">
                                 <div class="playbox-num">'.($i+1).'</div>
-                                <input type="hidden" name="playboxNum[]" value="'.$results[$i]->play_idx.'">
-                                <div class="playbox-mall">
-                                    <span>'.$mallname[0]->name.'</span>
-                                </div>
+                                <input type="hidden" name="playboxNum[]" value="'.$resultrow[$i]->play_idx.'">
                                 <div class="playbox-time">
-                                    <input type="text" id="" name="playtime[]" value="'.$results[$i]->product_time.'" maxlength="8" placeholder="00:00" onKeyup="inputTimeColon(this)" required>
+                                    <input type="text" id="" name="playtime[]" value="'.$resultrow[$i]->product_time.'" maxlength="8" placeholder="00:00" onKeyup="inputTimeColon(this)" required>
+                                </div>
+                                <div class="playbox-mall">
+                                    <select name = "playmall[]" onchange="productfilter(this)">
+                                        <option value = "'.$resultrow[$i]->code.'" selected>'.$resultrow[$i]->name.'</option>
+                                        '.$sp_option.'
+                                    </select>
                                 </div>
                                 <div class="playbox-name">
-                                    <select name = "playname[]" onchange="product(this)">
-                                        <option value = "'.$results[$i]->product_list_id.'" selected>'.$productname[0]->product_name.'</option>
-                                        '.$option.'
+                                    <select name = "playname[]">
+                                        <option value = "'.$resultrow[$i]->product_list_id.'" selected>'.$resultrow[$i]->product_name.'</option>
                                     </select>
                                 </div>
                                 <div class="playbox-trash" onclick="close_boxTag(this)" style="font-size:23px;">✖︎</div>
@@ -158,16 +163,16 @@
         }
 
 
-            echo ('<div class="playbox-container">
-                        <p>vimeo 영상시간 : 상품등록</p>
-                        <div class="playbox-list">
-                            '.$play_box.'
-                        </div>
-                        <div class="playbox-add" onclick="create_boxTag()">
-                            <div>+</div>
-                            <div>신규</div>
-                        </div>
-                    </div>');
+        echo ('<div class="playbox-container">
+                    <p>vimeo 영상시간 : 상품등록</p>
+                    <div class="playbox-list">
+                        '.$play_box.'
+                    </div>
+                    <div class="playbox-add" onclick="create_boxTag()">
+                        <div>+</div>
+                        <div>신규</div>
+                    </div>
+                </div>');
 
     }
     ?>
@@ -177,6 +182,8 @@
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
     var idxnum = <?php echo $num; ?>;
+
+    // 신규추가버튼 함수
     function create_boxTag(){
     let playboxList = document.querySelector('.playbox-list');
     let new_pTag = document.createElement('div');
@@ -186,18 +193,20 @@
     new_pTag.innerHTML = 
                 `<div class="playbox-num">${idxnum+1}</div>
                 <input type="hidden" name="playboxNum[]" value=${idxnum+1}>
-                <div class="playbox-mall">
-                    <span>--shopping mall name--</span>
-                </div>
                 <div class="playbox-time">
                     <input type="text" id="" name="playtime[]" value="<?php echo esc_attr( $post->playtime ); ?>" maxlength="8" placeholder="00:00" onKeyup="inputTimeColon(this)" required>
                 </div>
+                <div class="playbox-mall">
+                    <select name = "playmall[]" onchange="productfilter(this)">
+                        <option value = "" selected>쇼핑몰 선택</option>
+                        <?php
+                            echo $sp_option;
+                        ?>
+                    </select>
+                </div>
                 <div class="playbox-name">
-                    <select name = "playname[]" onchange="product(this)">
+                    <select name = "playname[]" onchange="" class= "product-list">
                             <option value = "" selected>제품 선택</option>
-                            <?php
-                                echo $option;
-                            ?>
                     </select>
                 </div>
                 <div class="playbox-trash" onclick="close_boxTag(this)" style="font-size:23px;">✖︎</div>`
@@ -240,20 +249,27 @@
         time.value = minute + ":" + seconds;
     }
 
-    function product(e) {
-        let playbox_mall = e.parentNode.parentNode.children[2];
-        console.log(playbox_mall);
-        $.ajax({
-                url: "http://localhost:8888/wp-admin/edit-form-showmall.php",
-                type: "post",
-                dataType : 'json',
-                data: {
-                    ID : e.value,
-                },
-            }).done((data) => {
-                playbox_mall.innerHTML = data;
-            })
+    // 쇼핑몰
+    // 벳스쿨 쇼핑몰일 경우 or 타 쇼핑몰일 경우
+    function productfilter(event){
+        let playboxName = event.parentElement.nextElementSibling.firstElementChild;
+        if(event.value === 1029){ // 벳스쿨 쇼핑몰일 경우 
+            
+
+        } else {
+            $.ajax({
+                    url: "http://localhost:8888/wp-admin/edit-form-productlist.php",
+                    type: "post",
+                    dataType : 'json',
+                    data: {
+                        code : event.value,
+                    },
+                }).done((data) => {
+                    playboxName.innerHTML = data;
+                })
+        }
     }
+
 
 </script>
 
