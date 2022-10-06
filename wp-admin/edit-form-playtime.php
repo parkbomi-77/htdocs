@@ -70,7 +70,7 @@
 
     // 해당 lesson 포스터 영상 재생시간에 설정한 제품리스트가 있으면 play_time 테이블, 제품명, 쇼핑몰명 가져오기
     $resultrow = $wpdb->get_results($wpdb->prepare("
-        SELECT t.ID, t.posts_lesson_id, t.play_idx, t.product_time, l.product_name, s.name
+        SELECT t.ID, t.posts_lesson_id, t.play_idx, t.product_time, t.product_list_id, l.product_name, s.code, s.name
         FROM wp_play_time as t
         join wp_product_list as l
         on t.product_list_id = l.ID
