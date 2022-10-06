@@ -80,19 +80,22 @@ for($i=0; $i<count($mallResults); $i++){
                                     <div class="registration-num">'.($i+1).'.</div>
                                     <input type="hidden" name="registrationNum[]" value="'.($i+1).'">
                                     <input type="hidden" name="registrationID[]" value="'.$results[$i]->ID.'">
+                                    <input type="hidden" name="shoppingMallList[]" value="'.$results[$i]->mall_code.'">
+                                    <input type="hidden" name="registrationname[]" value="'.$results[$i]->product_name.'">
+                                    <input type="hidden" name="registrationlink[]" value="'.$results[$i]->product_code.'">
+
                                     <div class="registration-mall" id="registration-mall2">
                                         <select name="shoppingMallList[]" disabled>
                                             <option value="'.$results[$i]->mall_code.'">'.$results2[0]->name.'</option>
-                                            '.$option.'
                                         </select>
                                     </div>
                                     <div class="registration-name" id="registration-name2">
-                                        <input type="text" id="" name="registrationname[]" placeholder="제품명 입력란(40)" value="'.$results[$i]->product_name.'" disabled required>
+                                        <input type="text" name="registrationname[]" value="'.$results[$i]->product_name.'" disabled>
                                         <div class="possible none">●</div>
                                         <div class="impossible none">●</div>
                                     </div>
                                     <div class="registration-link" id="registration-link2">
-                                        <input type="text" id="" name="registrationlink[]" placeholder="제품 코드(40)" value="'.$results[$i]->product_code.'" disabled required>
+                                        <input type="text" name="registrationlink[]" value="'.$results[$i]->product_code.'" disabled>
                                     </div>
                                     <div class="registration-check">
                                         <div style="display:none">'.$results[$i]->mall_code.'</div>
