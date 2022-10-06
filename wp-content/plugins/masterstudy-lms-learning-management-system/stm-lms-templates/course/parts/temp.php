@@ -90,7 +90,9 @@
                             <input type="hidden" name="user_id" value="<?php echo $current_user->ID ?>">
                             <input type="hidden" name="item_id" value="<?php echo $results[$i]->product_list_id ?>">
                             <input type="hidden" name="product_name" value="<?php echo $productname[0]->product_name ?>">
-                            <button type="submit" formaction="/page-shop.php"><i class="fas fa-shopping-bag"></i></button>
+                            <!-- 쇼핑몰로 바로가기 -->
+                            <button type="submit" formaction="/page-shop.php"><i class="fa-solid fa-shop"></i></button> 
+                            <!-- 장바구니 담기 -->
                             <button type='submit'><i class="fa-solid fa-cart-shopping"></i></button>
                         </div>
                     </div>
@@ -118,8 +120,6 @@
         player.getCurrentTime().then((currentTime) => { // 현재 재생시간
 
         currentTime = Math.round(currentTime) // 반올림하여 정수로 통일
-        console.log(currentTime)
-        console.log(TotalPlayingTime)
 
             <?php 
             $num = count($results);
