@@ -78,8 +78,6 @@
         on l.mall_code = s.code
         where t.posts_lesson_id =".$post->ID
     ));
-
-    // $results = $wpdb->get_results($wpdb->prepare("SELECT * from wp_play_time where posts_lesson_id = $post->ID"));
     $num = count($resultrow);
 
     // 광고활성화 되어있는 쇼핑몰 리스트 불러오기
@@ -91,6 +89,8 @@
         $add_option = '<option value = "'.$shoppingmall[$i]->code.'">'.$shoppingmall[$i]->name.'</option>';
         $sp_option = $sp_option.$add_option;
     }
+
+
 
     // 해당 lesson 포스터 영상에 제품 첫 등록일때
     if(!$resultrow){ ?> 
@@ -253,21 +253,16 @@
     // 벳스쿨 쇼핑몰일 경우 or 타 쇼핑몰일 경우
     function productfilter(event){
         let playboxName = event.parentElement.nextElementSibling.firstElementChild;
-        if(event.value === 1029){ // 벳스쿨 쇼핑몰일 경우 
-            
-
-        } else {
-            $.ajax({
-                    url: "http://localhost:8888/wp-admin/edit-form-productlist.php",
-                    type: "post",
-                    dataType : 'json',
-                    data: {
-                        code : event.value,
-                    },
-                }).done((data) => {
-                    playboxName.innerHTML = data;
-                })
-        }
+        $.ajax({
+                url: "http://localhost:8888/wp-admin/edit-form-productlist.php",
+                type: "post",
+                dataType : 'json',
+                data: {
+                    code : event.value,
+                },
+            }).done((data) => {
+                playboxName.innerHTML = data;
+            })
     }
 
 
