@@ -33,21 +33,21 @@ for($i=0; $i<$num; $i++){
 
     $playtimerow = $wpdb->get_results($wpdb->prepare("SELECT * from wp_play_time where product_list_id ={$deletecheck[$i]}"));
 
-    for($i=0; $i<count($playtimerow); $i++){
+    for($j=0; $j<count($playtimerow); $j++){
         // 영상 재생시간에 맞는 제품 노출 리스트 DB에서 삭제 
         $wpdb->delete('wp_play_time', 
         array(
-            'ID' => $playtimerow[$i]->ID
+            'ID' => $playtimerow[$j]->ID
         ));
     }
     
     //유저 장바구니 리스트에서도 삭제하기
     $cartrow = $wpdb->get_results($wpdb->prepare("SELECT * from wp_wish_list where item_id ={$deletecheck[$i]}"));
-    for($i=0; $i<count($cartrow); $i++){
+    for($n=0; $n<count($cartrow); $n++){
         // 영상 재생시간에 맞는 제품 노출 리스트 DB에서 삭제 
         $wpdb->delete('wp_wish_list', 
         array(
-            'ID' => $cartrow[$i]->ID
+            'ID' => $cartrow[$n]->ID
         ));
     }
 

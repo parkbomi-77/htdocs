@@ -31,7 +31,7 @@ for($i=0; $i<count($mallResults); $i++){
             </div>
             <div class="registration-list">
                 <div class="registration-div">
-                    <input type="checkbox" name="deletecheck">
+                    <input type="checkbox" name="deletecheck[]">
                     <div class="registration-num">1.</div>
                     <input type="hidden" name="registrationNum[]" value="1">
                     <input type="hidden" name="registrationID[]" value="0">
@@ -222,7 +222,7 @@ for($i=0; $i<count($mallResults); $i++){
         new_pTag.setAttribute('class', 'registration-div');
         // 신규로 추가하는 행
         new_pTag.innerHTML = 
-                    `<input type="checkbox" name="deletecheck">
+                    `<input type="checkbox" name="deletecheck[]">
                     <div class="registration-num">${Count}.</div>
                     <input type="hidden" name="registrationNum[]" value=${Count}>
                     <input type="hidden" name="registrationID[]" value="0">
