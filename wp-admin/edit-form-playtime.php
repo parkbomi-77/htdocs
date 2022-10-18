@@ -3,8 +3,10 @@
     width: 100%;
     padding: 15px 0;
 }
-.playbox-container>div {
-    margin: 2px 0;
+.registrationtitle {
+    font-size: large;
+    font-weight: 700;
+    padding: 0px 10px 10px;
 }
 .playbox{
     max-width: 900px;
@@ -53,15 +55,32 @@
 .playbox-add{
     display: flex;
     justify-content: center;
-    align-items : center;
-    border : 1px solid rgba(23, 27, 29, 0.4);
-    border-radius: 5px;
+    align-items: center;
+    /* border: 1px solid rgba(23, 27, 29, 0.4); */
+    border-radius: 0 0 4px 4px;
     max-width: 900px;
     height: 30px;
+    background-color: white;
+    padding: 0 0 30px;
 }
 .playbox-add:hover{
     cursor: pointer;
 }
+.playbox-list{
+    padding: 25px 0 0;
+    border-radius: 4px 4px 0 0;
+    background-color: white;
+}
+.addbtn{
+    margin: 4px 0 0 3px;
+    width: 94%;
+    background-color: #2271b1;
+    text-align: center;
+    border-radius: 3px;
+    line-height: 30px;
+    color: whitesmoke;
+}
+
 </style>
 
 
@@ -95,7 +114,7 @@
     // 해당 lesson 포스터 영상에 제품 첫 등록일때
     if(!$resultrow){ ?> 
     <div class="playbox-container">
-        <p>vimeo 영상시간 : 상품등록</p>
+        <div class="registrationtitle">vimeo 영상시간 : 상품등록</div>
         <div class="playbox-list">
             <div class="playbox">
                 <div class="playbox-num">1</div>
@@ -126,8 +145,7 @@
             </div>
         </div>
         <div class="playbox-add" onclick="create_boxTag()">
-            <div>+</div>
-            <div>신규</div>
+            <div class="addbtn">신규</div>
         </div>
     </div>
     <?php $num++; ?>
@@ -164,13 +182,12 @@
 
 
         echo ('<div class="playbox-container">
-                    <p>vimeo 영상시간 : 상품등록</p>
+                    <div class="registrationtitle">vimeo 영상시간 : 상품등록</div>
                     <div class="playbox-list">
                         '.$play_box.'
                     </div>
                     <div class="playbox-add" onclick="create_boxTag()">
-                        <div>+</div>
-                        <div>신규</div>
+                        <div class="addbtn">신규</div>
                     </div>
                 </div>');
 
