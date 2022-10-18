@@ -80,6 +80,9 @@
         @media screen and (max-width: 1632px) {
 
         }
+        .vetcart{
+            display: inline;
+        }
     </style>
 
 
@@ -122,7 +125,9 @@
                                     <button type="submit" formaction="/page-shop.php">바로가기</button> 
                                     
                                     <!-- 장바구니 담기 -->
-                                    <?php do_action( 'woocommerce_' . $product->get_type() . '_add_to_cart' ); ?>
+                                    <div class="vetcart" onclick="vetcartmodal()">
+                                        <?php do_action( 'woocommerce_' . $product->get_type() . '_add_to_cart' ); ?>
+                                    </div>
 
                                     <!-- <button onclick="vetsubmit()"><i class="fa-solid fa-cart-shopping"></i></button> -->
                                 </div>
@@ -200,5 +205,9 @@
         });   
     }
    let interval = setInterval(getCurrentTime, 500);
+
+   function vetcartmodal() {
+        alert('장바구니에 담았습니다');
+   }
 
 </script>
