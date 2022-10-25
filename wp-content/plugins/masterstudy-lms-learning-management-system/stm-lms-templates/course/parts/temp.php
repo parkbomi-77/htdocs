@@ -62,6 +62,16 @@
             align-items: center;
             width: 100%;
         }
+        .box-name .box-title{
+            line-height: 22px;
+            font-size: initial;
+        }
+        .box-time{
+            font-size: 13px;
+            color: #8e8e8e;
+            line-height: 14px;
+            margin-top: 5px;
+        }
         .box-cart{
             /* display: flex; */
             font-size: 20px;
@@ -128,8 +138,13 @@
                         <form id="wishform" method='POST' target="iframe1">
                             <iframe id="iframe1" name="iframe1" style="display:none"></iframe>
                             <div class="box-flex">
-                                <div>
-                                    <?php echo $productname[0]->product_name ?> 
+                                <div class="box-name">
+                                    <div class="box-title">
+                                        <?php echo $productname[0]->product_name ?> 
+                                    </div>
+                                    <div class="box-time"> 
+                                        time
+                                    </div>
                                 </div>
                                 <div class="box-cart">
                                     <input type="hidden" name="user_id" value="<?php echo $current_user->ID ?>">
@@ -210,7 +225,11 @@
                 $seconds = substr($time, 3, 2); 
                 $play_time = $minute*60 + $seconds; ?> //초로 변환하기 
                 if(<?= $play_time ?> <= currentTime && currentTime <= <?= $play_time+4 ?>) { // 시작시간, 끝시간 설정 
-                    document.getElementById(<?= $results[$i]->play_idx ?>).style.display = "block"
+                    let block = document.getElementById(<?= $results[$i]->play_idx ?>);
+                    block.style.display = "block";
+                    block.querySelector('.box-time').innerText = "<?php echo $time ?>"
+                    
+
                 }
             <?php
             } ?>
