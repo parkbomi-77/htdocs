@@ -98,16 +98,13 @@
     let state = ''
 
     function add(){
-        // document.querySelector(".shoppingmall-box").classList.add('none');
         document.querySelector(".shoppingmall-box2").classList.remove('none');
 
-        $("#popup").draggable({containment : "window"});
-        // let popupmove = document.querySelector('#popup')
-        // console.log(popupmove);
-        // popupmove.addEventlistener("mousmove", function(e) {
-        //     popupmaove.style.left = e.clientX + 'px';
-        //     popupmove.style.top = e.clientY + 'px';
-        // })
+        $("#popup").draggable({
+            // containment : "window",
+            revert: true
+        });
+      
     }
     function edit(e) {
         if(state === ''){
@@ -199,7 +196,19 @@
         state = "";
     }
     function back() {
-        document.querySelector(".shoppingmall-box").classList.remove('none');
+        // 입력값 빈칸으로 초기화
+        let mallname = document.getElementById("mallname")
+        let link = document.getElementById("link")
+        let link2 = document.getElementById("link2")
+        mallname.value = null;
+        link.value = null;
+        link2.value = null;
+
+        //중복체크 초기화
+        let overlapno = document.querySelectorAll(".overlapno")
+        overlapno.forEach(el => el.classList.add('none'))
+
+
         document.querySelector(".shoppingmall-box2").classList.add('none');
     }
     function mallnamecheck(e) {
