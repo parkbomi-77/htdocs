@@ -112,7 +112,7 @@ $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목�
         <th scope="col"><?php echo subject_sort_link("it_id", $qstr, 1); ?>상품코드</a></th>
         <th scope="col"><?php echo subject_sort_link("it_name"); ?>상품명</a></th>
         <th scope="col"><?php echo subject_sort_link("it_1_subj", $qstr, 1); ?>광고<br>상품</a></th>
-        <th scope="col">관리</th>
+        <!-- <th scope="col">관리</th> -->
     </tr>
     </thead>
     <tbody>
@@ -131,9 +131,9 @@ $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목�
             <label for="type1_<?php echo $i; ?>" class="sound_only">광고상품</label>
             <input type="checkbox" name="it_1_subj[<?php echo $i; ?>]" value="1" id="type1_<?php echo $i; ?>" <?php echo ($row['it_1_subj'] ? 'checked' : ''); ?>>
         </td>
-        <td class="td_mng td_mng_s">
+        <!-- <td class="td_mng td_mng_s">
             <a href="./itemform.php?w=u&amp;it_id=<?php echo $row['it_id']; ?>&amp;ca_id=<?php echo $row['ca_id']; ?>&amp;<?php echo $qstr; ?>" class="btn btn_03"><span class="sound_only"><?php echo cut_str(stripslashes($row['it_name']), 60, "&#133"); ?> </span>수정</a>
-         </td>
+         </td> -->
     </tr>
     <?php
     }

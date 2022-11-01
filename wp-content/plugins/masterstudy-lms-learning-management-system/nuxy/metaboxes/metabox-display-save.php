@@ -13,6 +13,8 @@
 
 
     global $wpdb;
+
+    // 벳스쿨 판매제품 리스트 wp_product_list
     $results = $wpdb->get_results($wpdb->prepare("SELECT * from wp_product_list"));
     $totalNum = count($results); // 기존에 등록되어있던 전체 제품 수
     // $id = count($registrationID); // 그대로인 항목

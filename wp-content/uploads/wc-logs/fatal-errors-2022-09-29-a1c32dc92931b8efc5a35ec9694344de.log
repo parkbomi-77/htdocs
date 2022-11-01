@@ -1,9 +1,0 @@
-2022-09-29T07:30:52+00:00 CRITICAL Uncaught Error: Class 'Redux_Enqueue' not found in /Applications/MAMP/htdocs/wp-content/plugins/wp-mail-logging/src/WPML_OptionsManager.php:453
-Stack trace:
-#0 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(307): No3x\WPML\WPML_OptionsManager->LogMenu('')
-#1 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(331): WP_Hook->apply_filters('', Array)
-#2 /Applications/MAMP/htdocs/wp-includes/plugin.php(476): WP_Hook->do_action(Array)
-#3 /Applications/MAMP/htdocs/wp-admin/admin.php(259): do_action('tools_page_wpml...')
-#4 {main}
-  thrown(/Applications/MAMP/htdocs/wp-content/plugins/wp-mail-logging/src/WPML_OptionsManager.php, 줄 453)
-

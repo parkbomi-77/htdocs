@@ -1,0 +1,101 @@
+2022-10-07T07:06:54+00:00 CRITICAL Uncaught Error: Call to a member function is_purchasable() on null in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/woocommerce/single-product/add-to-cart/simple.php:22
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /Applications/MAMP/htdocs/wp-content/plugins/woocommerce/includes/wc-template-functions.php(1676): wc_get_template('single-product/...')
+#2 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(307): woocommerce_simple_add_to_cart('')
+#3 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(331): WP_Hook->apply_filters('', Array)
+#4 /Applications/MAMP/htdocs/wp-includes/plugin.php(476): WP_Hook->do_action(Array)
+#5 /Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system/stm-lms-templates/course/parts/temp.php(151): do_action('woocommerce_sim...')
+#6 /Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system/stm-lms-templates/course/parts/temp.php(19(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/woocommerce/single-product/add-to-cart/simple.php, 줄 22)
+
+2022-10-07T07:07:38+00:00 CRITICAL Uncaught Error: Call to a member function is_purchasable() on null in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/woocommerce/single-product/add-to-cart/simple.php:22
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /Applications/MAMP/htdocs/wp-content/plugins/woocommerce/includes/wc-template-functions.php(1676): wc_get_template('single-product/...')
+#2 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(307): woocommerce_simple_add_to_cart('')
+#3 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(331): WP_Hook->apply_filters('', Array)
+#4 /Applications/MAMP/htdocs/wp-includes/plugin.php(476): WP_Hook->do_action(Array)
+#5 /Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system/stm-lms-templates/course/parts/temp.php(151): do_action('woocommerce_sim...')
+#6 /Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system/stm-lms-templates/course/parts/temp.php(19(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/woocommerce/single-product/add-to-cart/simple.php, 줄 22)
+
+2022-10-07T07:07:45+00:00 CRITICAL Uncaught Error: Call to a member function is_purchasable() on null in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/woocommerce/single-product/add-to-cart/simple.php:22
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /Applications/MAMP/htdocs/wp-content/plugins/woocommerce/includes/wc-template-functions.php(1676): wc_get_template('single-product/...')
+#2 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(307): woocommerce_simple_add_to_cart('')
+#3 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(331): WP_Hook->apply_filters('', Array)
+#4 /Applications/MAMP/htdocs/wp-includes/plugin.php(476): WP_Hook->do_action(Array)
+#5 /Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system/stm-lms-templates/course/parts/temp.php(151): do_action('woocommerce_sim...')
+#6 /Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system/stm-lms-templates/course/parts/temp.php(19(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/woocommerce/single-product/add-to-cart/simple.php, 줄 22)
+
+2022-10-07T07:08:34+00:00 CRITICAL Uncaught Error: Call to a member function is_purchasable() on null in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/woocommerce/single-product/add-to-cart/simple.php:22
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /Applications/MAMP/htdocs/wp-content/plugins/woocommerce/includes/wc-template-functions.php(1676): wc_get_template('single-product/...')
+#2 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(307): woocommerce_simple_add_to_cart('')
+#3 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(331): WP_Hook->apply_filters('', Array)
+#4 /Applications/MAMP/htdocs/wp-includes/plugin.php(476): WP_Hook->do_action(Array)
+#5 /Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system/stm-lms-templates/course/parts/temp.php(151): do_action('woocommerce_sim...')
+#6 /Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system/stm-lms-templates/course/parts/temp.php(19(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/woocommerce/single-product/add-to-cart/simple.php, 줄 22)
+
+2022-10-07T07:11:01+00:00 CRITICAL Uncaught Error: Call to a member function is_purchasable() on null in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/woocommerce/single-product/add-to-cart/simple.php:22
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /Applications/MAMP/htdocs/wp-content/plugins/woocommerce/includes/wc-template-functions.php(1676): wc_get_template('single-product/...')
+#2 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(307): woocommerce_simple_add_to_cart('')
+#3 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(331): WP_Hook->apply_filters('', Array)
+#4 /Applications/MAMP/htdocs/wp-includes/plugin.php(476): WP_Hook->do_action(Array)
+#5 /Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system/stm-lms-templates/course/parts/temp.php(151): do_action('woocommerce_sim...')
+#6 /Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system/stm-lms-templates/course/parts/temp.php(19(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/woocommerce/single-product/add-to-cart/simple.php, 줄 22)
+
+2022-10-07T07:11:19+00:00 CRITICAL Uncaught Error: Call to a member function is_purchasable() on null in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/woocommerce/single-product/add-to-cart/simple.php:22
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /Applications/MAMP/htdocs/wp-content/plugins/woocommerce/includes/wc-template-functions.php(1676): wc_get_template('single-product/...')
+#2 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(307): woocommerce_simple_add_to_cart('')
+#3 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(331): WP_Hook->apply_filters('', Array)
+#4 /Applications/MAMP/htdocs/wp-includes/plugin.php(476): WP_Hook->do_action(Array)
+#5 /Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system/stm-lms-templates/course/parts/temp.php(151): do_action('woocommerce_sim...')
+#6 /Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system/stm-lms-templates/course/parts/temp.php(19(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/woocommerce/single-product/add-to-cart/simple.php, 줄 22)
+
+2022-10-07T07:14:19+00:00 CRITICAL Uncaught Error: Call to a member function is_purchasable() on null in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/woocommerce/single-product/add-to-cart/simple.php:22
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /Applications/MAMP/htdocs/wp-content/plugins/woocommerce/includes/wc-template-functions.php(1676): wc_get_template('single-product/...')
+#2 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(307): woocommerce_simple_add_to_cart('')
+#3 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(331): WP_Hook->apply_filters('', Array)
+#4 /Applications/MAMP/htdocs/wp-includes/plugin.php(476): WP_Hook->do_action(Array)
+#5 /Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system/stm-lms-templates/course/parts/temp.php(151): do_action('woocommerce_sim...')
+#6 /Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system/stm-lms-templates/course/parts/temp.php(19(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/woocommerce/single-product/add-to-cart/simple.php, 줄 22)
+
+2022-10-07T07:19:57+00:00 CRITICAL Uncaught Error: Call to a member function is_purchasable() on null in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/woocommerce/single-product/add-to-cart/simple.php:22
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /Applications/MAMP/htdocs/wp-content/plugins/woocommerce/includes/wc-template-functions.php(1676): wc_get_template('single-product/...')
+#2 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(307): woocommerce_simple_add_to_cart('')
+#3 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(331): WP_Hook->apply_filters('', Array)
+#4 /Applications/MAMP/htdocs/wp-includes/plugin.php(476): WP_Hook->do_action(Array)
+#5 /Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system/stm-lms-templates/course/parts/temp.php(150): do_action('woocommerce_sim...')
+#6 /Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system/stm-lms-templates/course/parts/temp.php(19(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/woocommerce/single-product/add-to-cart/simple.php, 줄 22)
+
+2022-10-07T07:20:00+00:00 CRITICAL Uncaught Error: Call to a member function is_purchasable() on null in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/woocommerce/single-product/add-to-cart/simple.php:22
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /Applications/MAMP/htdocs/wp-content/plugins/woocommerce/includes/wc-template-functions.php(1676): wc_get_template('single-product/...')
+#2 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(307): woocommerce_simple_add_to_cart('')
+#3 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(331): WP_Hook->apply_filters('', Array)
+#4 /Applications/MAMP/htdocs/wp-includes/plugin.php(476): WP_Hook->do_action(Array)
+#5 /Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system/stm-lms-templates/course/parts/temp.php(150): do_action('woocommerce_sim...')
+#6 /Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system/stm-lms-templates/course/parts/temp.php(19(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/woocommerce/single-product/add-to-cart/simple.php, 줄 22)
+
+2022-10-07T07:26:00+00:00 CRITICAL Uncaught Error: Call to a member function get_type() on null in /Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system/stm-lms-templates/course/parts/temp.php:153
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system/stm-lms-templates/course/parts/temp.php(150): action()
+#1 /Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system/stm-lms-templates/course/parts/temp.php(200): php_func()
+#2 /Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system/stm-lms-templates/stm-lms-lesson.php(105): require('/Applications/M...')
+#3 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include('/Applications/M...')
+#4 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#5 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#6 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/plugins/masterstudy-lms-learning-management-system/stm-lms-templates/course/parts/temp.php, 줄 153)
+

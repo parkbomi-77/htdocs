@@ -54,11 +54,8 @@
 /* 신규 추가 버튼 */
 .playbox-add{
     display: flex;
-    justify-content: center;
     align-items: center;
-    /* border: 1px solid rgba(23, 27, 29, 0.4); */
     border-radius: 0 0 4px 4px;
-    max-width: 900px;
     height: 30px;
     background-color: white;
     padding: 0 0 30px;
@@ -72,8 +69,8 @@
     background-color: white;
 }
 .addbtn{
-    margin: 4px 0 0 3px;
-    width: 94%;
+    margin: 4px 0 0 24px;
+    width: 88.6%;
     background-color: #2271b1;
     text-align: center;
     border-radius: 3px;
