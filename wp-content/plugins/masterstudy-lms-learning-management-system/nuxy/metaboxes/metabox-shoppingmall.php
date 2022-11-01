@@ -216,40 +216,50 @@
         document.querySelector(".shoppingmall-box2").classList.add('none');
     }
     function mallnamecheck(e) {
-        $.ajax({
-            url: "http://localhost:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-shoppingmall-check.php",
-            type: "post",
-            dataType : 'text',
-            data: {
-                mallname : e.value,
-            },
-        }).done((data) => {
-            if(data === '통과'){
-                e.parentElement.children[2].classList.remove('none')
-                e.parentElement.children[3].classList.add('none')
-            }else if(data === '중복'){
-                e.parentElement.children[3].classList.remove('none')
-                e.parentElement.children[2].classList.add('none')
-            }
-        })
+        if(e.value === ""){ // 입력값이 없을 경우 
+            e.parentElement.children[3].classList.add('none')
+            e.parentElement.children[2].classList.add('none')
+        }else { // 입력값이 들어왔을 경우 
+            $.ajax({
+                url: "http://localhost:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-shoppingmall-check.php",
+                type: "post",
+                dataType : 'text',
+                data: {
+                    mallname : e.value,
+                },
+            }).done((data) => {
+                if(data === '통과'){
+                    e.parentElement.children[2].classList.remove('none')
+                    e.parentElement.children[3].classList.add('none')
+                }else if(data === '중복'){
+                    e.parentElement.children[3].classList.remove('none')
+                    e.parentElement.children[2].classList.add('none')
+                }
+            })
+        }
     }
     function linkcheck(e) {
-        $.ajax({
-            url: "http://localhost:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-shoppingmall-check.php",
-            type: "post",
-            dataType : 'text',
-            data: {
-                link : e.value,
-            },
-        }).done((data) => {
-            if(data === '통과'){
-                e.parentElement.children[2].classList.remove('none')
-                e.parentElement.children[3].classList.add('none')
-            }else if(data === '중복'){
-                e.parentElement.children[3].classList.remove('none')
-                e.parentElement.children[2].classList.add('none')
-            }
-        })
+        if(e.value === ""){ // 입력값이 없을 경우 
+            e.parentElement.children[3].classList.add('none')
+            e.parentElement.children[2].classList.add('none')
+        }else {
+            $.ajax({
+                url: "http://localhost:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-shoppingmall-check.php",
+                type: "post",
+                dataType : 'text',
+                data: {
+                    link : e.value,
+                },
+            }).done((data) => {
+                if(data === '통과'){
+                    e.parentElement.children[2].classList.remove('none')
+                    e.parentElement.children[3].classList.add('none')
+                }else if(data === '중복'){
+                    e.parentElement.children[3].classList.remove('none')
+                    e.parentElement.children[2].classList.add('none')
+                }
+            })
+        }
     }
     // 엔터로 submit 막기 
     document.addEventListener('keydown', function(event) {
