@@ -207,7 +207,11 @@
         //중복체크 초기화
         let overlapno = document.querySelectorAll(".overlapno")
         overlapno.forEach(el => el.classList.add('none'))
-
+        let overlap = document.querySelectorAll(".overlap")
+        overlap.forEach(el => el.classList.add('none'))
+        
+        //빈칸 체크 초기화
+        document.querySelector(".blankcheck").classList.add('none');
 
         document.querySelector(".shoppingmall-box2").classList.add('none');
     }
