@@ -3,15 +3,15 @@ define( 'SHORTINIT', true );
 require_once( $_SERVER['DOCUMENT_ROOT'].'/wp-load.php' );
  global $wpdb;
 
-$code = $_POST['code'];
-$product = $_POST['productId'];
+$code = $_POST['mallcode'];
+$product = $_POST['productcode'];
 
 $mall = $wpdb->get_results($wpdb->prepare("SELECT*FROM wp_shoppingmall where code =".$code));
 
 // mall link 얻기
 $link = $mall[0]->link;
 
-echo $link.$product;
+echo $link."product/".$product;
 
 
 

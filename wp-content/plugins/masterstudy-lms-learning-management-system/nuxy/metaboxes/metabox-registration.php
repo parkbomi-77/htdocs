@@ -10,47 +10,40 @@ for($i=0; $i<count($mallResults); $i++){
 }
 ?>
 
-<form method="post" class="registrationform" >
+<form method="post" class="registrationform" onsubmit="return deletebtn()">
     <?php
 
         global $wpdb, $post;
-        // 등록한 제품 list 불러오기
-        $results = $wpdb->get_results($wpdb->prepare("SELECT * from wp_product_list where adv_state = 1"));
+
+        function productlist($sql) {
+            global $wpdb; 
+            return $wpdb->get_results($wpdb->prepare($sql));
+        }
+        // 등록한 제품 , 쇼핑몰 이름 join하여 list 불러오기 
+        $allsql = "select wp_product_list.*, wp_shoppingmall.name 
+                from wp_product_list
+                join wp_shoppingmall
+                on wp_product_list.mall_code = wp_shoppingmall.code
+                where adv_state = 1";
+        $results = productlist($allsql);
+
+        // 등록한 상품이 있는지 체크 
         $num = count($results);
 
-        // 첫 등록할시 !  
-        if(!$results){
-        ?> 
+        // 등록한 상품이 없을때
+        if(!$results){ ?> 
         <div class="registration-container">
-            <p> product list </p>
-            <div class="registration-title">
-                <div class="registration-title-num"> no. </div>
-                <div class="registration-title-mall"> shoppingmall_name </div>
-                <div class="registration-title-name"> product_name </div>
-                <div class="registration-title-link"> product_code </div>
-            </div>
-            <div class="registration-list">
-                <div class="registration-div">
-                    <input type="checkbox" name="deletecheck[]">
-                    <div class="registration-num">1.</div>
-                    <input type="hidden" name="registrationNum[]" value="1">
-                    <input type="hidden" name="registrationID[]" value="0">
-                    <div class="registration-mall" id="registration-mall2">
-                        <select name="shoppingMallList[]" required>
-                            <option value="">쇼핑몰을 선택해주세요</option>
-                            <?php echo $option ?>
-                        </select>
-                    </div>
-                    <div class="registration-name" id="registration-name2">
-                        <input type="text" id="" name="registrationname[]" placeholder="제품명 입력란(40)" onchange="overlapchange(this)" required>
-                    </div>
-                    <div class="registration-link" id="registration-link2">
-                        <input type="text" id="" name="registrationlink[]" placeholder="제품 코드(40)" required>
-                        <div class="possible none">●</div>
-                        <div class="impossible none">●</div>
-                    </div>
-                    <div class="playbox-trash2" onclick="close_registrationTag(this)" style="font-size:23px;"><i class="fas fa-minus"></i></div>
+            <div class="shoppingmall_title">
+                <div>shoppingmall</div>
+                <div class="shoppingmall_select">
+                    <select name="" id="">
+                        <option value="">쇼핑몰명</option>
+                        <?php echo $option ?>
+                    </select>
                 </div>
+            </div>
+            <div class="registration_empty">
+                등록한 제품이 없습니다.
             </div>
             <div class="registration-add" onclick="create_registration_Tag()">
                 <div>+</div>
@@ -58,83 +51,80 @@ for($i=0; $i<count($mallResults); $i++){
             </div>
 
             <div class="registration-inputbox">
-                <input class="registration_delete_btn" type="submit" onclick="deletebtn()"
+                <input class="registration_delete_btn" type="submit"
                 value="DELETE" formaction="/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-delete.php">
-                <input class="registration_save_btn" type="submit" onclick="savebtn(event)"
-                value="SAVE" formaction="/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-display-save.php" >
-            </div>
-
-            
+            </div> 
         </div>
         <?php $num++; ?>
-        <!-- 추가로 등록할시 먼저 db에서 list 출력-->
+        <!-- 등록한 상품들 조회 -->
         <?php } else { 
             
-            $registration_box = '';
-            for($i = 0; $i < $num; $i++){
-                $results2 = $wpdb->get_results($wpdb->prepare("SELECT * from wp_shoppingmall where code ={$results[$i]->mall_code}"));
-                
-                $add_registration_box = ' 
-                                <div class="registration-div">
-                                    <input type="checkbox" name="deletecheck[]" value="'.$results[$i]->ID.'">
-                                    <div class="registration-num">'.($i+1).'.</div>
-                                    <input type="hidden" name="registrationNum[]" value="'.($i+1).'">
-                                    <input type="hidden" name="registrationID[]" value="'.$results[$i]->ID.'">
-                                    <input type="hidden" name="shoppingMallList[]" value="'.$results[$i]->mall_code.'">
-                                    <input type="hidden" name="registrationname[]" value="'.$results[$i]->product_name.'">
-                                    <input type="hidden" name="registrationlink[]" value="'.$results[$i]->product_code.'">
+            function productlist_filter ($num, $results) {
+                $all_registration = '';
+                for($i = 0; $i < $num; $i++){
+                    $one_registration = ' 
+                        <div class="registration-div">
+                            <input type="checkbox" name="deletecheck[]" value="'.$results[$i]->ID.'">
+                            <div class="registration-num">'.($i+1).'</div>
+                            <input type="hidden" name="registrationNum[]" value="'.($i+1).'">
+                            <input type="hidden" name="registrationID[]" value="'.$results[$i]->ID.'">
+                            <input type="hidden" name="shoppingMallList[]" value="'.$results[$i]->mall_code.'">
+                            <input type="hidden" name="registrationname[]" value="'.$results[$i]->product_name.'">
+                            <input type="hidden" name="registrationlink[]" value="'.$results[$i]->product_code.'">
 
-                                    <div class="registration-mall" id="registration-mall2">
-                                        <select name="shoppingMallList[]" disabled>
-                                            <option value="'.$results[$i]->mall_code.'">'.$results2[0]->name.'</option>
-                                        </select>
-                                    </div>
-                                    <div class="registration-name" id="registration-name2">
-                                        <input type="text" name="registrationname[]" value="'.$results[$i]->product_name.'" disabled>
-                                        <div class="possible none">●</div>
-                                        <div class="impossible none">●</div>
-                                    </div>
-                                    <div class="registration-link" id="registration-link2">
-                                        <input type="text" name="registrationlink[]" value="'.$results[$i]->product_code.'" disabled>
-                                    </div>
-                                    <div class="registration-check">
-                                        <div style="display:none">'.$results[$i]->mall_code.'</div>
-                                        <div style="display:none">'.$results[$i]->product_code.'</div>
-                                        <div style="display:none">'.$results[$i]->product_name.'</div>
-                                        <div style="display:none">'.($i+1).'</div>
-                                        <div style="display:none">'.$results[$i]->ID.'</div>
+                            <div class="registration-mall" id="registration-mall2">
+                                <input type="text" name="shoppingMallList[]" value="'.$results[$i]->name.'" disabled>
+                            </div>
+                            <div class="registration-name" id="registration-name2">
+                                <input type="text" name="registrationname[]" value="'.$results[$i]->product_name.'" disabled>
+                            </div>
+                            <div class="registration-link" id="registration-link2">
+                                <input type="text" name="registrationlink[]" value="'.$results[$i]->product_code.'" disabled>
+                                
+                            </div>
+                            <div class="registration-check">
+                                <button class="edit" onclick="editfunc('.($i).')"><i class="fas fa-pen"></i></button>
+                                <button class="reset none" onclick="backfunc('.($i).')"><i class="fas fa-chevron-left"></i></button>
+                                <button class="save none" onclick="savefunc('.($i).','.$results[$i]->ID.')"><i class="far fa-save fa-lg"></i></button>
 
-
-                                        <button class="move" onclick="check(event)"><i class="fas fa-share"></i></button>
-                                        <button class="edit" onclick="editbtn(event)"><i class="fas fa-pen"></i></button>
-                                    </div>
-                                </div>
-                                ';
-                $registration_box = $registration_box.$add_registration_box ;
+                            </div>
+                        </div>
+                        ';
+                    $all_registration = $all_registration.$one_registration ;
+                }
+                return $all_registration;
             }
-                echo ('<div class="registration-container">
-                            <p> product list </p>
-                            <div class="registration-title">
-                                <div class="registration-title-num"> no. </div>
-                                <div class="registration-title-mall"> shoppingmall_name </div>
-                                <div class="registration-title-name"> product_name </div>
-                                <div class="registration-title-link"> product_code </div>
-                            </div>
-                            <div class="registration-list">
-                                '.$registration_box.'
-                            </div>
-                            <div class="registration-add" onclick="create_registration_Tag()">
-                                <div>+</div>
-                                <div>신규</div>
-                            </div>
 
-                            <div class="registration-inputbox">
-                                <input class="registration_delete_btn" type="submit" onclick="deletebtn()"
-                                value="DELETE" formaction="/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-delete.php">
-                                <input class="registration_save_btn" type="submit" onclick="savebtn(event)"
-                                value="SAVE" formaction="/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-display-save.php" >
+
+            echo ('<div class="registration-container">
+                        <div class="shoppingmall_title">
+                            <div>shoppingmall</div>
+                            <div class="shoppingmall_select">
+                                <select name="shoppingmall_change" id="" onchange="javascript:listchange(this)">
+                                    <option value="">쇼핑몰명</option>
+                                    '.$option.' 
+                                </select>
                             </div>
-                        </div>');
+                        </div>
+                        <div class="registration-title">
+                            <div class="registration-title-mall"> shoppingmall_name </div>
+                            <div class="registration-title-name"> product_name </div>
+                            <div class="registration-title-link"> product_code </div>
+                        </div>
+                        <div class="registration-list">
+                            '.productlist_filter($num, $results).'
+                        </div>
+                        <div class="registration-add" onclick="create_registration_Tag()">
+                            <div>+</div>
+                            <div>신규</div>
+                        </div>
+
+                        <div class="registration-inputbox">
+                            <input class="registration_delete_btn" type="submit"
+                            value="DELETE" formaction="/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-delete.php">
+                        </div>
+                    </div>'
+                );
         
             }
     ?>
@@ -142,38 +132,41 @@ for($i=0; $i<count($mallResults); $i++){
 
 </form>
 
-<div class="editform none" id="popup2" >
-    <form  method="post" name="" >
-    <input type="hidden" name="registrationNum[]" id="editformnum" value="">
-    <input type="hidden" name="registrationID[]" id="editformid" value="">
+<div class="new_registration none">
+    <form  method="post">
         <div class="shoppingmall-box2-header">
-            product_name edit
+            new product registration
         </div>
         <div class="shoppingmall-box2-body">
             <div class="shoppingmall-box2-row">
                 <div class="shoppingmall-box2-name">
                     쇼핑몰 : 
-                    <select name="shoppingMallList[]" id="editformmallcode" required>
+                    <select name="shoppingMallList" class="editformmallcode" required>
                         <option value="">쇼핑몰을 선택해주세요</option>
                         <?php echo $option ?>
                     </select>
                 </div>
                 <div class="shoppingmall-box2-link">
                     상품명 : 
-                    <input type="text" name="registrationname[]" id="editformmallname" value="" onchange="overlapchange(this)">
+                    <input type="text" name="registrationname" id="editformmallname" onchange="overlapchange(this)" required>
                     <div class="possible none">* 사용할 수 있는 제품명 입니다.</div>
                     <div class="impossible none">* 중복된 제품명 입니다.</div>
                 </div>
                 <div class="shoppingmall-box2-link">
                     제품코드 : 
-                    <input type="text" name="registrationlink[]" id="editformproductcode" value="" >
+                    <input type="number" name="registrationlink" class="editformproductcode" required>
+                </div>
+                <div class="move">
+                    <button onclick="check()">Connection check</button>
                 </div>
             </div>
         </div>
-        <div class="editform-back-btn" onclick="backbtn(event)">back</div>
-        <div class="editform-save-btn" ><input type="submit" id="editformsave" value="save" onclick="savebtn(event)" formaction="/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-display-save.php"></div>
+        <div class="editform-back-btn" onclick="modalbackbtn()">back</div>
+        <div class="editform-save-btn" ><input type="submit" id="editformsave" value="save" onclick="savemodal()" formaction="/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-display-save.php"></div>
     </form>
 </div>
+
+
 
 
 
@@ -181,7 +174,14 @@ for($i=0; $i<count($mallResults); $i++){
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
 
+
+
+
+    // 등록할때 중복검사 
     function overlapchange(data) {
+
+        let pass = data.parentNode.children[1];
+        let nopass = data.parentNode.children[2];
 
         $.ajax({
             url: 'http://localhost:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-registration-overlap.php',
@@ -191,18 +191,14 @@ for($i=0; $i<count($mallResults); $i++){
             },
             dataType: 'text',
             success: function(result) {
-                if(result === 'no'){ // 중복이 없을 경우 
-                    let pass = data.parentNode.children[1];
-                    let nopass = data.parentNode.children[2];
-
-                    pass.classList.remove('none');
+                if(result === 'empty'){
+                    pass.classList.add('none');
                     nopass.classList.add('none');
 
+                }else if(result === 'no'){ // 중복이 없을 경우 
+                    pass.classList.remove('none');
+                    nopass.classList.add('none');
                 } else { // 중복일 경우 
-                    // 중복입니다. 
-                    let pass = data.parentNode.children[1];
-                    let nopass = data.parentNode.children[2];
-
                     pass.classList.add('none');
                     nopass.classList.remove('none');
                 }
@@ -212,135 +208,161 @@ for($i=0; $i<count($mallResults); $i++){
         });
     }
 
-    var Count = <?php echo $num; ?>+1;
-
+    // 신규 추가버튼 누르면 모달창 띄우기 
     function create_registration_Tag(){
-        console.log('dd')
-        let registrationList = document.querySelector('.registration-list');
-        let new_pTag = document.createElement('div');
-        
-        new_pTag.setAttribute('class', 'registration-div');
-        // 신규로 추가하는 행
-        new_pTag.innerHTML = 
-                    `<input type="checkbox" name="deletecheck[]">
-                    <div class="registration-num">${Count}.</div>
-                    <input type="hidden" name="registrationNum[]" value=${Count}>
-                    <input type="hidden" name="registrationID[]" value="0">
-                    <div class="registration-mall" id="registration-mall2">
-                        <select name="shoppingMallList[]">
-                            <option value="">쇼핑몰을 선택해주세요</option>
-                            <?php echo $option?>
-                        </select>
-                    </div>
-                    <div class="registration-name" id="registration-name2">
-                        <input type="text" id="" name="registrationname[]" placeholder="제품명 입력란(40)" value="<?php echo esc_attr( $post->playname ); ?>" onchange="overlapchange(this)" required>
-                        <div class="possible none">●</div>
-                        <div class="impossible none">●</div>
-                    </div>
-                    <div class="registration-link" id="registration-link2">
-                        <input type="text" id="" name="registrationlink[]" placeholder="제품 코드(40)" value="<?php echo esc_attr( $post->playlink ); ?>" required>
-                    </div>
-                    <div class="playbox-trash2" onclick="close_registrationTag(this)" style="font-size:23px;"><i class="fas fa-minus"></i></div>`
-    
-        registrationList.appendChild(new_pTag);
-        // registrationList.appendChild(passbtn);
-        // registrationList.appendChild(nonpassbtn);
+        let new_registration = document.querySelector('.new_registration');
+        new_registration.classList.remove('none');
+        console.log(new_registration)
 
-        Count++;
-    }
-    function close_registrationTag(e){
-        let registrationList = document.querySelector('.registration-list');
+        $(".new_registration").draggable({
+            scroll: false,
+            revert: true
+        });
 
-        registrationList.removeChild(e.parentNode);
-        Count = Count-1;
-    }
-
-    // $('#editformsave').click(function() {
-    //     $('#popup2').unbind();
-    // });
-
-    function savebtn(e) { 
-        $('.edit').unbind("click");
-        let possible = e.target.parentNode.parentNode.getElementsByClassName("possible") ;
-        let impossible = e.target.parentNode.parentNode.getElementsByClassName("impossible") ;
-
-        let result = true;
-        for(let i=0; i<impossible.length; i++){
-            let pass = impossible[i].classList[1] === 'none' && possible[i].classList[1] === 'none';
-            if(impossible[i].classList[1] === 'none' || pass){ // 중복이 없으면
-                continue;
-            }else {
-                result = false;
+        $(document).mouseup(function (e){
+            var LayerPopup = $(".new_registration");
+            if(LayerPopup.has(e.target).length === 0){
+                LayerPopup.addClass("none");
             }
-        }
-        if(result){
-            alert("저장합니다.");
-            
-            // e.preventDefault();
-        }else {
-            alert("중복을 확인해주세요.");
-            e.preventDefault();
-        }
+        });
+    }
+    // 수정사항 저장
+    let savefunc = function savebtn(num,id) { 
+        // 새로들어온 제품 이름 값 얻기 
+        let list = document.querySelector(".registration-list")
+        let row = list.children[num]
+        let nameinput = row.querySelector(".registration-name").children;
+        let newname = nameinput[0].value;
+
+        $.ajax({
+            url: 'http://localhost:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-display-save.php',
+            type: 'POST',
+            data: { 
+                saveid : id,
+                savename : newname,
+            },
+            dataType: 'text',
+            success: function(result) {
+                if(result === '중복'){ // 중복일 경우
+                    alert("중복된 상품명입니다. 다시 입력해주세요.")
+
+                } else { // 중복이 아닐 경우 
+                    nameinput[0].disabled = true;
+                    let btn = row.querySelector(".registration-check").children;
+                    btn[0].classList.remove('none')
+                    btn[1].classList.add('none')
+                    btn[2].classList.add('none')
+                    alert("상품명을 수정하였습니다")
+                    
+                }
+            }, // 요청 완료 시    
+            error: function(jqXHR) {}, // 요청 실패.    
+            complete: function(jqXHR) {} // 요청의 실패, 성공과 상관 없이 완료 될 경우 호출
+        });
+
+        event.preventDefault();
+
 
     }
 
     function deletebtn() {
-        alert("삭제합니다.");
+        let deletecheck = confirm('삭제하시겠습니까?');
+
+        return deletecheck;
     }
-    function check(event) {
-        // 클릭한 행의 쇼핑몰 코드
-        let mallConnect = event.target.parentNode.children;
-        console.log(mallConnect);
-        event.preventDefault();
+
+    // 신규등록할때 링크확인 잘 되었는지 체크
+    function check() {
+        let val = document.querySelector(".shoppingmall-box2-row")
+        let mallcode = val.querySelector(".editformmallcode").value;
+        let productcode = val.querySelector(".editformproductcode").value;
 
         $.ajax({
             url: 'http://localhost:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-registration-check.php',
             type: 'POST',
-            data: { //
-                code: mallConnect[0].innerText,
-                productId: mallConnect[1].innerText
+            data: { 
+                mallcode,
+                productcode,
             },
             dataType: 'text',
             success: function(data) {
-                // console.log(data);
                 window.open(data);
+            }, // 요청 완료 시    
+            error: function(jqXHR) {}, // 요청 실패.    
+            complete: function(jqXHR) {} // 요청의 실패, 성공과 상관 없이 완료 될 경우 호출
+        });
+        event.preventDefault();
+
+    }
+
+    // 수정할때 
+    let editfunc = function editbtn(num) {
+        // 상품이름 수정할수있도록 input 비활성화 풀기 
+        let list = document.querySelector(".registration-list")
+        let row = list.children[num]
+        let nameinput = row.querySelector(".registration-name").children;
+        nameinput[0].disabled = false;
+
+        let btn = row.querySelector(".registration-check").children;
+
+        btn[0].classList.add('none')
+        btn[1].classList.remove('none')
+        btn[2].classList.remove('none')
+
+        event.preventDefault();
+    }
+    let backfunc = function backbtn(num) {
+        // 상품이름 입력란 비활성화로 돌리기 
+        let list = document.querySelector(".registration-list")
+        let row = list.children[num]
+        let nameinput = row.querySelector(".registration-name").children;
+        let before = nameinput[0].defaultValue;
+        nameinput[0].value = before;
+        nameinput[0].disabled = true;
+
+        let btn = row.querySelector(".registration-check").children;
+
+        btn[0].classList.remove('none')
+        btn[1].classList.add('none')
+        btn[2].classList.add('none')
+
+        event.preventDefault();
+    }
+    function listchange (data) {
+        // 쇼핑몰 코드
+        let list = document.querySelector(".registration-list")
+        // 리스트 다 지우고
+        while(list.hasChildNodes()){
+            list.removeChild(list.firstChild);
+        }
+        list.innerHTML = "<div class='waitdiv'>리스트를 불러오는 중입니다..</div>"
+
+        $.ajax({
+            url: '/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-registration-filter.php',
+            type: 'POST',
+            data: { //
+                code: data.value,
+            },
+            dataType: 'text',
+            // async: false,
+            success: function(data) {
+                if(data === ""){
+                    list.innerHTML = "<div class='waitdiv'><i class='far fa-laugh fa-2x'></i></br>등록된 상품이 없습니다.</div>"
+                }else {
+                    list.innerHTML = data
+                }
             }, // 요청 완료 시    
             error: function(jqXHR) {}, // 요청 실패.    
             complete: function(jqXHR) {} // 요청의 실패, 성공과 상관 없이 완료 될 경우 호출
         });
 
     }
-
-    
-    function editbtn(event) {
-        let val = event.currentTarget.parentNode.children
-        document.querySelector(".editform").classList.remove('none');
-        $("#popup2").draggable({containment : "window"});
-
-        let edit1 = document.querySelector("#editformmallcode");
-        let edit2 = document.querySelector("#editformmallname");
-        let edit3 = document.querySelector("#editformproductcode");
-        let edit4 = document.querySelector("#editformnum");
-        let edit5 = document.querySelector("#editformid");
-
-
-        edit1.value = val[0].innerText;
-        edit2.value = val[2].innerText;
-        edit3.value = val[1].innerText;
-        edit4.value = val[3].innerText;
-        edit5.value = val[4].innerText;
-
-
-        event.preventDefault();
-
+    function modalbackbtn () {
+        let new_registration = document.querySelector('.new_registration');
+        new_registration.classList.add('none');
     }
-    function backbtn(event) {
-        document.querySelector(".editform").classList.add('none');
-        let possible = event.target.parentNode.parentNode.getElementsByClassName("possible") ;
-        let impossible = event.target.parentNode.parentNode.getElementsByClassName("impossible") ;
-
-        possible[0].classList.add("none")
-        impossible[0].classList.add("none")
+    function savemodal () {
+        confirm("저장하시겠습니까? \n저장 이후에는 제품 코드 수정이 불가합니다.");
     }
 
 

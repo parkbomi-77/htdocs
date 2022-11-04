@@ -7,34 +7,37 @@ require_once( $_SERVER['DOCUMENT_ROOT'].'/wp-load.php' );
 
 for($i=0; $i<$num; $i++){
     
+    // 상품리스트에서 row 얻기 
     $results = $wpdb->get_results($wpdb->prepare("SELECT * from wp_product_list where ID={$deletecheck[$i]}"));
     $results2 = $results[0] -> product_code;
     $results3 = $results[0] -> mall_code;
     
-    // 쇼핑몰코드로 쇼핑몰링크 얻어내기
-    $mallcode = $wpdb->get_results($wpdb->prepare("SELECT * from wp_shoppingmall where code =".$results3));
-    $link = $mallcode[0]->link2;
-    
-    $postdata = http_build_query(
-        array(
-            'delete_code' => $results2
-        )
-    );
-    $opts = array('http' =>
-        array(
-            'method' => 'POST',
-            'header' => 'Content-type: application/x-www-form-urlencoded',
-            'content' => $postdata
-        )
-    );
-    $context = stream_context_create($opts);
-    file_get_contents($link, false, $context);
+    if($results3 !==1029){ // 타 사이트일 경우에만 광고 비활성화 api 보내기 
+        // 쇼핑몰코드로 쇼핑몰링크 얻어내기
+        $mallcode = $wpdb->get_results($wpdb->prepare("SELECT * from wp_shoppingmall where code =".$results3));
+        $link = $mallcode[0]->link2;
+        
+        $postdata = http_build_query(
+            array(
+                'delete_code' => $results2
+            )
+        );
+        $opts = array('http' =>
+            array(
+                'method' => 'POST',
+                'header' => 'Content-type: application/x-www-form-urlencoded',
+                'content' => $postdata
+            )
+        );
+        $aa = $context = stream_context_create($opts);
+        file_get_contents($link, false, $context);
+    }
 
 
     $playtimerow = $wpdb->get_results($wpdb->prepare("SELECT * from wp_play_time where product_list_id ={$deletecheck[$i]}"));
 
     for($j=0; $j<count($playtimerow); $j++){
-        // 영상 재생시간에 맞는 제품 노출 리스트 DB에서 삭제 
+        // 영상 시간에 등록한 제품리스트 DB에서 삭제 
         $wpdb->delete('wp_play_time', 
         array(
             'ID' => $playtimerow[$j]->ID
