@@ -335,8 +335,8 @@
     width: 100%;
     border: 1px solid #a39485;
     border-collapse: collapse;
-    border-radius: 13px;
-    box-shadow: 0 2px 5px rgba(43, 42, 42, 0.25);
+    border-radius: 5px;
+    box-shadow: 0 0px 5px rgb(43 42 42 / 25%);
     overflow: hidden;
 }
 
@@ -349,6 +349,7 @@
 #inflowtable td, #inflowtable th {
     padding: 1em .5em;
     vertical-align: middle;
+    border: 1px;
   }
 
 .download-btn {
@@ -381,7 +382,7 @@
     height: 595px;
 }
 .shoppingmall-title{
-    margin-bottom: 20px;
+    margin-bottom: 33px;
 }
 .shoppingmall-title h3{
     line-height: 4.5rem;
@@ -391,10 +392,10 @@
 }
 .shoppingmalltable {
     width: 100%;
-    border: 1px solid #a39485;
+    border: 1px solid #000000;
     border-collapse: collapse;
-    border-radius: 13px;
-    box-shadow: 0 2px 5px rgba(43, 42, 42, 0.25);
+    border-radius: 6px;
+    box-shadow: 0 1px 9px rgb(43 42 42 / 25%);
     overflow: hidden;
 }
 .shoppingmalltable thead {
@@ -406,6 +407,7 @@
 .shoppingmalltable td, .shoppingmalltable th {
     padding: 1em 0.5em;
     vertical-align: middle;
+    border: 1px solid #efeff2;
   }
 #shoppingmall-row td {
     padding: 7px 7px;
@@ -429,7 +431,7 @@
     position: absolute;
     line-height: 2.4rem;
     text-align: center;
-    border-radius: 9px;
+    border-radius: 5px;
     color: #f6faf2;
     right: 21px;
     bottom: 66px;
@@ -686,4 +688,185 @@
 .waitdiv {
     margin-top: 200px;
     text-align: center;
+}
+
+/* margin setting page */
+.margin-container{
+    width: 911px;
+    min-height: 750px;
+    padding: 9px 25px 9px 15px;
+    background-color: white;
+    border-radius: 12px;
+    position: relative;
+}
+.margin_title{
+    width: 83%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 33px 6px 36px 21px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    margin: auto;
+}
+.margin_select{
+    width: 300px
+}
+.margin_select select:last-child {
+    width: 100%;
+    max-width: 100%;
+    line-height: 1;
+}
+.margin_main{
+    border-top: 1px solid #dedede;
+    padding: 55px 40px 27px 54px;
+    text-align: center;
+    width: 100%;
+    margin: auto;
+
+}
+.margin_setting{
+    width: 90%;
+    margin: auto;
+}
+.margin_setting>div{    
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: medium;
+    font-weight: 500;
+    line-height: 41px;
+}
+/* .margin_setting>div>div:last-child{  
+    width: 58%;
+    line-height: 40px;
+}
+.margin_setting>div>div:last-child i{  
+    line-height: 40px;
+    margin: 0 1px;
+} */
+.margin_shoppingmallname div:last-child{
+    width: 365px;
+    line-height: 40px;
+}
+.margin_set div:last-child{
+    width: 58%;
+
+}
+#margin_calendar{
+    display: flex;
+    align-items: center;
+    width: 387px;
+}
+#margin_calendar i{
+    margin-right: 4px;
+}
+#margin_calendar span{
+    margin: 0 5px;
+}
+
+#margin_mallname{
+    width: 100%;
+}
+
+.month_select{
+    width: 178px;
+}
+.month_select select{
+    width: 97px;
+    padding: 6px 6px 6px 10px;
+}
+.month_select select:last-child{
+    width: 70px;
+}
+#margin_set_select{
+    display: flex;
+    width: 365px;
+    position: relative;
+}
+#margin_set_select span{
+    margin-left: 4px;
+    font-size: larger;
+    position: absolute;
+    right: -18px;
+}
+.margin_btn{
+    width: 14%;
+    position: absolute;
+    right: 105px;
+}
+.margin_btn input{
+    width: 100%;
+    height: 40px;
+    border: none;
+    background-color: #1674ea;
+    border-radius: 4px;
+    color: aliceblue;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 3px 3px rgb(0 0 0 / 16%);
+}
+.margin_table_div{
+    margin: 80px 10px 0 19px;
+    position: relative;
+}
+.margin_table_top{
+    width: 100%;
+    text-align: end;
+}
+.movetable_left{
+    width: 20px;
+    height: 100px;
+    line-height: 100px;
+    position: absolute;
+    left: -25px;
+    top: 10%;
+    font-size: large;
+    text-align: center;
+    background-color: #fcfcfc;
+    cursor: pointer;
+}
+.movetable_right{
+    width: 20px;
+    height: 100px;
+    line-height: 100px;
+    position: absolute;
+    right: -25px;
+    top: 10%;
+    font-size: large;
+    text-align: center;
+    background-color: #fcfcfc;
+    cursor: pointer;
+
+}
+/* .margin_table_div div{
+    width: 100%;
+    text-align: end;
+    font-size: smaller;
+    margin-bottom: 3px;
+}
+.margin_table_div select{
+    height: 36px;
+    padding: 2px 16px;
+} */
+.margin_table {
+    width: 100%;
+    border: 1px solid #444444;
+    border-collapse: collapse;
+    text-align: center;
+}
+.margin_table th, td{
+    border: 1px solid #444444;
+    width: 20px;
+    height: 36px;
+}
+.margin_table th {
+    background-color: #304152;
+    color: #e5e5e5;
+    font-weight: 200;
+}
+.margin_table th:first-child {
+    width: 50px;
 }

@@ -36,8 +36,6 @@ get_header(); ?>
                             <input type='hidden' name='item_id' value='".$results[$i]->item_id ."'>
                             <td>".($i+1)."</td>
                             <td class='wish_table_trash_item'>".$results[$i]->product_name."</td>
-                            <td>".$results[$i]->quantity."</td>
-                            <td>".$results[$i]->price."</td>
                             <td><button class='wish_table_trash' type='submit' onclick='trash(this)' formaction='../page-delete.php'><i class='fa-solid fa-trash'></i></button></td>
                             <td><button class='wish_table_trash' type='submit' formaction='../page-shop.php'><i class='fa-solid fa-shop'></i></button></td>
                         </tr>
@@ -50,8 +48,6 @@ get_header(); ?>
                         <col style='width:50px'>
                         <col style='width:65%'>
                         <col style='width:80px'>
-                        <col style='width:60px'>
-                        <col style='width:80px'>
                         <col style='width:80px'>
                         </colgroup>
                         <thead class='wish_table_head'>
@@ -62,17 +58,11 @@ get_header(); ?>
                             <th scope='col'>
                                 제품명
                             </th>
-                            <th scope='col'>
-                                수량
-                            </th>
-                            <th scope='col'>
-                            가격
-                            </th>
                             <th scope='col';>
                             삭제
                             </th>
                             <th scope='col';>
-                            구입
+                            이동
                             </th>
                         </tr>
                         </thead>

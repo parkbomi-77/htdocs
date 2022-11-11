@@ -40,7 +40,7 @@
             </colgroup>
             <thead>
                 <tr> 
-                    <th>no.</th>
+                    <th></th>
                     <th>name</th>
                     <th>link</th>
                     <th>link2</th>
