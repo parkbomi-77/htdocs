@@ -17,8 +17,7 @@ function productlist($sql) {
 function printrow($results) {
     $all_registration = '';
     for($i = 0; $i < count($results); $i++){
-        $one_registration = ' 
-            <div class="registration-div">
+        $one_registration = '<div class="registration-div">
                 <input type="checkbox" name="deletecheck[]" value="'.$results[$i]->ID.'">
                 <div class="registration-num">'.($i+1).'</div>
                 <input type="hidden" name="registrationNum[]" value="'.($i+1).'">
@@ -41,11 +40,9 @@ function printrow($results) {
                     <button class="edit" onclick="editfunc('.($i).')"><i class="fas fa-pen"></i></button>
                     <button class="reset none" onclick="backfunc('.($i).')"><i class="fas fa-chevron-left"></i></button>
                     <button class="save none" onclick="savefunc('.($i).','.$results[$i]->ID.')"><i class="far fa-save fa-lg"></i></button>
-    
                 </div>
-            </div>
-            ';
-        $all_registration = $all_registration.$one_registration ;
+            </div>';
+        $all_registration = $all_registration.$one_registration;
     }
     return $all_registration;
 }
@@ -63,6 +60,7 @@ if($code === ""){ // 전체 리스트 불러와야할때
     
     $data = printrow($results);
     echo $data;
+
 
 }
 

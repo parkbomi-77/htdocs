@@ -66,6 +66,7 @@
                 <th>제품가격</th>
                 <th>수량</th>
                 <th>총액</th>
+                <th>마진</th>
                 <th>날짜</th>
                 <th>상태</th>
             </tr>
@@ -74,7 +75,7 @@
         </tbody>
         <tfoot class="tfoottag">
             <tr>
-                <th scope="row" colspan='4'>총 액</th>
+                <th scope="row" colspan='5'>총 액 / 마 진</th>
                 <td colspan='3' id="tabletotal">원</td>
             </tr>
         </tfoot>
@@ -120,6 +121,7 @@
                     + "<td>"+data[i].price+"원</td>"
                     + "<td>"+data[i].qty+" 개</td>"
                     + "<td>"+(data[i].qty)*(data[i].price)+" 원</td>"
+                    + "<td>"+(data[i].qty)*(data[i].price)+" %</td>"
                     + "<td>"+data[i].status_time+" </td>"
                     + "<td>"+data[i].status+"</td></tr>"
                 }
@@ -152,6 +154,7 @@
                 + "<td>"+status3[i].price+"원</td>"
                 + "<td>"+status3[i].qty+" 개</td>"
                 + "<td>"+(status3[i].qty)*(status3[i].price)+" 원</td>"
+                + "<td>"+(data[i].qty)*(data[i].price)+" %</td>"
                 + "<td>"+status3[i].status_time+" </td>"
                 + "<td>"+status3[i].status+"</td></tr>"
             }
@@ -183,6 +186,7 @@
                     + "<td>"+status[i].price+"원</td>"
                     + "<td>"+status[i].qty+" 개</td>"
                     + "<td>"+(status[i].qty)*(status[i].price)+" 원</td>"
+                    + "<td>"+(data[i].qty)*(data[i].price)+" %</td>"
                     + "<td>"+status[i].status_time+" </td>"
                     + "<td>"+status[i].status+"</td></tr>"
                 }
@@ -209,6 +213,7 @@
                     + "<td>"+status2[i].price+"원</td>"
                     + "<td>"+status2[i].qty+" 개</td>"
                     + "<td>"+(status2[i].qty)*(status2[i].price)+" 원</td>"
+                    + "<td>"+(data[i].qty)*(data[i].price)+" %</td>"
                     + "<td>"+status2[i].status_time+" </td>"
                     + "<td>"+status2[i].status+"</td></tr>"
                 }

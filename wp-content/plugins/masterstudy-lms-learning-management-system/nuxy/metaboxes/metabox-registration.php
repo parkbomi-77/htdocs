@@ -346,10 +346,11 @@ for($i=0; $i<count($mallResults); $i++){
             dataType: 'text',
             // async: false,
             success: function(data) {
-                if(data === ""){
+                console.log(data.length);
+                if(data.length <= 1){
                     list.innerHTML = "<div class='waitdiv'><i class='far fa-laugh fa-2x'></i></br>등록된 상품이 없습니다.</div>"
                 }else {
-                    list.innerHTML = data
+                    list.innerHTML = data;
                 }
             }, // 요청 완료 시    
             error: function(jqXHR) {}, // 요청 실패.    

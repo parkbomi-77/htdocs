@@ -332,10 +332,11 @@
 }
 
 #inflowtable {
-    width: 100%;
+    width: 95%;
+    margin: 8px auto;
     border: 1px solid #a39485;
     border-collapse: collapse;
-    border-radius: 5px;
+    border-radius: 3px;
     box-shadow: 0 0px 5px rgb(43 42 42 / 25%);
     overflow: hidden;
 }
@@ -360,9 +361,9 @@
     text-align: center;
     border-radius: 9px;
     color: #f6faf2;
-    right: 20px;
+    right: 40px;
     font-size: 15px;
-    margin-top: 8px;
+    margin-top: 3px;
     box-shadow: 0 2px 5px rgb(43 42 42 / 30%);
     border: 1px solid #237ae6;
 }
@@ -394,7 +395,7 @@
     width: 100%;
     border: 1px solid #000000;
     border-collapse: collapse;
-    border-radius: 6px;
+    /* border-radius: 6px; */
     box-shadow: 0 1px 9px rgb(43 42 42 / 25%);
     overflow: hidden;
 }
@@ -813,15 +814,16 @@
     position: relative;
 }
 .margin_table_top{
-    width: 100%;
+    width: 97%;
     text-align: end;
+    margin-bottom: 3px;
 }
 .movetable_left{
     width: 20px;
     height: 100px;
     line-height: 100px;
     position: absolute;
-    left: -25px;
+    left: -2px;
     top: 10%;
     font-size: large;
     text-align: center;
@@ -833,7 +835,7 @@
     height: 100px;
     line-height: 100px;
     position: absolute;
-    right: -25px;
+    right: -2px;
     top: 10%;
     font-size: large;
     text-align: center;
@@ -852,10 +854,12 @@
     padding: 2px 16px;
 } */
 .margin_table {
-    width: 100%;
+    width: 95%;
+    margin: auto;
     border: 1px solid #444444;
     border-collapse: collapse;
     text-align: center;
+    box-shadow: 0 1px 9px rgb(43 42 42 / 25%);
 }
 .margin_table th, td{
     border: 1px solid #444444;
