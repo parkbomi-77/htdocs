@@ -233,7 +233,15 @@
         let endyear = event.target.querySelectorAll(".month_select")[1].children[0].value;
         let endmonth = event.target.querySelectorAll(".month_select")[1].children[1].value;
 
-        if(startyear > endyear){
+        let today = new Date();
+        let year = today.getFullYear();
+        let month = ('0' + (today.getMonth() + 1)).slice(-2);
+        console.log(year);
+        console.log(month);
+        if((startyear < year) || (startmonth > month)){
+            alert("지나간 기한은 수정할 수 없습니다.")
+            return false;
+        }else if(startyear > endyear){
             alert("기한을 다시 한번 확인해주세요.")
             return false;
         }else if((startyear === endyear) && (Number(startmonth) > Number(endmonth))){
@@ -241,6 +249,7 @@
             return false;
         }
         return true;
+
 
     }
     function moveyear(num) {

@@ -8,14 +8,23 @@ require_once( $_SERVER['DOCUMENT_ROOT'].'/wp-load.php' );
 $mall = $_POST['name'];
 $link = $_POST['link'];
 $link2 = $_POST['link2'];
+$startyear = $_POST['startyear'];
+$startmonth = $_POST['startmonth'];
+$endyear = $_POST['endyear'];
+$endmonth = $_POST['endmonth'];
+$start_date = $startyear.'-'.$startmonth.'-01';
+$end_date = $endyear.'-'.$endmonth.'-01';
 
 
-$delcode = $_POST['code'];
-$editcode = $_POST['editcode'];
+
 $newcode = $_POST['newcode'];
 $newname = $_POST['newname'];
 $newlink = $_POST['newlink'];
 $newlink2 = $_POST['newlink2'];
+
+
+$delcode = $_POST['code'];
+$editcode = $_POST['editcode'];
 
 
 
@@ -47,29 +56,17 @@ if($delcode){ // 삭제 요청
             }
         }
     }
-
-
-
-
 }else if($editcode){ // 수정 사항 보여주기 요청
     $results = $wpdb->get_results($wpdb->prepare("SELECT * from wp_shoppingmall where code ='".$editcode."' "));
     $dataArray[0] = '삽입 성공';
     echo json_encode($dataArray);
 }else if($newcode){ // 수정사항 저장하기 
-    $wpdb->get_results($wpdb->prepare("UPDATE wp_shoppingmall set name= '".$newname."', link='".$newlink."', link2='".$newlink2."' where code ='".$newcode."' "));
+    $wpdb->get_results($wpdb->prepare("UPDATE wp_shoppingmall 
+        set name= '".$newname."', link='".$newlink."', link2='".$newlink2."', start_date='".$start_date."', end_date='".$end_date."' where code ='".$newcode."' "));
 }else { // 새 쇼핑몰 등록
-    // 광고의뢰 쇼핑몰 리스트 빈 값은 걸러내기
-    // function empty_ ($var) {
-    //     if($var !== ""){
-    //         return $var;
-    //     }
-    // }
-    // $newmall = array_filter($mall, "empty_");
-    
-    // $results = $wpdb->get_results($wpdb->prepare("SELECT * from wp_shoppingmall"));
-    // $num = count($results)-1;
-    // $nodenum = $results[$num]->code;
-    $ppp = $wpdb->get_results($wpdb->prepare("INSERT INTO wp_shoppingmall (name,link, link2, state) VALUES ('{$mall}','{$link}','{$link2}',1);"));
+    $sql2="INSERT INTO wp_shoppingmall (name,link, link2, state, start_date, end_date) 
+    VALUES ('{$mall}','{$link}','{$link2}',1, '{$start_date}', '{$end_date}')";
+    $wpdb->get_results($wpdb->prepare($sql2));
 }
 
 

@@ -6,14 +6,17 @@
         $mall_lists = "";
         for($i=0; $i<count($results); $i++){
             $mall_list = '<tr id="shoppingmall-row">
-            <td>'.($i+1).'</td>
-            <td>'.$results[$i]->name.'</td>
+            <td rowspan="2">'.($i+1).'</td>
+            <td rowspan="2">'.$results[$i]->name.'</td>
             <td>'.$results[$i]->link.'</td>
             <td>'.$results[$i]->link2.'</td>
-            <td id="shoppingmall-box-btn">
+            <td id="shoppingmall-box-btn" rowspan="2">
                 <button class="shoppingmall-box-edit" onclick="edit(this)" value="'.$results[$i]->name.'"><i class="fas fa-edit"></i></button>
                 <button class="shoppingmall-box-del" onclick="del(this)" value="'.$results[$i]->code.'"><i class="fas fa-times-circle"></i></button>
             </td>
+            </tr>
+            <tr class="shoppingmall-row2"> 
+                <td colspan="2">'.substr($results[$i]->start_date, 0, 7).' ~ '.substr($results[$i]->end_date, 0, 7).'</td>
             </tr>';
             $mall_lists = $mall_lists.$mall_list;
         }
@@ -22,6 +25,10 @@
                         <td colspan='5'>현재 광고를 의뢰한 쇼핑몰이 없습니다.</td>
                     <tr>";
     }
+    $today = date("Ym");
+    $year = substr($today,0,4);
+    $month = substr($today,4,2);
+
 ?>
 
 
@@ -40,11 +47,14 @@
             </colgroup>
             <thead>
                 <tr> 
-                    <th></th>
-                    <th>name</th>
+                    <th rowspan='2'></th>
+                    <th rowspan='2'>name</th>
                     <th>link</th>
                     <th>link2</th>
-                    <th></th>
+                    <th rowspan='2'></th>
+                </tr>
+                <tr class="shoppingmall-row2"> 
+                    <th colspan='2'>start date - end date</th>
                 </tr>
             </thead>
             <form action="http://localhost:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-shoppingmall-save.php" method="post">
@@ -80,14 +90,26 @@
                         <div class="overlap none">* 중복된 링크주소 입니다.</div>
                     </div>
                     <div class="shoppingmall-box2-link">
-                        <label for="link2">쇼핑몰 api링크 (임시) : </label>
+                        <label for="link2">쇼핑몰 api링크 (광고활성화) : </label>
                         <input type="text" name="link2" id="link2">
+                    </div>
+                    <div class="shoppingmall-box2-date">
+                        <label for="year">기간 : </label>
+                        <div>
+                            <input name="startyear" type="number" value="<?php echo $year ?>" min="2022">
+                            <input name="startmonth" type="number" value="<?php echo $month ?>" min="01" max="12">
+                             ~ 
+                            <input name="endyear" type="number" value="<?php echo $year ?>" min="2022">
+                            <input name="endmonth" type="number" value="<?php echo $month ?>" min="01" max="12">
+                        </div>
+
+
                     </div>
                 </div>
             </div>
             <div class="back-btn" onclick="back()">back</div>
             <div class="save-btn" ><input type="submit" id="" value="save"></div>
-            <div class="blankcheck none">비어있는 칸이 있습니다</div>
+            <div class="blankcheck none">빈 칸을 채워주세요.</div>
         </form>
     </div>
 </div>
@@ -114,17 +136,31 @@
             let link2 = trtag.children[3];
             let btn = trtag.children[4];
             let code = btn.children[1].value;
-            console.log(trtag)
+
+            let daterow = trtag.nextElementSibling.children[0]
+            let date = trtag.nextElementSibling.children[0].innerText;
+            let startyear = date.substr(0, 4)
+            let startmonth = date.substr(5, 2)
+
+            let endyear = date.substr(10, 4)
+            let endmonth = date.substr(15)
       
             name.innerHTML = `<input type="text" style="width:98%;" name="name" value="${e.value}">`
             link.innerHTML = `<input type="text" style="width:100%" name="link" value="${link.innerHTML}">`
             link2.innerHTML = `<input type="text" style="width:100%" name="link" value="${link2.innerHTML}">`
+            daterow.innerHTML = `<div class="editdate">
+                                <input name="startyear" type="number" value="${startyear}" min="2022">
+                                <input name="startmonth" type="number" value="${startmonth}" min="01" max="12">
+                                ~ 
+                                <input name="endyear" type="number" value="${endyear}" min="2022">
+                                <input name="endmonth" type="number" value="${endmonth}" min="01" max="12">
+                                </div>`
             btn.innerHTML = 
             `<button type="submit" class="shoppingmall-edit-confirm" onclick="editsave(this)" value="${code}"><i class="fas fa-check"></i></button>
             <button type="submit" class="shoppingmall-edit-confirm" onclick="reset(this)" value="${code}"><i class="fas fa-redo"></i></i></button>`
             state = e.value;
         }else {
-            alert("1개씩 수정해주세요")
+            alert("수정중인 항목이 있습니다")
         }
     }
     function del(e) {
@@ -156,19 +192,6 @@
                     }
                 }
             })
-
-            // $.ajax({
-            //     url: "http://localhost:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-shoppingmall-save.php",
-            //     type: "post",
-            //     dataType : 'json',
-            //     data: {
-            //         code : e.value,
-            //     },
-            //     success: function(data) {
-            //         console.log(data);
-            //     }
-            // })
-            // window.location.reload();
         } else {
             return;
         }
@@ -183,22 +206,34 @@
         let link2 = trtag.children[3];
         let new_link2 = link2.children[0].value;
         let newcode = e.value;
-        console.log(newcode);
+
+        let startyear = trtag.nextElementSibling.children[0].children[0].children[0].value;
+        let startmonth = trtag.nextElementSibling.children[0].children[0].children[1].value;
+        let endyear = trtag.nextElementSibling.children[0].children[0].children[2].value;
+        let endmonth = trtag.nextElementSibling.children[0].children[0].children[3].value;
 
         if(window.confirm("수정하시겠습니까?")){
-            $.ajax({
-                url: "http://localhost:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-shoppingmall-save.php",
-                type: "post",
-                dataType : 'json',
-                data: {
-                    newcode,
-                    newname : new_name,
-                    newlink : new_link,
-                    newlink2 : new_link2
-                },
-            })
-            state = "";
-            window.location.reload();
+            if( (startyear > endyear) || ((startyear === endyear) && (Number(startmonth) > Number(endmonth))) ){
+                alert("기한을 확인해주세요.")
+            }else {
+                $.ajax({
+                    url: "http://localhost:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-shoppingmall-save.php",
+                    type: "post",
+                    dataType : 'json',
+                    data: {
+                        newcode,
+                        newname : new_name,
+                        newlink : new_link,
+                        newlink2 : new_link2,
+                        startyear,
+                        startmonth,
+                        endyear,
+                        endmonth,
+                    },
+                })
+                state = "";
+                window.location.reload();
+            }
         } else {
             return;
         }
@@ -217,11 +252,19 @@
         let btn = trtag.children[4];
         let code = e.value;
 
-        trtag.innerHTML = `<td>${reset_num}</td>
-            <td>${reset_name}</td>
+        let startyear = trtag.nextElementSibling.children[0].children[0].children[0].value;
+        let startmonth = trtag.nextElementSibling.children[0].children[0].children[1].value;
+        let endyear = trtag.nextElementSibling.children[0].children[0].children[2].value;
+        let endmonth = trtag.nextElementSibling.children[0].children[0].children[3].value;
+
+        let daterow = trtag.nextElementSibling.children[0];
+        daterow.innerHTML = `${startyear}-${startmonth} ~ ${endyear}-${endmonth}`;
+
+        trtag.innerHTML = `<td rowspan='2'>${reset_num}</td>
+            <td rowspan='2'>${reset_name}</td>
             <td>${reset_link}</td>
             <td>${reset_link2}</td>
-            <td id="shoppingmall-box-btn">
+            <td id="shoppingmall-box-btn" rowspan='2'>
                 <button class="shoppingmall-box-edit" onclick="edit(this)" value="${reset_name}"><i class="fas fa-edit"></i></button>
                 <button class="shoppingmall-box-del" onclick="del(this)" value="${code}"><i class="fas fa-times-circle"></i></button>
             </td>`;
@@ -306,18 +349,33 @@
         let linkvalue2 = document.getElementById('link2').value;
         let blankcheck = document.querySelector(".blankcheck");
 
+        let startyear = document.querySelector(".shoppingmall-box2-date").children[1].children[0].value;
+        let startmonth = document.querySelector(".shoppingmall-box2-date").children[1].children[1].value;
+        let endyear = document.querySelector(".shoppingmall-box2-date").children[1].children[2].value;
+        let endmonth = document.querySelector(".shoppingmall-box2-date").children[1].children[3].value;
+
+
+
         if(!(namevalue && linkvalue && linkvalue2)){ // 빈 칸이 있을 경우
             blankcheck.classList.remove('none')
             return false;
         }else { // 빈칸없이 다 들어왔을 경우 중복검사 
-            let overlapcheck = [...document.querySelectorAll(".overlapno")]; // all 
-            let overlap = overlapcheck.every((data) => {
-                return !(data.classList.contains('none'))
-            })
-            if(overlap){ // 중복검사 통과
-                return true;
-            }else {
+            blankcheck.classList.add('none')
+            // 시작년도가 크거나 
+            // 년도가 같을때 시작달이 더 크면 안됨
+            if( (startyear > endyear) || ((startyear === endyear) && (Number(startmonth) > Number(endmonth))) ){
+                alert("기한을 확인해주세요.");
                 return false;
+            }else {
+                let overlapcheck = [...document.querySelectorAll(".overlapno")]; 
+                let overlap = overlapcheck.every((data) => {
+                    return !(data.classList.contains('none'))
+                })
+                if(overlap){ // 중복검사 통과
+                    return true;
+                }else {
+                    return false;
+                }
             }
         }
     }
