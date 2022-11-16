@@ -212,7 +212,19 @@ for($i=0; $i<count($mallResults); $i++){
     function create_registration_Tag(){
         let new_registration = document.querySelector('.new_registration');
         new_registration.classList.remove('none');
-        console.log(new_registration)
+
+        // 모달창 초기화  
+        let mallcode = document.querySelector(".editformmallcode");
+        let name = document.querySelector("#editformmallname");
+        let pdcode = document.querySelector(".editformproductcode");
+        mallcode.value = "";
+        name.value = "";
+        pdcode.value ="";
+
+        let possible = document.querySelector(".possible");
+        let impossible = document.querySelector(".impossible");
+        possible.classList.add('none');
+        impossible.classList.add('none');
 
         $(".new_registration").draggable({
             scroll: false,
@@ -361,6 +373,8 @@ for($i=0; $i<count($mallResults); $i++){
     function modalbackbtn () {
         let new_registration = document.querySelector('.new_registration');
         new_registration.classList.add('none');
+
+
     }
     function savemodal () {
         confirm("저장하시겠습니까? \n저장 이후에는 제품 코드 수정이 불가합니다.");

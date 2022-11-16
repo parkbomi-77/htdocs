@@ -11,7 +11,11 @@ $mall = $wpdb->get_results($wpdb->prepare("SELECT*FROM wp_shoppingmall where cod
 // mall link 얻기
 $link = $mall[0]->link;
 
-echo $link."product/".$product;
+if($code === '1029'){ // 벳스쿨일 경우 
+    echo $link."product/".$product;
+}else { // 타 쇼핑몰일 경우 
+    echo $link.$product;
+}
 
 
 
