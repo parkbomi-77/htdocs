@@ -24,12 +24,22 @@
     //     $mallName = $wpdb->get_results($wpdb->prepare($sql2));
     // }
 
-    $sql3 ="SELECT wp_shoppingmall.code, wp_shoppingmall.name 
+    $sql3 ="SELECT code, name, start_date, end_date
             FROM wp_shoppingmall
             where state = 1";
     $mallNamedata = $wpdb->get_results($wpdb->prepare($sql3));
 
-
+    function datesetting ($mallNamedata) {
+        $datearr = array();
+        for($i=0; $i<count($mallNamedata); $i++){
+            $startyear = substr($mallNamedata[$i]->start_date, 0, 4);
+            $startmonth = substr($mallNamedata[$i]->start_date, 5, 2);
+            $endyear = substr($mallNamedata[$i]->end_date, 0, 4);
+            $endmonth = substr($mallNamedata[$i]->end_date, 5, 2);
+            $datearr[$i] = [$startyear, $startmonth, $endyear, $endmonth];
+        }
+        return $datearr;
+    }
 
 
     // 쇼핑몰 이름
@@ -41,29 +51,29 @@
         return $mallname;
     }
 
-    function years($year) {
-        $allyears = '';
-        for($i=2022; $i<=2032; $i++){
-            if($i === (int)$year){
-                $allyears = $allyears.'<option value='.($i).' selected>'.($i).년도.'</option>';
-            }else {
-                $allyears = $allyears.'<option value='.($i).'>'.($i).년도.'</option>';
-            }
-        }
-        return $allyears;
-    }
+    // function years($year) {
+    //     $allyears = '';
+    //     for($i=2022; $i<=2032; $i++){
+    //         if($i === (int)$year){
+    //             $allyears = $allyears.'<option value='.($i).' selected>'.($i).년도.'</option>';
+    //         }else {
+    //             $allyears = $allyears.'<option value='.($i).'>'.($i).년도.'</option>';
+    //         }
+    //     }
+    //     return $allyears;
+    // }
     
-    function month($month) {
-        $allmonth = '';
-        for($i=1; $i<=12; $i++){
-            if($i === (int)$month){
-                $allmonth = $allmonth.'<option value='.($i).' selected>'.($i).월.'</option>';
-            }else {
-                $allmonth = $allmonth.'<option value='.($i).'>'.($i).월.'</option>';
-            }
-        }
-        return $allmonth;
-    }
+    // function month($month) {
+    //     $allmonth = '';
+    //     for($i=1; $i<=12; $i++){
+    //         if($i === (int)$month){
+    //             $allmonth = $allmonth.'<option value='.($i).' selected>'.($i).월.'</option>';
+    //         }else {
+    //             $allmonth = $allmonth.'<option value='.($i).'>'.($i).월.'</option>';
+    //         }
+    //     }
+    //     return $allmonth;
+    // }
     
     function margin_percent() {
         $marginoption = "";
@@ -82,31 +92,64 @@
     }
     // 테이블 바디 데이터
     function tabledata($mallNamedata) {
+        $years = date("Y");
+
         $tablelist = "";
         for($i=0; $i<count($mallNamedata); $i++){
-            $tablerow = '<tr> <td>'.$mallNamedata[$i]->name.'</td>';
-            $td01 = '<td>0</td>';
-            $td02 = '<td>0</td>';
-            $td03 = '<td>0</td>';
-            $td04 = '<td>0</td>';
-            $td05 = '<td>0</td>';
-            $td06 = '<td>0</td>';
-            $td07 = '<td>0</td>';
-            $td08 = '<td>0</td>';
-            $td09 = '<td>0</td>';
-            $td10 = '<td>0</td>';
-            $td11 = '<td>0</td>';
-            $td12 = '<td>0</td>';
+            $startyear = substr($mallNamedata[$i]->start_date, 0, 4);
+            $startmonth = substr($mallNamedata[$i]->start_date, 5, 2);
+            $endyear = substr($mallNamedata[$i]->end_date, 0, 4);
+            $endmonth = substr($mallNamedata[$i]->end_date, 5, 2);
 
+            $tablerow = '<tr> <td>'.$mallNamedata[$i]->name.'</td>';
+            $tdarr = array();
+            
+            // 시작년도보다 크고 끝년도보다 작으면 all
+            if(($startyear < $years) && ($years < $endyear)){
+                for($j=0; $j<12; $j++){
+                    $tdarr[$j] = "<td style='background-color:white'>0</td>";
+                }
+            // 시작년도와 같고 끝년도와 같으면 달을 비교
+            }else if(($startyear === $years) && ($years === $endyear)) {
+                for($j=0; $j<12; $j++){
+                    if($j+1 >= $startmonth && $j+1 <= $endmonth){
+                        $tdarr[$j] = "<td style='background-color:white'>0</td>";
+                    }else {
+                        $tdarr[$j] = "<td style='background-color:#aaaaaa'>0</td>";
+                    }
+                }
+            // 시작년도와 같고 끝년도보다 작으면
+            }else if(($startyear === $years) && ($years < $endyear)){
+                for($j=0; $j<12; $j++){
+                    if($j+1 >= $startmonth){
+                        $tdarr[$j] = "<td style='background-color:white'>0</td>";
+                    }else {
+                        $tdarr[$j] = "<td style='background-color:#aaaaaa'>0</td>";
+                    }
+                }
+            }
+            // 시작년도보다 크고 끝년도와 같으면
+            else if(($startyear < $years) && ($years === $endyear)){
+                for($j=0; $j<12; $j++){
+                    if($j+1 <= $endmonth){
+                        $tdarr[$j] = "<td style='background-color:white'>0</td>";
+                    }else {
+                        $tdarr[$j] = "<td style='background-color:#aaaaaa'>0</td>";
+                    }
+                }
+            }
+            
             $code = $mallNamedata[$i]->code; // 1028 
             $data = tablemargindata($code); // 3개가 들어오고 .. 
 
             for($j=0; $j<count($data); $j++){
-                $month = $data[$j]->date_setting; // 10 
-                $extraction = substr($month, 5, 2);
-                ${"td".$extraction} = '<td>'.$data[$j]->margin.'</td>';
+                $date = $data[$j]->date_setting; // 10 
+                $extraction_m = substr($date, 5, 2); // 달이 들어옴 
+
+                $marginadd = substr_replace($tdarr[$extraction_m-1], $data[$j]->margin, -6, 1);
+                $tdarr[$extraction_m-1] = $marginadd;
             }
-            $tablerow = $tablerow.$td01.$td02.$td03.$td04.$td05.$td06.$td07.$td08.$td09.$td10.$td11.$td12.'</tr>';
+            $tablerow = $tablerow.$tdarr[0].$tdarr[1].$tdarr[2].$tdarr[3].$tdarr[4].$tdarr[5].$tdarr[6].$tdarr[7].$tdarr[8].$tdarr[9].$tdarr[10].$tdarr[11].'</tr>';
             $tablelist = $tablelist.$tablerow;
             
         }
@@ -124,12 +167,6 @@
         $data = $wpdb->get_results($wpdb->prepare($sql4));
         return $data;
     }
-    // function table_defaultyear_option($num) { // 현재년도 대비 5년 전~후까지 출력 
-    //     $option = "";
-    //     for($i=$num-5; $i<$num+5; $i++){
-
-    //     }
-    // }
 
 ?>
 
@@ -153,7 +190,7 @@
                         쇼핑몰
                     </div>
                     <div>
-                        <select name="code" id="margin_mallname">
+                        <select name="code" id="margin_mallname" onchange="changemall(event)">
                             <?php echo mall_name($mallNamedata); ?>
                         </select> 
                     </div>
@@ -165,22 +202,13 @@
                     <div id="margin_calendar">
                         <i class="far fa-calendar-check fa-lg"></i>
                         <div class="month_select">
-                            <select name="startyear" id="">
-                                <?php echo years($year); ?>
-                            </select>
-                            <select name="startmonth" id="">
-                                <?php echo month($month); ?>
-                            </select>
+                            <input name="startyear" class="startyear" type="number" min=<?php echo datesetting($mallNamedata)[0][0]?> max=<?php echo datesetting($mallNamedata)[0][2]?> value=<?php echo datesetting($mallNamedata)[0][0]?> >
+                            <input name="startmonth" class="startmonth" type="number" min=<?php echo datesetting($mallNamedata)[0][1]?> max=<?php echo datesetting($mallNamedata)[0][3]?> value=<?php echo datesetting($mallNamedata)[0][1]?> >
                         </div>
                         <span>-</span>
-                        <!-- <i class="far fa-calendar-check fa-lg"></i> -->
                         <div class="month_select">
-                            <select name="endyear" id="">
-                                <?php echo years($year); ?>
-                            </select>
-                            <select name="endmonth" id="">
-                                <?php echo month($month); ?>
-                            </select>
+                            <input name="endyear" class="endyear" type="number" min=<?php echo datesetting($mallNamedata)[0][0]?> max=<?php echo datesetting($mallNamedata)[0][2]?> value=<?php echo datesetting($mallNamedata)[0][2]?>>
+                            <input name="endmonth" class="endmonth" type="number" min=<?php echo datesetting($mallNamedata)[0][1]?> max=<?php echo datesetting($mallNamedata)[0][3]?> value=<?php echo datesetting($mallNamedata)[0][3]?>>
                         </div>
                     </div>
                 </div>
@@ -236,9 +264,16 @@
         let today = new Date();
         let year = today.getFullYear();
         let month = ('0' + (today.getMonth() + 1)).slice(-2);
-        console.log(year);
+
+        console.log(startmonth);
         console.log(month);
-        if((startyear < year) || (startmonth > month)){
+
+        // 시작날짜가 현재 년도, 달보다 같거나 커야 변경가능하도록 
+        // if(){
+
+        // }
+
+        if((startyear < year) || ((startyear === endyear) && (Number(startmonth) < Number(month))) ){
             alert("지나간 기한은 수정할 수 없습니다.")
             return false;
         }else if(startyear > endyear){
@@ -276,5 +311,27 @@
                 yeardata.innerText = (year)+'년도 ( 단위 % )';
             },
         });
+    }
+
+    // 쇼핑몰 선택시 해당 날짜 불러오기 
+    function changemall(event) {
+        let num = event.target.selectedIndex;
+        let date = <?php echo json_encode(datesetting($mallNamedata)); ?> 
+
+        let starty = date[num][0];
+        let startm = date[num][1];
+        let endy = date[num][2];
+        let endm = date[num][3];
+
+        let startyinput = document.querySelector(".startyear")
+        let startminput = document.querySelector(".startmonth")
+        let endyinput = document.querySelector(".endyear")
+        let endminput = document.querySelector(".endmonth")
+
+        startyinput.value = starty;
+        startminput.value = startm;
+        endyinput.value = endy;
+        endminput.value = endm;
+
     }
 </script>

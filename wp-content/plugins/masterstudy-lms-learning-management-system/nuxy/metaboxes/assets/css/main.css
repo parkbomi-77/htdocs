@@ -415,6 +415,9 @@
     height: 41px;
     word-break: break-word;
 }
+tbody .shoppingmall-row2{
+    background-color: aliceblue;
+}
 .shoppingmall-row2 td{
     padding: 0;
 }
@@ -708,7 +711,7 @@
 .margin-container{
     width: 911px;
     min-height: 750px;
-    padding: 9px 25px 9px 15px;
+    padding: 9px 25px 25px 15px;
     background-color: white;
     border-radius: 12px;
     position: relative;
@@ -788,13 +791,13 @@
 .month_select{
     width: 178px;
 }
-.month_select select{
-    width: 97px;
+.month_select input{
+    width: 83.2px;
     padding: 6px 6px 6px 10px;
 }
-.month_select select:last-child{
+/* .month_select select:last-child{
     width: 70px;
-}
+} */
 #margin_set_select{
     display: flex;
     width: 365px;
@@ -840,7 +843,7 @@
     top: 10%;
     font-size: large;
     text-align: center;
-    background-color: #fcfcfc;
+    background-color: #fcfcfc00;
     cursor: pointer;
 }
 .movetable_right{
@@ -852,20 +855,10 @@
     top: 10%;
     font-size: large;
     text-align: center;
-    background-color: #fcfcfc;
+    background-color: #fcfcfc00;
     cursor: pointer;
 
 }
-/* .margin_table_div div{
-    width: 100%;
-    text-align: end;
-    font-size: smaller;
-    margin-bottom: 3px;
-}
-.margin_table_div select{
-    height: 36px;
-    padding: 2px 16px;
-} */
 .margin_table {
     width: 95%;
     margin: auto;
@@ -883,6 +876,10 @@
     background-color: #304152;
     color: #e5e5e5;
     font-weight: 200;
+}
+.margin_table td {
+    background-color: #e6e6e6;
+
 }
 .margin_table th:first-child {
     width: 50px;

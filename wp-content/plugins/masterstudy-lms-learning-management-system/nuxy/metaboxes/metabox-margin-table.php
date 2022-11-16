@@ -7,38 +7,73 @@ global $wpdb;
 // $date = $year.'-'.$month.'%';
 
 
-$sql1 ="SELECT wp_shoppingmall.code, wp_shoppingmall.name 
+$sql1 ="SELECT code, name, start_date, end_date
 FROM wp_shoppingmall
 where state = 1";
 $mallNamedata = $wpdb->get_results($wpdb->prepare($sql1));
 
 function tabledata($mallNamedata) {
-    $year = $_POST['year'];
+    $years = $_POST['year'];
     $tablelist = "";
     for($i=0; $i<count($mallNamedata); $i++){
-        $tablerow = '<tr> <td>'.$mallNamedata[$i]->name.'</td>';
-        $td01 = '<td>0</td>';
-        $td02 = '<td>0</td>';
-        $td03 = '<td>0</td>';
-        $td04 = '<td>0</td>';
-        $td05 = '<td>0</td>';
-        $td06 = '<td>0</td>';
-        $td07 = '<td>0</td>';
-        $td08 = '<td>0</td>';
-        $td09 = '<td>0</td>';
-        $td10 = '<td>0</td>';
-        $td11 = '<td>0</td>';
-        $td12 = '<td>0</td>';
+        $startyear = substr($mallNamedata[$i]->start_date, 0, 4);
+        $startmonth = substr($mallNamedata[$i]->start_date, 5, 2);
+        $endyear = substr($mallNamedata[$i]->end_date, 0, 4);
+        $endmonth = substr($mallNamedata[$i]->end_date, 5, 2);
 
-        $code = $mallNamedata[$i]->code; 
-        $data = tablemargindata($code, $year); 
+        $tablerow = '<tr> <td>'.$mallNamedata[$i]->name.'</td>';
+        $tdarr = array();
+        
+        // 시작년도보다 크고 끝년도보다 작으면 all
+        if(($startyear < $years) && ($years < $endyear)){
+            for($j=0; $j<12; $j++){
+                $tdarr[$j] = "<td style='background-color:white'>0</td>";
+            }
+        // 시작년도와 같고 끝년도와 같으면 달을 비교
+        }else if(($startyear === $years) && ($years === $endyear)) {
+            for($j=0; $j<12; $j++){
+                if($j+1 >= $startmonth && $j+1 <= $endmonth){
+                    $tdarr[$j] = "<td style='background-color:white'>0</td>";
+                }else {
+                    $tdarr[$j] = "<td style='background-color:#aaaaaa'>0</td>";
+                }
+            }
+        // 시작년도와 같고 끝년도보다 작으면
+        }else if(($startyear === $years) && ($years < $endyear)){
+            for($j=0; $j<12; $j++){
+                if($j+1 >= $startmonth){
+                    $tdarr[$j] = "<td style='background-color:white'>0</td>";
+                }else {
+                    $tdarr[$j] = "<td style='background-color:#aaaaaa'>0</td>";
+                }
+            }
+        }
+        // 시작년도보다 크고 끝년도와 같으면
+        else if(($startyear < $years) && ($years === $endyear)){
+            for($j=0; $j<12; $j++){
+                if($j+1 <= $endmonth){
+                    $tdarr[$j] = "<td style='background-color:white'>0</td>";
+                }else {
+                    $tdarr[$j] = "<td style='background-color:#aaaaaa'>0</td>";
+                }
+            }
+        }else {
+            for($j=0; $j<12; $j++){
+                $tdarr[$j] = "<td style='background-color:#aaaaaa'>0</td>";
+            }
+        }
+        
+        $code = $mallNamedata[$i]->code; // 1028 
+        $data = tablemargindata($code, $years); // 3개가 들어오고 .. 
 
         for($j=0; $j<count($data); $j++){
-            $month = $data[$j]->date_setting; 
-            $extraction = substr($month, 5, 2);
-            ${"td".$extraction} = '<td>'.$data[$j]->margin.'</td>';
+            $date = $data[$j]->date_setting; // 10 
+            $extraction_m = substr($date, 5, 2); // 달이 들어옴 
+
+            $marginadd = substr_replace($tdarr[$extraction_m-1], $data[$j]->margin, -6, 1);
+            $tdarr[$extraction_m-1] = $marginadd;
         }
-        $tablerow = $tablerow.$td01.$td02.$td03.$td04.$td05.$td06.$td07.$td08.$td09.$td10.$td11.$td12.'</tr>';
+        $tablerow = $tablerow.$tdarr[0].$tdarr[1].$tdarr[2].$tdarr[3].$tdarr[4].$tdarr[5].$tdarr[6].$tdarr[7].$tdarr[8].$tdarr[9].$tdarr[10].$tdarr[11].'</tr>';
         $tablelist = $tablelist.$tablerow;
         
     }
