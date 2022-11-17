@@ -49,6 +49,9 @@ $from_record = ($page - 1) * $rows; // 시작 열을 구함
 $sql  = " select it_id,
                  it_name,
                  it_1_subj,
+                 it_margin,
+                 it_margin_start,
+                 it_margin_end,
                  ca_id
           $sql_common
           $sql_order
@@ -111,7 +114,8 @@ $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목�
     <tr>
         <th scope="col"><?php echo subject_sort_link("it_id", $qstr, 1); ?>상품코드</a></th>
         <th scope="col"><?php echo subject_sort_link("it_name"); ?>상품명</a></th>
-        <th scope="col"><?php echo subject_sort_link("it_1_subj", $qstr, 1); ?>광고<br>상품</a></th>
+        <th scope="col" colspan="2"><?php echo subject_sort_link(""); ?>광고기간</br>시작날짜 ~ 마감날짜</a></th>
+        <th scope="col"><?php echo subject_sort_link("it_1_subj", $qstr, 1); ?>광고<br>여부</a></th>
         <!-- <th scope="col">관리</th> -->
     </tr>
     </thead>
@@ -127,6 +131,8 @@ $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목�
             <?php echo $row['it_id']; ?>
         </td>
         <td class="td_left"><a href="<?php echo $href; ?>"><?php echo get_it_image($row['it_id'], 50, 50); ?><?php echo cut_str(stripslashes($row['it_name']), 60, "&#133"); ?></a></td>
+        <td><?php echo $row['it_margin_start']; ?></td>
+        <td><?php echo $row['it_margin_end']; ?></td>
         <td class="td_chk2">
             <label for="type1_<?php echo $i; ?>" class="sound_only">광고상품</label>
             <input type="checkbox" name="it_1_subj[<?php echo $i; ?>]" value="1" id="type1_<?php echo $i; ?>" <?php echo ($row['it_1_subj'] ? 'checked' : ''); ?>>

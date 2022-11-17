@@ -13,7 +13,7 @@ if($_POST['product_code']){ //벳스쿨에 광고제품 등록했을때
     
     if($item){ // 일치하면 it_1_subj( 광고여부필드 ) 1로 업데이트 
         $sql2 = "UPDATE {$g5['g5_shop_item_table']} 
-        SET `it_1_subj` = '1', `it_margin`='{$margin}', `it_margin_start`={$start_date}, `it_margin_end`={$end_date}
+        SET `it_1_subj` = '1', `it_margin`='{$margin}', `it_margin_start`='{$start_date}', `it_margin_end`='{$end_date}'
         where it_id = {$_POST['product_code']}";
         sql_query($sql2);
     
