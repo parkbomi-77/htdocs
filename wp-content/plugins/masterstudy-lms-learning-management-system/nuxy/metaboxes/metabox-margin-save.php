@@ -13,29 +13,6 @@ $endyear = $_POST['endyear'];
 $endmonth = $_POST['endmonth'];
 $enddate = $year.'-'.$month.'-01';
 
-
-// 날짜, 쇼핑몰코드, 마진율 -> wp_shoppingmall_margin 테이블에 인서트 
-// for($i=0; $i<count($code); $i++){
-
-//     // 년월에 해당하는 데이터가 있으면 업데이트
-//     $sql1 = "select * from wp_shoppingmall_margin 
-//     where date_setting like '".$date."'
-//     and code = ".$code[$i];
-//     $check = $wpdb->get_results($wpdb->prepare($sql1));
-//     $checkmargin = $check[0]->margin;
-//     if(!$checkmargin){ // 등록되어져있는 값이 없을 경우 
-//         $sql2 = "INSERT INTO wp_shoppingmall_margin (code, margin, date_setting) 
-//         VALUES ('{$code[$i]}', '{$margin[$i]}', '{$date}' )";
-//         $wpdb->get_results($wpdb->prepare($sql2));
-//     }else if($checkmargin === $margin[$i]){ // 입력으로 들어온 마진이 기존 마진과 동일한 경우 
-//         continue;
-//     }else { // 기존 마진과 다를 경우 
-//         $sql3 = "UPDATE wp_shoppingmall_margin SET margin = ".$margin[$i]." WHERE (id = ".$check[0]->id.")";
-//         $wpdb->get_results($wpdb->prepare($sql3));
-//     }
-
-// }
-
 // 시작날짜와 끝날짜 간격 구하기
 // endyear이 startyear보다 크면 에러 , 같거나 커야함 
 if($endyear === $startyear){ // 시작년도 끝년도 동일
@@ -142,21 +119,59 @@ if($endyear === $startyear){ // 시작년도 끝년도 동일
                     }
                 }
             }
-
-
-
-
-
-             
-                
-
-
-
-
         }
-
 }
 
+// 해당 쇼핑몰의 광고활성화되어있는 상품들이 있는지 조회
+$sql4 = "SELECT * from wp_product_list where adv_state = 1 and mall_code=".$code;
+$activate = $wpdb->get_results($wpdb->prepare($sql4)); // 갯수대로 가져옴 .. 
+if($activate && ($code !== 1029 )){ // 광고활성화된 상품이 있고, 벳스쿨이 아닐 경우 
+    for($i=0; $i<count($activate); $i++){
+        // 그누보드 쇼핑몰 shop_item DB에 광고여부 1로 업데이트 시켜주는 로직  http://localhost:8888/practice/gnuboard/product_list 
+        $mall = $wpdb->get_results($wpdb->prepare("SELECT * from wp_shoppingmall where code =".$code));
+        $start_date = $mall[0]->start_date;
+        $end_date = $mall[0]->end_date;
+        $link = $mall[0]->link2;
+    
+        // 마진율 오브젝트에 담아서 보내기
+        $sql = "SELECT * FROM vetschool.wp_shoppingmall as a
+                left join wp_shoppingmall_margin as b
+                on a.code = b.code
+                where a.code = {$code}
+                order by date_setting";
+        $margin_date = $wpdb->get_results($wpdb->prepare($sql)); 
+    
+        // for문으로 돌면서 
+        // 키 : date_setting의 년도,월,일 '00000000'
+        // 값 : 마진율
+        $obj = (object)[];
+        for($j=0; $j<count($margin_date); $j++){
+            $date = $margin_date[$j]->date_setting;
+            $datekey = str_replace('-', "", $date);
+    
+            $margin = $margin_date[$j]->margin;
+            $obj->$datekey = $margin;
+        }
+    
+        $postdata = http_build_query(
+            array(
+                'product_code' => $activate[$i]->product_code,
+                'start_date' => $start_date,
+                'end_date' => $end_date,
+                'margin' => $obj,
+            )
+        );
+        $opts = array('http' =>
+            array(
+                'method' => 'POST',
+                'header' => 'Content-type: application/x-www-form-urlencoded',
+                'content' => $postdata
+            )
+        );
+        $context = stream_context_create($opts);
+        file_get_contents($link, false, $context);
+    }
+}
 
 
 

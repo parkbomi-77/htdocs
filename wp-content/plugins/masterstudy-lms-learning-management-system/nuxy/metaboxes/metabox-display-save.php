@@ -50,7 +50,7 @@
             $margin_date = $wpdb->get_results($wpdb->prepare($sql)); 
 
             // for문으로 돌면서 
-            // 키 : date_setting의 년도,월 '000000'
+            // 키 : date_setting의 년도,월,일 '00000000'
             // 값 : 마진율
             $obj = (object)[];
             for($i=0; $i<count($margin_date); $i++){
@@ -59,7 +59,7 @@
                 $datekey = str_replace('-', "", $date);
 
                 $margin = $margin_date[$i]->margin;
-                $obj->$datekey = $margin; // 여기서 문제 ~~ 
+                $obj->$datekey = $margin;
 
             }
 
