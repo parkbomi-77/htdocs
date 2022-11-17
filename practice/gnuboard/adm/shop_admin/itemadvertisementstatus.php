@@ -56,14 +56,18 @@ $total_page  = ceil($total_count / $rows);  // 전체 페이지 계산
 if ($page < 1) { $page = 1; } // 페이지가 없으면 첫 페이지 (1 페이지)
 $from_record = ($page - 1) * $rows; // 시작 열을 구함
 
-$sql  = " select mb_id,
-                it_name,
-                ct_price,
-                ct_qty,
-                ct_status,
-                ct_select_time
-          $sql_common
-           limit $from_record, $rows ";
+$sql  = "select g5_shop_cart.mb_id,
+        g5_shop_cart.it_id,
+        g5_shop_cart.it_name,
+        g5_shop_cart.ct_price,
+        g5_shop_cart.ct_qty,
+        g5_shop_cart.ct_status,
+        g5_shop_cart.ct_select_time,
+        g5_shop_item.it_margin
+        $sql_common
+        left join gnuboard.g5_shop_item
+        on g5_shop_cart.it_id = g5_shop_item.it_id
+        limit $from_record, $rows ";
 $result = sql_query($sql);
 
 $total = " select FORMAT(sum(ct_price),'#,#') 
@@ -126,7 +130,9 @@ $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목�
         <colgroup>
             <col width="20%">
             <col width="10%">
-            <col width="30%">
+            <col width="20%">
+            <col width="10%">
+            <col width="5%">
             <col width="10%">
             <col width="10%">
             <col width="10%">
@@ -141,12 +147,25 @@ $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목�
         <th scope="col"><?php echo subject_sort_link("ct_price"); ?>가격</a></th>
         <th scope="col"><?php echo subject_sort_link("ct_qty"); ?>수량</a></th>
         <th scope="col"><?php echo subject_sort_link(""); ?>총 가격</a></th>
+        <th scope="col"><?php echo subject_sort_link(""); ?>광고 수수료 비율</a></th>
+        <th scope="col"><?php echo subject_sort_link(""); ?>수수료</a></th>
         <th scope="col"><?php echo subject_sort_link("ct_status", $qstr, 1); ?>주문<br>상태</a></th>
     </tr>
     </thead>
     <tbody>
     <?php for ($i=0; $row=sql_fetch_array($result); $i++) {
         $href = shop_item_url($row['it_id']);
+
+        $margin = $row['it_margin'];
+        // margin json 다시 obj로 변경 
+        $obj = json_decode($margin);
+
+        // 키값 추출
+        $monthkey = substr($row['ct_select_time'], 0, 7); 
+        $monthkey2 = str_replace('-', "", $monthkey).'01';
+
+        // 마진율 추출 
+        $onemargin = $obj->$monthkey2;
 
         $bg = 'bg'.($i%2);
     ?>
@@ -159,7 +178,7 @@ $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목�
             <label for="type1_<?php echo $i; ?>" class="sound_only"></label>
             <?php echo $row['mb_id']; ?>
         </td>
-        <td class="td_left"><?php echo get_it_image($row['it_id'], 50, 50); ?><?php echo cut_str(stripslashes($row['it_name']), 60, "&#133"); ?></a></td>
+        <td class="td_left"><?php // echo get_it_image($row['it_id'], 50, 50); ?><?php echo cut_str(stripslashes($row['it_name']), 60, "&#133"); ?></a></td>
         <td class="td_mng td_mng_s">
             <?php echo $row['ct_price']; ?>
          </td>
@@ -170,6 +189,16 @@ $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목�
         <td class="td_code">
             <input type="hidden" name="it_id[<?php echo $i; ?>]" value="<?php echo $row['it_id']; ?>">
             <?php echo ($row['ct_price'] * $row['ct_qty']) ?> 
+        </td>
+        <!-- 마진율 -->
+        <td class="td_code">
+            <input type="hidden" name="it_id[<?php echo $i; ?>]" value="<?php echo $onemargin; ?>">
+            <?php echo ($onemargin/100); ?> 
+        </td>
+        <!-- 수수료 -->
+        <td class="td_code">
+            <input type="hidden" name="it_id[<?php echo $i; ?>]" value="<?php echo $row['it_id']; ?>">
+            <?php echo (($row['ct_price'] * $row['ct_qty'])*$onemargin/100).'원'; ?> 
         </td>
         <td class="td_code">
             <input type="hidden" name="it_id[<?php echo $i; ?>]" value="<?php echo $row['it_id']; ?>">
@@ -186,7 +215,7 @@ $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목�
     <tfoot>
         <tr>
             <th scope="row" colspan='4'>Totals</th>
-            <td colspan='3'><?php echo $result2["FORMAT(sum(ct_price),'#,#')"] ?>원</td>
+            <td colspan='5'><?php echo $result2["FORMAT(sum(ct_price),'#,#')"] ?>원</td>
         </tr>
     </tfoot>
     </table>
