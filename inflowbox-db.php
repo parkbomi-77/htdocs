@@ -5,7 +5,15 @@
 
     global $wpdb;
     $code = $_POST['code']; // 쇼핑몰 코드
-    $results = $wpdb->get_results($wpdb->prepare("SELECT * from wp_purchase_status where mall_code =".$code." and status in ('완료', '배송', '주문', '취소');" ));
+    // 해당 쇼핑몰 마진율 불러오기 
+    $sql ="SELECT s.*, m.margin
+            FROM vetschool.wp_purchase_status as s
+            join wp_shoppingmall_margin as m
+            on s.status_time like CONCAT('%', left(m.date_setting,7), '%')
+            where mall_code = 1028
+            and status in ('완료', '배송', '주문', '취소')";
+    $results = $wpdb->get_results($wpdb->prepare($sql));
+
 
     $aaa = count($results);
     header("Content-Type: application/json");
