@@ -42,6 +42,8 @@ if ($od_status) {
 
 if ($where) {
     $sql_search = ' where '.implode(' and ', $where).' and ct_vetcode="vet" ';
+}else {
+    $sql_search = ' where ct_vetcode="vet" ';
 }
 
 $sql_common = " from {$g5['g5_shop_cart_table']} $sql_search ";
@@ -64,9 +66,10 @@ $sql  = "select g5_shop_cart.mb_id,
         g5_shop_cart.ct_status,
         g5_shop_cart.ct_select_time,
         g5_shop_item.it_margin
-        $sql_common
+        from g5_shop_cart
         left join gnuboard.g5_shop_item
         on g5_shop_cart.it_id = g5_shop_item.it_id
+        $sql_search
         limit $from_record, $rows ";
 $result = sql_query($sql);
 
@@ -193,7 +196,7 @@ $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목�
         <!-- 마진율 -->
         <td class="td_code">
             <input type="hidden" name="it_id[<?php echo $i; ?>]" value="<?php echo $onemargin; ?>">
-            <?php echo ($onemargin/100); ?> 
+            <?php echo ($onemargin/100); ?> %
         </td>
         <!-- 수수료 -->
         <td class="td_code">

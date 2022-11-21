@@ -122,6 +122,12 @@
                 let total = 0;
                 let margin = 0;
                 purchase_status = data;
+
+                // 년도, 월, 주문상태 초기화
+                document.querySelector(".years").value = "21"
+                document.querySelector(".month").value = "13"
+                document.querySelector("#orderStatus-id").value = "100"
+
                 let datadata = ''
                 for(let i=0; i<data.length; i++){
                     let onetotal = (data[i].qty)*(data[i].price);
