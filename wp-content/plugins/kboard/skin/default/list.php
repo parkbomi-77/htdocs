@@ -61,6 +61,8 @@
 								<?php if($content->isNew()):?><span class="kboard-default-new-notify">New</span><?php endif?>
 								<?php if($content->secret):?><img src="<?php echo $skin_path?>/images/icon-lock.png" alt="<?php echo __('Secret', 'kboard')?>"><?php endif?>
 								<?php echo $content->title?>
+								<?php if($content->isAttached()):?><img src="<?php echo $skin_path?>/images/icon-clip.png" alt="<?php echo __('Secret', 'kboard')?>"><?php endif?>
+								
 								<span class="kboard-comments-count"><?php echo $content->getCommentsCount()?></span>
 							</div>
 						</a>
@@ -89,6 +91,8 @@
 								<?php if($content->isNew()):?><span class="kboard-default-new-notify">New</span><?php endif?>
 								<?php if($content->secret):?><img src="<?php echo $skin_path?>/images/icon-lock.png" alt="<?php echo __('Secret', 'kboard')?>"><?php endif?>
 								<?php echo $content->title?>
+								<?php if($content->isAttached()):?><img src="<?php echo $skin_path?>/images/icon-clip.png" alt="<?php echo __('Secret', 'kboard')?>"><?php endif?>
+
 								<span class="kboard-comments-count"><?php echo $content->getCommentsCount()?></span>
 							</div>
 						</a>
