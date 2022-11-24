@@ -70,7 +70,7 @@
 }
 .addbtn{
     margin: 4px 0 0 24px;
-    width: 88.6%;
+    width: 855px;
     background-color: #2271b1;
     text-align: center;
     border-radius: 3px;
@@ -92,7 +92,7 @@
         on t.product_list_id = l.ID
         join wp_shoppingmall as s
         on l.mall_code = s.code
-        where t.posts_lesson_id =".$post->ID
+        where t.posts_lesson_id =".$post->ID." and l.adv_state = 1"
     ));
     $num = count($resultrow);
 

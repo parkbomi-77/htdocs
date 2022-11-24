@@ -23,7 +23,13 @@ get_header(); ?>
         <?php global $wpdb, $post;
             if($post->ID === 10656){
                 // 일단 유저 id 3으로 하드코딩 
-                $results = $wpdb->get_results($wpdb->prepare("SELECT * from wp_wish_list where user_id = 3"));
+                $sql = "SELECT t.*
+                        FROM wp_wish_list as t
+                        join wp_product_list as l
+                        on t.item_id = l.ID
+                        where t.user_id = 3
+                        and l.adv_state = 1";
+                $results = $wpdb->get_results($wpdb->prepare($sql));
                 $num = count($results);
 
                 $tr = "";
