@@ -10,7 +10,7 @@ Author URI: https://www.cosmosfarm.com/
 
 if(!defined('ABSPATH')) exit;
 
-define('KBOARD_VERSION', '6.1');
+define('KBOARD_VERSION', '6.2');
 define('KBOARD_PAGE_TITLE', __('KBoard : 게시판', 'kboard'));
 define('KBOARD_WORDPRESS_ROOT', substr(ABSPATH, 0, -1));
 define('KBOARD_WORDPRESS_APP_ID', '083d136637c09572c3039778d8667b27');

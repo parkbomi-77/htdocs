@@ -867,7 +867,7 @@ tbody .shoppingmall-row2{
     text-align: center;
     box-shadow: 0 1px 9px rgb(43 42 42 / 25%);
 }
-.margin_table th, td{
+.margin_table th, .margin_table td{
     border: 1px solid #444444;
     width: 20px;
     height: 36px;
