@@ -20,7 +20,7 @@ if($_POST['product_code']){ //벳스쿨에 광고제품 등록했을때
     }else { // 없으면? 잘못들어온 데이터 
         return;
     }
-}else if($_POST['delete_code']){ // 벳스쿨에 광고제품 삭제했을때 
+}else if($_POST['delete_code']){ // 벳스쿨에 광고제품 삭제했을때 or 계약기간 만료되었을때
     // 벳스쿨에서 삭제 제품ID가 그누보드쪽 제품인지 체크
     $sql = "SELECT * FROM {$g5['g5_shop_item_table']} where it_id = {$_POST['delete_code']}";
     $item = sql_query($sql);
