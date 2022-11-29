@@ -1,15 +1,17 @@
 <?php 
+
+echo "zzzz";
 require_once( '/Applications/MAMP/htdocs/wp-load.php' );
 
 $wpdb;
 // 현재 날짜
-// $this_year = date("Y");
-// $this_month = date("m");
-$this_year = '2022';
-$this_month = '12';
+$this_year = date("Y");
+$this_month = date("m");
+// $this_year = '2022';
+// $this_month = '12';
 
 
-$sql = "SELECT * FROM vetschool.wp_shoppingmall where state = 1";
+$sql = "SELECT * FROM wp_shoppingmall where state = 1";
 $results = $wpdb->get_results($wpdb->prepare($sql));
 
 // 활성화되어져있는 쇼핑몰들 마감기한 확인
@@ -24,7 +26,7 @@ for($i=0; $i<count($results); $i++){
         $wpdb->get_results($wpdb->prepare($sql2));
 
         // 쇼핑몰 상품들 하나하나 다 광고 비활성화 
-        $sql3 = "SELECT * FROM vetschool.wp_product_list where mall_code =".$results[$i]->code." and adv_state = 1";
+        $sql3 = "SELECT * FROM wp_product_list where mall_code =".$results[$i]->code." and adv_state = 1";
         $product = $wpdb->get_results($wpdb->prepare($sql3));
         for($j=0; $j<count($product); $j++){
             $sql4 = "UPDATE wp_product_list SET adv_state = 0 WHERE code =".$product[$j]->code;

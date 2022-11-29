@@ -203,12 +203,12 @@
                         <i class="far fa-calendar-check fa-lg"></i>
                         <div class="month_select">
                             <input name="startyear" class="startyear" type="number" min=<?php echo datesetting($mallNamedata)[0][0]?> max=<?php echo datesetting($mallNamedata)[0][2]?> value=<?php echo datesetting($mallNamedata)[0][0]?> >
-                            <input name="startmonth" class="startmonth" type="number" min=<?php echo datesetting($mallNamedata)[0][1]?> max=<?php echo datesetting($mallNamedata)[0][3]?> value=<?php echo datesetting($mallNamedata)[0][1]?> >
+                            <input name="startmonth" class="startmonth" type="number" min=1 max=12 value=<?php echo (int)datesetting($mallNamedata)[0][1]?> >
                         </div>
                         <span>-</span>
                         <div class="month_select">
                             <input name="endyear" class="endyear" type="number" min=<?php echo datesetting($mallNamedata)[0][0]?> max=<?php echo datesetting($mallNamedata)[0][2]?> value=<?php echo datesetting($mallNamedata)[0][2]?>>
-                            <input name="endmonth" class="endmonth" type="number" min=<?php echo datesetting($mallNamedata)[0][1]?> max=<?php echo datesetting($mallNamedata)[0][3]?> value=<?php echo datesetting($mallNamedata)[0][3]?>>
+                            <input name="endmonth" class="endmonth" type="number" min=1 max=12 value=<?php echo (int)datesetting($mallNamedata)[0][3]?>>
                         </div>
                     </div>
                 </div>

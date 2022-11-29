@@ -382,9 +382,9 @@
     margin: 0 0 10px;
     min-height: 595px;
 }
-.shoppingmall-title{
+/* .shoppingmall-title{
     margin-bottom: 33px;
-}
+} */
 .shoppingmall-title h3{
     line-height: 4.5rem;
     margin: 0;
@@ -518,6 +518,48 @@ tbody .shoppingmall-row2{
 .none{
     display: none;
 }
+.toggleSwitch {
+    width: 41px;
+    margin: 6px;
+    height: 20px;
+    display: inline-block;
+    position: relative;
+    border-radius: 30px;
+    background-color: #293b4f;
+    box-shadow: 0 0 16px 3px rgba(0 0 0 / 15%);
+    cursor: pointer;
+  }
+  
+  .toggleSwitch .toggleButton {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 50%;
+    left: 3px;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background: #fff;
+  }
+  
+  .toggleSwitch.active {
+    background: #222f3e75;
+  }
+  
+  .toggleSwitch.active .toggleButton {
+    left: calc(100% - 18px);
+    background: #fff;
+  }
+  
+  .toggleSwitch, .toggleButton {
+    transition: all 0.2s ease-in;
+  }
+  .toggletitle {
+    line-height: 33px;
+    color: #545659;
+    font-weight: 500;
+    font-size: small;
+    margin-left: 3px;
+  }
 /* .shoppingmall-box {
     width: 100%;
     height: 100%;

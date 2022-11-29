@@ -29,7 +29,7 @@ for($i=0; $i<$num; $i++){
                 'content' => $postdata
             )
         );
-        $aa = $context = stream_context_create($opts);
+        $context = stream_context_create($opts);
         file_get_contents($link, false, $context);
     }
 
@@ -59,6 +59,7 @@ for($i=0; $i<$num; $i++){
         'wp_product_list', 
         array(
             'adv_state' => 0,
+            'del' => 1,
         ), 
         array( 'ID' => $deletecheck[$i]
         ));

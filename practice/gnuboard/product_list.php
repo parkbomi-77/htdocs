@@ -6,6 +6,10 @@ $margin = json_encode($_POST['margin']);
 $start_date = $_POST['start_date'];
 $end_date = $_POST['end_date'];
 
+// 상품 삭제시 마감기한-> 당월로 
+$now = date('Y-m');
+$now_date = $now.'-01';
+
 if($_POST['product_code']){ //벳스쿨에 광고제품 등록했을때
     // 벳스쿨에서 등록한 제품ID가 그누보드쪽 제품ID와 일치하는지 체크
     $sql = "SELECT * FROM {$g5['g5_shop_item_table']} where it_id = {$_POST['product_code']}";
@@ -26,8 +30,23 @@ if($_POST['product_code']){ //벳스쿨에 광고제품 등록했을때
     $item = sql_query($sql);
 
     if($item){ // 맞으면 it_1_subj( 광고여부필드 ) 0으로 변경
-        $sql2 = "UPDATE {$g5['g5_shop_item_table']} SET `it_1_subj` = '0' where it_id = {$_POST['delete_code']}";
+        $sql2 = "UPDATE {$g5['g5_shop_item_table']} SET `it_1_subj` = '0', it_margin_end = '{$now_date}' where it_id = {$_POST['delete_code']}";
         sql_query($sql2);
+    }else { // 없으면? 잘못들어온 데이터 
+        return;
+    }
+}else if($_POST['del_product_code']){ //광고활성화는 하지않되 마진율은 수정해야하는 경우
+    $sql = "SELECT * FROM {$g5['g5_shop_item_table']} where it_id = {$_POST['del_product_code']} and it_1_subj = 0";
+    $item = sql_query($sql);
+    $hh = $item->num_rows;
+    
+    
+    if($hh > 0){ // 일치하면 마진율 업데이트
+        $sql2 = "UPDATE {$g5['g5_shop_item_table']} 
+        SET `it_1_subj` = '0', `it_margin`='{$margin}'
+        where it_id = {$_POST['del_product_code']}";
+        sql_query($sql2);
+    
     }else { // 없으면? 잘못들어온 데이터 
         return;
     }

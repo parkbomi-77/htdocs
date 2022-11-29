@@ -1,148 +1,4 @@
-<?php
-    global $wpdb;
-    $results = $wpdb->get_results($wpdb->prepare("SELECT * from wp_shoppingmall where state = 1 and del = 0"));
-    $d_results = $wpdb->get_results($wpdb->prepare("SELECT * from wp_shoppingmall where state = 0 and del = 0"));
 
-    if($results){ // 벳스쿨쪽으로 광고의뢰한 쇼핑몰이 있을 경우 
-        $mall_lists = "";
-        for($i=0; $i<count($results); $i++){
-            $mall_list = '<tr id="shoppingmall-row">
-            <td rowspan="2">'.($i+1).'</td>
-            <td rowspan="2">'.$results[$i]->name.'</td>
-            <td>'.$results[$i]->link.'</td>
-            <td>'.$results[$i]->link2.'</td>
-            <td id="shoppingmall-box-btn" rowspan="2">
-                <button class="shoppingmall-box-edit" onclick="edit(this)" value="'.$results[$i]->name.'"><i class="fas fa-edit"></i></button>
-                <button class="shoppingmall-box-del" onclick="del(this)" value="'.$results[$i]->code.'"><i class="fas fa-times-circle"></i></button>
-            </td>
-            </tr>
-            <tr class="shoppingmall-row2"> 
-                <td colspan="2">'.substr($results[$i]->start_date, 0, 7).' ~ '.substr($results[$i]->end_date, 0, 7).'</td>
-            </tr>';
-            $mall_lists = $mall_lists.$mall_list;
-        }
-    }else { // 벳스쿨쪽으로 광고의뢰한 쇼핑몰이 없을 경우 
-        $mall_lists="<tr>
-                        <td colspan='5'>현재 광고를 의뢰한 쇼핑몰이 없습니다.</td>
-                    <tr>";
-    }
-
-    if($d_results) {
-        $d_mall_lists = "";
-        for($i=0; $i<count($d_results); $i++){
-            $mall_list = '<tr id="shoppingmall-row">
-            <td rowspan="2">'.($i+1).'</td>
-            <td rowspan="2">'.$d_results[$i]->name.'</td>
-            <td>'.$d_results[$i]->link.'</td>
-            <td>'.$d_results[$i]->link2.'</td>
-            <td id="shoppingmall-box-btn" rowspan="2">
-                <button class="shoppingmall-box-edit" onclick="edit(this)" value="'.$d_results[$i]->name.'"><i class="fas fa-edit"></i></button>
-                <button class="shoppingmall-box-del" onclick="del(this)" value="'.$d_results[$i]->code.'"><i class="fas fa-times-circle"></i></button>
-            </td>
-            </tr>
-            <tr class="shoppingmall-row2"> 
-                <td colspan="2">'.substr($d_results[$i]->start_date, 0, 7).' ~ '.substr($d_results[$i]->end_date, 0, 7).'</td>
-            </tr>';
-            $d_mall_lists = $d_mall_lists.$mall_list;
-        }
-    }
-    $today = date("Ym");
-    $year = substr($today,0,4);
-    $month = substr($today,4,2);
-
-?>
-
-
-<div class="shoppingmall-container">
-    <div class="shoppingmall-title">
-        <h3> shopping mall list </h3>
-    </div>
-    <div class="shoppingmall-box">
-        <label for="toggle" class="toggleSwitch" onclick="togglechange()"> 
-            <span class="toggleButton"></span>
-        </label>
-        <span class="toggletitle">광고 ON list</span>
-        <table style="text-align:center;" class="shoppingmalltable">
-            <colgroup>
-                <col width="5%">
-                <col width="16%">
-                <col width="34%">
-                <col width="34%">
-                <col width="13%">
-            </colgroup>
-            <thead>
-                <tr> 
-                    <th rowspan='2'></th>
-                    <th rowspan='2'>name</th>
-                    <th>link</th>
-                    <th>link2</th>
-                    <th rowspan='2'></th>
-                </tr>
-                <tr class="shoppingmall-row2"> 
-                    <th colspan='2'>start date - end date</th>
-                </tr>
-            </thead>
-            <form action="http://localhost:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-shoppingmall-save.php" method="post">
-                <tbody id="name" class="shoppingmalltable_body">
-                    <?php echo $mall_lists ?>
-                </tbody>
-            </form>
-        </table>
-        <div class="edit-btn" onclick="add()">add</div>
-    </div>
-
-    <!-- 수정할때 -->
-    <div class="shoppingmall-box2 none" id="popup">
-        <form action="http://localhost:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-shoppingmall-save.php" method="post" name="box2form" onsubmit="return box2submit(this)">
-            <div class="shoppingmall-box2-header">
-                <!-- <div class="shoppingmall-box2-name">name</div>
-                <div class="shoppingmall-box2-link">link</div>
-                <div class="shoppingmall-box2-link">link2</div> -->
-                add shoppingmall
-            </div>
-            <div class="shoppingmall-box2-body">
-                 <div class="shoppingmall-box2-row">
-                    <div class="shoppingmall-box2-name">
-                        <label for="mallname">쇼핑몰 이름 : </label>
-                        <input type="text" name="name" id="mallname" onchange="mallnamecheck(this)">
-                        <div class="overlapno none">* 사용할 수 있는 쇼핑몰명 입니다.</div>
-                        <div class="overlap none">* 중복된 쇼핑몰명 입니다.</div>
-                    </div>
-                    <div class="shoppingmall-box2-link">
-                        <label for="link">쇼핑몰 url (상세페이지용) : </label>
-                        <input type="text" name="link" id="link" onchange="linkcheck(this)">
-                        <div class="overlapno none">* 사용할 수 있는 링크주소 입니다.</div>
-                        <div class="overlap none">* 중복된 링크주소 입니다.</div>
-                    </div>
-                    <div class="shoppingmall-box2-link">
-                        <label for="link2">쇼핑몰 api링크 (광고활성화) : </label>
-                        <input type="text" name="link2" id="link2">
-                    </div>
-                    <div class="shoppingmall-box2-date">
-                        <label for="year">기간 : </label>
-                        <div>
-                            <input name="startyear" type="number" value="<?php echo $year ?>" min="2022">
-                            <input name="startmonth" type="number" value="<?php echo $month ?>" min="01" max="12">
-                             ~ 
-                            <input name="endyear" type="number" value="<?php echo $year ?>" min="2022">
-                            <input name="endmonth" type="number" value="<?php echo $month ?>" min="01" max="12">
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-            <div class="back-btn" onclick="back()">back</div>
-            <div class="save-btn" ><input type="submit" id="" value="save"></div>
-            <div class="blankcheck none">빈 칸을 채워주세요.</div>
-        </form>
-    </div>
-</div>
-
-
-<script src="//code.jquery.com/jquery.min.js"></script>
-<!-- <script src="/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/test.js" defer></script> -->
-<script>
     let state = ''
     let shoppingmall_tabletag = document.querySelector('.shoppingmalltable_body');
   
@@ -407,31 +263,39 @@
             }
         }
     }
+    const label = document.querySelector(".toggleSwitch");
+    console.log(label);
     
 
     function togglechange() {
-       
-        let label = document.querySelector(".toggleSwitch");
-        let state = label.classList.contains('active')
-        label.classList.toggle('active');
-        if(state){
-            document.querySelector(".toggletitle").innerText = "광고 ON list";
+        console.log('클릭');
+        console.log(label.toggleSwitch);
+        console.log(typeof(label));
+        // window.location.reload();
+        //let label = document.querySelector(".toggleSwitch");
+        console.log(label);
+        
+        console.table(label);
+        label.remove();
+        //let label = document.querySelector(".toggleSwitch");
+         // let state = label.classList.contains('active')
+        // label.classList.toggle('active');
+        // if(state){
+        //     document.querySelector(".toggletitle").innerText = "광고 ON list";
 
-            shoppingmall_tabletag = document.querySelector('.shoppingmalltable_body');
-            shoppingmall_tabletag.innerHTML = `<?php  echo $mall_lists ?>`;
-        }else {
-            document.querySelector(".toggletitle").innerText = "광고 OFF list";
+        //     shoppingmall_tabletag = document.querySelector('.shoppingmalltable_body');
+        //     shoppingmall_tabletag.innerHTML = `<?php // echo $mall_lists ?>`;
+        // }else {
+        //     document.querySelector(".toggletitle").innerText = "광고 OFF list";
             
-            shoppingmall_tabletag = document.querySelector('.shoppingmalltable_body');
-            shoppingmall_tabletag.innerHTML = `<?php  echo $d_mall_lists ?>`; 
-        }
+        //     shoppingmall_tabletag = document.querySelector('.shoppingmalltable_body');
+        //     shoppingmall_tabletag.innerHTML = `<?php  //echo $d_mall_lists ?>`; 
+        // }
 
 
     }
 
 
 
-
-</script>
 
 

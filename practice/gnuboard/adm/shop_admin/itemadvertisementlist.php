@@ -131,8 +131,8 @@ $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목�
             <?php echo $row['it_id']; ?>
         </td>
         <td class="td_left"><a href="<?php echo $href; ?>"><?php echo get_it_image($row['it_id'], 50, 50); ?><?php echo cut_str(stripslashes($row['it_name']), 60, "&#133"); ?></a></td>
-        <td><?php echo $row['it_margin_start']; ?></td>
-        <td><?php echo $row['it_margin_end']; ?></td>
+        <td><?php echo substr($row['it_margin_start'],0,7); ?></td>
+        <td><?php echo substr($row['it_margin_end'],0,7); ?></td>
         <td class="td_chk2">
             <label for="type1_<?php echo $i; ?>" class="sound_only">광고상품</label>
             <input type="checkbox" name="it_1_subj[<?php echo $i; ?>]" value="1" id="type1_<?php echo $i; ?>" <?php echo ($row['it_1_subj'] ? 'checked' : ''); ?>>

@@ -154,7 +154,7 @@ body.page-id-5397 #kboard-default-document .kboard-default-poweredby{
 }
 
 body.page-id-5397 .kboard-list table thead{
-	background-color:#f1f1f1 !important;
+	background-color:#f90303 !important;
 }
 
 body.page-id-5397 .kboard-list thead .kboard-list-uid{
@@ -365,6 +365,120 @@ body.page-id-5399 #kboard-search-form-2{
 }
 
 body.page-id-5399 #main{
+	background-color:transparent;
+}
+
+
+
+/*-----------------------------------------------*/
+/*  "3D 프린팅" Page             */
+/*-----------------------------------------------*/
+body.page-id-10907 #kboard-default-list .kboard-list-header{
+	display:none;
+}
+
+body.page-id-10907 #kboard-default-list .kboard-default-poweredby{
+	display:none;
+}
+
+body.page-id-10907 #kboard-default-document .kboard-default-poweredby{
+	display:none;
+}
+
+body.page-id-10907 .kboard-list table thead{
+	background-color:#f1f1f1 !important;
+}
+
+body.page-id-10907 .kboard-list thead .kboard-list-uid{
+	border-bottom-color:#a9a9a9 !important;
+	border-bottom-width:1px !important;
+	border-top-style:solid !important;
+	border-top-color:#a9a9a9 !important;
+	font-weight:400 !important;
+}
+
+body.page-id-10907 .kboard-list thead .kboard-list-title{
+	border-bottom-width:1px !important;
+	border-bottom-color:#a9a9a9 !important;
+	border-top-style:solid !important;
+	border-top-width:2px;
+	font-weight:400 !important;
+}
+
+body.page-id-10907 .kboard-list thead .kboard-list-user{
+	border-bottom-width:1px !important;
+	border-bottom-color:#a9a9a9 !important;
+	font-weight:400 !important;
+}
+
+body.page-id-10907 .kboard-list thead .kboard-list-date{
+	border-bottom-width:1px !important;
+	border-bottom-color:#a9a9a9 !important;
+	font-weight:400 !important;
+}
+
+body.page-id-10907 .kboard-list thead .kboard-list-vote{
+	border-bottom-width:1px !important;
+	border-bottom-color:#a9a9a9 !important;
+	font-weight:400 !important;
+}
+
+body.page-id-10907 .kboard-list thead .kboard-list-view{
+	border-bottom-width:1px !important;
+	border-bottom-color:#a9a9a9 !important;
+	font-weight:400 !important;
+}
+
+body.page-id-10907 #kboard-default-list{
+	border-top-style:solid;
+	border-top-width:1px;
+	border-top-color:#a9a9a9;
+}
+
+body.page-id-10907 .kboard-list tr a{
+	color:#273037 !important;
+	color:#273037 !important;
+}
+
+body.page-id-10907 .kboard-document-wrap .kboard-title h1{
+	padding-left:0px !important;
+}
+
+body.page-id-10907 .kboard-document-wrap .content-view{
+	padding-left:0px !important;
+	padding-right:0px !important;
+}
+
+body.page-id-10907 #kboard-default-document .kboard-document-wrap .kboard-document-action{
+	padding-top:14px;
+	padding-left:0px;
+}
+
+body.page-id-10907 #kboard-default-document .kboard-document-navi{
+	display:none;
+}
+
+body.page-id-10907 .kboard-list tbody .kboard-list-date{
+	font-size:12px !important;
+}
+
+body.page-id-10907 .kboard-list tbody .kboard-list-user{
+	font-size:12px !important;
+}
+
+body.page-id-10907 .kboard-list tbody .kboard-list-view{
+	font-size:12px !important;
+}
+
+body.page-id-10907 .kboard-list tbody .kboard-list-vote{
+	font-size:12px !important;
+}
+
+body.page-id-10907 #kboard-search-form-2{
+	display:none;
+}
+
+body.page-id-10907 #main{
 	background-color:transparent;
 }
 

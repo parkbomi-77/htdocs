@@ -1,8 +1,11 @@
 <?php
     global $wpdb, $post;
-    $mallResults = $wpdb->get_results($wpdb->prepare("SELECT * from wp_shoppingmall where state =1"));
+    $mallResults = $wpdb->get_results($wpdb->prepare("SELECT * from wp_shoppingmall where state=1 and del=0"));
     $mallResults[0]->code;
     $mallResults[0]->name;
+
+
+    $now_year = date('Y-m');
 
 $option = '';
 for($i=0; $i<count($mallResults); $i++){

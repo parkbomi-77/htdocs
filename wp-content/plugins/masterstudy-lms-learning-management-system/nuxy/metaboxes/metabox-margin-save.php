@@ -13,6 +13,8 @@ $endyear = $_POST['endyear'];
 $endmonth = $_POST['endmonth'];
 $enddate = $year.'-'.$month.'-01';
 
+$nowdate = date("Y-m");
+
 // 시작날짜와 끝날짜 간격 구하기
 // endyear이 startyear보다 크면 에러 , 같거나 커야함 
 if($endyear === $startyear){ // 시작년도 끝년도 동일
@@ -122,8 +124,8 @@ if($endyear === $startyear){ // 시작년도 끝년도 동일
         }
 }
 
-// 해당 쇼핑몰의 광고활성화되어있는 상품들이 있는지 조회
-$sql4 = "SELECT * from wp_product_list where adv_state = 1 and mall_code=".$code;
+// 해당 쇼핑몰의 광고활성화되어있는 상품
+$sql4 = "SELECT * FROM wp_product_list where mall_code = {$code} and adv_state =1";
 $activate = $wpdb->get_results($wpdb->prepare($sql4)); // 갯수대로 가져옴 .. 
 if($activate && ($code !== 1029 )){ // 광고활성화된 상품이 있고, 벳스쿨이 아닐 경우 
     for($i=0; $i<count($activate); $i++){
@@ -173,8 +175,52 @@ if($activate && ($code !== 1029 )){ // 광고활성화된 상품이 있고, 벳�
     }
 }
 
+// 해당월에 삭제한 상품
+$sql5 = "SELECT * FROM wp_product_list where (mall_code = {$code} and del = 1 and state_date like '{$nowdate}%')";
+$result = $wpdb->get_results($wpdb->prepare($sql5)); 
+if($result && ($code !== 1029 )){ // 광고활성화된 상품이 있고, 벳스쿨이 아닐 경우 
+    for($i=0; $i<count($result); $i++){
+        $mall = $wpdb->get_results($wpdb->prepare("SELECT * from wp_shoppingmall where code =".$code));
+        $link = $mall[0]->link2;
+    
+        // 마진율 오브젝트에 담아서 보내기
+        $sql = "SELECT * FROM vetschool.wp_shoppingmall as a
+                left join wp_shoppingmall_margin as b
+                on a.code = b.code
+                where a.code = {$code}
+                order by date_setting";
+        $margin_date = $wpdb->get_results($wpdb->prepare($sql)); 
+    
+        // for문으로 돌면서 
+        // 키 : date_setting의 년도,월,일 '00000000'
+        // 값 : 마진율
+        $obj = (object)[];
+        for($j=0; $j<count($margin_date); $j++){
+            $date = $margin_date[$j]->date_setting;
+            $datekey = str_replace('-', "", $date);
+    
+            $margin = $margin_date[$j]->margin;
+            $obj->$datekey = $margin;
+        }
+    
+        $postdata = http_build_query(
+            array(
+                'del_product_code' => $result[$i]->product_code,
+                'margin' => $obj,
+            )
+        );
+        $opts = array('http' =>
+            array(
+                'method' => 'POST',
+                'header' => 'Content-type: application/x-www-form-urlencoded',
+                'content' => $postdata
+            )
+        );
+        $context = stream_context_create($opts);
+        file_get_contents($link, false, $context);
+    }
 
-
+}
 
 
 
