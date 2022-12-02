@@ -640,6 +640,11 @@ function fitem_submit(f)
 
     if (document.pressed == "장바구니") {
         f.sw_direct.value = 0;
+        if(confirm("장바구니에 담았습니다. 장바구니로 이동하시겠습니까?")) {
+            return true;
+        }else {
+            return false;
+        }
     } else { // 바로구매
         f.sw_direct.value = 1;
     }
