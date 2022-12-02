@@ -91,7 +91,7 @@
         <div class="edit-btn" onclick="add()">add</div>
     </div>
 
-    <!-- 수정할때 -->
+    <!-- 추가할때 -->
     <div class="shoppingmall-box2 none" id="popup">
         <form action="http://localhost:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-shoppingmall-save.php" method="post" name="box2form" onsubmit="return box2submit(this)">
             <div class="shoppingmall-box2-header">
@@ -122,10 +122,10 @@
                         <label for="year">기간 : </label>
                         <div>
                             <input name="startyear" type="number" value="<?php echo $year ?>" min="2022">
-                            <input name="startmonth" type="number" value="<?php echo $month ?>" min="01" max="12">
+                            <input name="startmonth" type="number" value="<?php echo $month ?>" min="1" max="12">
                              ~ 
                             <input name="endyear" type="number" value="<?php echo $year ?>" min="2022">
-                            <input name="endmonth" type="number" value="<?php echo $month ?>" min="01" max="12">
+                            <input name="endmonth" type="number" value="<?php echo $month ?>" min="1" max="12">
                         </div>
 
 
@@ -156,6 +156,7 @@
       
     }
     function edit(e) {
+        console.log(e);
         if(state === ''){
             let trtag = e.parentElement.parentElement;
             let name = trtag.children[1];
@@ -166,25 +167,28 @@
 
             let daterow = trtag.nextElementSibling.children[0]
             let date = trtag.nextElementSibling.children[0].innerText;
-            let startyear = date.substr(0, 4)
-            let startmonth = date.substr(5, 2)
+            let datedivide = date.split("~");
+            let startyear = datedivide[0].split('-')[0].trim();
+            let startmonth = datedivide[0].split('-')[1].trim();
 
-            let endyear = date.substr(10, 4)
-            let endmonth = date.substr(15)
+            let endyear = datedivide[1].split('-')[0].trim();
+            let endmonth = datedivide[1].split('-')[1].trim();
+
+            console.log(startmonth)
       
             name.innerHTML = `<input type="text" style="width:98%;" name="name" value="${e.value}">`
             link.innerHTML = `<input type="text" style="width:100%" name="link" value="${link.innerHTML}">`
             link2.innerHTML = `<input type="text" style="width:100%" name="link" value="${link2.innerHTML}">`
             daterow.innerHTML = `<div class="editdate">
                                 <input name="startyear" type="number" value="${startyear}" min="2022">
-                                <input name="startmonth" type="number" value="${startmonth}" min="01" max="12">
+                                <input name="startmonth" type="number" value="${startmonth}" min="1" max="12">
                                 ~ 
                                 <input name="endyear" type="number" value="${endyear}" min="2022">
-                                <input name="endmonth" type="number" value="${endmonth}" min="01" max="12">
+                                <input name="endmonth" type="number" value="${endmonth}" min="1" max="12">
                                 </div>`
             btn.innerHTML = 
             `<button type="submit" class="shoppingmall-edit-confirm" onclick="editsave(this)" value="${code}"><i class="fas fa-check"></i></button>
-            <button type="submit" class="shoppingmall-edit-confirm" onclick="reset(this)" value="${code}"><i class="fas fa-redo"></i></i></button>`
+            <button type="submit" class="shoppingmall-edit-confirm" onclick="reset(this,${startyear},${startmonth},${endyear},${endmonth})" value="${code}"><i class="fas fa-redo"></i></i></button>`
             state = e.value;
         }else {
             alert("수정중인 항목이 있습니다")
@@ -267,10 +271,12 @@
         }
 
     }
-    function reset(e) {
+    function reset(e,startyear,startmonth,endyear,endmonth) {
         let trtag = e.parentElement.parentElement;
         let num = trtag.children[0];
         let reset_num = num.innerHTML
+
+        
         let name = trtag.children[1];
         let reset_name = name.children[0].value;
         let link = trtag.children[2];
@@ -279,11 +285,6 @@
         let reset_link2 = link2.children[0].value;
         let btn = trtag.children[4];
         let code = e.value;
-
-        let startyear = trtag.nextElementSibling.children[0].children[0].children[0].value;
-        let startmonth = trtag.nextElementSibling.children[0].children[0].children[1].value;
-        let endyear = trtag.nextElementSibling.children[0].children[0].children[2].value;
-        let endmonth = trtag.nextElementSibling.children[0].children[0].children[3].value;
 
         let daterow = trtag.nextElementSibling.children[0];
         daterow.innerHTML = `${startyear}-${startmonth} ~ ${endyear}-${endmonth}`;

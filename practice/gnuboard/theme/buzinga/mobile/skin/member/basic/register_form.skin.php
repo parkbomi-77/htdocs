@@ -20,8 +20,8 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
     <input type="hidden" name="cert_no" value="">
     <?php if (isset($member['mb_sex'])) { ?><input type="hidden" name="mb_sex" value="<?php echo $member['mb_sex'] ?>"><?php } ?>
     <?php if (isset($member['mb_nick_date']) && $member['mb_nick_date'] > date("Y-m-d", G5_SERVER_TIME - ($config['cf_nick_modify'] * 86400))) { // 닉네임수정일이 지나지 않았다면 ?>
-    <input type="hidden" name="mb_nick_default" value="<?php echo get_text($member['mb_nick']) ?>">
-    <input type="hidden" name="mb_nick" value="<?php echo get_text($member['mb_nick']) ?>">
+    <!-- <input type="hidden" name="mb_nick_default" value="<?php echo get_text($member['mb_nick']) ?>">
+    <input type="hidden" name="mb_nick" value="<?php echo get_text($member['mb_nick']) ?>"> -->
     <?php } ?>
 
     <div class="form_01">
@@ -77,14 +77,14 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 	        </li>
 	        <?php if ($req_nick) { ?>
 	        <li>
-	            <label for="reg_mb_nick" class="sound_only">닉네임<strong>필수</strong></label>
+	            <!-- <label for="reg_mb_nick" class="sound_only">닉네임<strong>필수</strong></label> -->
 	            
 	            <span class="frm_info">
 	                공백없이 한글,영문,숫자만 입력 가능 (한글2자, 영문4자 이상)<br>
 	                닉네임을 바꾸시면 앞으로 <?php echo (int)$config['cf_nick_modify'] ?>일 이내에는 변경 할 수 없습니다.
 	            </span>
-	            <input type="hidden" name="mb_nick_default" value="<?php echo isset($member['mb_nick'])?get_text($member['mb_nick']):''; ?>">
-	            <input type="text" name="mb_nick" value="<?php echo isset($member['mb_nick'])?get_text($member['mb_nick']):''; ?>" id="reg_mb_nick" required class="frm_input full_input required nospace" maxlength="20" placeholder="닉네임">
+	            <!-- <input type="hidden" name="mb_nick_default" value="<?php echo isset($member['mb_nick'])?get_text($member['mb_nick']):''; ?>"> -->
+	            <!-- <input type="text" name="mb_nick" value="<?php echo isset($member['mb_nick'])?get_text($member['mb_nick']):''; ?>" id="reg_mb_nick" required class="frm_input full_input required nospace" maxlength="20" placeholder="닉네임"> -->
 	            <span id="msg_mb_nick"></span>
 	        </li>
 	        <?php } ?>
@@ -111,7 +111,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 	        <?php if ($config['cf_use_tel']) { ?>
 	        <li>
 	            <label for="reg_mb_tel" class="sound_only">전화번호<?php if ($config['cf_req_tel']) { ?><strong>필수</strong><?php } ?></label>
-	            <input type="text" name="mb_tel" value="<?php echo get_text($member['mb_tel']) ?>" id="reg_mb_tel" class="frm_input full_input <?php echo $config['cf_req_tel']?"required":""; ?>" maxlength="20" <?php echo $config['cf_req_tel']?"required":""; ?> placeholder="전화번호">
+	            <input type="text" name="mb_tel" value="<?php echo get_text($member['mb_tel']) ?>" id="reg_mb_tel" class="frm_input full_input <?php echo $config['cf_req_tel']?"required":""; ?>" maxlength="20" <?php echo $config['cf_req_tel']?"required":""; ?> placeholder="휴대폰번호">
 	        </li>
 	        <?php } ?>
 	
@@ -140,8 +140,8 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 	            <label for="reg_mb_addr2" class="sound_only">상세주소</label>
 	            <input type="text" name="mb_addr2" value="<?php echo get_text($member['mb_addr2']) ?>" id="reg_mb_addr2" class="frm_input frm_address" size="50" placeholder="상세주소">
 	            <br>
-	            <label for="reg_mb_addr3" class="sound_only">참고항목</label>
-	            <input type="text" name="mb_addr3" value="<?php echo get_text($member['mb_addr3']) ?>" id="reg_mb_addr3" class="frm_input frm_address" size="50" readonly="readonly" placeholder="참고항목">
+	            <label for="reg_mb_addr3" class="sound_only">상세주소2</label>
+	            <input type="text" name="mb_addr3" value="<?php echo get_text($member['mb_addr3']) ?>" id="reg_mb_addr3" class="frm_input frm_address" size="50" readonly="readonly" placeholder="상세주소2">
 	            <input type="hidden" name="mb_addr_jibeon" value="<?php echo get_text($member['mb_addr_jibeon']); ?>">
 	            
 	        </li>
@@ -397,14 +397,14 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
         <?php } ?>
 
         // 닉네임 검사
-        if ((f.w.value == "") || (f.w.value == "u" && f.mb_nick.defaultValue != f.mb_nick.value)) {
-            var msg = reg_mb_nick_check();
-            if (msg) {
-                alert(msg);
-                f.reg_mb_nick.select();
-                return false;
-            }
-        }
+        // if ((f.w.value == "") || (f.w.value == "u" && f.mb_nick.defaultValue != f.mb_nick.value)) {
+        //     var msg = reg_mb_nick_check();
+        //     if (msg) {
+        //         alert(msg);
+        //         f.reg_mb_nick.select();
+        //         return false;
+        //     }
+        // }
 
         // E-mail 검사
         if ((f.w.value == "") || (f.w.value == "u" && f.mb_email.defaultValue != f.mb_email.value)) {
