@@ -20,12 +20,23 @@ if(defined('G5_THEME_MSHOP_PATH')) {
 <div id="sod_inquiry">
     <ul>
         <?php
+       
+
         $sql = " select *,
                     (od_cart_coupon + od_coupon + od_send_coupon) as couponprice
                    from {$g5['g5_shop_order_table']}
                   where mb_id = '{$member['mb_id']}'
                   order by od_id desc
                   $limit ";
+
+        if($calendarFromDate) {
+            $sql = " select *,
+                (od_cart_coupon + od_coupon + od_send_coupon) as couponprice
+                from {$g5['g5_shop_order_table']}
+                where mb_id = '{$member['mb_id']}' {$appointed}
+                order by od_id desc
+                $limit ";
+        }
         $result = sql_query($sql);
         for ($i=0; $row=sql_fetch_array($result); $i++)
         {
@@ -75,15 +86,15 @@ if(defined('G5_THEME_MSHOP_PATH')) {
 
         <li>
             <div class="inquiry_idtime">
-                <a href="<?php echo G5_SHOP_URL; ?>/orderinquiryview.php?od_id=<?php echo $row['od_id']; ?>&amp;uid=<?php echo $uid; ?>" class="idtime_link"><?php echo $row['od_id']; ?></a>
-                <span class="idtime_time"><?php echo substr($row['od_time'],2,25); ?></span>
+                <span class="idtime_time"><?php echo substr($row['od_time'],0,10); ?></span>
+                <a href="<?php echo G5_SHOP_URL; ?>/orderinquiryview.php?od_id=<?php echo $row['od_id']; ?>&amp;uid=<?php echo $uid; ?>" class="idtime_link">주문 상세보기 > <?php // echo $row['od_id']; ?></a>
             </div>
             <div class="inquiry_name">
                 <?php echo $ct_name; ?>
             </div>
             <div class="inq_wr">
                 <div class="inquiry_price">
-                    <?php echo display_price($row['od_receipt_price']); ?>
+                    <?php echo display_price($row['od_cart_price']); ?>
                 </div>
                 <div class="inv_status"><?php echo $od_status; ?></div>
             </div>

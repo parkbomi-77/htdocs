@@ -478,9 +478,83 @@ box-shadow:1px 1px 5px rgba(0,0,0,0.4)}
 #sod_addr input[type="radio"]:checked+.add_lb {z-index:3;background:#4162ff;color:#fff}
 
 /* 주문내역 */
-#sod_v {margin:10px}
+#sod_v {margin:10px 40px}
 #sod_v .td_stat {width:100px}
-#sod_v_info {margin:0 0 10px;padding:10px;background:#e6d5d2;color:#883d1a;text-align:center;border-bottom:1px solid #c3bcb1}
+#sod_v_info {margin:30px 0 10px;padding:10px;background:#e6d5d2;color:#883d1a;text-align:center;border-bottom:1px solid #c3bcb1}
+
+/* 주문내역 날짜 최근6개월 select box */
+#month_area {
+	margin: 80px auto 10px;
+	padding: 3px 0 10px;
+	background: #fff;
+	color: #883d1a;
+	text-align: center;
+	border-bottom: 1px solid #ddd;;
+	font-size: small;
+	width: 96%;
+	display: flex;
+}
+.month_list{
+	width: 35%;
+	display: flex;
+	flex-direction: row-reverse;
+	border: 1px solid #f0eeee;
+	border-radius: 5px;
+}
+.month_list .monthSelectorli {
+	width: 20%;
+	line-height: 27px;
+	font-size: 13px;
+	color: #9b9b9b;
+	border-left: 1px solid aliceblue;
+	font-weight: unset;
+	font-size: 11px;
+	cursor: pointer;
+}
+
+
+/* 주문내역 날짜 지정 검색*/
+#rangeDate_area {
+	width: 33%;
+}
+.rangeDate {
+	display: inline-block;
+	width: 45%;
+	line-height: 27px;
+	color: #9b9b9b;
+	border: 1px solid #f0eeee;
+	font-size: 12px;
+	border-radius: 5px;
+}
+.rangeDate input {
+	width: 75px;
+	border: none;
+	line-height: 28px;
+	color: #9b9b9b;
+}
+.rangeDate span{
+	display: inline-block;
+}	
+.rangeDate span i{
+	line-height: 28px;
+}	
+.rangeDateText {
+	margin-right: 4px;
+}
+.btnbox {
+	width: 32%;
+	display: flex;
+	justify-content: end;
+}
+/* .btnbox button{
+	width: 20%;
+	background-color: #757575;
+	color: #fffffb;
+} */
+.btnbox button span{
+	margin-right: 5px;
+}
+
 
 /* 주문상세내역 */
 #sod_list_inq {}
@@ -602,11 +676,14 @@ box-shadow:0 6px 10px rgba(0,0,0,0.1);}
 #sod_ws_act .btn02 {float:right;width:49%;height:50px;border:1px solid #3e976c;color:#3e976c;font-weight:bold;background:#fff;font-weight:bold;font-size:1em}
 
 /* 주문내역 include */
-#sod_inquiry li {background:#fff;border:1px solid #eee;padding:15px;margin-bottom:10px;position:relative;border-radius:5px}
-#sod_inquiry li .idtime_link {font-weight:bold;font-size:1.167em}
-#sod_inquiry li .idtime_time {position:absolute;top:15px;right:15px;color:#999}
-#sod_inquiry li .inquiry_name {margin:10px 0;color:#666}
-#sod_inquiry li .inquiry_price {font-size:1.25em;font-weight:bold}
+#sod_inquiry {
+
+}
+#sod_inquiry li {background:#fff;border-bottom:1px solid #eee;padding:20px 23px;margin-bottom:10px;position:relative;border-radius:5px}
+#sod_inquiry li .idtime_link {font-weight:bolder;font-size:1.1em;color: #b5b5b5;position: absolute;right: 27px;}
+#sod_inquiry li .idtime_time {color: #646464;font-size: 1.2em;font-weight: bold;}
+#sod_inquiry li .inquiry_name {margin:30px 0 13px 0;color:#666}
+/* #sod_inquiry li .inquiry_price {font-size:1.25em;font-weight:bold} */
 #sod_inquiry li .inv_status {display:block;text-align:center;margin:5px 0 0;font-weight:bold}
 #sod_inquiry li .inv_inv {margin:10px 0 0;display:block;border:1px solid #c4c5cc;color:#666}
 
@@ -671,7 +748,7 @@ box-shadow:0 6px 10px rgba(0,0,0,0.1);}
 .cnt_cmt {display:inline-block;margin:0 0 0 5px;font-weight:bold}
 
 /* 버튼 */
-.btn {display:inline-block;padding:0 5px;height:30px;line-height:30px;border-radius:3px}
+.btn {display:inline-block;padding:0 10px;height:30px;border-radius:4px;background-color: #7e7e7e;border: none;color: #fffffb;}
 a.btn01 {display:inline-block;padding:0 7px;border:1px solid #ddd;background:#fff;color:#333;text-decoration:none;vertical-align:middle}
 a.btn01:focus, a.btn01:hover {text-decoration:none}
 button.btn01 {display:inline-block;margin:0;padding:7px;font-size:0.85em;border:1px solid #ddd;background:#fff;color:#666;text-decoration:none}

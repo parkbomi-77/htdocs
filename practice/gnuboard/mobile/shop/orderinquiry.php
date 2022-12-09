@@ -34,20 +34,27 @@ else // 그렇지 않다면 로그인으로 가기
     goto_url(G5_BBS_URL.'/login.php?url='.urlencode(G5_SHOP_URL.'/orderinquiry.php'));
 }
 
+$calendarFromDate = $_POST['calendarFromDate'];
+$calendarToDate = $_POST['calendarToDate'];
+$appointed = "and DATE(od_time) >= '{$calendarFromDate}' and DATE(od_time) <= '{$calendarToDate}' ";
+
 // 테이블의 전체 레코드수만 얻음
 $sql = " select count(*) as cnt " . $sql_common;
+if($calendarFromDate) {
+    $sql = " select count(*) as cnt " . $sql_common. $appointed;
+}
 $row = sql_fetch($sql);
 $total_count = $row['cnt'];
 
 // 비회원 주문확인시 비회원의 모든 주문이 다 출력되는 오류 수정
 // 조건에 맞는 주문서가 없다면
-if ($total_count == 0)
-{
-    if ($is_member) // 회원일 경우는 메인으로 이동
-        alert('주문이 존재하지 않습니다.', G5_SHOP_URL);
-    else // 비회원일 경우는 이전 페이지로 이동
-        alert('주문이 존재하지 않습니다.');
-}
+// if ($total_count == 0)
+// {
+//     if ($is_member) // 회원일 경우는 메인으로 이동
+//         alert('주문이 존재하지 않습니다.', G5_SHOP_URL);
+//     else // 비회원일 경우는 이전 페이지로 이동
+//         alert('주문이 존재하지 않습니다.');
+// }
 
 $rows = $config['cf_mobile_page_rows'];
 $total_page  = ceil($total_count / $rows);  // 전체 페이지 계산
@@ -79,15 +86,154 @@ include_once(G5_MSHOP_PATH.'/_head.php');
 ?>
 
 <div id="sod_v">
-    <p id="sod_v_info">주문서번호 링크를 누르시면 주문상세내역을 조회하실 수 있습니다.</p>
+    <form method="POST" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+        <div id="month_area">
+            <div class="month_list">
+                <div class="monthSelectorli"></div>
+                <div class="monthSelectorli"></div>
+                <div class="monthSelectorli"></div>
+                <div class="monthSelectorli"></div>
+                <div class="monthSelectorli"></div>
+                <div class="monthSelectorli"></div>
+            </div>
+            <div id="rangeDate_area">
+                <div class="rangeDate">
+                    <input type="text" id="rangeFromDate" name="calendarFromDate" value="<?php echo $calendarFromDate ? $calendarFromDate : Date("Y-m-d")?>">
+                    <span><i class="far fa-calendar "></i></span> 
+                </div>
+                <span>~</span>
+                <div class="rangeDate">
+                    <input type="text" id="rangeToDate" name="calendarToDate" value="<?php echo $calendarToDate ? $calendarToDate : Date("Y-m-d") ?>">
+                    <span><i class="far fa-calendar"></i></span>
+                    
+                </div>
+            </div>
+            <div class="btnbox">
+                <button type="submit" class="btn">
+                    <span>조회</span><i class="fas fa-search fa-sm"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+
 
     <?php
     $limit = " limit $from_record, $rows ";
     include G5_MSHOP_PATH.'/orderinquiry.sub.php';
     ?>
 
-    <?php echo get_paging($config['cf_mobile_pages'], $page, $total_page, "{$_SERVER['SCRIPT_NAME']}?$qstr&amp;page="); ?>
+    <?php  echo get_paging($config['cf_mobile_pages'], $page, $total_page, "{$_SERVER['SCRIPT_NAME']}?$qstr&amp;page="); ?>
 </div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_orange.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://npmcdn.com/flatpickr/dist/l10n/ko.js"></script>
+<script>
+    let date = new Date();
+    let year = date.getFullYear();
+    let month = date.getMonth()+1; // 이번 달 
+    let day = date.getDate();
+
+    let month_area = document.querySelector(".month_list");
+    let list = month_area.children
+    for(let i=0; i<=5; i++){
+        if(month-i <= 0){
+            list[i].innerText = month-i+12+'월';
+        }else {
+            list[i].innerText = month-i+'월';
+        }
+    }
+    // flatpickr(document.getElementsByClassName("rangeDate"), {
+    //     'monthSelectorType' : 'static',
+    //     "locale": "ko",
+    //     "defaultDate": `${year}-${month}-${day}`
+    // });
+    flatpickr(document.getElementById("rangeFromDate"), {
+        'monthSelectorType' : 'static',
+        "locale": "ko",
+        // "defaultDate": `${year}-${month}-${day}`
+    });
+    flatpickr(document.getElementById("rangeToDate"), {
+        'monthSelectorType' : 'static',
+        "locale": "ko",
+        // "defaultDate": `${year}-${month}-${day}`
+    });
+
+    let container = document.querySelector("#sod_inquiry")
+    let rangeFromDate = document.getElementById("rangeFromDate");
+    let rangeToDate = document.getElementById("rangeToDate");
+
+    let monthSelectorList = document.getElementsByClassName("monthSelectorli");
+    let selectmonth;
+    let lastmonthDate;
+    for(let i=0; i<monthSelectorList.length; i++) {
+        monthSelectorList[i].addEventListener("click", function(e) {
+            // 해당 버튼만 ! 색깔 들어오도록 하기 
+
+            // 클릭한 달
+            selectmonth = e.target.innerText.slice(0,-1);
+            if(selectmonth > month) {   // 지난년도일 경우 
+                year = date.getFullYear()-1;
+            }else {
+                year = date.getFullYear();
+            }
+
+            if(selectmonth.length === 1){
+                selectmonth = '0'+selectmonth;
+            }
+
+            lastmonthDate = new Date(year, selectmonth, 0).getDate();
+
+            // 달력 첫날 ~ 끝날 변경
+            rangeFromDate.value = year+'-'+selectmonth+'-01';
+            rangeToDate.value = year+'-'+selectmonth+'-'+lastmonthDate;
+
+            // 달력 디폴트 날짜 변경하기
+            flatpickr(document.getElementById("rangeFromDate"), {
+                'monthSelectorType' : 'static',
+                "locale": "ko" 
+            });
+            flatpickr(document.getElementById("rangeToDate"), {
+                'monthSelectorType' : 'static',
+                "locale": "ko" 
+            });
+
+            // $.ajax({
+            // type: "POST",
+            // url: "/practice/gnuboard/mobile/shop/orderinquiry_select.php", 
+            // data: { month: e.target.innerText },
+            // dataType: "text",
+            // success: function(data) {
+            //     container.innerHTML = data;
+            //     }
+            // });
+        })
+    }
+    document.querySelector(".btn").addEventListener("click", function () {
+
+
+        $.ajax({
+            type: "POST",
+            url: "/practice/gnuboard/mobile/shop/orderinquiry_select.php", 
+            // cache: false,
+            // async: false,
+            data: { 
+                calendarFromDate: rangeFromDate.value,
+                calendarToDate: rangeToDate.value
+            },
+            dataType: "text",
+            success: function(data) {
+                container.innerHTML = data;
+            }
+        });
+    })
+
+
+    
+
+
+</script>
 
 <?php
 include_once(G5_MSHOP_PATH.'/_tail.php');

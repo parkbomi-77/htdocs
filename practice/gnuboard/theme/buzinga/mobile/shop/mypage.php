@@ -29,10 +29,10 @@ include_once(G5_THEME_MSHOP_PATH.'/shop.head.php');
             <dd><?php echo ($member['mb_tel'] ? $member['mb_tel'] : '미등록'); ?></dd>
             <dt>E-Mail</dt>
             <dd><?php echo ($member['mb_email'] ? $member['mb_email'] : '미등록'); ?></dd>
-            <dt>최종접속일시</dt>
+            <!-- <dt>최종접속일시</dt>
             <dd><?php echo $member['mb_today_login']; ?></dd>
             <dt>회원가입일시</dt>
-            <dd><?php echo $member['mb_datetime']; ?></dd>
+            <dd><?php echo $member['mb_datetime']; ?></dd> -->
             <dt class="add">주소</dt>
             <dd class="add"><?php echo sprintf("(%s%s)", $member['mb_zip1'], $member['mb_zip2']).' '.print_address($member['mb_addr1'], $member['mb_addr2'], $member['mb_addr3'], $member['mb_addr_jibeon']); ?></dd>
         </dl>
