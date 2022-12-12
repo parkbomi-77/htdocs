@@ -1,0 +1,2 @@
+2022-12-09T06:47:12+00:00 CRITICAL Allowed memory size of 134217728 bytes exhausted (tried to allocate 32768 bytes)(/Applications/MAMP/htdocs/wp-includes/class-wp-image-editor-imagick.php, 줄 422)
+

@@ -170,6 +170,11 @@ include_once(G5_MSHOP_PATH.'/_head.php');
     for(let i=0; i<monthSelectorList.length; i++) {
         monthSelectorList[i].addEventListener("click", function(e) {
             // 해당 버튼만 ! 색깔 들어오도록 하기 
+            console.log(e.target.parentElement.children); 
+            for(let i=0; i < e.target.parentElement.children.length; i++) {
+                e.target.parentElement.children[i].style.background = "white";
+            }
+            e.target.style.background = "#cecdcd";
 
             // 클릭한 달
             selectmonth = e.target.innerText.slice(0,-1);
