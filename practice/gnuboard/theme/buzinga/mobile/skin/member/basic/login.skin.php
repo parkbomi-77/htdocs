@@ -43,7 +43,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 
 	<!-- 주문하기, 신청하기 -->
 	<?php if (preg_match("/orderform.php/", $url)) { ?>
-	<section id="mb_login_notmb">
+	<!-- <section id="mb_login_notmb">
 	    <h2>비회원 구매</h2>
 	    <p>비회원으로 주문하시는 경우 포인트는 지급하지 않습니다.</p>
 	    
@@ -75,7 +75,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 	        f.submit();
 	    }
 	    </script>
-	</section>
+	</section> -->
 
 	<?php } else if (preg_match("/orderinquiry.php$/", $url)) { ?>
 	<div id="mb_login_od_wr">
