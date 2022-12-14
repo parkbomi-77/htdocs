@@ -2,6 +2,13 @@
 include_once('./_common.php');
 include_once(G5_LIB_PATH.'/iteminfo.lib.php');
 
+if($member['mb_level'] === 1) {
+    echo "<script>alert('회원가입 후 이용가능한 서비스입니다.')</script>";
+    $prevPage = $_SERVER['HTTP_REFERER'];
+    // header('location:'.$prevPage);
+    echo "<script>document.location.href='{$prevPage}';</script>";
+}
+
 $it_id = isset($_GET['it_id']) ? get_search_string(trim($_GET['it_id'])) : '';
 $it_seo_title = isset($it_seo_title) ? $it_seo_title : '';
 

@@ -62,7 +62,8 @@ if($this->total_count > 0) {
             echo '</a></div>'.PHP_EOL;
         }
 
-        if ($this->view_it_price) {
+        // 비 로그인상태에 가격표시 제한 
+        if ($this->view_it_price && $member['mb_level'] !== 1) {
             echo '<div class="sct_cost">'.display_price(get_price($row), $row['it_tel_inq']).'</div>'.PHP_EOL;
         }
 

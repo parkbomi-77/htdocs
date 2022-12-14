@@ -78,7 +78,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 	</section> -->
 
 	<?php } else if (preg_match("/orderinquiry.php$/", $url)) { ?>
-	<div id="mb_login_od_wr">
+	<!-- <div id="mb_login_od_wr">
 		<h2>비회원 주문조회 </h2>
 		
 	    <fieldset id="mb_login_od">
@@ -98,7 +98,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 	    <section id="mb_login_odinfo">
 	        <p>메일로 발송해드린 주문서의 <strong>주문번호</strong> 및 주문 시 입력하신 <strong>비밀번호</strong>를 정확히 입력해주십시오.</p>
 	    </section>
-	</div>
+	</div> -->
 	<?php } ?>
 
 	<?php } ?>

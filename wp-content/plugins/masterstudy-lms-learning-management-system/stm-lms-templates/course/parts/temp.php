@@ -7,7 +7,6 @@
         .sample111{
             width: 1200px;
         }
-
         #box {
             width: 28%;
             background-color: rgb(17, 17, 19);
@@ -15,6 +14,22 @@
             margin-top: 135px;
             margin-left: -15px;
             margin-right: 13px;
+        }
+        @media (max-width: 1245px) {
+            .stm-lms-course__content{
+                flex-direction: column;
+                align-items: center;
+            }
+            .sample111{
+                width: 100%;
+            }
+            #box {
+                width: 92%;
+                margin: 0px;
+            }
+            .sample111>.container {
+                height: 55px;
+            }
         }
         #box>p i {
             font-size: 17px;
@@ -29,7 +44,6 @@
         }
         
         #box>div {
-
             display: block;
             background-color: rgb(19, 21, 24);
             padding: 10px 5px 2px 17px;

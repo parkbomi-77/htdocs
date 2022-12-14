@@ -75,7 +75,8 @@ foreach((array) $list as $row){
         echo "</a></div>\n";
     }
 	
-	if ($this->view_it_price) {
+    // 비 로그인상태에 가격표시 제한 
+	if ($this->view_it_price && $member['mb_level'] !== 1) {
         echo "<div class=\"sct_cost\">\n";
         echo display_price(get_price($row), $row['it_tel_inq'])."\n";
         echo "</div>\n";

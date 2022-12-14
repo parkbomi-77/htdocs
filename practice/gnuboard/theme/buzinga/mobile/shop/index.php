@@ -17,15 +17,29 @@ include_once(G5_THEME_MSHOP_PATH.'/shop.head.php');
         <h2><a href="<?php echo shop_type_url('1'); ?>">히트상품</a></h2>
         <?php
         $list = new item_list();
-        $list->set_mobile(true);
-        $list->set_type(1);
-        $list->set_view('it_id', false);
-        $list->set_view('it_name', true);
-        $list->set_view('it_cust_price', true);
-        $list->set_view('it_price', true);
-        $list->set_view('it_icon', true);
-        $list->set_view('sns', true);
-        echo $list->run();
+
+        // 로그인하기 전 가격표시 제한
+        if($member['mb_level'] === 1) {
+            $list->set_mobile(true);
+            $list->set_type(1);
+            $list->set_view('it_id', false);
+            $list->set_view('it_name', true);
+            $list->set_view('it_cust_price', false);
+            $list->set_view('it_price', false);
+            $list->set_view('it_icon', true);
+            // $list->set_view('sns', true);
+            echo $list->run();
+        }else {
+            $list->set_mobile(true);
+            $list->set_type(1);
+            $list->set_view('it_id', false);
+            $list->set_view('it_name', true);
+            $list->set_view('it_cust_price', true);
+            $list->set_view('it_price', true);
+            $list->set_view('it_icon', true);
+            // $list->set_view('sns', true);
+            echo $list->run();
+        }
         ?>
     </div>
     <?php } ?>
@@ -39,15 +53,28 @@ include_once(G5_THEME_MSHOP_PATH.'/shop.head.php');
         <h2><a href="<?php echo shop_type_url('3'); ?>">최신상품</a></h2>
         <?php
         $list = new item_list();
-        $list->set_mobile(true);
-        $list->set_type(3);
-        $list->set_view('it_id', false);
-        $list->set_view('it_name', true);
-        $list->set_view('it_cust_price', true);
-        $list->set_view('it_price', true);
-        $list->set_view('it_icon', true);
-        $list->set_view('sns', true);
-        echo $list->run();
+
+        if($member['mb_level'] === 1) {
+            $list->set_mobile(true);
+            $list->set_type(3);
+            $list->set_view('it_id', false);
+            $list->set_view('it_name', true);
+            $list->set_view('it_cust_price', false);
+            $list->set_view('it_price', false);
+            $list->set_view('it_icon', true);
+            // $list->set_view('sns', true);
+            echo $list->run();
+        }else {
+            $list->set_mobile(true);
+            $list->set_type(3);
+            $list->set_view('it_id', false);
+            $list->set_view('it_name', true);
+            $list->set_view('it_cust_price', true);
+            $list->set_view('it_price', true);
+            $list->set_view('it_icon', true);
+            // $list->set_view('sns', true);
+            echo $list->run();
+        }
         ?>
     </div>
     <?php } ?>
@@ -62,15 +89,28 @@ include_once(G5_THEME_MSHOP_PATH.'/shop.head.php');
 	    <h2><a href="<?php echo shop_type_url('4'); ?>">인기상품</a></h2>
 	    <?php
 	    $list = new item_list();
-	    $list->set_mobile(true);
-	    $list->set_type(4);
-	    $list->set_view('it_id', false);
-	    $list->set_view('it_name', true);
-	    $list->set_view('it_cust_price', false);
-	    $list->set_view('it_price', true);
-	    $list->set_view('it_icon', false);
-	    $list->set_view('sns', false);
-	    echo $list->run();
+
+        if($member['mb_level'] === 1) {
+            $list->set_mobile(true);
+            $list->set_type(4);
+            $list->set_view('it_id', false);
+            $list->set_view('it_name', true);
+            $list->set_view('it_cust_price', false);
+            $list->set_view('it_price', false);
+            $list->set_view('it_icon', false);
+            // $list->set_view('sns', false);
+            echo $list->run();
+        }else {
+            $list->set_mobile(true);
+            $list->set_type(4);
+            $list->set_view('it_id', false);
+            $list->set_view('it_name', true);
+            $list->set_view('it_cust_price', false);
+            $list->set_view('it_price', true);
+            $list->set_view('it_icon', false);
+            // $list->set_view('sns', false);
+            echo $list->run();
+        }
 	    ?>
 	</div>
 	<?php } ?>
