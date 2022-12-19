@@ -4,11 +4,6 @@
 define( 'SHORTINIT', true );
 require_once( $_SERVER['DOCUMENT_ROOT'].'/wp-load.php' );
 
-// $Table_Name    = $wpdb->prefix.'wp_posts';
-// $sql_query     = $wpdb->prepare("SELECT * FROM $Table_Name");
-// $result        = $wpdb->query( $sql_query ); 
-// var_dump($result);
-
 global $wpdb;
 
 $_POST;

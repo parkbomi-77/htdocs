@@ -25,6 +25,19 @@ include_once(G5_THEME_MSHOP_PATH.'/shop.head.php');
             <div class="my_po"><a href="<?php echo G5_BBS_URL; ?>/point.php" target="_blank" class="win_point"><span>포인트</span><?php echo number_format($member['mb_point']); ?>점</a></div>
         </div>
         <dl class="my_info">
+            <dt>회원 등급</dt>
+
+            <?php  if((int)$member['mb_level'] === 2){ ?>
+                <dd>일반회원</dd> 
+            <?php }  else if ((int)$member['mb_level']===3) { ?>
+                <dd>수의대생</dd> 
+            <?php } else if((int)$member['mb_level']===4) { ?>
+                <dd>수의사</dd> 
+            <?php } else { ?>
+                <dd>관리자</dd> 
+            <?php } ?>
+
+            <!-- <dd><?php echo ($member['mb_level']===2 ? '일반회원': '미등록'); ?></dd> -->
             <dt>연락처</dt>
             <dd><?php echo ($member['mb_tel'] ? $member['mb_tel'] : '미등록'); ?></dd>
             <dt>E-Mail</dt>

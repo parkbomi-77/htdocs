@@ -64,7 +64,7 @@ $listall = '<a href="' . $_SERVER['SCRIPT_NAME'] . '" class="ov_listall">전체�
 $g5['title'] = '회원관리';
 require_once './admin.head.php';
 
-$sql = " select * {$sql_common} {$sql_search} {$sql_order} limit {$from_record}, {$rows} ";
+$sql = " select * {$sql_common} {$sql_search} and mb_leave_date = '' {$sql_order} limit {$from_record}, {$rows} ";
 $result = sql_query($sql);
 
 $colspan = 16;
@@ -73,8 +73,8 @@ $colspan = 16;
 <div class="local_ov01 local_ov">
     <?php echo $listall ?>
     <span class="btn_ov01"><span class="ov_txt">총회원수 </span><span class="ov_num"> <?php echo number_format($total_count) ?>명 </span></span>
-    <a href="?sst=mb_intercept_date&amp;sod=desc&amp;sfl=<?php echo $sfl ?>&amp;stx=<?php echo $stx ?>" class="btn_ov01" data-tooltip-text="차단된 순으로 정렬합니다.&#xa;전체 데이터를 출력합니다."> <span class="ov_txt">차단 </span><span class="ov_num"><?php echo number_format($intercept_count) ?>명</span></a>
-    <a href="?sst=mb_leave_date&amp;sod=desc&amp;sfl=<?php echo $sfl ?>&amp;stx=<?php echo $stx ?>" class="btn_ov01" data-tooltip-text="탈퇴된 순으로 정렬합니다.&#xa;전체 데이터를 출력합니다."> <span class="ov_txt">탈퇴 </span><span class="ov_num"><?php echo number_format($leave_count) ?>명</span></a>
+    <!-- <a href="?sst=mb_intercept_date&amp;sod=desc&amp;sfl=<?php echo $sfl ?>&amp;stx=<?php echo $stx ?>" class="btn_ov01" data-tooltip-text="차단된 순으로 정렬합니다.&#xa;전체 데이터를 출력합니다."> <span class="ov_txt">차단 </span><span class="ov_num"><?php echo number_format($intercept_count) ?>명</span></a>
+    <a href="?sst=mb_leave_date&amp;sod=desc&amp;sfl=<?php echo $sfl ?>&amp;stx=<?php echo $stx ?>" class="btn_ov01" data-tooltip-text="탈퇴된 순으로 정렬합니다.&#xa;전체 데이터를 출력합니다."> <span class="ov_txt">탈퇴 </span><span class="ov_num"><?php echo number_format($leave_count) ?>명</span></a> -->
 </div>
 
 <form id="fsearch" name="fsearch" class="local_sch01 local_sch" method="get">
@@ -82,16 +82,16 @@ $colspan = 16;
     <label for="sfl" class="sound_only">검색대상</label>
     <select name="sfl" id="sfl">
         <option value="mb_id" <?php echo get_selected($sfl, "mb_id"); ?>>회원아이디</option>
-        <option value="mb_nick" <?php echo get_selected($sfl, "mb_nick"); ?>>닉네임</option>
+        <!-- <option value="mb_nick" <?php echo get_selected($sfl, "mb_nick"); ?>>닉네임</option> -->
         <option value="mb_name" <?php echo get_selected($sfl, "mb_name"); ?>>이름</option>
         <option value="mb_level" <?php echo get_selected($sfl, "mb_level"); ?>>권한</option>
         <option value="mb_email" <?php echo get_selected($sfl, "mb_email"); ?>>E-MAIL</option>
         <option value="mb_tel" <?php echo get_selected($sfl, "mb_tel"); ?>>전화번호</option>
         <option value="mb_hp" <?php echo get_selected($sfl, "mb_hp"); ?>>휴대폰번호</option>
-        <option value="mb_point" <?php echo get_selected($sfl, "mb_point"); ?>>포인트</option>
-        <option value="mb_datetime" <?php echo get_selected($sfl, "mb_datetime"); ?>>가입일시</option>
-        <option value="mb_ip" <?php echo get_selected($sfl, "mb_ip"); ?>>IP</option>
-        <option value="mb_recommend" <?php echo get_selected($sfl, "mb_recommend"); ?>>추천인</option>
+        <!-- <option value="mb_point" <?php echo get_selected($sfl, "mb_point"); ?>>포인트</option> -->
+        <!-- <option value="mb_datetime" <?php echo get_selected($sfl, "mb_datetime"); ?>>가입일시</option> -->
+        <!-- <option value="mb_ip" <?php echo get_selected($sfl, "mb_ip"); ?>>IP</option>
+        <option value="mb_recommend" <?php echo get_selected($sfl, "mb_recommend"); ?>>추천인</option> -->
     </select>
     <label for="stx" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>
     <input type="text" name="stx" value="<?php echo $stx ?>" id="stx" required class="required frm_input">
@@ -123,7 +123,8 @@ $colspan = 16;
                         <label for="chkall" class="sound_only">회원 전체</label>
                         <input type="checkbox" name="chkall" value="1" id="chkall" onclick="check_all(this.form)">
                     </th>
-                    <th scope="col" id="mb_list_id" colspan="2"><?php echo subject_sort_link('mb_id') ?>아이디</a></th>
+                    <th scope="col" id="mb_list_name" rowspan="2"><?php echo subject_sort_link('mb_name') ?>이름</a></th>
+                    <th scope="col" id="mb_list_id" rowspan="2"><?php echo subject_sort_link('mb_id') ?>아이디</a></th>
                     <th scope="col" rowspan="2" id="mb_list_cert"><?php echo subject_sort_link('mb_certify', '', 'desc') ?>본인확인</a></th>
                     <th scope="col" id="mb_list_mailc"><?php echo subject_sort_link('mb_email_certify', '', 'desc') ?>메일인증</a></th>
                     <th scope="col" id="mb_list_open"><?php echo subject_sort_link('mb_open', '', 'desc') ?>정보공개</a></th>
@@ -135,8 +136,8 @@ $colspan = 16;
                     <th scope="col" rowspan="2" id="mb_list_mng">관리</th>
                 </tr>
                 <tr>
-                    <th scope="col" id="mb_list_name"><?php echo subject_sort_link('mb_name') ?>이름</a></th>
-                    <th scope="col" id="mb_list_nick"><?php echo subject_sort_link('mb_nick') ?>닉네임</a></th>
+                    <!-- <th scope="col" id="mb_list_name" colspan="2"><?php echo subject_sort_link('mb_name') ?>이름</a></th> -->
+                    <!-- <th scope="col" id="mb_list_nick"><?php echo subject_sort_link('mb_nick') ?>닉네임</a></th> -->
                     <th scope="col" id="mb_list_sms"><?php echo subject_sort_link('mb_sms', '', 'desc') ?>SMS수신</a></th>
                     <th scope="col" id="mb_list_adultc"><?php echo subject_sort_link('mb_adult', '', 'desc') ?>성인인증</a></th>
                     <th scope="col" id="mb_list_auth"><?php echo subject_sort_link('mb_intercept_date', '', 'desc') ?>접근차단</a></th>
@@ -219,7 +220,8 @@ $colspan = 16;
                             <label for="chk_<?php echo $i; ?>" class="sound_only"><?php echo get_text($row['mb_name']); ?> <?php echo get_text($row['mb_nick']); ?>님</label>
                             <input type="checkbox" name="chk[]" value="<?php echo $i ?>" id="chk_<?php echo $i ?>">
                         </td>
-                        <td headers="mb_list_id" colspan="2" class="td_name sv_use">
+                        <td headers="mb_list_name" rowspan="2" class="td_mbname"><?php echo get_text($row['mb_name']); ?></td>
+                        <td headers="mb_list_id" rowspan="2" class="td_name sv_use">
                             <?php echo $mb_id ?>
                             <?php
                             //소셜계정이 있다면
@@ -276,10 +278,10 @@ $colspan = 16;
                         <td headers="mb_list_mng" rowspan="2" class="td_mng td_mng_s"><?php echo $s_mod ?><?php echo $s_grp ?></td>
                     </tr>
                     <tr class="<?php echo $bg; ?>">
-                        <td headers="mb_list_name" class="td_mbname"><?php echo get_text($row['mb_name']); ?></td>
+                        <!-- <td headers="mb_list_name" class="td_mbname"><?php echo get_text($row['mb_name']); ?></td>
                         <td headers="mb_list_nick" class="td_name sv_use">
                             <div><?php echo $mb_nick ?></div>
-                        </td>
+                        </td> -->
 
                         <td headers="mb_list_sms">
                             <label for="mb_sms_<?php echo $i; ?>" class="sound_only">SMS수신</label>

@@ -1430,7 +1430,7 @@ if(!$default['de_kakaopay_cancelpwd']){
             <th scope="row">비회원에 대한<br/>개인정보수집 내용</th>
             <td><?php echo editor_html('de_guest_privacy', get_text(html_purifier($default['de_guest_privacy']), 0)); ?></td>
         </tr>
-        <tr>
+        <!-- <tr>
             <th scope="row">MYSQL USER</th>
             <td><?php echo G5_MYSQL_USER; ?></td>
         </tr>
@@ -1441,7 +1441,7 @@ if(!$default['de_kakaopay_cancelpwd']){
         <tr>
             <th scope="row">서버 IP</th>
             <td><?php echo ($_SERVER['SERVER_ADDR']?$_SERVER['SERVER_ADDR']:$_SERVER['LOCAL_ADDR']); ?></td>
-        </tr>
+        </tr> -->
         </tbody>
         </table>
     </div>

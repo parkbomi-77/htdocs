@@ -424,11 +424,7 @@ $pg_anchor = '<ul class="anchor">
     <li><a href="#anc_cf_mail">기본메일환경</a></li>
     <li><a href="#anc_cf_article_mail">글작성메일</a></li>
     <li><a href="#anc_cf_join_mail">가입메일</a></li>
-    <li><a href="#anc_cf_vote_mail">투표메일</a></li>
-    <li><a href="#anc_cf_sns">SNS</a></li>
-    <li><a href="#anc_cf_lay">레이아웃 추가설정</a></li>
     <li><a href="#anc_cf_sms">SMS</a></li>
-    <li><a href="#anc_cf_extra">여분필드</a></li>
 </ul>';
 
 
@@ -488,7 +484,7 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
                         <th scope="row"><label for="cf_use_point">포인트 사용</label></th>
                         <td colspan="3"><input type="checkbox" name="cf_use_point" value="1" id="cf_use_point" <?php echo $config['cf_use_point'] ? 'checked' : ''; ?>> 사용</td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <th scope="row"><label for="cf_login_point">로그인시 포인트<strong class="sound_only">필수</strong></label></th>
                         <td>
                             <?php echo help('회원이 로그인시 하루에 한번만 적립') ?>
@@ -499,7 +495,7 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
                             <?php echo help('양수로 입력하십시오. 0점은 쪽지 보낼시 포인트를 차감하지 않습니다.') ?>
                             <input type="text" name="cf_memo_send_point" value="<?php echo (int) $config['cf_memo_send_point']; ?>" id="cf_memo_send_point" required class="required frm_input" size="5"> 점
                         </td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <th scope="row"><label for="cf_cut_name">이름(닉네임) 표시</label></th>
                         <td colspan="3">
@@ -678,7 +674,7 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
                             <input type="text" name="cf_point_term" value="<?php echo (int) $config['cf_point_term']; ?>" id="cf_point_term" required class="required frm_input" size="5"> 일
                         </td>
                     </tr>
-                    <tr>
+                    <tr style="display:none;">
                         <th scope="row"><label for="cf_possible_ip">접근가능 IP</label></th>
                         <td>
                             <?php echo help('입력된 IP의 컴퓨터만 접근할 수 있습니다.<br>123.123.+ 도 입력 가능. (엔터로 구분)') ?>
@@ -690,7 +686,7 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
                             <textarea name="cf_intercept_ip" id="cf_intercept_ip"><?php echo get_sanitize_input($config['cf_intercept_ip']); ?></textarea>
                         </td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <th scope="row"><label for="cf_analytics">방문자분석 스크립트</label></th>
                         <td colspan="3">
                             <?php echo help('방문자분석 스크립트 코드를 입력합니다. 예) 구글 애널리틱스'); ?>
@@ -703,8 +699,8 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
                             <?php echo help('추가로 사용하실 meta 태그를 입력합니다.'); ?>
                             <textarea name="cf_add_meta" id="cf_add_meta"><?php echo get_text($config['cf_add_meta']); ?></textarea>
                         </td>
-                    </tr>
-                    <tr>
+                    </tr> -->
+                    <!-- <tr>
                         <th scope="row"><label for="cf_syndi_token">네이버 신디케이션 연동키</label></th>
                         <td colspan="3">
                             <?php if (!function_exists('curl_init')) {
@@ -720,7 +716,7 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
                             <?php echo help('네이버 신디케이션 수집에서 제외할 게시판 아이디를 | 로 구분하여 입력하십시오. 예) notice|adult<br>참고로 그룹접근사용 게시판, 글읽기 권한 2 이상 게시판, 비밀글은 신디케이션 수집에서 제외됩니다.') ?>
                             <input type="text" name="cf_syndi_except" value="<?php echo isset($config['cf_syndi_except']) ? get_sanitize_input($config['cf_syndi_except']) : ''; ?>" id="cf_syndi_except" class="frm_input" size="70">
                         </td>
-                    </tr>
+                    </tr> -->
                 </tbody>
             </table>
         </div>
@@ -758,7 +754,7 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
                             </select>
                         </td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <th scope="row"><label for="cf_read_point">글읽기 포인트<strong class="sound_only">필수</strong></label></th>
                         <td><input type="text" name="cf_read_point" value="<?php echo (int) $config['cf_read_point'] ?>" id="cf_read_point" required class="required frm_input" size="3"> 점</td>
                         <th scope="row"><label for="cf_write_point">글쓰기 포인트</label></th>
@@ -769,7 +765,7 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
                         <td><input type="text" name="cf_comment_point" value="<?php echo (int) $config['cf_comment_point'] ?>" id="cf_comment_point" required class="required frm_input" size="3"> 점</td>
                         <th scope="row"><label for="cf_download_point">다운로드 포인트</label></th>
                         <td><input type="text" name="cf_download_point" value="<?php echo (int) $config['cf_download_point'] ?>" id="cf_download_point" required class="required frm_input" size="3"> 점</td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <th scope="row"><label for="cf_search_part">검색 단위</label></th>
                         <td colspan="3"><input type="text" name="cf_search_part" value="<?php echo (int) $config['cf_search_part'] ?>" id="cf_search_part" class="frm_input" size="4"> 건 단위로 검색</td>
@@ -795,13 +791,13 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
                             <input type="text" name="cf_movie_extension" value="<?php echo get_sanitize_input($config['cf_movie_extension']); ?>" id="cf_movie_extension" class="frm_input" size="70">
                         </td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <th scope="row"><label for="cf_filter">단어 필터링</label></th>
                         <td colspan="3">
                             <?php echo help('입력된 단어가 포함된 내용은 게시할 수 없습니다. 단어와 단어 사이는 ,로 구분합니다.') ?>
                             <textarea name="cf_filter" id="cf_filter" rows="7"><?php echo get_sanitize_input($config['cf_filter']); ?></textarea>
                         </td>
-                    </tr>
+                    </tr> -->
                 </tbody>
             </table>
         </div>
@@ -858,7 +854,7 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
                             <input type="checkbox" name="cf_req_hp" value="1" id="cf_req_hp" <?php echo $config['cf_req_hp'] ? 'checked' : ''; ?>> <label for="cf_req_hp">필수입력</label>
                         </td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <th scope="row">서명 입력</th>
                         <td>
                             <input type="checkbox" name="cf_use_signature" value="1" id="cf_use_signature" <?php echo $config['cf_use_signature'] ? 'checked' : ''; ?>> <label for="cf_use_signature">보이기</label>
@@ -869,7 +865,7 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
                             <input type="checkbox" name="cf_use_profile" value="1" id="cf_use_profile" <?php echo $config['cf_use_profile'] ? 'checked' : ''; ?>> <label for="cf_use_profile">보이기</label>
                             <input type="checkbox" name="cf_req_profile" value="1" id="cf_req_profile" <?php echo $config['cf_req_profile'] ? 'checked' : ''; ?>> <label for="cf_req_profile">필수입력</label>
                         </td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <th scope="row"><label for="cf_register_level">회원가입시 권한</label></th>
                         <td><?php echo get_member_level_select('cf_register_level', 1, 9, $config['cf_register_level']) ?></td>
@@ -917,13 +913,13 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
                             픽셀 이하
                         </td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <th scope="row"><label for="cf_use_recommend">추천인제도 사용</label></th>
                         <td><input type="checkbox" name="cf_use_recommend" value="1" id="cf_use_recommend" <?php echo $config['cf_use_recommend'] ? 'checked' : ''; ?>> 사용</td>
                         <th scope="row"><label for="cf_recommend_point">추천인 포인트</label></th>
                         <td><input type="text" name="cf_recommend_point" value="<?php echo (int) $config['cf_recommend_point'] ?>" id="cf_recommend_point" class="frm_input"> 점</td>
-                    </tr>
-                    <tr>
+                    </tr> -->
+                    <!-- <tr>
                         <th scope="row"><label for="cf_prohibit_id">아이디,닉네임 금지단어</label></th>
                         <td>
                             <?php echo help('회원아이디, 닉네임으로 사용할 수 없는 단어를 정합니다. 쉼표 (,) 로 구분') ?>
@@ -934,7 +930,7 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
                             <?php echo help('입력 받지 않을 도메인을 지정합니다. 엔터로 구분 ex) hotmail.com') ?>
                             <textarea name="cf_prohibit_email" id="cf_prohibit_email" rows="5"><?php echo get_sanitize_input($config['cf_prohibit_email']); ?></textarea>
                         </td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <th scope="row"><label for="cf_stipulation">회원가입약관</label></th>
                         <td colspan="3"><textarea name="cf_stipulation" id="cf_stipulation" rows="10"><?php echo html_purifier($config['cf_stipulation']); ?></textarea></td>
@@ -1191,7 +1187,7 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
     </section>
 
 
-    <section id="anc_cf_vote_mail">
+    <!-- <section id="anc_cf_vote_mail">
         <h2 class="h2_frm">투표 기타의견 작성 시 메일 설정</h2>
         <?php echo $pg_anchor ?>
 
@@ -1365,10 +1361,10 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
                 </tbody>
             </table>
         </div>
-    </section>
+    </section> -->
 
 
-    <section id="anc_cf_lay">
+    <!-- <section id="anc_cf_lay">
         <h2 class="h2_frm">레이아웃 추가설정</h2>
         <?php echo $pg_anchor; ?>
         <div class="local_desc02 local_desc">
@@ -1393,7 +1389,7 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
                 </tbody>
             </table>
         </div>
-    </section>
+    </section> -->
 
 
     <section id="anc_cf_sms">
@@ -1490,7 +1486,7 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
     </section>
 
 
-    <section id="anc_cf_extra">
+    <!-- <section id="anc_cf_extra">
         <h2 class="h2_frm">여분필드 기본 설정</h2>
         <?php echo $pg_anchor ?>
         <div class="local_desc02 local_desc">
@@ -1519,7 +1515,7 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
                 </tbody>
             </table>
         </div>
-    </section>
+    </section> -->
 
     <div class="btn_fixed_top btn_confirm">
         <input type="submit" value="확인" class="btn_submit btn" accesskey="s">
@@ -1593,6 +1589,7 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
     });
 
     function fconfigform_submit(f) {
+        console.log(f.cf_intercept_ip.value)
         var current_user_ip = "<?php echo $_SERVER['REMOTE_ADDR']; ?>";
         var cf_intercept_ip_val = f.cf_intercept_ip.value;
 

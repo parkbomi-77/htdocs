@@ -257,8 +257,8 @@ add_javascript(G5_POSTCODE_JS, 0);    //다음 주소 js
                 <tr>
                     <th scope="row"><label for="mb_name">이름(실명)<strong class="sound_only">필수</strong></label></th>
                     <td><input type="text" name="mb_name" value="<?php echo $mb['mb_name'] ?>" id="mb_name" required class="required frm_input" size="15" maxlength="20"></td>
-                    <th scope="row"><label for="mb_nick">닉네임<strong class="sound_only">필수</strong></label></th>
-                    <td><input type="text" name="mb_nick" value="<?php echo $mb['mb_nick'] ?>" id="mb_nick" required class="required frm_input" size="15" maxlength="20"></td>
+                    <!-- <th scope="row"><label for="mb_nick">닉네임<strong class="sound_only">필수</strong></label></th>
+                    <td><input type="text" name="mb_nick" value="<?php echo $mb['mb_nick'] ?>" id="mb_nick" required class="required frm_input" size="15" maxlength="20"></td> -->
                 </tr>
                 <tr>
                     <th scope="row"><label for="mb_level">회원 권한</label></th>
@@ -269,8 +269,8 @@ add_javascript(G5_POSTCODE_JS, 0);    //다음 주소 js
                 <tr>
                     <th scope="row"><label for="mb_email">E-mail<strong class="sound_only">필수</strong></label></th>
                     <td><input type="text" name="mb_email" value="<?php echo $mb['mb_email'] ?>" id="mb_email" maxlength="100" required class="required frm_input email" size="30"></td>
-                    <th scope="row"><label for="mb_homepage">홈페이지</label></th>
-                    <td><input type="text" name="mb_homepage" value="<?php echo $mb['mb_homepage'] ?>" id="mb_homepage" class="frm_input" maxlength="255" size="15"></td>
+                    <!-- <th scope="row"><label for="mb_homepage">홈페이지</label></th>
+                    <td><input type="text" name="mb_homepage" value="<?php echo $mb['mb_homepage'] ?>" id="mb_homepage" class="frm_input" maxlength="255" size="15"></td> -->
                 </tr>
                 <tr>
                     <th scope="row"><label for="mb_hp">휴대폰번호</label></th>
@@ -378,7 +378,7 @@ add_javascript(G5_POSTCODE_JS, 0);    //다음 주소 js
                         <label for="mb_open_no">아니오</label>
                     </td>
                 </tr>
-                <tr>
+                <!-- <tr>
                     <th scope="row"><label for="mb_signature">서명</label></th>
                     <td colspan="3"><textarea name="mb_signature" id="mb_signature"><?php echo $mb['mb_signature'] ?></textarea></td>
                 </tr>
@@ -389,7 +389,7 @@ add_javascript(G5_POSTCODE_JS, 0);    //다음 주소 js
                 <tr>
                     <th scope="row"><label for="mb_memo">메모</label></th>
                     <td colspan="3"><textarea name="mb_memo" id="mb_memo"><?php echo $mb['mb_memo'] ?></textarea></td>
-                </tr>
+                </tr> -->
                 <tr>
                     <th scope="row"><label for="mb_cert_history">본인인증 내역</label></th>
                     <td colspan="3">
@@ -432,10 +432,10 @@ add_javascript(G5_POSTCODE_JS, 0);    //다음 주소 js
                         <th scope="row">최근접속일</th>
                         <td><?php echo $mb['mb_today_login'] ?></td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <th scope="row">IP</th>
                         <td colspan="3"><?php echo $mb['mb_ip'] ?></td>
-                    </tr>
+                    </tr> -->
                     <?php if ($config['cf_use_email_certify']) { ?>
                         <tr>
                             <th scope="row">인증일시</th>
@@ -565,12 +565,12 @@ add_javascript(G5_POSTCODE_JS, 0);    //다음 주소 js
                 run_event('admin_member_form_add', $mb, $w, 'table');
                 ?>
 
-                <?php for ($i = 1; $i <= 10; $i++) { ?>
+                <!-- <?php for ($i = 1; $i <= 10; $i++) { ?>
                     <tr>
                         <th scope="row"><label for="mb_<?php echo $i ?>">여분 필드 <?php echo $i ?></label></th>
                         <td colspan="3"><input type="text" name="mb_<?php echo $i ?>" value="<?php echo $mb['mb_' . $i] ?>" id="mb_<?php echo $i ?>" class="frm_input" size="30" maxlength="255"></td>
                     </tr>
-                <?php } ?>
+                <?php } ?> -->
 
             </tbody>
         </table>

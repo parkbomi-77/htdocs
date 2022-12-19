@@ -112,12 +112,17 @@
 #fregisterform .reg_mb_img_file img {max-width:100%;height:auto}
 
 .filebox .fileName {display:inline-block;position:relative;width:100%;height:45px;padding-left:10px;margin-right:5px;line-height:30px;border: 1px solid #d0d3db;background-color:#fff;color:red;vertical-align:middle}
-.filebox .btn_file {display:inline-block;position:absolute;right:8px;top:8px;border:1px solid #3a8afd;border-radius:3px;width:70px;height:30px;color:#3a8afd;font-size:1em;line-height:30px;font-weight:bold;text-align:center;vertical-align:middle}
+.filebox .btn_file {display:inline-block;position:absolute;right:8px;top:8px;border:1px solid #3a8afd;border-radius:3px;width:90px;height:30px;color:#3a8afd;font-size:1em;line-height:30px;font-weight:bold;text-align:center;vertical-align:middle}
 .filebox input[type="file"] {position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
 
 .adress {background:red;width:100%}
 .adress #reg_mb_zip {width:100%;position:relative}
 .adress .btn_frmline {position:absolute;top:8px;right:8px;height:40px;padding:0 10px;border-radius:3px}
+
+.certification .btn_frmline {position:absolute;top:8px;right:8px;height:40px;padding:0 10px;border-radius:3px}
+.certification_guide {
+
+}
 
 .chk_box {position:relative}
 .chk_box input[type="checkbox"] + label {padding-left:10px;color:#676e70}

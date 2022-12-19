@@ -29,7 +29,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
         <ul>
 	        <li>
 	            <label for="reg_mb_id" class="sound_only">아이디<strong>필수</strong></label>
-	            <input type="text" name="mb_id" value="<?php echo $member['mb_id'] ?>" id="reg_mb_id" class="frm_input full_input <?php echo $required ?> <?php echo $readonly ?>" minlength="3" maxlength="20" <?php echo $required ?> <?php echo $readonly ?> placeholder="아이디">
+	            <input type="text" name="mb_id" value="<?php echo $member['mb_id']?$member['mb_id'] : "" ?>" id="reg_mb_id" class="frm_input full_input <?php echo $required ?> <?php echo $readonly ?>" minlength="3" maxlength="20" <?php echo $required ?> <?php echo $readonly ?> placeholder="아이디">
 	            <span id="msg_mb_id"></span>
 	            <span class="frm_info">영문자, 숫자, _ 만 입력 가능. 최소 3자이상 입력하세요.</span>
 	        </li>
@@ -81,7 +81,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 	            
 	            <span class="frm_info">
 	                공백없이 한글,영문,숫자만 입력 가능 (한글2자, 영문4자 이상)<br>
-	                닉네임을 바꾸시면 앞으로 <?php echo (int)$config['cf_nick_modify'] ?>일 이내에는 변경 할 수 없습니다.
+	                <!-- 닉네임을 바꾸시면 앞으로 <?php echo (int)$config['cf_nick_modify'] ?>일 이내에는 변경 할 수 없습니다. -->
 	            </span>
 	            <!-- <input type="hidden" name="mb_nick_default" value="<?php echo isset($member['mb_nick'])?get_text($member['mb_nick']):''; ?>"> -->
 	            <!-- <input type="text" name="mb_nick" value="<?php echo isset($member['mb_nick'])?get_text($member['mb_nick']):''; ?>" id="reg_mb_nick" required class="frm_input full_input required nospace" maxlength="20" placeholder="닉네임"> -->
@@ -152,7 +152,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
     <div class="form_01">  
         <h2>기타 개인설정</h2>
 		<ul>
-			<?php if ($config['cf_use_signature']) { ?>
+			<!-- <?php if ($config['cf_use_signature']) { ?>
 	        <li>
 	            <label for="reg_mb_signature" class="sound_only">서명<?php if ($config['cf_req_signature']){ ?><strong>필수</strong><?php } ?></label>
 	            <textarea name="mb_signature" id="reg_mb_signature" class="<?php echo $config['cf_req_signature']?"required":""; ?>" <?php echo $config['cf_req_signature']?"required":""; ?> placeholder="서명"><?php echo $member['mb_signature'] ?></textarea>
@@ -164,7 +164,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 	            <label for="reg_mb_profile" class="sound_only">자기소개</label>
 	            <textarea name="mb_profile" id="reg_mb_profile" class="<?php echo $config['cf_req_profile']?"required":""; ?>" <?php echo $config['cf_req_profile']?"required":""; ?> placeholder="자기소개"><?php echo $member['mb_profile'] ?></textarea>
 	        </li>
-	        <?php } ?>
+	        <?php } ?> -->
 
 	        <?php if ($config['cf_use_member_icon'] && $member['mb_level'] >= $config['cf_icon_level']) { ?>
 	        <li class="filebox">
@@ -200,6 +200,18 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 	        </li>
 	        <?php } ?>
 
+            <!-- 회원가입할때 벳스쿨회원 인증 -->
+            <?php if($w == '') { ?>
+            <li>
+                <div class="certification">
+                    <input type="hidden" id="reg_mb_certification" name="certification" value="">
+                    <input type="text" id="reg_mb_name" name="mb_vetid" value="" <?php echo $required ?> class="frm_input full_input <?php echo $required ?>" placeholder="벳스쿨 아이디를 입력해주세요.">
+                    <button class="btn_frmline btn" onclick="vetcertification()">인증하기</button>
+                </div>
+                <span class="certification_guide frm_info"> 벳스쿨 인증을 진행해주세요.</span>
+            </li>
+            <?php } ?>
+
 	        <li class="chk_box">
 	        	<input type="checkbox" name="mb_mailling" value="1" id="reg_mb_mailling" <?php echo ($w=='' || $member['mb_mailling'])?'checked':''; ?> class="selec_chk">
 	            <label for="reg_mb_mailling">
@@ -221,7 +233,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 	        <?php } ?>
 
 	        <?php if (isset($member['mb_open_date']) && $member['mb_open_date'] <= date("Y-m-d", G5_SERVER_TIME - ($config['cf_open_modify'] * 86400)) || empty($member['mb_open_date'])) { // 정보공개 수정일이 지났다면 수정가능 ?>
-	        <li class="chk_box">
+	        <!-- <li class="chk_box">
 	            <input type="checkbox" name="mb_open" value="1" id="reg_mb_open" <?php echo ($w=='' || $member['mb_open'])?'checked':''; ?> class="selec_chk">
 	      		<label for="reg_mb_open">
 	      			<span></span>
@@ -243,7 +255,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 	                이렇게 하는 이유는 잦은 정보공개 수정으로 인하여 쪽지를 보낸 후 받지 않는 경우를 막기 위해서 입니다.
 	            </span>
 	        </li>
-	        <?php } ?>
+	        <?php } ?> -->
 
 	        <?php
 	        //회원정보 수정인 경우 소셜 계정 출력
@@ -259,16 +271,16 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 	        </li>
 	        <?php } ?>
 
-	        <li class="is_captcha_use">
+	        <!-- <li class="is_captcha_use">
 	            <span  class="frm_label">자동등록방지</span>
 	            <?php echo captcha_html(); ?>
-	        </li>
+	        </li> -->
 	    </ul>
     </div>
 
     <div class="btn_confirm">
         <a href="<?php echo G5_URL; ?>/" class="btn_cancel">취소</a>
-        <button type="submit" id="btn_submit" class="btn_submit" accesskey="s"><?php echo $w==''?'회원가입':'정보수정'; ?></button>
+        <button type="submit" id="btn_submit" class="btn_submit" accesskey="s" style="padding: 8px 7px 7px;"><?php echo $w==''?'회원가입':'정보수정'; ?></button>
     </div>
     </form>
 
@@ -344,9 +356,47 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
             return false;
     }
 
+    // 벳스쿨 계정 인증체크
+    function vetcertification() {
+        let val = document.fregisterform.mb_vetid.value;
+        let certification = document.getElementById("reg_mb_certification")
+
+        // 벳스쿨 아이디를 보내고 계정인증, 등급 받아오기 
+        $.ajax({
+            type: "POST",
+            url: "/vetcertification.php",
+            cache: false,
+            async: false,
+            data: {val},
+            dataType: "text",
+            success: function(data) {
+                console.log(data.trim());
+                // 비회원 1 일반회원 2 수의대생 3 수의사 4
+                // input value 에 등급 넣어주기 
+                if(Number(data) === 1){ // 벳스쿨 회원이 아닐 경우 
+                    alert("vet school 회원을 인증할 수 없습니다.");
+                    document.querySelector(".certification_guide").style.display = "block";
+
+                }else {
+                    alert("vet school 회원인증이 완료되었습니다.");
+                    document.querySelector(".certification_guide").style.display = "none";
+                    certification.value = data.trim();
+                }
+            }
+        });
+
+    }
+
     // submit 최종 폼체크
     function fregisterform_submit(f)
     {
+        // 벳스쿨 인증 확인 
+        console.log(f.certification.value);
+        if(!f.certification.value){ 
+            alert("인증하기버튼을 눌러 인증을 완료해주세요.");
+            return false;
+        }
+
         // 회원아이디 검사
         if (f.w.value == "") {
             var msg = reg_mb_id_check();

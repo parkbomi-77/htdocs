@@ -321,7 +321,7 @@ if (!isset($qaconfig['qa_include_head'])) {
                             <textarea id="qa_insert_content" name="qa_insert_content" rows="5"><?php echo html_purifier($qaconfig['qa_insert_content']); ?></textarea>
                         </td>
                     </tr>
-                    <?php for ($i = 1; $i <= 5; $i++) { ?>
+                    <!-- <?php for ($i = 1; $i <= 5; $i++) { ?>
                         <tr>
                             <th scope="row">여분필드<?php echo $i ?></th>
                             <td class="td_extra">
@@ -331,7 +331,7 @@ if (!isset($qaconfig['qa_include_head'])) {
                                 <input type="text" name="qa_<?php echo $i ?>" value="<?php echo get_text($qaconfig['qa_' . $i]) ?>" id="qa_<?php echo $i ?>" class="frm_input">
                             </td>
                         </tr>
-                    <?php } ?>
+                    <?php } ?> -->
                 </tbody>
             </table>
         </div>
