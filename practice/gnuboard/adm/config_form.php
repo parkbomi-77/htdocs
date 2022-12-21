@@ -27,19 +27,19 @@ if (!isset($config['cf_mobile_new_skin'])) {
     );
 }
 
-if (isset($config['cf_gcaptcha_mp3'])) {
-    sql_query(
-        " ALTER TABLE `{$g5['config_table']}`
-                    CHANGE `cf_gcaptcha_mp3` `cf_captcha_mp3` VARCHAR(255) NOT NULL DEFAULT '' ",
-        true
-    );
-} elseif (!isset($config['cf_captcha_mp3'])) {
-    sql_query(
-        " ALTER TABLE `{$g5['config_table']}`
-                    ADD `cf_captcha_mp3` VARCHAR(255) NOT NULL DEFAULT '' AFTER `cf_mobile_member_skin` ",
-        true
-    );
-}
+// if (isset($config['cf_gcaptcha_mp3'])) {
+//     sql_query(
+//         " ALTER TABLE `{$g5['config_table']}`
+//                     CHANGE `cf_gcaptcha_mp3` `cf_captcha_mp3` VARCHAR(255) NOT NULL DEFAULT '' ",
+//         true
+//     );
+// } elseif (!isset($config['cf_captcha_mp3'])) {
+//     sql_query(
+//         " ALTER TABLE `{$g5['config_table']}`
+//                     ADD `cf_captcha_mp3` VARCHAR(255) NOT NULL DEFAULT '' AFTER `cf_mobile_member_skin` ",
+//         true
+//     );
+// }
 
 if (!isset($config['cf_editor'])) {
     sql_query(
@@ -619,7 +619,7 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
                             </select>
                         </td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <th scope="row"><label for="cf_captcha">캡챠 선택<strong class="sound_only">필수</strong></label></th>
                         <td colspan="3">
                             <?php echo help('사용할 캡챠를 선택합니다.<br>1) Kcaptcha 는 그누보드5의 기본캡챠입니다. ( 문자입력 )<br>2) reCAPTCHA V2 는 구글에서 서비스하는 원클릭 형식의 간편한 캡챠입니다. ( 모바일 친화적 UI )<br>3) Invisible reCAPTCHA 는 구글에서 서비스하는 안보이는 형식의 캡챠입니다. ( 간혹 퀴즈를 풀어야 합니다. )<br>') ?>
@@ -659,7 +659,7 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
                         <td colspan="3">
                             <input type="text" name="cf_recaptcha_secret_key" value="<?php echo get_sanitize_input($config['cf_recaptcha_secret_key']); ?>" id="cf_recaptcha_secret_key" class="frm_input" size="52">
                         </td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <th scope="row"><label for="cf_use_copy_log">복사, 이동시 로그</label></th>
                         <td colspan="3">
