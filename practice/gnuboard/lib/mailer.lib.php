@@ -26,12 +26,47 @@ function mailer($fname, $fmail, $to, $subject, $content, $type=0, $file="", $cc=
 
     try {
         $mail = new PHPMailer(); // defaults to using php "mail()"
-        if (defined('G5_SMTP') && G5_SMTP) {
-            $mail->IsSMTP(); // telling the class to use SMTP
-            $mail->Host = G5_SMTP; // SMTP server
-            if(defined('G5_SMTP_PORT') && G5_SMTP_PORT)
-                $mail->Port = G5_SMTP_PORT;
-        }
+        // if (defined('G5_SMTP') && G5_SMTP) {
+        //     $mail->IsSMTP(); // telling the class to use SMTP
+        //     $mail->Host = G5_SMTP; // SMTP server
+        //     if(defined('G5_SMTP_PORT') && G5_SMTP_PORT)
+        //         $mail->Port = G5_SMTP_PORT;
+        // }
+
+        // $mail->SMTPDebug = SMTP::DEBUG_SERVER;   
+        // $mail->IsSMTP();
+        // $mail->SMTPSecure = "ssl";
+        // $mail->SMTPAuth = true;
+        // $mail->Host = "smtp.gmail.com";
+        // $mail->Port = 465;
+        // $mail->Username = "pakpomi77@zentry.kr";
+        // $mail->Password = "zentry2020!";
+
+        // $mail->CharSet = 'UTF-8';
+        // $mail->From = $fmail;
+        // $mail->FromName = $fname;
+        // $mail->Subject = $subject;
+        // $mail->AltBody = ""; // optional, comment out and test
+        // $mail->msgHTML($content);
+        // $mail->addAddress($to);
+        // if ($cc)
+        //     $mail->addCC($cc);
+        // if ($bcc)
+        //     $mail->addBCC($bcc);
+        // //print_r2($file); exit;
+        // if ($file != "") {
+        //     foreach ($file as $f) {
+        //         $mail->addAttachment($f['path'], $f['name']);
+        //     }
+        // }
+        $mail->IsSMTP();
+        // $mail->SMTPDebug = 3;
+        $mail->SMTPSecure = "ssl";
+        $mail->SMTPAuth = true;
+        $mail->Host = "smtp.gmail.com";
+        $mail->Port = 465;
+        $mail->Username = "pakpomi77@gmail.com";
+        $mail->Password = "wncynqghtaxpejxf";
         $mail->CharSet = 'UTF-8';
         $mail->From = $fmail;
         $mail->FromName = $fname;
@@ -39,6 +74,7 @@ function mailer($fname, $fmail, $to, $subject, $content, $type=0, $file="", $cc=
         $mail->AltBody = ""; // optional, comment out and test
         $mail->msgHTML($content);
         $mail->addAddress($to);
+
         if ($cc)
             $mail->addCC($cc);
         if ($bcc)
@@ -50,7 +86,7 @@ function mailer($fname, $fmail, $to, $subject, $content, $type=0, $file="", $cc=
             }
         }
 
-        $mail = run_replace('mail_options', $mail, $fname, $fmail, $to, $subject, $content, $type, $file, $cc, $bcc);
+        // $mail = run_replace('mail_options', $mail, $fname, $fmail, $to, $subject, $content, $type, $file, $cc, $bcc);
 
         $mail_send_result = $mail->send();
 

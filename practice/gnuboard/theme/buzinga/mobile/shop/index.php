@@ -29,6 +29,18 @@ include_once(G5_THEME_MSHOP_PATH.'/shop.head.php');
             $list->set_view('it_icon', true);
             // $list->set_view('sns', true);
             echo $list->run();
+        }else if($member['mb_level'] === "2") { // 일반회원일 경우 pet parents 카테고리상품만 노출하기 
+            $list->set_mobile(true);
+            $list->set_category(40, 1);
+            $list->set_category(40, 2);
+            $list->set_category(40, 3);
+            $list->set_type(1);
+            $list->set_view('it_id', false);
+            $list->set_view('it_name', true);
+            $list->set_view('it_cust_price', true);
+            $list->set_view('it_price', true);
+            $list->set_view('it_icon', true);
+            echo $list->run();
         }else {
             $list->set_mobile(true);
             $list->set_type(1);
@@ -63,6 +75,18 @@ include_once(G5_THEME_MSHOP_PATH.'/shop.head.php');
             $list->set_view('it_price', false);
             $list->set_view('it_icon', true);
             // $list->set_view('sns', true);
+            echo $list->run();
+        }else if($member['mb_level'] === "2") { // 일반회원일 경우 pet parents 카테고리상품만 노출하기 
+            $list->set_mobile(true);
+            $list->set_category(40, 1);
+            $list->set_category(40, 2);
+            $list->set_category(40, 3);
+            $list->set_type(3);
+            $list->set_view('it_id', false);
+            $list->set_view('it_name', true);
+            $list->set_view('it_cust_price', true);
+            $list->set_view('it_price', true);
+            $list->set_view('it_icon', true);
             echo $list->run();
         }else {
             $list->set_mobile(true);
@@ -99,6 +123,18 @@ include_once(G5_THEME_MSHOP_PATH.'/shop.head.php');
             $list->set_view('it_price', false);
             $list->set_view('it_icon', false);
             // $list->set_view('sns', false);
+            echo $list->run();
+        }else if($member['mb_level'] === "2") { // 일반회원일 경우 pet parents 카테고리상품만 노출하기 
+            $list->set_mobile(true);
+            $list->set_category(40, 1);
+            $list->set_category(40, 2);
+            $list->set_category(40, 3);
+            $list->set_type(4);
+            $list->set_view('it_id', false);
+            $list->set_view('it_name', true);
+            $list->set_view('it_cust_price', true);
+            $list->set_view('it_price', true);
+            $list->set_view('it_icon', true);
             echo $list->run();
         }else {
             $list->set_mobile(true);

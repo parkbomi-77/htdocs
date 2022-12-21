@@ -15,6 +15,15 @@ function get_mshop_category($ca_id, $len)
 }
 
 $mshop_categories = get_shop_category_array(true);
+
+// 일반회원에게 보여질 카테고리 
+$membercate[0] = $mshop_categories['40'];
+if($member['mb_level'] === "2") {
+	$mshop_categories = '';
+	$mshop_categories = $membercate;
+}
+
+
 ?>
 
 <div id="menu">
@@ -53,10 +62,11 @@ $mshop_categories = get_shop_category_array(true);
 	        <ul class="content">
 	            <li id="cate_01" class="con">
 	            <?php
+
 	            $i = 0;
-	            foreach($mshop_categories as $cate1){
+	            foreach($mshop_categories as $cate1){ 
 	                if( empty($cate1) ) continue;
-	
+
 	                $mshop_ca_row1 = $cate1['text'];
 	                if($i == 0)
 	                    echo '<ul class="cate">'.PHP_EOL;
@@ -208,5 +218,6 @@ jQuery(function ($){
     });
      
 });
+
 </script>
 

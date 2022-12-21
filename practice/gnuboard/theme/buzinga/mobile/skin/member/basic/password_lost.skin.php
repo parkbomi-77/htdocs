@@ -17,19 +17,20 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
             </p>
             <input type="email" id="mb_email" name="mb_email" placeholder="이메일주소(필수)" required class="frm_input email">
         </fieldset>
-        <?php echo captcha_html(); ?>
-		</form>
+        <?php //echo captcha_html(); ?>
 	</div>
     <div class="win_btn">
         <button type="submit" class="btn_submit">정보찾기</button>
         <button type="button" onclick="window.close();" class="btn_close">창닫기</button>
     </div>
 </div>
+</form>
 
 <script>
 function fpasswordlost_submit(f)
 {
-    <?php echo chk_captcha_js(); ?>
+    console.log('ggg');
+    <?php //echo chk_captcha_js(); ?>
 
     return true;
 }

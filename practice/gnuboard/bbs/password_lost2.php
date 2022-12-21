@@ -7,9 +7,9 @@ if ($is_member) {
     alert_close('이미 로그인중입니다.', G5_URL);
 }
 
-if (!chk_captcha()) {
-    alert('자동등록방지 숫자가 틀렸습니다.');
-}
+// if (!chk_captcha()) {
+//     alert('자동등록방지 숫자가 틀렸습니다.');
+// }
 
 $email = get_email_address(trim($_POST['mb_email']));
 

@@ -400,9 +400,7 @@ $sql_common = " ca_id               = '$ca_id',
                 it_img9             = '$it_img9',
                 it_img10            = '$it_img10',
                 it_1_subj           = '$it_1_subj',
-                it_2_subj           = '$it_2_subj',
-                it_3_subj           = '$it_3_subj',
-                it_4_subj           = '$it_4_subj',
+            
                 it_5_subj           = '$it_5_subj',
                 it_6_subj           = '$it_6_subj',
                 it_7_subj           = '$it_7_subj',
@@ -444,8 +442,7 @@ else if ($w == "u")
 {
     $sql_common .= " , it_update_time = '".G5_TIME_YMDHIS."' ";
     $sql = " update {$g5['g5_shop_item_table']}
-                set $sql_common
-              where it_id = '$it_id' ";
+                set $sql_common where it_id = '$it_id' ";
     sql_query($sql);
 }
 /*

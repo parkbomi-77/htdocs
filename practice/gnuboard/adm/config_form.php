@@ -496,7 +496,7 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
                             <input type="text" name="cf_memo_send_point" value="<?php echo (int) $config['cf_memo_send_point']; ?>" id="cf_memo_send_point" required class="required frm_input" size="5"> 점
                         </td>
                     </tr> -->
-                    <tr>
+                    <!-- <tr>
                         <th scope="row"><label for="cf_cut_name">이름(닉네임) 표시</label></th>
                         <td colspan="3">
                             <input type="text" name="cf_cut_name" value="<?php echo (int) $config['cf_cut_name'] ?>" id="cf_cut_name" class="frm_input" size="5"> 자리만 표시
@@ -507,7 +507,7 @@ if ($config['cf_sms_use'] && $config['cf_icode_id'] && $config['cf_icode_pw']) {
                         <td>수정하면 <input type="text" name="cf_nick_modify" value="<?php echo (int) $config['cf_nick_modify'] ?>" id="cf_nick_modify" class="frm_input" size="3"> 일 동안 바꿀 수 없음</td>
                         <th scope="row"><label for="cf_open_modify">정보공개 수정</label></th>
                         <td>수정하면 <input type="text" name="cf_open_modify" value="<?php echo (int) $config['cf_open_modify'] ?>" id="cf_open_modify" class="frm_input" size="3"> 일 동안 바꿀 수 없음</td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <th scope="row"><label for="cf_new_del">최근게시물 삭제</label></th>
                         <td>
