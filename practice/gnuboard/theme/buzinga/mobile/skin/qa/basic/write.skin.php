@@ -12,7 +12,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$qa_skin_url.'/style.css">', 0);
     <input type="hidden" name="qa_id" value="<?php echo $qa_id ?>">
     <input type="hidden" name="sca" value="<?php echo $sca ?>">
     <input type="hidden" name="stx" value="<?php echo $stx ?>">
-    <input type="hidden" name="page" value="<?php echo $page ?>">
+    <input type="hidden" name="token" value="<?php echo $token ?>">
     <?php
     $option = '';
     $option_hidden = '';
@@ -29,7 +29,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$qa_skin_url.'/style.css">', 0);
 
     <div class="form_01">
         <ul>
-            <?php if ($category_option) { ?>
+            <!-- <?php if ($category_option) { ?>
             <li>
                 <label for="qa_category" class="sound_only">분류<strong>필수</strong></label>
                 <select name="qa_category" id="qa_category" required class="required" >
@@ -37,21 +37,21 @@ add_stylesheet('<link rel="stylesheet" href="'.$qa_skin_url.'/style.css">', 0);
                     <?php echo $category_option ?>
                 </select>
             </li>
-            <?php } ?>
+            <?php } ?> -->
 
             <?php if ($option) { ?>
-            <li>
+            <!-- <li>
                 <span class="sound_only">옵션</span>
                 <?php echo $option; ?>
-            </li>
+            </li> -->
             <?php } ?>
 
             <?php if ($is_email) { ?>
             <li>
                 <label for="qa_email" class="sound_only">이메일</label>
-                <input type="email" name="qa_email" value="<?php echo get_text($write['qa_email']); ?>" id="qa_email" <?php echo $req_email; ?> class="<?php echo $req_email.' '; ?>frm_input full_input email" maxlength="100" placeholder="이메일">
+                <input type="email" name="qa_email" value="<?php echo get_text($write['qa_email']); ?>" id="qa_email" <?php echo $req_email; ?> class="<?php echo $req_email.' '; ?>frm_input full_input email" maxlength="100" placeholder="이메일" style="margin-bottom: 5px;">
                 <input type="checkbox" name="qa_email_recv" value="1" id="qa_email_recv" <?php if($write['qa_email_recv']) echo 'checked="checked"'; ?>>
-                <label for="qa_email_recv">답변받기</label>
+                <label for="qa_email_recv" style="font-size: 14px;">답변받기</label>
             </li>
             <?php } ?>
 
@@ -78,21 +78,29 @@ add_stylesheet('<link rel="stylesheet" href="'.$qa_skin_url.'/style.css">', 0);
             </li>
 
             <li class="bo_w_flie">
+            <?php if($w == 'u' && $write['qa_file2']) { ?> 
+                <div class="file_wr" style="margin-bottom: 25px;">
+            <?php } else {?>
                 <div class="file_wr">
+            <?php } ?>
                     <span class="lb_icon"><i class="fa fa-download" aria-hidden="true"></i><span class="sound_only">파일 #1</span></span>
                     <input type="file" name="bf_file[1]" title="파일첨부 1 :  용량 <?php echo $upload_max_filesize; ?> 이하만 업로드 가능" class="frm_file">
                     <?php if($w == 'u' && $write['qa_file1']) { ?>
-                    <input type="checkbox" id="bf_file_del1" name="bf_file_del[1]" value="1"> <label for="bf_file_del1"><?php echo $write['qa_source1']; ?> 파일 삭제</label>
+                        <input type="checkbox" id="bf_file_del1" name="bf_file_del[1]" value="1"> <label for="bf_file_del1" style="font-size: 12px;"><?php echo $write['qa_source1']; ?> 파일 삭제</label>
                     <?php } ?>
                 </div>
             </li>
 
-            <li class="bo_w_flie">
+            <li class="bo_w_flie"> 
+            <?php if($w == 'u' && $write['qa_file2']) { ?> 
+                <div class="file_wr" style="margin-bottom: 25px;">
+            <?php } else {?>
                 <div class="file_wr">
+            <?php } ?>
                     <span class="lb_icon"><i class="fa fa-download" aria-hidden="true"></i><span class="sound_only">파일 #2</span></span>
                     <input type="file" name="bf_file[2]" title="파일첨부 2 :  용량 <?php echo $upload_max_filesize; ?> 이하만 업로드 가능" class="frm_file">
                     <?php if($w == 'u' && $write['qa_file2']) { ?>
-                    <input type="checkbox" id="bf_file_del2" name="bf_file_del[2]" value="1"> <label for="bf_file_del2"><?php echo $write['qa_source2']; ?> 파일 삭제</label>
+                        <input type="checkbox" id="bf_file_del2" name="bf_file_del[2]" value="1"> <label for="bf_file_del2" style="font-size: 12px;"><?php echo $write['qa_source2']; ?> 파일 삭제</label>
                     <?php } ?>
                 </div>
             </li>

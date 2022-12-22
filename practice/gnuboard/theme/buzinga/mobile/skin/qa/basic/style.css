@@ -21,8 +21,8 @@
 
 /* 쓰기 버튼 */
 #bo_w .btn_confirm {} /* 서식단계 진행 */
-#bo_w .btn_submit {}
-#bo_w .btn_cancel {border:1px solid #aaa;color:#666;height:40px;line-height:35px;background:#fff;padding:0 10px;border-radius:3px}
+#bo_w .btn_submit {padding: 9.4px;border-radius: 3px;}
+#bo_w .btn_cancel {border:1px solid #aaa;color:#666;height:40px;line-height:20px;font-size: 15px;background:#fff;padding:0 10px;border-radius:3px}
 #bo_w .btn_frmline {} /* 우편번호검색버튼 등 */
 
 /* 읽기 내 테이블 */
@@ -105,7 +105,7 @@
 .bo_fx:after {display:block;visibility:hidden;clear:both;content:""}
 .bo_fx ul {margin:0;padding:0;list-style:none}
 
-.bo_top_option {padding:0 10px}
+.bo_top_option {padding:0 10px;margin-top: 70px;}
 .bo_top_option:after {display:block;visibility:hidden;clear:both;content:""}
 #bo_list_total {float:left;padding:10px 0;margin-top:10px}
 
@@ -174,7 +174,7 @@
 #bo_v_link a:focus, #bo_v_link a:hover, #bo_v_link a:active {text-decoration:none}
 .bo_v_link_cnt {display:inline-block;margin:0 10px}
 
-#bo_v_contact {background:#f3f3f3;padding:10px;line-height:18px;margin-bottom:10px}
+#bo_v_contact {background:#f3f3f3;padding:10px;line-height:22px;margin-bottom:10px;font-size: 15px;}
 #bo_v_contact h3 {position:absolute;font-size:0;text-indent:-9999em;line-height:0;overflow:hidden}
 
 .bo_v_com {float:right;margin-bottom:10px}
@@ -194,7 +194,7 @@
 .bo_v_nb:after {display:block;visibility:hidden;clear:both;content:""}
 .bo_v_nb li:first-child {border-bottom:1px solid #f1f1f1;margin-bottom:-1px}
 .bo_v_nb li {padding:15px}
-.bo_v_nb li i {font-size:2em;color:#b0b2b3}
+.bo_v_nb li i {font-size:19px;color:#b0b2b3}
 .bo_v_nb li .nb_tit {display:inline-block;padding-right:20px;color:#8d8d8d}
 
 #bo_v_atc {padding:10px 0;min-height:100px}
@@ -221,16 +221,16 @@
 #bo_v_addq {margin:0 0 30px;text-align:right}
 
 #bo_v_ans {margin:0 0 30px;background:#fff;position:relative}
-#bo_v_ans h2 {font-size:1.083em;padding:10px 90px 5px 10px;background:#f5f5f5}
+#bo_v_ans h2 {font-size:1.083em;padding:10px 90px 5px 10px;background:#f5f5f5;line-height: 34px;}
 #bo_v_ans h2 span {display:inline-block;font-size:11px;background:#68b880;border-radius:3px;height:22px;line-height:22px;padding:0 5px;color:#fff;font-weight:normal}
 
 #bo_v_ans h2 .tit_rpl {display:inline-block;font-size:11px;padding:0 5px;line-height:23px;font-weight:normal;background:#646982;color:#fff;}
-#bo_v_ans #ans_datetime {padding:0 10px 10px;font-size:0.92em;background:#fff7f7;color:#666}
+#bo_v_ans #ans_datetime {padding:11px 10px 10px;font-size:0.92em;background:#fff7f7;color:#666}
 #bo_v_ans #ans_con {margin:0 0 10px;padding:15px;line-height:1.8em}
 #bo_v_ans #ans_con img{max-width:100%;height:auto}
 #bo_v_ans #ans_add {text-align:right;padding:15px}
 #bo_v_ans #ans_msg {padding:40px 0;background:#f2f5f9;text-align:center}
-#bo_v_ans .add_qa {position:absolute;top:10px;right:10px;background:#fe4444;color:#fff}
+#bo_v_ans .add_qa {position:absolute;top:10px;right:10px;background:#fe4444;color:#fff;line-height: 30px;font-size: 13px;}
 #bo_v_ans .add_qa:hover {background:#ef2020}
 #bo_v_ans .form_01 {margin:10px 0}
 #bo_v_ans .btn_confirm input {padding:10px}
@@ -295,7 +295,7 @@
 
 #bo_w .form_01 {margin:0}
 #bo_w .bo_w_flie .lb_icon {position:absolute;top:0px;left:0px;border-radius:3px 0 0 3px;height:38px;line-height:38px;width:40px;background:#eee;text-align:center}
-#bo_w .bo_w_flie .frm_file {padding-left:50px;margin-top:3px}
+#bo_w .bo_w_flie .frm_file {padding-left:41px;margin:2px 0 9px;font-size: 14px;}
 #bo_w .bo_w_flie .file_wr {border:1px solid #d9dee9;color:#000;vertical-align:middle;padding:5px;height:40px;margin:0}
 #bo_w .btn_top {padding:10px 0}
 #bo_w .bo_w_link .frm_input {padding-left:50px}

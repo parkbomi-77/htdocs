@@ -59,7 +59,7 @@ require_once G5_ADMIN_PATH . '/admin.head.php';
                 <col>
             </colgroup>
             <tbody>
-                <tr>
+                <!-- <tr>
                     <th scope="row"><label for="nw_division">구분</label></th>
                     <td>
                         <?php echo help("커뮤니티에 표시될 것인지 쇼핑몰에 표시될 것인지를 설정합니다."); ?>
@@ -71,7 +71,7 @@ require_once G5_ADMIN_PATH . '/admin.head.php';
                             <?php } ?>
                         </select>
                     </td>
-                </tr>
+                </tr> -->
                 <tr>
                     <th scope="row"><label for="nw_device">접속기기</label></th>
                     <td>

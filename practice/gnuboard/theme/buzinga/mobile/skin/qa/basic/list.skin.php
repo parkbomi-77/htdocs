@@ -9,10 +9,10 @@ add_stylesheet('<link rel="stylesheet" href="'.$qa_skin_url.'/style.css">', 0);
     <?php if ($category_option) { ?>
     <!-- 카테고리 시작 { -->
     <nav id="bo_cate">
-        <h2><?php echo $qaconfig['qa_title'] ?> 카테고리</h2>
+        <!-- <h2><?php echo $qaconfig['qa_title'] ?> 카테고리</h2>
         <ul id="bo_cate_ul">
             <?php echo $category_option ?>
-        </ul>
+        </ul> -->
     </nav>
     <!-- } 카테고리 끝 -->
     <?php } ?>
@@ -60,7 +60,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$qa_skin_url.'/style.css">', 0);
                 </div>
                 <?php } ?>
                 <div class="li_title">
-                    <strong><?php echo $list[$i]['category']; ?></strong>
+                    <!-- <strong><?php echo $list[$i]['category']; ?></strong> -->
                     <a href="<?php echo $list[$i]['view_href']; ?>" class="li_sbj">
                         <?php echo $list[$i]['subject']; ?>
                         <?php if ($list[$i]['icon_file']) echo " <i class=\"fa fa-download\" aria-hidden=\"true\"></i>" ; ?>
@@ -69,7 +69,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$qa_skin_url.'/style.css">', 0);
                 <div class="li_info">
                     <span><?php echo $list[$i]['name']; ?></span>
                     <span><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $list[$i]['date']; ?></span>
-                    <div class="li_stat <?php echo ($list[$i]['qa_status'] ? 'txt_done' : 'txt_rdy'); ?>"><?php echo ($list[$i]['qa_status'] ? '<i class="fa fa-check-circle" aria-hidden="true"></i> 답변완료' : '<i class="fa fa-times-circle" aria-hidden="true"></i> 답변대기'); ?></div>
+                    <div class="li_stat <?php echo ($list[$i]['qa_status'] ? 'txt_done' : 'txt_rdy'); ?>"><?php echo ($list[$i]['qa_status'] ? '답변완료' : '답변대기'); ?></div>
                 </div>
             </li>
             <?php

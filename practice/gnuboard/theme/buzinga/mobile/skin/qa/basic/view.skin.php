@@ -29,7 +29,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$qa_skin_url.'/style.css">', 0);
 		        <ul id="bo_v_opt">
 			        <?php ob_start(); ?>
 			            <?php if ($update_href) { ?><li><a href="<?php echo $update_href ?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 수정</a></li><?php } ?>
-			            <?php if ($delete_href) { ?><li><a href="<?php echo $delete_href ?>" onclick="del(this.href); return false;"><i class="fa fa-trash-o" aria-hidden="true"></i> 삭제</a></li><?php } ?>
+			            <?php if ($delete_href) { ?><li><a href="<?php echo $delete_href ?>" onclick="del(this.href); return false;"><i class="fas fa-trash" aria-hidden="true" style="margin-right: 4px;"></i> 삭제</a></li><?php } ?>
 		        	<?php $link_buttons = ob_get_contents(); ob_end_flush(); ?>
 		        </ul>
 			</div>
@@ -42,11 +42,11 @@ add_stylesheet('<link rel="stylesheet" href="'.$qa_skin_url.'/style.css">', 0);
 	        <div id="bo_v_contact">
 	            <h3>연락처정보</h3>
                 <?php if($view['email']) { ?>
-                <strong><i class="fa fa-envelope-o" aria-hidden="true"></i><span class="sound_only">이메일</span> <?php echo $view['email']; ?></strong>
+                <i class="fa fa-envelope" aria-hidden="true"></i><span class="sound_only">이메일</span> <?php echo $view['email']; ?>
                 <?php } ?>
                 <br>
                 <?php if($view['hp']) { ?>
-                <strong><i class="fa fa fa-phone" aria-hidden="true"></i><span class="sound_only">휴대폰</span> <?php echo $view['hp']; ?></strong>
+                <i class="fas fa-phone"></i><span class="sound_only">휴대폰</span> <?php echo $view['hp']; ?>
                 <?php } ?>
 	        </div>
 	        <?php } ?>
@@ -111,8 +111,8 @@ add_stylesheet('<link rel="stylesheet" href="'.$qa_skin_url.'/style.css">', 0);
          ?>
         <?php if ($prev_href || $next_href) { ?>
         <ul class="bo_v_nb">
-            <?php if ($prev_href) { ?><li><a href="<?php echo $prev_href ?>"><i class="fa fa-angle-left" aria-hidden="true"></i> 이전글</a></li><?php } ?>
-            <?php if ($next_href) { ?><li><a href="<?php echo $next_href ?>">다음글 <i class="fa fa-angle-right" aria-hidden="true"></i></a></li><?php } ?>
+            <?php if ($prev_href) { ?><li><a href="<?php echo $prev_href ?>"><i class="fas fa-angle-left fa-xs" aria-hidden="true"></i> 이전글</a></li><?php } ?>
+            <?php if ($next_href) { ?><li><a href="<?php echo $next_href ?>">다음글 <i class="fas fa-angle-right fa-lg" aria-hidden="true"></i></a></li><?php } ?>
         </ul>
         <?php } ?>
         <?php

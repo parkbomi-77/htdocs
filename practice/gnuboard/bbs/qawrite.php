@@ -129,7 +129,7 @@ if(is_file($skin_file)) {
             $req_hp = 'required';
 
         if($w == '' || $w == 'r')
-            $write['qa_hp'] = $member['mb_hp'];
+            $write['qa_hp'] = $member['mb_tel'];
 
         if($w == 'u' && $is_admin && $write['qa_type'])
             $is_hp = false;

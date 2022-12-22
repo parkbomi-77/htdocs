@@ -13,10 +13,10 @@
 .faq_admin {text-align:right}
 #faq_wrap ol {margin:0;padding:0;list-style:none}
 #faq_wrap li {border-bottom:1px solid #ececec;background:#fff;position:relative}
-#faq_wrap li h3 {min-height:50px;line-height:30px;padding:15px;padding-left:50px;position:relative}
+#faq_wrap li h3 {min-height:50px;line-height:30px;padding:15px 50px;position:relative}
 #faq_wrap li h3 a {font-size:1.2em}
 #faq_wrap li h3 .tit_btn {position:absolute;right:15px;top:15px;border:0;width:30px;height:30px;background:#fff;color:#c5cdd8;font-size:1.2em}
-#faq_wrap li h3 .tit_bg {display:inline-block;position:absolute;top:15px;left:15px;text-align:center;color:#000;font-size:1.6em}
+#faq_wrap li h3 .tit_bg {display:inline-block;position:absolute;top:14px;left:22px;text-align:center;color:#000;font-size:1.6em}
 #faq_wrap li h3.faq_li_open a {color:#3a8afd}
 
 #faq_con .con_inner {display:none;padding:5px 5px 20px 50px}

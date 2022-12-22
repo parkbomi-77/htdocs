@@ -350,7 +350,7 @@ $pg_anchor = '<ul class="anchor">
         <tr>
             <th scope="row"><label for="bo_list_level">목록보기 권한</label></th>
             <td>
-                <?php echo help('권한 1은 비회원, 2 이상 회원입니다. 권한은 10 이 가장 높습니다.') ?>
+                <?php echo help('회원등급 1 비회원, 2 일반회원, 3 수의대생, 4 수의사, 10 관리자') ?>
                 <?php echo get_member_level_select('bo_list_level', 1, 10, $board['bo_list_level']) ?>
             </td>
             <td class="td_grpset">

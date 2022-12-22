@@ -116,6 +116,7 @@ if(is_file($skin_file)) {
     */
 
     if(($view['qa_type'] && $is_admin) || (!$view['qa_type'] && $view['qa_status'] == 0)) {
+    // if($is_admin || (!$view['qa_type'] && $view['qa_status'] == 0)) {
         $update_href = G5_BBS_URL.'/qawrite.php?w=u&amp;qa_id='.$view['qa_id'].$qstr;
         $delete_href = G5_BBS_URL.'/qadelete.php?qa_id='.$view['qa_id'].'&amp;token='.$token.$qstr;
     }
