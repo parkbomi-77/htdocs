@@ -94,9 +94,9 @@
 #bo_sch {position:relative;padding:10px 20px 0}
 #bo_sch:after {display:block;visibility:hidden;clear:both;content:""}
 #bo_sch legend {position:absolute;margin:0;padding:0;font-size:0;line-height:0;text-indent:-9999em;overflow:hidden}
-#bo_sch select {float:left;border:0;margin-right:5px;width:25%;height:40px;background:#f9fafa;border:1px solid #c2c9d9;-moz-box-shadow:inset 0 0 10px #e8e8e8;-webkit-box-shadow:inset 0 0 10px #e8e8e8;box-shadow:inset 0 0 10px #e8e8e8}
+#bo_sch select {padding-left: 8px;float:left;border:0;margin-right:5px;width:25%;height:40px;background:#f9fafa;border:1px solid #c2c9d9;-moz-box-shadow:inset 0 0 10px #e8e8e8;-webkit-box-shadow:inset 0 0 10px #e8e8e8;box-shadow:inset 0 0 10px #e8e8e8}
 #bo_sch .sch_area {float:left;position:relative;width:73%;height:40px}
-#bo_sch .sch_input {width:100%;height:40px;border:0;padding:0;background:#f9fafa !important;border:1px solid #c2c9d9;background-color:transparent;-moz-box-shadow:inset 0 0 10px #e8e8e8;-webkit-box-shadow:inset 0 0 10px #e8e8e8;box-shadow:inset 0 0 10px #e8e8e8}
+#bo_sch .sch_input {width:100%;height:40px;border:0;padding-left:10px;background:#f9fafa !important;border:1px solid #c2c9d9;background-color:transparent;-moz-box-shadow:inset 0 0 10px #e8e8e8;-webkit-box-shadow:inset 0 0 10px #e8e8e8;box-shadow:inset 0 0 10px #e8e8e8}
 #bo_sch .sch_btn {position:absolute;right:0;top:0;height:38px;float:left;background:none;border:0;width:40px;font-size:15px}
 
 .view_is_list.btn_top {}
@@ -194,7 +194,7 @@
 #bo_v_atc {min-height:200px;height:auto !important;height:200px}
 #bo_v_atc_title {position:absolute;font-size:0;line-height:0;overflow:hidden}
 
-#bo_v_img {width:100%;overflow:hidden}
+#bo_v_img {display: inline-block;overflow:hidden}
 #bo_v_img:after {display:block;visibility:hidden;clear:both;content:""}
 #bo_v_img a.view_image {display:block}
 #bo_v_img img {margin-bottom:20px;max-width:100%;height:auto}
@@ -246,14 +246,21 @@
 #bo_vc .member, #bo_vc .guest, #bo_vc .sv_member, #bo_vc .sv_guest {font-weight:bold}
 .bo_vc_hdinfo {color:#777}
 #bo_vc h1 {position:absolute;font-size:0;line-height:0;overflow:hidden}
-#bo_vc .cmt_contents {padding:15px 0;border-bottom:1px solid #e8e8e8;line-height:1.8em}
-#bo_vc p {margin-left:50px;margin-top:-20px}
+#bo_vc .cmt_contents {padding:25px 0;border-bottom:1px solid #e8e8e8;line-height:1.8em}
+#bo_vc p {margin-left:40px;margin-top:-20px}
 #bo_vc p a {text-decoration:underline}
 #bo_vc p a.s_cmt {text-decoration:underline;color:#ed6479}
 #bo_vc_empty {margin:0;padding:80px 0 !important;color:#777;text-align:center}
 #bo_vc #bo_vc_winfo {float:left}
 
-.bo_vl_opt {position:absolute;top:15px;right:0;text-align:right}
+#bo_vc_w{
+    padding: 10px 0 0 0;
+}
+
+.comment_inner {padding: 10px 0 0 0;}
+
+.bo_vl_opt {position:absolute;top:15px;right:15px;text-align:right}
+.bo_vl_opt button {border: none;}
 .bo_vl_opt .cmt_opt {background:transparent;padding:0 15px;font-size:1.6em;border:0}
 .bo_vl_act {display:none;position:relative;width:100px;margin-top:10px;margin-right:10px;text-align:left;border:1px solid #d9dee9;background:#fff;z-index:9998}
 .bo_vl_act:before {content:"";position:absolute;top:-6px;right:5px;width:10px;height:10px;background:url('img/ico_arrow.png') no-repeat}
@@ -262,10 +269,10 @@
 .bo_vl_act li a {display:block;padding:10px;background:#fff}
 .bo_vl_act li i {display:inline-block;float:right;color:#92a1af}
 
-.bo_vc_act {text-align:right;margin:0;list-style:none;zoom:1}
+.bo_vc_act {display: none; text-align:right;margin:0;list-style:none;zoom:1;font-size: 0.9em;}
 .bo_vc_act:after {display:block;visibility:hidden;clear:both;content:""}
 .bo_vc_act li {display:inline-block}
-.bo_vc_act li a {padding:0 5px;line-height:23px}
+.bo_vc_act li a {padding:0 5px;line-height:23px;color: #6a6a6a;}
 
 .bo_vc_w {position:relative;margin:10px 0;display:block}
 .bo_vc_w:after {display:block;visibility:hidden;clear:both;content:""}
@@ -302,6 +309,6 @@ box-shadow:inset 0 1px 2px rgba(0, 0, 0, 0.1)}
 #bo_w .bo_w_link label {position:absolute;top:1px;left:1px;border-radius:3px 0 0 3px;height:38px;line-height:38px;width:40px;background:#eee;text-align:center}
 #bo_w .bo_w_link .frm_input {padding-left:50px}
 #bo_w .bo_w_flie .lb_icon {position:absolute;top:0px;left:0px;border-radius:3px 0 0 3px;height:38px;line-height:38px;width:40px;background:#eee;text-align:center}
-#bo_w .bo_w_flie .frm_file {padding-left:50px;margin-top:3px}
+#bo_w .bo_w_flie .frm_file {padding-left:50px;margin-top:3px;font-size: 14px;}
 #bo_w .bo_w_flie .file_wr {border:1px solid #d9dee9;color:#000;vertical-align:middle;padding:5px;height:40px;margin:0}
 #bo_w .bo_w_flie .frm_input {margin:5px 0 0}

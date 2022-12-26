@@ -736,7 +736,7 @@ box-shadow:0 6px 10px rgba(0,0,0,0.1);}
 
 /* ckeditor 단축키 */
 .cke_sc {margin:0 0 5px;text-align:right}
-.btn_cke_sc {display:inline-block;padding:0 10px;height:23px;border:1px solid #ccc !important;background:#fafafa !important;color:#000 !important;text-decoration:none !important;line-height:1.9em;vertical-align:middle}
+.btn_cke_sc {font-size: small;display:inline-block;padding:0 10px;height:23px;border:1px solid #ccc !important;background:#fafafa !important;color:#000 !important;text-decoration:none !important;line-height:1.9em;vertical-align:middle}
 .cke_sc_def {margin:0 0 5px;padding:10px;border:1px solid #ccc;background:#f2f5f9;text-align:center}
 .cke_sc_def dl {margin:0 0 5px;text-align:left}
 .cke_sc_def dl:after {display:block;visibility:hidden;clear:both;content:""}
@@ -832,8 +832,8 @@ a.btn_admin,.btn_admin {display:inline-block;background:#d13f4a;color:#fff;text-
 .list_01 {padding:0 10px;font-size:0.85em}
 .list_01 li {background:#fff;margin:10px 0;padding:10px 15px;border:1px solid #eee}
 .list_01 li.li_all_chk {position:relative;text-align:center}
-.list_01 li.li_all_chk div {position:absolute;left:5px;top:10px}
-.list_01 li.li_all_chk label {vertical-align:baseline}
+.list_01 li.li_all_chk div {position:absolute;left:21px;top:10px}
+.list_01 li.li_all_chk label {vertical-align:baseline;margin-left: 15px;}
 .list_01 li:hover {background:#f9f9f9}
 .list_01 li:after {display:block;visibility:hidden;clear:both;content:""}
 .list_01 li.empty_li {border:0}

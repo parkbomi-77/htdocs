@@ -23,11 +23,12 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
     <section id="bo_v_info">
         <h2>페이지 정보</h2>
         <div id="bo_v_info_l">  
-        	<span class="sound_only">작성자 </span><?php echo $view['name'] ?><span class="ip"><?php if ($is_ip_view) { echo "&nbsp;($ip)"; } ?></span>
+        	<span class="sound_only">작성자 </span><?php echo $view['name'] ?>
+            <!-- <span class="ip"><?php if ($is_ip_view) { echo "&nbsp;($ip)"; } ?></span> -->
         	<br>
         	<span class="sound_only">작성일</span><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo date("y-m-d H:i", strtotime($view['wr_datetime'])) ?>
         	<span class="sound_only">조회</span><strong><i class="fa fa-eye" aria-hidden="true"></i> <?php echo number_format($view['wr_hit']) ?>회</strong>
-        	<span class="sound_only">댓글</span><strong><i class="fa fa-comment-dots" aria-hidden="true"></i> <span class="cmt_num"><?php echo number_format($view['wr_comment']) ?></span></strong>
+        	<!-- <span class="sound_only">댓글</span><strong><i class="fa fa-comment-dots" aria-hidden="true"></i> <span class="cmt_num"><?php echo number_format($view['wr_comment']) ?></span></strong> -->
     	</div>
     	<div id="bo_v_info_r">
 	        <?php if ($is_member) {  ?><button class="bo_v_opt"><span class="sound_only">게시물 옵션</span><i class="fa fa-ellipsis-v"></i></button><?php } ?>
@@ -35,13 +36,13 @@ add_stylesheet('<link rel="stylesheet" href="'.$board_skin_url.'/style.css">', 0
 		        <?php ob_start(); ?>
 		        <?php if ($update_href) { ?><li><a href="<?php echo $update_href ?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> 수정</a></li><?php } ?>
 		        <?php if ($delete_href) { ?><li><a href="<?php echo $delete_href ?>" onclick="del(this.href); return false;"><i class="fa fa-trash-o" aria-hidden="true"></i> 삭제</a></li><?php } ?>
-		        <?php if ($copy_href) { ?><li><a href="<?php echo $copy_href ?>" onclick="board_move(this.href); return false;"><i class="fa fa-files-o" aria-hidden="true"></i> 복사</a></li><?php } ?>
-		        <?php if ($move_href) { ?><li><a href="<?php echo $move_href ?>" onclick="board_move(this.href); return false;"><i class="fa fa-arrows" aria-hidden="true"></i> 이동</a></li><?php } ?>
+		        <!-- <?php if ($copy_href) { ?><li><a href="<?php echo $copy_href ?>" onclick="board_move(this.href); return false;"><i class="fa fa-files-o" aria-hidden="true"></i> 복사</a></li><?php } ?> -->
+		        <!-- <?php if ($move_href) { ?><li><a href="<?php echo $move_href ?>" onclick="board_move(this.href); return false;"><i class="fa fa-arrows" aria-hidden="true"></i> 이동</a></li><?php } ?> -->
 		        <?php if ($search_href) { ?><li><a href="<?php echo $search_href ?>">검색</a></li><?php } ?>
 				<?php $link_buttons = ob_get_contents(); ob_end_flush(); ?>
 			</ul>
 			<?php include_once(G5_SNS_PATH."/view.sns.skin.php"); ?>
-			<?php if ($scrap_href) { ?><a href="<?php echo $scrap_href; ?>" target="_blank" onclick="win_scrap(this.href); return false;" class="btn_scrap"><i class="fa fa-thumb-tack" aria-hidden="true"></i><span class="sound_only">스크랩</span></a><?php } ?>
+			<!-- <?php if ($scrap_href) { ?><a href="<?php echo $scrap_href; ?>" target="_blank" onclick="win_scrap(this.href); return false;" class="btn_scrap"><i class="fa fa-thumb-tack" aria-hidden="true"></i><span class="sound_only">스크랩</span></a><?php } ?> -->
     	</div>
     </section>
 

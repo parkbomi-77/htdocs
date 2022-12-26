@@ -414,8 +414,12 @@ function get_list($write_row, $board, $skin_url, $subject_len=40)
 
     $list['wr_homepage'] = get_text($list['wr_homepage']);
 
-    $tmp_name = get_text(cut_str($list['wr_name'], $config['cf_cut_name'])); // 설정된 자리수 만큼만 이름 출력
-    $tmp_name2 = cut_str($list['wr_name'], $config['cf_cut_name']); // 설정된 자리수 만큼만 이름 출력
+    // $tmp_name = get_text(cut_str($list['wr_name'], $config['cf_cut_name'])); // 설정된 자리수 만큼만 이름 출력
+    $tmp_name = $list['wr_name']; // 설정된 자리수 만큼만 이름 출력
+
+    // $tmp_name2 = cut_str($list['wr_name'], $config['cf_cut_name']); // 설정된 자리수 만큼만 이름 출력
+    $tmp_name2 = $list['wr_name']; // 설정된 자리수 만큼만 이름 출력
+
     if ($board['bo_use_sideview'])
         $list['name'] = get_sideview($list['mb_id'], $tmp_name2, $list['wr_email'], $list['wr_homepage']);
     else
