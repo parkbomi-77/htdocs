@@ -20,14 +20,15 @@ include_once (G5_ADMIN_PATH.'/admin.head.php');
 
 $pg_anchor = '<ul class="anchor">
 <li><a href="#anc_scf_info">사업자정보</a></li>
-<li><a href="#anc_scf_skin">스킨설정</a></li>
-<li><a href="#anc_scf_index">쇼핑몰 초기화면</a></li>
-<li><a href="#anc_mscf_index">모바일 초기화면</a></li>
+<li><a href="#anc_scf_index">쇼핑몰 메인화면 출력</a></li>
+<li><a href="#anc_mscf_index">모바일 메인화면 출력</a></li>
 <li><a href="#anc_scf_payment">결제설정</a></li>
 <li><a href="#anc_scf_delivery">배송설정</a></li>
 <li><a href="#anc_scf_etc">기타설정</a></li>
 <li><a href="#anc_scf_sms">SMS설정</a></li>
 </ul>';
+
+//<li><a href="#anc_scf_skin">스킨설정</a></li>
 
 // 무이자 할부 사용설정 필드 추가
 if(!isset($default['de_card_noint_use'])) {
@@ -295,7 +296,7 @@ if(!$default['de_kakaopay_cancelpwd']){
 </section>
 
 
-<section id="anc_scf_skin">
+<!-- <section id="anc_scf_skin">
     <h2 class="h2_frm">스킨설정</h2>
     <?php echo $pg_anchor; ?>
     <div class="local_desc02 local_desc">
@@ -327,7 +328,7 @@ if(!$default['de_kakaopay_cancelpwd']){
     </div>
 </section>
 
-<button type="button" class="get_shop_skin">테마 스킨설정 가져오기</button>
+<button type="button" class="get_shop_skin">테마 스킨설정 가져오기</button> -->
 
 <section id="anc_scf_index">
     <h2 class="h2_frm">쇼핑몰 초기화면</h2>
@@ -1275,7 +1276,7 @@ if(!$default['de_kakaopay_cancelpwd']){
                 <input type="text" name="de_mimg_height" value="<?php echo get_sanitize_input($default['de_mimg_height']); ?>" id="de_mimg_height" class="frm_input" size="5"> 픽셀
             </td>
         </tr>
-        <tr>
+        <!-- <tr>
             <th scope="row">상단로고이미지</th>
             <td>
                 <?php echo help("쇼핑몰 상단로고를 직접 올릴 수 있습니다. 이미지 파일만 가능합니다."); ?>
@@ -1370,7 +1371,7 @@ if(!$default['de_kakaopay_cancelpwd']){
                 </script>
                 <?php } ?>
             </td>
-        </tr>
+        </tr> -->
         <tr>
             <th scope="row"><label for="de_item_use_write">사용후기 작성</label></th>
             <td>
@@ -1933,7 +1934,7 @@ if($default['de_iche_use'] || $default['de_vbank_use'] || $default['de_hp_use'] 
             $exe .= 'pp_cli_exe.exe';
         }
 
-        echo module_exec_check(G5_SHOP_PATH.$exe, 'pp_cli');
+        // echo module_exec_check(G5_SHOP_PATH.$exe, 'pp_cli');
 
         // shop/kcp/log 디렉토리 체크 후 있으면 경고
         if(is_dir(G5_SHOP_PATH.'/kcp/log') && is_writable(G5_SHOP_PATH.'/kcp/log')) {

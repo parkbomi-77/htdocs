@@ -9,7 +9,7 @@ $menu['menu400'] = array(
     array('400100', '쇼핑몰설정', G5_ADMIN_URL . '/shop_admin/configform.php', 'scf_config'),
     array('400400', '주문내역', G5_ADMIN_URL . '/shop_admin/orderlist.php', 'scf_order', 1),
     array('400440', '개인결제관리', G5_ADMIN_URL . '/shop_admin/personalpaylist.php', 'scf_personalpay', 1),
-    array('400200', '분류관리', G5_ADMIN_URL . '/shop_admin/categorylist.php', 'scf_cate'),
+    array('400200', '상품분류', G5_ADMIN_URL . '/shop_admin/categorylist.php', 'scf_cate'),
     array('400300', '상품관리', G5_ADMIN_URL . '/shop_admin/itemlist.php', 'scf_item'),
     array('400660', '상품문의', G5_ADMIN_URL . '/shop_admin/itemqalist.php', 'scf_item_qna'),
     array('400650', '사용후기', G5_ADMIN_URL . '/shop_admin/itemuselist.php', 'scf_ps'),
@@ -20,6 +20,6 @@ $menu['menu400'] = array(
     // array('400810', '쿠폰존관리', G5_ADMIN_URL . '/shop_admin/couponzonelist.php', 'scf_coupon_zone'),
     array('400750', '추가배송비관리', G5_ADMIN_URL . '/shop_admin/sendcostlist.php', 'scf_sendcost', 1),
     array('400410', '미완료주문', G5_ADMIN_URL . '/shop_admin/inorderlist.php', 'scf_inorder', 1),
-    array('400900', '상품광고', G5_ADMIN_URL . '/shop_admin/itemadvertisementlist.php', 'scf_item_advertisement'),
-    array('400910', '광고현황', G5_ADMIN_URL . '/shop_admin/itemadvertisementstatus.php', 'scf_item_advertisement_status'),
+    array('400900', '광고의뢰 현황', G5_ADMIN_URL . '/shop_admin/itemadvertisementlist.php', 'scf_item_advertisement'),
+    array('400910', '광고상품 판매현황', G5_ADMIN_URL . '/shop_admin/itemadvertisementstatus.php', 'scf_item_advertisement_status'),
 );

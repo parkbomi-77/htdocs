@@ -478,7 +478,7 @@ box-shadow:0 0 6px rgba(0,0,0,0.2)}
 .sit_qa_dl:after {display:block;visibility:hidden;clear:both;content:""}
 .sit_qa_dl dt {position:absolute;font-size:0;text-indent:-9999em;line-height:0;overflow:hidden}
 .sit_qa_dl dd {float:left;margin:0 10px 0 0;color:#888;font-size:0.917em}
-.sit_qa_dl dd.sit_qaa_yet,.sit_qa_dl dd.sit_qaa_done {position:absolute;bottom:0;right:0;background:#ccd1d9;padding:0 8px;line-height:30px;color:#fff;border-radius:4px}
+.sit_qa_dl dd.sit_qaa_yet,.sit_qa_dl dd.sit_qaa_done {position:absolute;bottom:8px;right:8px;background:#ccd1d9;padding:0 8px;line-height:30px;color:#fff;border-radius:4px}
 .sit_qa_dl dd.sit_qaa_done {background:#f6bb42;color:#fff}
 .sit_qa_con {display:none;padding:10px 0 0}
 .sit_qa_p {margin:0 0 10px;background:#fff;padding:0 10px;background:#fbfbff}
