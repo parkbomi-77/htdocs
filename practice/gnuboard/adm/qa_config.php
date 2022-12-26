@@ -5,7 +5,7 @@ require_once G5_EDITOR_LIB;
 
 auth_check_menu($auth, $sub_menu, 'r');
 
-$g5['title'] = '1:1문의 설정';
+$g5['title'] = '1:1문의 게시판 설정';
 require_once './admin.head.php';
 
 // DB 테이블 생성
@@ -132,7 +132,7 @@ if (!isset($qaconfig['qa_include_head'])) {
     <input type="hidden" name="token" value="" id="token">
 
     <section id="anc_cf_qa_config">
-        <h2 class="h2_frm">1:1문의 설정</h2>
+        <h2 class="h2_frm">1:1문의 게시판 설정</h2>
 
         <div class="tbl_frm01 tbl_wrap">
             <table>
@@ -156,7 +156,7 @@ if (!isset($qaconfig['qa_include_head'])) {
                             <input type="text" name="qa_category" value="<?php echo get_sanitize_input($qaconfig['qa_category']); ?>" id="qa_category" required class="required frm_input" size="70">
                         </td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <th scope="row"><label for="qa_skin">스킨 디렉토리<strong class="sound_only">필수</strong></label></th>
                         <td>
                             <?php echo get_skin_select('qa', 'qa_skin', 'qa_skin', $qaconfig['qa_skin'], 'required'); ?>
@@ -167,7 +167,7 @@ if (!isset($qaconfig['qa_include_head'])) {
                         <td>
                             <?php echo get_mobile_skin_select('qa', 'qa_mobile_skin', 'qa_mobile_skin', $qaconfig['qa_mobile_skin'], 'required'); ?>
                         </td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <th scope="row">이메일 입력</th>
                         <td>
@@ -213,7 +213,7 @@ if (!isset($qaconfig['qa_include_head'])) {
                             <input type="text" name="qa_admin_email" value="<?php echo get_sanitize_input($qaconfig['qa_admin_email']); ?>" id="qa_admin_email" class="frm_input" size="50">
                         </td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <th scope="row"><label for="qa_use_editor">DHTML 에디터 사용</label></th>
                         <td>
                             <?php echo help('글작성시 내용을 DHTML 에디터 기능으로 사용할 것인지 설정합니다. 스킨에 따라 적용되지 않을 수 있습니다.'); ?>
@@ -222,7 +222,7 @@ if (!isset($qaconfig['qa_include_head'])) {
                                 <?php echo option_selected(1, $qaconfig['qa_use_editor'], '사용함'); ?>
                             </select>
                         </td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <th scope="row"><label for="qa_subject_len">제목 길이<strong class="sound_only"> 필수</strong></label></th>
                         <td>
@@ -250,7 +250,7 @@ if (!isset($qaconfig['qa_include_head'])) {
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row"><label for="qa_image_width">이미지 폭 크기<strong class="sound_only"> 필수</strong></label></th>
+                        <th scope="row"><label for="qa_image_width">이미지 넓이<strong class="sound_only"> 필수</strong></label></th>
                         <td>
                             <?php echo help('게시판에서 출력되는 이미지의 폭 크기') ?>
                             <input type="text" name="qa_image_width" value="<?php echo $qaconfig['qa_image_width'] ?>" id="qa_image_width" required class="required numeric frm_input" size="4"> 픽셀
@@ -263,7 +263,7 @@ if (!isset($qaconfig['qa_include_head'])) {
                             업로드 파일 한개당 <input type="text" name="qa_upload_size" value="<?php echo $qaconfig['qa_upload_size'] ?>" id="qa_upload_size" required class="required numeric frm_input" size="10"> bytes 이하
                         </td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <th scope="row"><label for="qa_include_head">상단 파일 경로</label></th>
                         <td>
                             <input type="text" name="qa_include_head" value="<?php echo $qaconfig['qa_include_head'] ?>" id="qa_include_head" class="frm_input" size="50">
@@ -274,7 +274,7 @@ if (!isset($qaconfig['qa_include_head'])) {
                         <td>
                             <input type="text" name="qa_include_tail" value="<?php echo $qaconfig['qa_include_tail'] ?>" id="qa_include_tail" class="frm_input" size="50">
                         </td>
-                    </tr>
+                    </tr> -->
                     <tr id="admin_captcha_box" style="display:none;">
                         <th scope="row">자동등록방지</th>
                         <td>
@@ -291,7 +291,7 @@ if (!isset($qaconfig['qa_include_head'])) {
                             </script>
                         </td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <th scope="row"><label for="qa_content_head">상단 내용</label></th>
                         <td>
                             <?php echo editor_html("qa_content_head", get_text(html_purifier($qaconfig['qa_content_head']), 0)); ?>
@@ -314,7 +314,7 @@ if (!isset($qaconfig['qa_include_head'])) {
                         <td>
                             <?php echo editor_html("qa_mobile_content_tail", get_text(html_purifier($qaconfig['qa_mobile_content_tail']), 0)); ?>
                         </td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <th scope="row"><label for="qa_insert_content">글쓰기 기본 내용</label></th>
                         <td>
