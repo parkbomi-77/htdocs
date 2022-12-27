@@ -17,7 +17,7 @@ function get_mshop_category($ca_id, $len)
 $mshop_categories = get_shop_category_array(true);
 
 // 일반회원에게 보여질 카테고리 
-$membercate[0] = $mshop_categories['40'];
+$membercate[0] = $mshop_categories['10'];
 if($member['mb_level'] === "2") {
 	$mshop_categories = '';
 	$mshop_categories = $membercate;

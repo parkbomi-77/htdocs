@@ -1151,7 +1151,7 @@ if(!$default['de_kakaopay_cancelpwd']){
             <col>
         </colgroup>
         <tbody>
-        <tr>
+        <!-- <tr>
             <th scope="row">관련상품출력</th>
             <td>
                 <?php echo help("관련상품의 경우 등록된 상품은 모두 출력하므로 '출력할 줄 수'는 설정하지 않습니다. 이미지높이를 0으로 설정하면 상품이미지를 이미지폭에 비례하여 생성합니다."); ?>
@@ -1168,9 +1168,9 @@ if(!$default['de_kakaopay_cancelpwd']){
                 <label for="de_rel_list_use">출력</label>
                 <input type="checkbox" name="de_rel_list_use" value="1" id="de_rel_list_use" <?php echo $default['de_rel_list_use']?"checked":""; ?>>
             </td>
-        </tr>
+        </tr> -->
         <tr>
-            <th scope="row">모바일 관련상품출력</th>
+            <th scope="row">관련상품출력</th>
             <td>
                 <?php echo help("관련상품의 경우 등록된 상품은 모두 출력하므로 '출력할 줄 수'는 설정하지 않습니다. 이미지높이를 0으로 설정하면 상품이미지를 이미지폭에 비례하여 생성합니다."); ?>
                 <label for="de_mobile_rel_list_skin">스킨</label>
@@ -1187,7 +1187,7 @@ if(!$default['de_kakaopay_cancelpwd']){
                 <input type="checkbox" name="de_mobile_rel_list_use" value="1" id="de_mobile_rel_list_use" <?php echo $default['de_mobile_rel_list_use']?"checked":""; ?>>
             </td>
         </tr>
-        <tr>
+        <!-- <tr>
             <th scope="row">검색상품출력</th>
             <td>
                 <label for="de_search_list_skin">스킨</label>
@@ -1203,9 +1203,9 @@ if(!$default['de_kakaopay_cancelpwd']){
                 <label for="de_search_list_row">출력할 줄 수</label>
                 <input type="text" name="de_search_list_row" value="<?php echo get_sanitize_input($default['de_search_list_row']); ?>" id="de_search_list_row" class="frm_input" size="3">
             </td>
-        </tr>
+        </tr> -->
         <tr>
-            <th scope="row">모바일 검색상품출력</th>
+            <th scope="row">검색상품출력</th>
             <td>
                 <label for="de_mobile_search_list_skin">스킨</label>
                 <select name="de_mobile_search_list_skin" id="de_mobile_search_list_skin">
@@ -1221,7 +1221,7 @@ if(!$default['de_kakaopay_cancelpwd']){
                 <input type="text" name="de_mobile_search_list_row" value="<?php echo get_sanitize_input($default['de_mobile_search_list_row']); ?>" id="de_mobile_search_list_row" class="frm_input" size="3">
             </td>
         </tr>
-        <tr>
+        <!-- <tr>
             <th scope="row">유형별 상품리스트</th>
             <td>
                 <label for="de_listtype_list_skin">스킨</label>
@@ -1237,9 +1237,9 @@ if(!$default['de_kakaopay_cancelpwd']){
                 <label for="de_listtype_list_row">출력할 줄 수</label>
                 <input type="text" name="de_listtype_list_row" value="<?php echo get_sanitize_input($default['de_listtype_list_row']); ?>" id="de_listtype_list_row" class="frm_input" size="3">
             </td>
-        </tr>
+        </tr> -->
         <tr>
-            <th scope="row">모바일 유형별 상품리스트</th>
+            <th scope="row">유형별 상품리스트</th>
             <td>
                 <label for="de_mobile_listtype_list_skin">스킨</label>
                 <select name="de_mobile_listtype_list_skin" id="de_mobile_listtype_list_skin">
@@ -1374,7 +1374,7 @@ if(!$default['de_kakaopay_cancelpwd']){
             </td>
         </tr> -->
         <tr>
-            <th scope="row"><label for="de_item_use_write">사용후기 작성</label></th>
+            <th scope="row"><label for="de_item_use_write">사용후기 작성권한</label></th>
             <td>
                  <?php echo help("주문상태에 따른 사용후기 작성여부를 설정합니다.", 50); ?>
                 <select name="de_item_use_write" id="de_item_use_write">
@@ -1384,7 +1384,7 @@ if(!$default['de_kakaopay_cancelpwd']){
             </td>
         </tr>
         <tr>
-            <th scope="row"><label for="de_item_use_use">사용후기</label></th>
+            <th scope="row"><label for="de_item_use_use">사용후기 승인여부</label></th>
             <td>
                  <?php echo help("사용후기가 올라오면, 즉시 출력 혹은 관리자 승인 후 출력 여부를 설정합니다.", 50); ?>
                 <select name="de_item_use_use" id="de_item_use_use">
@@ -1393,13 +1393,13 @@ if(!$default['de_kakaopay_cancelpwd']){
                 </select>
             </td>
         </tr>
-        <tr>
+        <!-- <tr>
             <th scope="row"><label for="de_level_sell">상품구입 권한</label></th>
             <td>
                 <?php echo help("권한을 1로 설정하면 누구나 구입할 수 있습니다. 특정회원만 구입할 수 있도록 하려면 해당 권한으로 설정하십시오."); ?>
                 <?php echo get_member_level_select('de_level_sell', 1, 10, $default['de_level_sell']); ?>
             </td>
-        </tr>
+        </tr> -->
         <tr>
             <th scope="row"><label for="de_cart_keep_term">장바구니 보관기간</label></th>
             <td>
@@ -1407,13 +1407,13 @@ if(!$default['de_kakaopay_cancelpwd']){
                 <input type="text" name="de_cart_keep_term" value="<?php echo get_sanitize_input($default['de_cart_keep_term']); ?>" id="de_cart_keep_term" class="frm_input" size="5"> 일
             </td>
         </tr>
-        <tr>
+        <!-- <tr>
             <th scope="row"><label for="de_guest_cart_use">비회원 장바구니</label></th>
             <td>
                  <?php echo help("비회원 장바구니 기능을 사용하려면 체크하십시오."); ?>
                 <input type="checkbox" name="de_guest_cart_use" value="1" id="de_guest_cart_use"<?php echo $default['de_guest_cart_use']?' checked':''; ?>> 사용
             </td>
-        </tr>
+        </tr> -->
         <tr>
             <th scope="row">신규회원 쿠폰발행</th>
             <td>
@@ -1428,11 +1428,11 @@ if(!$default['de_kakaopay_cancelpwd']){
                 <input type="text" name="de_member_reg_coupon_term" value="<?php echo get_sanitize_input($default['de_member_reg_coupon_term']); ?>" id="de_member_reg_coupon_term" class="frm_input" size="5"> 일
             </td>
         </tr>
-        <tr>
+        <!--  <tr>
             <th scope="row">비회원에 대한<br/>개인정보수집 내용</th>
             <td><?php echo editor_html('de_guest_privacy', get_text(html_purifier($default['de_guest_privacy']), 0)); ?></td>
         </tr>
-        <!-- <tr>
+        <tr>
             <th scope="row">MYSQL USER</th>
             <td><?php echo G5_MYSQL_USER; ?></td>
         </tr>
