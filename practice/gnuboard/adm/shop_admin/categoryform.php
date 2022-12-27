@@ -104,10 +104,12 @@ include_once (G5_ADMIN_PATH.'/admin.head.php');
 
 $pg_anchor ='<ul class="anchor">
 <li><a href="#anc_scatefrm_basic">필수입력</a></li>
-<li><a href="#anc_scatefrm_optional">선택입력</a></li>
-<li><a href="#anc_scatefrm_extra">여분필드</a></li>';
-if ($w == 'u') $pg_anchor .= '<li><a href="#frm_etc">기타설정</a></li>';
+<li><a href="#anc_scatefrm_optional">선택입력</a></li>';
+// if ($w == 'u') $pg_anchor .= '<li><a href="#frm_etc">기타설정</a></li>';
 $pg_anchor .= '</ul>';
+
+//<li><a href="#anc_scatefrm_extra">여분필드</a></li>
+
 
 // 쿠폰 적용 불가 설정 필드 추가
 if(!sql_query(" select ca_nocoupon from {$g5['g5_shop_category_table']} limit 1 ", false)) {
@@ -214,16 +216,19 @@ else {
                 <?php } ?>
             </td>
         </tr>
-        <tr>
+        <!-- <tr>
             <th scope="row"><label for="ca_skin_dir">PC용 스킨명</label></th>
             <td>
                 <?php echo get_skin_select('shop', 'ca_skin_dir', 'ca_skin_dir', $ca['ca_skin_dir']); ?>
             </td>
-        </tr>
+        </tr> -->
         <tr>
-            <th scope="row"><label for="ca_mobile_skin_dir">모바일용 스킨명</label></th>
+            <th scope="row"><label for="ca_mobile_skin_dir">스킨명</label></th>
             <td>
-                <?php echo get_mobile_skin_select('shop', 'ca_mobile_skin_dir', 'ca_mobile_skin_dir', $ca['ca_mobile_skin_dir']); ?>
+                <?php //echo get_mobile_skin_select('shop', 'ca_mobile_skin_dir', 'ca_mobile_skin_dir', $ca['ca_mobile_skin_dir']); ?>
+                <select id="ca_mobile_skin_dir" name="ca_mobile_skin_dir">
+                    <option value="theme/basic" selected>(테마) basic</option>
+                </select>
             </td>
         </tr>
         <tr>
@@ -244,7 +249,7 @@ else {
                 <label for="ca_adult_use_no">사용안함</label>
             </td>
         </tr>
-        <tr>
+        <!-- <tr>
             <th scope="row"><label for="ca_skin">출력스킨</label></th>
             <td>
                 <?php echo help('기본으로 제공하는 스킨은 '.str_replace(G5_PATH.'/', '', $g5_shop_skin_path).'/list.*.skin.php 입니다.'); ?>
@@ -280,9 +285,9 @@ else {
                 <?php echo help("한 페이지에 출력할 이미지 줄 수를 설정합니다.\n한 페이지에서 표시하는 상품수는 (1줄당 이미지 수 x 줄 수) 입니다."); ?>
                 <input type="text" name="ca_list_row" value='<?php echo $ca['ca_list_row']; ?>' id="ca_list_row" required class="required frm_input" size="3"> 줄
             </td>
-        </tr>
+        </tr> -->
         <tr>
-            <th scope="row"><label for="ca_mobile_skin">모바일 출력스킨</label></th>
+            <th scope="row"><label for="ca_mobile_skin">출력스킨</label></th>
             <td>
                 <?php echo help('기본으로 제공하는 스킨은 '.str_replace(G5_PATH.'/', '', $g5_mshop_skin_path).'/list.*.skin.php 입니다.'); ?>
                 <select id="ca_mobile_skin" name="ca_mobile_skin" required class="required">
@@ -291,28 +296,28 @@ else {
             </td>
         </tr>
         <tr>
-            <th scope="row"><label for="ca_mobile_img_width">모바일 출력이미지 폭</label></th>
+            <th scope="row"><label for="ca_mobile_img_width">출력이미지 넓이</label></th>
             <td>
                 <?php echo help("쇼핑몰환경설정 &gt; 이미지(소) 넓이가 기본값으로 설정됩니다.\n".G5_SHOP_URL."/list.php에서 출력되는 이미지의 폭입니다."); ?>
                 <input type="text" name="ca_mobile_img_width" value="<?php echo $ca['ca_mobile_img_width']; ?>" id="ca_mobile_img_width" required class="required frm_input" size="5" > 픽셀
             </td>
         </tr>
         <tr>
-            <th scope="row"><label for="ca_mobile_img_height">모바일 출력이미지 높이</label></th>
+            <th scope="row"><label for="ca_mobile_img_height">출력이미지 높이</label></th>
             <td>
                 <?php echo help("쇼핑몰환경설정 &gt; 이미지(소) 높이가 기본값으로 설정됩니다.\n".G5_SHOP_URL."/list.php에서 출력되는 이미지의 높이입니다."); ?>
                 <input type="text" name="ca_mobile_img_height"  value="<?php echo $ca['ca_mobile_img_height']; ?>" id="ca_mobile_img_height" required class="required frm_input" size="5" > 픽셀
             </td>
         </tr>
         <tr>
-            <th scope="row"><label for="ca_mobile_list_mod">모바일 1줄당 이미지 수</label></th>
+            <th scope="row"><label for="ca_mobile_list_mod">이미지 열</label></th>
             <td>
                 <?php echo help("한 줄에 설정한 값만큼의 상품을 출력하지만 스킨에 따라 한 줄에 하나의 상품만 출력할 수도 있습니다."); ?>
                 <input type="text" name="ca_mobile_list_mod" value='<?php echo $ca['ca_mobile_list_mod']; ?>' id="ca_mobile_list_mod" required class="required frm_input" size="3"> 개
             </td>
         </tr>
         <tr>
-            <th scope="row"><label for="ca_mobile_list_row">모바일 이미지 줄 수</label></th>
+            <th scope="row"><label for="ca_mobile_list_row">이미지 행</label></th>
             <td>
                 <?php echo help("한 페이지에 출력할 이미지 줄 수를 설정합니다.\n한 페이지에서 표시하는 상품수는 (1줄당 이미지 수 x 줄 수) 입니다."); ?>
                 <input type="text" name="ca_mobile_list_row" value='<?php echo $ca['ca_mobile_list_row']; ?>' id="ca_mobile_list_row" required class="required frm_input" size="3"> 줄
@@ -431,7 +436,7 @@ else {
 </section>
 
 
-<section id="anc_scatefrm_extra">
+<!-- <section id="anc_scatefrm_extra">
     <h2>여분필드 설정</h2>
     <?php echo $pg_anchor ?>
 
@@ -456,11 +461,11 @@ else {
         </tbody>
         </table>
     </div>
-</section>
+</section>  -->
 
 
 <?php if ($w == "u") { ?>
-<section id="frm_etc">
+<!-- <section id="frm_etc">
     <h2 class="h2_frm">기타설정</h2>
     <?php echo $pg_anchor; ?>
 
@@ -483,9 +488,9 @@ else {
         </tbody>
         </table>
     </div>
-</section>
+</section> -->
 
-<?php } ?>
+<?php } ?> 
 <div class="btn_fixed_top">
     <input type="submit" value="확인" class="btn_submit btn" accesskey="s">
     <a href="./categorylist.php?<?php echo $qstr; ?>" class="btn_02 btn">목록</a>

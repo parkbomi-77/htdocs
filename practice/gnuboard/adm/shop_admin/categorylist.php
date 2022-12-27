@@ -92,20 +92,20 @@ $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목�
         <th scope="col" id="sct_cate"><?php echo subject_sort_link("ca_name"); ?>분류명</a></th>
         <th scope="col" id="sct_amount">상품수</th>
         <th scope="col" id="sct_hpcert">본인인증</th>
-        <th scope="col" id="sct_imgw">이미지 폭</th>
-        <th scope="col" id="sct_imgcol">1행이미지수</th>
-        <th scope="col" id="sct_mobileimg">모바일<br>1행이미지수</th>
-        <th scope="col" id="sct_pcskin">PC스킨지정</th>
+        <th scope="col" id="sct_imgw">이미지</br>넓이</th>
+        <!-- <th scope="col" id="sct_imgcol">1행이미지수</th> -->
+        <th scope="col" id="sct_mobileimg">이미지</br>열</th>
+        <th scope="col" id="sct_pcskin" rowspan="2">스킨지정</th>
         <th scope="col" rowspan="2">관리</th>
     </tr>
     <tr>
         <th scope="col" id="sct_admin"><?php echo subject_sort_link("ca_mb_id"); ?>관리회원아이디</a></th>
         <th scope="col" id="sct_sell"><?php echo subject_sort_link("ca_use"); ?>판매가능</a></th>
         <th scope="col" id="sct_adultcert">성인인증</th>
-        <th scope="col" id="sct_imgh">이미지 높이</th>
-        <th scope="col" id="sct_imgrow">이미지 행수</th>
-        <th scope="col" id="sct_mobilerow">모바일<br>이미지 행수</th>
-        <th scope="col" id="sct_mskin">모바일스킨지정</th>
+        <th scope="col" id="sct_imgh">이미지</br>넓이</th>
+        <!-- <th scope="col" id="sct_imgrow">이미지 행수</th> -->
+        <th scope="col" id="sct_mobilerow">이미지</br>행</th>
+        <!-- <th scope="col" id="sct_mskin">모바일스킨지정</th> -->
     </tr>
     </thead>
     <tbody>
@@ -181,20 +181,28 @@ $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목�
             <input type="text" name="ca_img_width[<?php echo $i; ?>]" value="<?php echo get_text($row['ca_img_width']); ?>" id="ca_out_width<?php echo $i; ?>" required class="required tbl_input" size="3" > <span class="sound_only">픽셀</span>
         </td>
         
-        <td headers="sct_imgcol">
+        <!-- <td headers="sct_imgcol">
             <label for="ca_lineimg_num<?php echo $i; ?>" class="sound_only">1줄당 이미지 수</label>
             <input type="text" name="ca_list_mod[<?php echo $i; ?>]" size="3" value="<?php echo $row['ca_list_mod']; ?>" id="ca_lineimg_num<?php echo $i; ?>" required class="required tbl_input"> <span class="sound_only">개</span>
-        </td>
+        </td> -->
         <td headers="sct_mobileimg">
             <label for="ca_mobileimg_num<?php echo $i; ?>" class="sound_only">모바일 1줄당 이미지 수</label>
             <input type="text" name="ca_mobile_list_mod[<?php echo $i; ?>]" size="3" value="<?php echo $row['ca_mobile_list_mod']; ?>" id="ca_mobileimg_num<?php echo $i; ?>" required class="required tbl_input"> <span class="sound_only">개</span>
         </td>
-        <td headers="sct_pcskin" class="sct_pcskin">
+        <!-- <td headers="sct_pcskin" class="sct_pcskin">
             <label for="ca_skin_dir<?php echo $i; ?>" class="sound_only">PC스킨폴더</label>
             <?php echo get_skin_select('shop', 'ca_skin_dir'.$i, 'ca_skin_dir['.$i.']', $row['ca_skin_dir'], 'class="skin_dir"'); ?>
             <label for="ca_skin<?php echo $i; ?>" class="sound_only">PC스킨파일</label>
             <select id="ca_skin<?php echo $i; ?>" name="ca_skin[<?php echo $i; ?>]" required class="required">
                 <?php echo get_list_skin_options("^list.[0-9]+\.skin\.php", $g5_shop_skin_path, $row['ca_skin']); ?>
+            </select>
+        </td> -->
+        <td headers="sct_mskin"  class="sct_mskin" rowspan="2">
+            <label for="ca_mobile_skin_dir<?php echo $i; ?>" class="sound_only">모바일스킨폴더</label>
+            <?php echo get_mobile_skin_select('shop', 'ca_mobile_skin_dir'.$i, 'ca_mobile_skin_dir['.$i.']', $row['ca_mobile_skin_dir'], 'class="skin_dir"'); ?>
+            <label for="ca_mobile_skin<?php echo $i; ?>" class="sound_only">모바일스킨파일</label>
+            <select id="ca_mobile_skin<?php echo $i; ?>" name="ca_mobile_skin[<?php echo $i; ?>]" required class="required">
+                <?php echo get_list_skin_options("^list.[0-9]+\.skin\.php", $g5_mshop_skin_path, $row['ca_mobile_skin']); ?>
             </select>
         </td>
         <td class="td_mng td_mng_s" rowspan="2">
@@ -227,22 +235,22 @@ $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목�
             <label for="ca_img_height<?php echo $i; ?>" class="sound_only">출력이미지 높이</label>
             <input type="text" name="ca_img_height[<?php echo $i; ?>]" value="<?php echo $row['ca_img_height']; ?>" id="ca_img_height<?php echo $i; ?>" required class="required tbl_input" size="3" > <span class="sound_only">픽셀</span>
         </td>
-        <td headers="sct_imgrow">
+        <!-- <td headers="sct_imgrow">
             <label for="ca_imgline_num<?php echo $i; ?>" class="sound_only">이미지 줄 수</label>
             <input type="text" name="ca_list_row[<?php echo $i; ?>]" value='<?php echo $row['ca_list_row']; ?>' id="ca_imgline_num<?php echo $i; ?>" required class="required tbl_input" size="3"> <span class="sound_only">줄</span>
-        </td>
-        <td headers="sct_mobilerow">
+        </td> -->
+         <td headers="sct_mobilerow">
             <label for="ca_mobileimg_row<?php echo $i; ?>" class="sound_only">모바일 이미지 줄 수</label>
             <input type="text" name="ca_mobile_list_row[<?php echo $i; ?>]" value='<?php echo $row['ca_mobile_list_row']; ?>' id="ca_mobileimg_row<?php echo $i; ?>" required class="required tbl_input" size="3">
         </td>
-        <td headers="sct_mskin"  class="sct_mskin">
+        <!--<td headers="sct_mskin"  class="sct_mskin">
             <label for="ca_mobile_skin_dir<?php echo $i; ?>" class="sound_only">모바일스킨폴더</label>
             <?php echo get_mobile_skin_select('shop', 'ca_mobile_skin_dir'.$i, 'ca_mobile_skin_dir['.$i.']', $row['ca_mobile_skin_dir'], 'class="skin_dir"'); ?>
             <label for="ca_mobile_skin<?php echo $i; ?>" class="sound_only">모바일스킨파일</label>
             <select id="ca_mobile_skin<?php echo $i; ?>" name="ca_mobile_skin[<?php echo $i; ?>]" required class="required">
                 <?php echo get_list_skin_options("^list.[0-9]+\.skin\.php", $g5_mshop_skin_path, $row['ca_mobile_skin']); ?>
             </select>
-        </td>
+        </td> -->
     </tr>
     <?php }
     if ($i == 0) echo "<tr><td colspan=\"9\" class=\"empty_table\">자료가 한 건도 없습니다.</td></tr>\n";
