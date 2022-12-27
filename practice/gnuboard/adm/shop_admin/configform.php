@@ -20,15 +20,16 @@ include_once (G5_ADMIN_PATH.'/admin.head.php');
 
 $pg_anchor = '<ul class="anchor">
 <li><a href="#anc_scf_info">사업자정보</a></li>
-<li><a href="#anc_scf_index">쇼핑몰 메인화면 출력</a></li>
-<li><a href="#anc_mscf_index">모바일 메인화면 출력</a></li>
+<li><a href="#anc_scf_skin">스킨설정</a></li>
+<li><a href="#anc_mscf_index">메인화면 상품진열</a></li>
 <li><a href="#anc_scf_payment">결제설정</a></li>
 <li><a href="#anc_scf_delivery">배송설정</a></li>
 <li><a href="#anc_scf_etc">기타설정</a></li>
 <li><a href="#anc_scf_sms">SMS설정</a></li>
 </ul>';
 
-//<li><a href="#anc_scf_skin">스킨설정</a></li>
+//<li><a href="#anc_scf_index">쇼핑몰 메인화면 출력</a></li>
+
 
 // 무이자 할부 사용설정 필드 추가
 if(!isset($default['de_card_noint_use'])) {
@@ -296,7 +297,7 @@ if(!$default['de_kakaopay_cancelpwd']){
 </section>
 
 
-<!-- <section id="anc_scf_skin">
+<section id="anc_scf_skin">
     <h2 class="h2_frm">스킨설정</h2>
     <?php echo $pg_anchor; ?>
     <div class="local_desc02 local_desc">
@@ -328,9 +329,9 @@ if(!$default['de_kakaopay_cancelpwd']){
     </div>
 </section>
 
-<button type="button" class="get_shop_skin">테마 스킨설정 가져오기</button> -->
+<button type="button" class="get_shop_skin">테마 스킨설정 가져오기</button>
 
-<section id="anc_scf_index">
+<!-- <section id="anc_scf_index">
     <h2 class="h2_frm">쇼핑몰 초기화면</h2>
     <?php echo $pg_anchor; ?>
     <div class="local_desc02 local_desc">
@@ -448,10 +449,10 @@ if(!$default['de_kakaopay_cancelpwd']){
     </div>
 </section>
 
-<button type="button" class="shop_pc_index">테마설정 가져오기</button>
+<button type="button" class="shop_pc_index">테마설정 가져오기</button> -->
 
 <section id="anc_mscf_index">
-    <h2 class="h2_frm">모바일 쇼핑몰 초기화면 설정</h2>
+    <h2 class="h2_frm">메인화면 상품진열</h2>
     <?php echo $pg_anchor; ?>
     <div class="local_desc02 local_desc">
         <p>
@@ -462,7 +463,7 @@ if(!$default['de_kakaopay_cancelpwd']){
 
     <div class="tbl_frm01 tbl_wrap">
         <table>
-        <caption>모바일 쇼핑몰 초기화면 설정</caption>
+        <caption>메인화면 상품진열</caption>
         <colgroup>
             <col class="grid_4">
             <col>
