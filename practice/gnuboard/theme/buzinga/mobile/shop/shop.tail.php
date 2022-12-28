@@ -52,7 +52,7 @@ $admin = get_admin("super");
             <span>대표 : <?php echo $default['de_admin_company_owner']; ?></span>
             <span>전화 : <?php echo $default['de_admin_company_tel']; ?></span>
             <span>팩스 : <?php echo $default['de_admin_company_fax']; ?></span>
-            <!-- <span>운영자 <?php echo $admin['mb_name']; ?></span><br> -->
+            <span>운영자 <?php echo $admin['mb_name']; ?></span><br>
             <span>통신판매업신고번호 : <?php echo $default['de_admin_tongsin_no']; ?></span>
             <span>개인정보 보호책임자 : <?php echo $default['de_admin_info_name']; ?></span>
             <?php if ($default['de_admin_buga_no']) echo '<span>부가통신사업신고번호 : '.$default['de_admin_buga_no'].'</span>'; ?>

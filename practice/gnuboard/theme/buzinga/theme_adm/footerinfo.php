@@ -1,7 +1,7 @@
 <?php
 include_once('_common.php');
 
-$g5['title'] = '하단정보';
+$g5['title'] = '홈페이지 하단정보';
 include_once('./head.php');
 
 $save_file = G5_DATA_PATH.'/cache/theme/buzinga54/footerinfo.php';

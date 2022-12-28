@@ -443,7 +443,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_download_level">전체적용</label>
             </td>
         </tr>
-        <!-- <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_html_level">HTML 쓰기 권한</label></th>
             <td>
                 <?php echo get_member_level_select('bo_html_level', 1, 10, $board['bo_html_level']) ?>
@@ -454,7 +454,7 @@ $pg_anchor = '<ul class="anchor">
                 <input type="checkbox" name="chk_all_html_level" value="1" id="chk_all_html_level">
                 <label for="chk_all_html_level">전체적용</label>
             </td>
-        </tr> -->
+        </tr>
         </tbody>
         </table>
     </div>
@@ -475,7 +475,7 @@ $pg_anchor = '<ul class="anchor">
             <col class="grid_3">
         </colgroup>
         <tbody>
-        <!-- <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_count_modify">원글 수정 불가<strong class="sound_only">필수</strong></label></th>
             <td>
                  <?php echo help('댓글의 수가 설정 수 이상이면 원글을 수정할 수 없습니다. 0으로 설정하시면 댓글 수에 관계없이 수정할 수있습니다.'); ?>
@@ -488,10 +488,10 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_count_modify">전체적용</label>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_count_delete">원글 삭제 불가<strong class="sound_only">필수</strong></label></th>
             <td>
-                댓글 <input type="text" name="bo_count_delete" value="<?php echo $board['bo_count_delete'] ?>" id="bo_count_delete" required class="required numeric frm_input" size="3">개 이상 달리면 삭제불가
+                댓글 <input type="text" name="bo_count_delete" value=1 id="bo_count_delete" required class="required numeric frm_input" size="3">개 이상 달리면 삭제불가
             </td>
             <td class="td_grpset">
                 <input type="checkbox" name="chk_grp_count_delete" value="1" id="chk_grp_count_delete">
@@ -500,7 +500,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_count_delete">전체적용</label>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_use_sideview">글쓴이 사이드뷰</label></th>
             <td>
                 <input type="checkbox" name="bo_use_sideview" value="1" id="bo_use_sideview" <?php echo $board['bo_use_sideview']?'checked':''; ?>>
@@ -513,7 +513,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_use_sideview">전체적용</label>
             </td>
         </tr> 
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_use_secret">비밀글 사용</label></th>
             <td>
                 <?php echo help('"체크박스"는 글작성시 비밀글 체크가 가능합니다. "무조건"은 작성되는 모든글을 비밀글로 작성합니다. (관리자는 체크박스로 출력합니다.) 스킨에 따라 적용되지 않을 수 있습니다.') ?>
@@ -530,7 +530,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_use_secret">전체적용</label>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_use_dhtml_editor">DHTML 에디터 사용</label></th>
             <td>
                 <?php echo help('글작성시 내용을 DHTML 에디터 기능으로 사용할 것인지 설정합니다. 스킨에 따라 적용되지 않을 수 있습니다.') ?>
@@ -544,7 +544,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_use_dhtml_editor">전체적용</label>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_select_editor">게시판 에디터 선택</label></th>
             <td>
                 <?php echo help('게시판에 사용할 에디터를 설정합니다. 스킨에 따라 적용되지 않을 수 있습니다.') ?>
@@ -567,7 +567,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_select_editor">전체적용</label>
             </td>
         </tr>
-         <tr>
+         <tr style="display:none">
             <th scope="row"><label for="bo_use_rss_view">RSS 보이기 사용</label></th>
             <td>
                 <?php echo help('비회원 글읽기가 가능하고 RSS 보이기 사용에 체크가 되어야만 RSS 지원을 합니다.') ?>
@@ -581,7 +581,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_use_rss_view">전체적용</label>
             </td>
         </tr> 
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_use_good">추천 사용</label></th>
             <td>
                 <input type="checkbox" name="bo_use_good" value="1" <?php echo $board['bo_use_good']?'checked':''; ?> id="bo_use_good">
@@ -594,7 +594,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_use_good">전체적용</label>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_use_nogood">비추천 사용</label></th>
             <td>
                 <input type="checkbox" name="bo_use_nogood" value="1" id="bo_use_nogood" <?php echo $board['bo_use_nogood']?'checked':''; ?>>
@@ -607,7 +607,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_use_nogood">전체적용</label>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_use_name">이름(실명) 사용</label></th>
             <td>
                 <input type="checkbox" name="bo_use_name" value="1" id="bo_use_name" <?php echo $board['bo_use_name']?'checked':''; ?>>
@@ -621,7 +621,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_use_name">전체적용</label>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_use_signature">서명보이기 사용</label></th>
             <td>
                 <input type="checkbox" name="bo_use_signature" value="1" id="bo_use_signature" <?php echo $board['bo_use_signature']?'checked':''; ?>>
@@ -634,7 +634,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_use_signature">전체적용</label>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_use_ip_view">IP 보이기 사용</label></th>
             <td>
                 <input type="checkbox" name="bo_use_ip_view" value="1" id="bo_use_ip_view" <?php echo $board['bo_use_ip_view']?'checked':''; ?>>
@@ -647,7 +647,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_use_ip_view">전체적용</label>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_use_list_content">목록에서 내용 사용</label></th>
             <td>
                 <?php echo help("목록에서 게시판 제목외에 내용도 읽어와야 할 경우에 설정하는 옵션입니다. 기본은 사용하지 않습니다."); ?>
@@ -661,7 +661,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_use_list_content">전체적용</label>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_use_list_file">목록에서 파일 사용</label></th>
             <td>
                 <?php echo help("목록에서 게시판 첨부파일을 읽어와야 할 경우에 설정하는 옵션입니다. 기본은 사용하지 않습니다."); ?>
@@ -675,7 +675,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_use_list_file">전체적용</label>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_use_list_view">전체목록보이기 사용</label></th>
             <td>
                 <input type="checkbox" name="bo_use_list_view" value="1" id="bo_use_list_view" <?php echo $board['bo_use_list_view']?'checked':''; ?>>
@@ -688,7 +688,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_use_list_view">전체적용</label>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_use_email">메일발송 사용</label></th>
             <td>
                 <input type="checkbox" name="bo_use_email" value="1" id="bo_use_email" <?php echo $board['bo_use_email']?'checked':''; ?>>
@@ -701,7 +701,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_use_email">전체적용</label>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_use_cert">본인확인 사용</label></th>
             <td>
                 <?php echo help("본인확인 여부에 따라 게시물을 조회 할 수 있도록 합니다."); ?>
@@ -721,7 +721,7 @@ $pg_anchor = '<ul class="anchor">
                 <input type="checkbox" name="chk_all_use_cert" value="1" id="chk_all_use_cert">
                 <label for="chk_all_use_cert">전체적용</label>
             </td>
-        </tr> -->
+        </tr>
         <tr>
             <th scope="row"><label for="bo_upload_count">파일 업로드 개수<strong class="sound_only">필수</strong></label></th>
             <td>
@@ -748,7 +748,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_upload_size">전체적용</label>
             </td>
         </tr>
-        <!--<tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_use_file_content">파일 설명 사용</label></th>
             <td>
                 <input type="checkbox" name="bo_use_file_content" value="1" id="bo_use_file_content" <?php echo $board['bo_use_file_content']?'checked':''; ?>>사용
@@ -760,7 +760,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_use_file_content">전체적용</label>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_write_min">최소 글수 제한</label></th>
             <td>
                 <?php echo help('글 입력시 최소 글자수를 설정. 0을 입력하거나 최고관리자, DHTML 에디터 사용시에는 검사하지 않음') ?>
@@ -773,7 +773,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_write_min">전체적용</label>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_write_max">최대 글수 제한</label></th>
             <td>
                 <?php echo help('글 입력시 최대 글자수를 설정. 0을 입력하거나 최고관리자, DHTML 에디터 사용시에는 검사하지 않음') ?>
@@ -786,7 +786,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_write_max">전체적용</label>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_comment_min">최소 댓글수 제한</label></th>
             <td>
                 <?php echo help('댓글 입력시 최소 글자수를 설정. 0을 입력하면 검사하지 않음') ?>
@@ -799,7 +799,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_comment_min">전체적용</label>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_comment_max">최대 댓글수 제한</label></th>
             <td>
                 <?php echo help('댓글 입력시 최대 글자수를 설정. 0을 입력하면 검사하지 않음') ?>
@@ -812,7 +812,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_comment_max">전체적용</label>
             </td>
         </tr> 
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_use_sns">SNS 사용</label></th>
             <td>
                 <?php echo help("사용에 체크하시면 소셜네트워크서비스(SNS)에 글을 퍼가거나 댓글을 동시에 등록할수 있습니다.<br>기본환경설정의 SNS 설정을 하셔야 사용이 가능합니다.") ?>
@@ -826,7 +826,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_use_sns">전체적용</label>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_use_search">전체 검색 사용</label></th>
             <td>
                 <input type="checkbox" name="bo_use_search" value="1" id="bo_use_search" <?php echo $board['bo_use_search']?'checked':''; ?>>
@@ -839,7 +839,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_use_search">전체적용</label>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_order">출력 순서</label></th>
             <td>
                 <?php echo help('숫자가 낮은 게시판 부터 메뉴나 검색시 우선 출력합니다.') ?>
@@ -852,7 +852,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_order">전체적용</label>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_use_captcha">캡챠 사용</label></th>
             <td>
                 <?php echo help("체크하면 글 작성시 캡챠를 무조건 사용합니다.( 회원 + 비회원 모두 )<br>미 체크하면 비회원에게만 캡챠를 사용합니다.") ?>
@@ -865,7 +865,7 @@ $pg_anchor = '<ul class="anchor">
                 <input type="checkbox" name="chk_all_use_captcha" value="1" id="chk_all_use_captcha">
                 <label for="chk_all_use_captcha">전체적용</label>
             </td>
-        </tr> -->
+        </tr>
         </tbody>
         </table>
     </div>
@@ -885,10 +885,13 @@ $pg_anchor = '<ul class="anchor">
             <col class="grid_3">
         </colgroup>
         <tbody>
-        <!-- <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_skin">스킨 디렉토리<strong class="sound_only">필수</strong></label></th>
             <td>
-                <?php echo get_skin_select('board', 'bo_skin', 'bo_skin', $board['bo_skin'], 'required'); ?>
+                <?php //echo get_skin_select('board', 'bo_skin', 'bo_skin', $board['bo_skin'], 'required'); ?>
+                <select id="bo_skin" name="bo_skin" required="">
+                    <option value="theme/basic" selected>(테마) basic</option>
+                </select>
             </td>
             <td class="td_grpset">
                 <input type="checkbox" name="chk_grp_skin" value="1" id="chk_grp_skin">
@@ -897,10 +900,13 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_skin">전체적용</label>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_mobile_skin">모바일<br>스킨 디렉토리<strong class="sound_only">필수</strong></label></th>
             <td>
-                <?php echo get_mobile_skin_select('board', 'bo_mobile_skin', 'bo_mobile_skin', $board['bo_mobile_skin'], 'required'); ?>
+                <?php //echo get_mobile_skin_select('board', 'bo_mobile_skin', 'bo_mobile_skin', $board['bo_mobile_skin'], 'required'); ?>
+                <select id="bo_mobile_skin" name="bo_mobile_skin" required="">
+                    <option value="theme/basic" selected>(테마) basic</option>
+                </select>
             </td>
             <td class="td_grpset">
                 <input type="checkbox" name="chk_grp_mobile_skin" value="1" id="chk_grp_mobile_skin">
@@ -910,7 +916,7 @@ $pg_anchor = '<ul class="anchor">
             </td>
         </tr>
         <?php if ($is_admin === 'super') {   // 슈퍼관리자인 경우에만 수정 가능 ?>
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_include_head">상단 파일 경로</label></th>
             <td>
                 <input type="text" name="bo_include_head" value="<?php echo $board['bo_include_head'] ?>" id="bo_include_head" class="frm_input" size="50">
@@ -922,7 +928,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_include_head">전체적용</label>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_include_tail">하단 파일 경로</label></th>
             <td>
                 <input type="text" name="bo_include_tail" value="<?php echo $board['bo_include_tail'] ?>" id="bo_include_tail" class="frm_input" size="50">
@@ -950,7 +956,7 @@ $pg_anchor = '<ul class="anchor">
                 </script>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_content_head">상단 내용</label></th>
             <td>
                 <?php echo editor_html("bo_content_head", get_text(html_purifier($board['bo_content_head']), 0)); ?>
@@ -962,7 +968,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_content_head">전체적용</label>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_content_tail">하단 내용</label></th>
             <td>
                 <?php echo editor_html("bo_content_tail", get_text(html_purifier($board['bo_content_tail']), 0)); ?>
@@ -974,7 +980,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_content_tail">전체적용</label>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_mobile_content_head">모바일 상단 내용</label></th>
             <td>
                 <?php echo editor_html("bo_mobile_content_head", get_text(html_purifier($board['bo_mobile_content_head']), 0)); ?>
@@ -986,7 +992,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_mobile_content_head">전체적용</label>
             </td>
         </tr> 
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_mobile_content_tail">모바일 하단 내용</label></th>
             <td>
                 <?php echo editor_html("bo_mobile_content_tail", get_text(html_purifier($board['bo_mobile_content_tail']), 0)); ?>
@@ -997,7 +1003,7 @@ $pg_anchor = '<ul class="anchor">
                 <input type="checkbox" name="chk_all_mobile_content_tail" value="1" id="chk_all_mobile_content_tail">
                 <label for="chk_all_mobile_content_tail">전체적용</label>
             </td>
-        </tr>-->
+        </tr>
         <?php }     //end if $is_admin === 'super' ?>
          <tr>
             <th scope="row"><label for="bo_insert_content">공지 글쓰기 기본 내용</label></th>
@@ -1011,8 +1017,8 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_insert_content">전체적용</label>
             </td>
         </tr>
-        <tr>
-            <th scope="row"><label for="bo_subject_len">제목 길이<strong class="sound_only">필수</strong></label></th>
+        <tr style="display:none">
+            <th scope="row"><label for="bo_subject_len">PC 제목 길이<strong class="sound_only">필수</strong></label></th>
             <td>
                 <?php echo help('목록에서의 제목 글자수. 잘리는 글은 … 로 표시') ?>
                 <input type="text" name="bo_subject_len" value="<?php echo $board['bo_subject_len'] ?>" id="bo_subject_len" required class="required numeric frm_input" size="4">
@@ -1025,7 +1031,7 @@ $pg_anchor = '<ul class="anchor">
             </td>
         </tr>
         <tr>
-            <th scope="row"><label for="bo_mobile_subject_len">모바일 제목 길이<strong class="sound_only">필수</strong></label></th>
+            <th scope="row"><label for="bo_mobile_subject_len">제목 길이<strong class="sound_only">필수</strong></label></th>
             <td>
                 <?php echo help('목록에서의 제목 글자수. 잘리는 글은 … 로 표시') ?>
                 <input type="text" name="bo_mobile_subject_len" value="<?php echo $board['bo_mobile_subject_len'] ?>" id="bo_mobile_subject_len" required class="required numeric frm_input" size="4">
@@ -1061,7 +1067,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_mobile_page_rows">전체적용</label>
             </td>
         </tr>
-        <!-- <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_gallery_cols">갤러리 이미지 수<strong class="sound_only">필수</strong></label></th>
             <td>
                 <?php echo help('갤러리 형식의 게시판 목록에서 이미지를 한줄에 몇장씩 보여 줄 것인지를 설정하는 값') ?>
@@ -1074,7 +1080,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_gallery_cols">전체적용</label>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_gallery_width">갤러리 이미지 폭<strong class="sound_only">필수</strong></label></th>
             <td>
                 <?php echo help('갤러리 형식의 게시판 목록에서 썸네일 이미지의 폭을 설정하는 값') ?>
@@ -1087,7 +1093,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_gallery_width">전체적용</label>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_gallery_height">갤러리 이미지 높이<strong class="sound_only">필수</strong></label></th>
             <td>
                 <?php echo help('갤러리 형식의 게시판 목록에서 썸네일 이미지의 높이를 설정하는 값') ?>
@@ -1100,7 +1106,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_gallery_height">전체적용</label>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_mobile_gallery_width">모바일<br>갤러리 이미지 폭<strong class="sound_only">필수</strong></label></th>
             <td>
                 <?php echo help('모바일로 접속시 갤러리 형식의 게시판 목록에서 썸네일 이미지의 폭을 설정하는 값') ?>
@@ -1113,7 +1119,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_mobile_gallery_width">전체적용</label>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_mobile_gallery_height">모바일<br>갤러리 이미지 높이<strong class="sound_only">필수</strong></label></th>
             <td>
                 <?php echo help('모바일로 접속시 갤러리 형식의 게시판 목록에서 썸네일 이미지의 높이를 설정하는 값') ?>
@@ -1126,11 +1132,11 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_mobile_gallery_height">전체적용</label>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_table_width">게시판 폭<strong class="sound_only">필수</strong></label></th>
             <td>
                 <?php echo help('100 이하는 %') ?>
-                <input type="text" name="bo_table_width" value="<?php echo $board['bo_table_width'] ?>" id="bo_table_width" required class="required numeric frm_input" size="4">
+                <input type="text" name="bo_table_width" value=100 id="bo_table_width" required class="required numeric frm_input" size="4">
             </td>
             <td class="td_grpset">
                 <input type="checkbox" name="chk_grp_table_width" value="1" id="chk_grp_table_width">
@@ -1138,7 +1144,7 @@ $pg_anchor = '<ul class="anchor">
                 <input type="checkbox" name="chk_all_table_width" value="1" id="chk_all_table_width">
                 <label for="chk_all_table_width">전체적용</label>
             </td>
-        </tr> -->
+        </tr>
         <tr>
             <th scope="row"><label for="bo_image_width">이미지 넓이<strong class="sound_only">필수</strong></label></th>
             <td>
@@ -1165,7 +1171,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_new">전체적용</label>
             </td>
         </tr>
-        <!-- <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_hot">인기글 아이콘<strong class="sound_only">필수</strong></label></th>
             <td>
                 <?php echo help('조회수가 설정값 이상이면 hot 이미지 출력. 0을 입력하시면 아이콘을 출력하지 않습니다.') ?>
@@ -1178,7 +1184,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_hot">전체적용</label>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_reply_order">답변 달기</label></th>
             <td>
                 <select id="bo_reply_order" name="bo_reply_order">
@@ -1193,7 +1199,7 @@ $pg_anchor = '<ul class="anchor">
                 <label for="chk_all_reply_order">전체적용</label>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none">
             <th scope="row"><label for="bo_sort_field">리스트 정렬 필드</label></th>
             <td>
                 <?php echo help('리스트에서 기본으로 정렬에 사용할 필드를 선택합니다. "기본"으로 사용하지 않으시는 경우 속도가 느려질 수 있습니다.') ?>
@@ -1222,7 +1228,7 @@ $pg_anchor = '<ul class="anchor">
                 <input type="checkbox" name="chk_all_sort_field" value="1" id="chk_all_sort_field">
                 <label for="chk_all_sort_field">전체적용</label>
             </td>
-        </tr> -->
+        </tr>
         </tbody>
         </table>
     </div>
@@ -1231,7 +1237,7 @@ $pg_anchor = '<ul class="anchor">
 </section>
 
 
-<!-- <section id="anc_bo_point">
+<section id="anc_bo_point" style="display:none">
     <h2 class="h2_frm">게시판 포인트 설정</h2>
     <?php echo $pg_anchor ?>
 
@@ -1302,9 +1308,9 @@ $pg_anchor = '<ul class="anchor">
         </tbody>
         </table>
     </div>
-</section> -->
+</section>
 
-<!-- <section id="anc_bo_extra">
+<section id="anc_bo_extra" style="display:none">
     <h2 class="h2_frm">게시판 여분필드 설정</h2>
     <?php echo $pg_anchor ?>
 
@@ -1337,7 +1343,7 @@ $pg_anchor = '<ul class="anchor">
         </tbody>
         </table>
     </div>
-</section> -->
+</section>
 
 
 <div class="btn_fixed_top">

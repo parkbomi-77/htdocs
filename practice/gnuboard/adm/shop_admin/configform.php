@@ -20,7 +20,6 @@ include_once (G5_ADMIN_PATH.'/admin.head.php');
 
 $pg_anchor = '<ul class="anchor">
 <li><a href="#anc_scf_info">사업자정보</a></li>
-<li><a href="#anc_scf_skin">스킨설정</a></li>
 <li><a href="#anc_mscf_index">메인화면 상품진열</a></li>
 <li><a href="#anc_scf_payment">결제설정</a></li>
 <li><a href="#anc_scf_delivery">배송설정</a></li>
@@ -28,6 +27,7 @@ $pg_anchor = '<ul class="anchor">
 <li><a href="#anc_scf_sms">SMS설정</a></li>
 </ul>';
 
+//<li><a href="#anc_scf_skin">스킨설정</a></li>
 //<li><a href="#anc_scf_index">쇼핑몰 메인화면 출력</a></li>
 
 
@@ -297,7 +297,7 @@ if(!$default['de_kakaopay_cancelpwd']){
 </section>
 
 
-<section id="anc_scf_skin">
+<section id="anc_scf_skin" style="display:none">
     <h2 class="h2_frm">스킨설정</h2>
     <?php echo $pg_anchor; ?>
     <div class="local_desc02 local_desc">
@@ -315,13 +315,19 @@ if(!$default['de_kakaopay_cancelpwd']){
         <tr>
             <th scope="row"><label for="de_shop_skin">PC용 스킨</label></th>
             <td>
-                <?php echo get_skin_select('shop', 'de_shop_skin', 'de_shop_skin', $default['de_shop_skin'], 'required'); ?>
+                <?php // echo get_skin_select('shop', 'de_shop_skin', 'de_shop_skin', $default['de_shop_skin'], 'required'); ?>
+                <select id="de_shop_skin" name="de_shop_skin" required="">
+                    <option value="theme/basic" selected>(테마) basic</option>
+                </select>
             </td>
         </tr>
         <tr>
             <th scope="row"><label for="de_shop_mobile_skin">모바일용 스킨</label></th>
             <td>
-                <?php echo get_mobile_skin_select('shop', 'de_shop_mobile_skin', 'de_shop_mobile_skin', $default['de_shop_mobile_skin'], 'required'); ?>
+                <?php // echo get_mobile_skin_select('shop', 'de_shop_mobile_skin', 'de_shop_mobile_skin', $default['de_shop_mobile_skin'], 'required'); ?>
+                <select id="de_shop_mobile_skin" name="de_shop_mobile_skin" required="">
+                    <option value="theme/basic" selected>(테마) basic</option>
+                </select>
             </td>
         </tr>
         </tbody>
@@ -329,7 +335,7 @@ if(!$default['de_kakaopay_cancelpwd']){
     </div>
 </section>
 
-<button type="button" class="get_shop_skin">테마 스킨설정 가져오기</button>
+<!-- <button type="button" class="get_shop_skin">테마 스킨설정 가져오기</button> -->
 
 <!-- <section id="anc_scf_index">
     <h2 class="h2_frm">쇼핑몰 초기화면</h2>
@@ -568,7 +574,7 @@ if(!$default['de_kakaopay_cancelpwd']){
     </div>
 </section>
 
-<button type="button" class="shop_mobile_index">테마설정 가져오기</button>
+<!-- <button type="button" class="shop_mobile_index">테마설정 가져오기</button> -->
 
 <section id ="anc_scf_payment">
     <h2 class="h2_frm">결제설정</h2>
@@ -1449,7 +1455,7 @@ if(!$default['de_kakaopay_cancelpwd']){
     </div>
 </section>
 
-<button type="button" class="shop_etc">테마설정 가져오기</button>
+<!-- <button type="button" class="shop_etc">테마설정 가져오기</button> -->
 
 <?php if (file_exists($logo_img) || file_exists($logo_img2) || file_exists($mobile_logo_img) || file_exists($mobile_logo_img2)) { ?>
 <script>

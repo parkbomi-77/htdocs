@@ -5,11 +5,11 @@ include_once('./head.sub.php');
 add_stylesheet('<link rel="stylesheet" href="./css/style.css">', 0);
 
 $adm_menu = array(
-    array('url' => 'maincategory.php',       'text' => '메인카테고리설정'),
-    array('url' => 'mainbestcategory.php',       'text' => '메인베스트카테고리설정'),
+    // array('url' => 'maincategory.php',       'text' => '메인카테고리설정'),
+    // array('url' => 'mainbestcategory.php',       'text' => '메인베스트카테고리설정'),
     array('url' => 'footerinfo.php',       'text' => '고객센터설정'),
-    array('url' => 'snslink.php',          'text' => 'SNS링크'),
-    array('url' => 'snslogin.php',          'text' => 'SNS소셜로그인')
+    // array('url' => 'snslink.php',          'text' => 'SNS링크'),
+    // array('url' => 'snslogin.php',          'text' => 'SNS소셜로그인')
 );
 ?>
 

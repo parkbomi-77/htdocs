@@ -213,7 +213,7 @@ if (!isset($qaconfig['qa_include_head'])) {
                             <input type="text" name="qa_admin_email" value="<?php echo get_sanitize_input($qaconfig['qa_admin_email']); ?>" id="qa_admin_email" class="frm_input" size="50">
                         </td>
                     </tr>
-                    <!-- <tr>
+                    <tr style="display:none">
                         <th scope="row"><label for="qa_use_editor">DHTML 에디터 사용</label></th>
                         <td>
                             <?php echo help('글작성시 내용을 DHTML 에디터 기능으로 사용할 것인지 설정합니다. 스킨에 따라 적용되지 않을 수 있습니다.'); ?>
@@ -222,29 +222,29 @@ if (!isset($qaconfig['qa_include_head'])) {
                                 <?php echo option_selected(1, $qaconfig['qa_use_editor'], '사용함'); ?>
                             </select>
                         </td>
-                    </tr> -->
-                    <tr>
-                        <th scope="row"><label for="qa_subject_len">제목 길이<strong class="sound_only"> 필수</strong></label></th>
+                    </tr>
+                    <tr style="display:none">
+                        <th scope="row"><label for="qa_subject_len">PC 제목 길이<strong class="sound_only"> 필수</strong></label></th>
                         <td>
                             <?php echo help('목록에서의 제목 글자수') ?>
                             <input type="text" name="qa_subject_len" value="<?php echo $qaconfig['qa_subject_len'] ?>" id="qa_subject_len" required class="required numeric frm_input" size="4">
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row"><label for="qa_mobile_subject_len">모바일 제목 길이<strong class="sound_only"> 필수</strong></label></th>
+                        <th scope="row"><label for="qa_mobile_subject_len">제목 길이<strong class="sound_only"> 필수</strong></label></th>
                         <td>
                             <?php echo help('목록에서의 제목 글자수') ?>
                             <input type="text" name="qa_mobile_subject_len" value="<?php echo $qaconfig['qa_mobile_subject_len'] ?>" id="qa_mobile_subject_len" required class="required numeric frm_input" size="4">
                         </td>
                     </tr>
-                    <tr>
-                        <th scope="row"><label for="qa_page_rows">페이지당 목록 수<strong class="sound_only"> 필수</strong></label></th>
+                    <tr style="display:none">
+                        <th scope="row"><label for="qa_page_rows">PC 페이지당 목록 수<strong class="sound_only"> 필수</strong></label></th>
                         <td>
                             <input type="text" name="qa_page_rows" value="<?php echo $qaconfig['qa_page_rows'] ?>" id="qa_page_rows" required class="required numeric frm_input" size="4">
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row"><label for="qa_mobile_page_rows">모바일 페이지당 목록 수<strong class="sound_only"> 필수</strong></label></th>
+                        <th scope="row"><label for="qa_mobile_page_rows">페이지당 목록 수<strong class="sound_only"> 필수</strong></label></th>
                         <td>
                             <input type="text" name="qa_mobile_page_rows" value="<?php echo $qaconfig['qa_mobile_page_rows'] ?>" id="qa_mobile_page_rows" required class="required numeric frm_input" size="4">
                         </td>

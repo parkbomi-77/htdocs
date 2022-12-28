@@ -189,9 +189,9 @@ $pg_anchor ='<ul class="anchor">
 <li><a href="#anc_sitfrm_relation">관련상품</a></li>
 <li><a href="#anc_sitfrm_event">관련이벤트</a></li>
 <li><a href="#anc_sitfrm_optional">상세설명설정</a></li>
-<li><a href="#anc_sitfrm_extra">여분필드</a></li>
 </ul>
 ';
+//<li><a href="#anc_sitfrm_extra">여분필드</a></li>
 
 
 // 쿠폰적용안함 설정 필드 추가
@@ -489,22 +489,22 @@ if(!sql_query(" select it_skin from {$g5['g5_shop_item_table']} limit 1", false)
                 <label for="chk_all_it_nocoupon">전체적용</label>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none;">
             <th scope="row"><label for="ec_mall_pid">네이버쇼핑 상품ID</label></th>
             <td colspan="2">
                 <?php echo help("네이버쇼핑에 입점한 경우 네이버쇼핑 상품ID를 입력하시면 네이버페이와 연동됩니다.<br>일부 쇼핑몰의 경우 네이버쇼핑 상품ID 대신 쇼핑몰 상품ID를 입력해야 하는 경우가 있습니다.<br>네이버페이 연동과정에서 이 부분에 대한 안내가 이뤄지니 안내받은 대로 값을 입력하시면 됩니다."); ?>
                 <input type="text" name="ec_mall_pid" value="<?php echo get_text($it['ec_mall_pid']); ?>" id="ec_mall_pid" class="frm_input" size="20">
             </td>
         </tr>
-        <tr>
-            <th scope="row">상품설명</th>
+        <tr style="display:none;"> 
+            <th scope="row">PC 상품설명</th>
             <td colspan="2"> <?php echo editor_html('it_explan', get_text(html_purifier($it['it_explan']), 0)); ?></td>
         </tr>
         <tr>
-            <th scope="row">모바일 상품설명</th>
+            <th scope="row">상품설명</th>
             <td colspan="2"> <?php echo editor_html('it_mobile_explan', get_text(html_purifier($it['it_mobile_explan']), 0)); ?></td>
         </tr>
-        <tr>
+        <tr style="display:none;">
             <th scope="row"><label for="it_sell_email">판매자 e-mail</label></th>
             <td>
                 <?php echo help("운영자와 실제 판매자가 다른 경우 실제 판매자의 e-mail을 입력하면, 상품 주문 시점을 기준으로 실제 판매자에게도 주문서를 발송합니다."); ?>
@@ -1682,7 +1682,7 @@ $(function(){
 </section>
 
 
-<section id="anc_sitfrm_extra">
+<!-- <section id="anc_sitfrm_extra">
     <h2>여분필드 설정</h2>
     <?php echo $pg_anchor ?>
 
@@ -1730,7 +1730,7 @@ $(function(){
         </tbody>
         </table>
     </div>
-</section>
+</section> -->
 
 <div class="btn_fixed_top">
     <a href="./itemlist.php?<?php echo $qstr; ?>" class="btn btn_02">목록</a>

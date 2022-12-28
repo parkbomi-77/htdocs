@@ -165,7 +165,7 @@ if( ! function_exists('buzinga54_add_theme_admin_menu') ){
 	function buzinga54_add_theme_admin_menu($admin_menu){
 
 		if( isset($admin_menu['menu100']) ){
-			array_push($admin_menu['menu100'], array('100281', 'bazinga 테마 관리', G5_THEME_ADM_URL, 'shop_item_import'));
+			array_push($admin_menu['menu100'], array('100281', '홈페이지 하단 인포', G5_THEME_ADM_URL, 'shop_item_import'));
 		}
 
 		return $admin_menu;
