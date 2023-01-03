@@ -102,8 +102,8 @@ include_once (G5_ADMIN_PATH.'/admin.head.php');
         </td>
     </tr>
     <?php } ?>
-    <tr>
-        <th scope="row"><label for="ev_skin">출력스킨</label></th>
+    <tr style="display:none">
+        <th scope="row"><label for="ev_skin">PC 출력스킨</label></th>
         <td>
             <?php echo help('기본으로 제공하는 스킨은 '.str_replace(G5_PATH.'/', '', G5_SHOP_SKIN_PATH).'/list.*.skin.php 입니다.'.PHP_EOL.G5_SHOP_DIR.'/event.php?ev_id=1234567890&amp;skin=userskin.php 처럼 직접 만든 스킨을 사용할 수도 있습니다.'); ?>
             <select name="ev_skin" id="ev_skin">
@@ -112,7 +112,7 @@ include_once (G5_ADMIN_PATH.'/admin.head.php');
         </td>
     </tr>
     <tr>
-        <th scope="row"><label for="ev_mobile_skin">모바일 출력스킨</label></th>
+        <th scope="row"><label for="ev_mobile_skin">출력스킨</label></th>
         <td>
             <?php echo help('기본으로 제공하는 스킨은 '.str_replace(G5_PATH.'/', '', G5_MSHOP_SKIN_PATH).'/list.*.skin.php 입니다.'.PHP_EOL.G5_SHOP_DIR.'/event.php?ev_id=1234567890&amp;skin=userskin.php 처럼 직접 만든 스킨을 사용할 수도 있습니다.'); ?>
             <select name="ev_mobile_skin" id="ev_mobile_skin">
@@ -120,53 +120,53 @@ include_once (G5_ADMIN_PATH.'/admin.head.php');
             </select>
         </td>
     </tr>
-    <tr>
-        <th scope="row"><label for="ev_img_width">출력이미지 폭</label></th>
+    <tr style="display:none">
+        <th scope="row"><label for="ev_img_width">pc 출력이미지 폭</label></th>
         <td>
               <input type="text" name="ev_img_width" value="<?php echo $ev['ev_img_width']; ?>" id="ev_img_width" required class="required frm_input" size="5"> 픽셀
         </td>
     </tr>
-    <tr>
-        <th scope="row"><label for="ev_img_height">출력이미지 높이</label></th>
+    <tr style="display:none">
+        <th scope="row"><label for="ev_img_height">pc 출력이미지 높이</label></th>
         <td>
           <input type="text" name="ev_img_height" value="<?php echo $ev['ev_img_height']; ?>" id="ev_img_height" required class="required frm_input" size="5"> 픽셀
         </td>
     </tr>
-    <tr>
-        <th scope="row"><label for="ev_list_mod">1줄당 이미지 수</label></th>
+    <tr style="display:none">
+        <th scope="row"><label for="ev_list_mod">pc 1줄당 이미지 수</label></th>
         <td>
             <?php echo help("1행에 설정한 값만큼의 상품을 출력합니다. 스킨 설정에 따라 1행에 하나의 상품만 출력할 수도 있습니다."); ?>
             <input type="text" name="ev_list_mod" value="<?php echo $ev['ev_list_mod']; ?>" id="ev_list_mod" required class="required frm_input" size="3"> 개
         </td>
     </tr>
-    <tr>
-        <th scope="row"><label for="ev_list_row">이미지 줄 수</label></th>
+    <tr style="display:none">
+        <th scope="row"><label for="ev_list_row">pc 이미지 줄 수</label></th>
         <td>
             <?php echo help("한 페이지에 출력할 이미지 줄 수를 설정합니다.\n한 페이지에 표시되는 상품수는 (1줄당 이미지 수 x 줄 수) 입니다."); ?>
             <input type="text" name="ev_list_row" value="<?php echo $ev['ev_list_row']; ?>" id="ev_list_row" required class="required frm_input" size="3"> 줄
         </td>
     </tr>
     <tr>
-        <th scope="row"><label for="ev_mobile_img_width">모바일 출력이미지 폭</label></th>
+        <th scope="row"><label for="ev_mobile_img_width">출력이미지 넓이</label></th>
         <td>
               <input type="text" name="ev_mobile_img_width" value="<?php echo $ev['ev_mobile_img_width']; ?>" id="ev_mobile_img_width" required class="required frm_input" size="5"> 픽셀
         </td>
     </tr>
     <tr>
-        <th scope="row"><label for="ev_mobile_img_height">모바일 출력이미지 높이</label></th>
+        <th scope="row"><label for="ev_mobile_img_height">출력이미지 높이</label></th>
         <td>
           <input type="text" name="ev_mobile_img_height" value="<?php echo $ev['ev_mobile_img_height']; ?>" id="ev_mobile_img_height" required class="required frm_input" size="5"> 픽셀
         </td>
     </tr>
     <tr>
-        <th scope="row"><label for="ev_mobile_list_mod">모바일 1줄당 이미지 수</label></th>
+        <th scope="row"><label for="ev_mobile_list_mod">1줄당 이미지 수</label></th>
         <td>
             <?php echo help("1행에 설정한 값만큼의 상품을 출력합니다. 스킨 설정에 따라 1행에 하나의 상품만 출력할 수도 있습니다."); ?>
             <input type="text" name="ev_mobile_list_mod" value="<?php echo $ev['ev_mobile_list_mod']; ?>" id="ev_mobile_list_mod" required class="required frm_input" size="3"> 개
         </td>
     </tr>
     <tr>
-        <th scope="row"><label for="ev_mobile_list_row">모바일 이미지 줄 수</label></th>
+        <th scope="row"><label for="ev_mobile_list_row">이미지 줄 수</label></th>
         <td>
             <?php echo help("한 페이지에 출력할 이미지 줄 수를 설정합니다.\n한 페이지에 표시되는 상품수는 (1줄당 이미지 수 x 줄 수) 입니다."); ?>
             <input type="text" name="ev_mobile_list_row" value="<?php echo $ev['ev_mobile_list_row']; ?>" id="ev_mobile_list_row" required class="required frm_input" size="3"> 개
@@ -191,7 +191,7 @@ include_once (G5_ADMIN_PATH.'/admin.head.php');
         </td>
     </tr>
     <tr>
-        <th scope="row"><label for="ev_mimg">배너이미지</label></th>
+        <th scope="row"><label for="ev_mimg">이벤트 배너</label></th>
         <td>
             <?php echo help("쇼핑몰 레이아웃에서 글자 대신 이미지로 출력할 경우 사용합니다."); ?>
             <input type="file" name="ev_mimg" id="ev_mimg">
@@ -265,7 +265,7 @@ include_once (G5_ADMIN_PATH.'/admin.head.php');
             </section>
         </td>
     </tr>
-    <tr>
+    <tr style="display:none">
         <th scope="row"><label for="ev_himg">상단이미지</label></th>
         <td>
             <?php echo help("이벤트 페이지 상단에 업로드 한 이미지를 출력합니다."); ?>
@@ -291,7 +291,7 @@ include_once (G5_ADMIN_PATH.'/admin.head.php');
             ?>
         </td>
     </tr>
-    <tr>
+    <tr style="display:none">
         <th scope="row"><label for="ev_timg">하단이미지</label></th>
         <td>
             <?php echo help("이벤트 페이지 하단에 업로드 한 이미지를 출력합니다."); ?>
@@ -316,13 +316,13 @@ include_once (G5_ADMIN_PATH.'/admin.head.php');
             ?>
         </td>
     </tr>
-    <tr>
+    <tr style="display:none">
         <th scope="row">상단내용</th>
         <td>
             <?php echo editor_html('ev_head_html', get_text(html_purifier($ev['ev_head_html']), 0)); ?>
         </td>
     </tr>
-    <tr>
+    <tr style="display:none">
         <th scope="row">하단내용</th>
         <td>
             <?php echo editor_html('ev_tail_html', get_text(html_purifier($ev['ev_tail_html']), 0)); ?>

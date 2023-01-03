@@ -302,23 +302,23 @@ add_javascript('<script src="'.G5_JS_URL.'/jquery.bxslider.js"></script>', 10);
             <div class="naverpay-item"><?php echo $naverpay_request_js.$naverpay_button_js; ?></div>
             <?php } ?>
         </div>
-        <div class="sns_share">
-		        <button type="button" class="btn_sns_share"><i class="fa fa-share-alt" aria-hidden="true"></i><span class="sound_only">공유</span></button>
-		        <div class="sns_area">
-		            <div class="bg btn_snscl"></div>
-		            <div class="sns_wr">
-		                <h3>SNS공유</h3>
-		                <?php echo get_sns_share_link('facebook', $sns_url, $sns_title, G5_MSHOP_SKIN_URL.'/img/facebook.png'); ?>
-		                <?php echo get_sns_share_link('twitter', $sns_url, $sns_title, G5_MSHOP_SKIN_URL.'/img/twitter.png'); ?>
-		                <?php echo get_sns_share_link('googleplus', $sns_url, $sns_title, G5_MSHOP_SKIN_URL.'/img/gplus.png'); ?>
-		                <?php echo get_sns_share_link('kakaotalk', $sns_url, $sns_title, G5_MSHOP_SKIN_URL.'/img/sns_kakao.png'); ?>
-		                <?php
-		                $href = G5_SHOP_URL.'/iteminfo.php?it_id='.$it_id;
-		                ?> 
-		                <button type="button" class="btn_snscl btn_close"><i class="fa fa-times"></i></button>
-		            </div>
-		        </div>
-		    </div>
+        <!-- <div class="sns_share">
+            <button type="button" class="btn_sns_share"><i class="fa fa-share-alt" aria-hidden="true"></i><span class="sound_only">공유</span></button>
+            <div class="sns_area">
+                <div class="bg btn_snscl"></div>
+                <div class="sns_wr">
+                    <h3>SNS공유</h3>
+                    <?php echo get_sns_share_link('facebook', $sns_url, $sns_title, G5_MSHOP_SKIN_URL.'/img/facebook.png'); ?>
+                    <?php echo get_sns_share_link('twitter', $sns_url, $sns_title, G5_MSHOP_SKIN_URL.'/img/twitter.png'); ?>
+                    <?php echo get_sns_share_link('googleplus', $sns_url, $sns_title, G5_MSHOP_SKIN_URL.'/img/gplus.png'); ?>
+                    <?php echo get_sns_share_link('kakaotalk', $sns_url, $sns_title, G5_MSHOP_SKIN_URL.'/img/sns_kakao.png'); ?>
+                    <?php
+                    $href = G5_SHOP_URL.'/iteminfo.php?it_id='.$it_id;
+                    ?> 
+                    <button type="button" class="btn_snscl btn_close"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+        </div> -->
 		</section>
 		</div>
 	</div>
@@ -471,9 +471,9 @@ add_javascript('<script src="'.G5_JS_URL.'/jquery.bxslider.js"></script>', 10);
 	<?php if($default['de_mobile_rel_list_use']) { ?>
 	<!-- 관련상품 시작 { -->
 	<section id="sit_rel">
-	    <h2>관련상품</h2>
-	    <ul class="sanchor">
-	        <li><a href="#sit_inf">상품정보</a></li>
+        <!-- <h2>관련상품</h2> -->
+        <ul class="sanchor">
+            <li><a href="#sit_inf">상품정보</a></li>
 	        <li><a href="#sit_use">사용후기 <span class="item_use_count"><?php echo $item_use_count; ?></span></a></li>
 	        <li><a href="#sit_qa">상품문의 <span class="item_qa_count"><?php echo $item_qa_count; ?></span></a></li>
 	        <li><a href="#sit_dvr">배송정보</a></li>
@@ -496,8 +496,8 @@ add_javascript('<script src="'.G5_JS_URL.'/jquery.bxslider.js"></script>', 10);
 	<!-- } 관련상품 끝 -->
 	<?php } ?>
 		
-	<?php if($default['de_mobile_rel_list_use']) { ?>
-	<!-- 관련상품 시작 { -->
+	<?php if(!$default['de_mobile_rel_list_use']) { ?>
+
 	<section id="sit_rel">
 	    <h2>관련상품</h2>
 	    <div class="sct_wrap">
@@ -513,7 +513,7 @@ add_javascript('<script src="'.G5_JS_URL.'/jquery.bxslider.js"></script>', 10);
 	        ?>
 	    </div>
 	</section>
-	<!-- } 관련상품 끝 -->
+
 	<?php } ?>
 	</div>
 </form>

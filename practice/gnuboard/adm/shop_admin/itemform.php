@@ -182,16 +182,16 @@ $pg_anchor ='<ul class="anchor">
 <li><a href="#anc_sitfrm_cate">상품분류</a></li>
 <li><a href="#anc_sitfrm_skin">스킨설정</a></li>
 <li><a href="#anc_sitfrm_ini">기본정보</a></li>
-<li><a href="#anc_sitfrm_compact">요약정보</a></li>
+<li><a href="#anc_sitfrm_compact">상품 정보 고시</a></li>
 <li><a href="#anc_sitfrm_cost">가격 및 재고</a></li>
 <li><a href="#anc_sitfrm_sendcost">배송비</a></li>
-<li><a href="#anc_sitfrm_img">상품이미지</a></li>
+<li><a href="#anc_sitfrm_img">상품 메인 이미지</a></li>
 <li><a href="#anc_sitfrm_relation">관련상품</a></li>
 <li><a href="#anc_sitfrm_event">관련이벤트</a></li>
-<li><a href="#anc_sitfrm_optional">상세설명설정</a></li>
 </ul>
 ';
 //<li><a href="#anc_sitfrm_extra">여분필드</a></li>
+//<li><a href="#anc_sitfrm_optional">상세설명설정</a></li>
 
 
 // 쿠폰적용안함 설정 필드 추가
@@ -353,7 +353,7 @@ if(!sql_query(" select it_skin from {$g5['g5_shop_item_table']} limit 1", false)
         <tr>
             <th scope="row"><label for="it_basic">기본설명</label></th>
             <td>
-                <?php echo help("상품명 하단에 상품에 대한 추가적인 설명이 필요한 경우에 입력합니다. HTML 입력도 가능합니다."); ?>
+                <?php echo help("상품명 하단에 상품에 대한 추가적인 설명이 필요한 경우에 입력합니다."); ?>
                 <input type="text" name="it_basic" value="<?php echo get_text(html_purifier($it['it_basic'])); ?>" id="it_basic" class="frm_input" size="95">
             </td>
             <td class="td_grpset">
@@ -501,7 +501,7 @@ if(!sql_query(" select it_skin from {$g5['g5_shop_item_table']} limit 1", false)
             <td colspan="2"> <?php echo editor_html('it_explan', get_text(html_purifier($it['it_explan']), 0)); ?></td>
         </tr>
         <tr>
-            <th scope="row">상품설명</th>
+            <th scope="row">상세페이지</th>
             <td colspan="2"> <?php echo editor_html('it_mobile_explan', get_text(html_purifier($it['it_mobile_explan']), 0)); ?></td>
         </tr>
         <tr style="display:none;">
@@ -534,7 +534,7 @@ if(!sql_query(" select it_skin from {$g5['g5_shop_item_table']} limit 1", false)
 
 
 <section id="anc_sitfrm_compact">
-    <h2 class="h2_frm">상품요약정보</h2>
+    <h2 class="h2_frm">상품 정보 고시</h2>
     <?php echo $pg_anchor; ?>
     <div class="local_desc02 local_desc">
         <p><strong>전자상거래 등에서의 상품 등의 정보제공에 관한 고시</strong>에 따라 총 35개 상품군에 대해 상품 특성 등을 양식에 따라 입력할 수 있습니다.</p>
@@ -612,7 +612,7 @@ $(function(){
             </td>
         </tr>
         <tr>
-            <th scope="row"><label for="it_point_type">포인트 유형</label></th>
+            <th scope="row"><label for="it_point_type">포인트 지급 유형</label></th>
             <td>
                 <?php echo help("포인트 유형을 설정할 수 있습니다. 비율로 설정했을 경우 설정 기준금액의 %비율로 포인트가 지급됩니다."); ?>
                 <select name="it_point_type" id="it_point_type">
@@ -639,7 +639,7 @@ $(function(){
             </td>
         </tr>
         <tr>
-            <th scope="row"><label for="it_point">포인트</label></th>
+            <th scope="row"><label for="it_point">포인트 지급 비율</label></th>
             <td>
                 <?php echo help("주문완료후 환경설정에서 설정한 주문완료 설정일 후 회원에게 부여하는 포인트입니다.\n또, 포인트부여를 '아니오'로 설정한 경우 신용카드, 계좌이체로 주문하는 회원께는 부여하지 않습니다."); ?>
                 <input type="text" name="it_point" value="<?php echo $it['it_point']; ?>" id="it_point" class="frm_input" size="8"> <span id="it_point_unit"><?php if($it['it_point_type']) echo '%'; else echo '점'; ?></span>
@@ -1315,7 +1315,7 @@ $(function(){
 
 
 <section id="anc_sitfrm_img">
-    <h2 class="h2_frm">이미지</h2>
+    <h2 class="h2_frm">상품 메인 이미지</h2>
     <?php echo $pg_anchor; ?>
 
     <div class="tbl_frm01 tbl_wrap">
@@ -1623,7 +1623,7 @@ $(function(){
 </section>
 
 
-<section id="anc_sitfrm_optional">
+<section id="anc_sitfrm_optional" style="display:none">
     <h2 class="h2_frm">상세설명설정</h2>
     <?php echo $pg_anchor; ?>
 

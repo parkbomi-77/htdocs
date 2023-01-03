@@ -60,8 +60,9 @@ foreach((array) $list as $row){
     echo "<div class=\"flipInX animated go sct_btn\">
 		<button type=\"button\" class=\"btn_cart sct_cart\" data-it_id=\"{$row['it_id']}\"><i class=\"fas fa-shopping-basket\"></i><span class=\"sound_only\">장바구니</span></button>
 		<button type=\"button\" class=\"btn_wish\" data-it_id=\"{$row['it_id']}\"><span class=\"sound_only\">위시리스트</span><i class=\"fa fa-heart\" aria-hidden=\"true\"></i></button>
-		<button type=\"button\" class=\"btn_share\"><i class=\"fa fa-share-alt\" aria-hidden=\"true\"></i><span class=\"sound_only\">sns공유</span></button>
+
 		</div>\n";
+    // <button type=\"button\" class=\"btn_share\"><i class=\"fa fa-share-alt\" aria-hidden=\"true\"></i><span class=\"sound_only\">sns공유</span></button>
 	
 	if ($this->view_sns) {
         $sns_top = $this->img_height + 10;

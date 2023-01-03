@@ -67,11 +67,11 @@ for ($i=0; $row=sql_fetch_array($result); $i++) {
         echo "</a>\n";
     }
 
-    if ($this->view_it_price) {
-        echo "<div class=\"sct_cost\">\n";
-        echo display_price(get_price($row), $row['it_tel_inq'])."\n";
-        echo "</div>\n";
-    }
+    // if ($this->view_it_price) {
+    //     echo "<div class=\"sct_cost\">\n";
+    //     echo display_price(get_price($row), $row['it_tel_inq'])."\n";
+    //     echo "</div>\n";
+    // }
 
     echo "</li>\n";
 }

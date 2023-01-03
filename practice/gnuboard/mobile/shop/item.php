@@ -2,7 +2,7 @@
 include_once('./_common.php');
 include_once(G5_LIB_PATH.'/iteminfo.lib.php');
 
-if($member['mb_level'] === 1) {
+if($member['mb_level'] == 1) {
     echo "<script>alert('회원가입 후 이용가능한 서비스입니다.')</script>";
     $prevPage = $_SERVER['HTTP_REFERER'];
     // header('location:'.$prevPage);
@@ -13,6 +13,16 @@ $it_id = isset($_GET['it_id']) ? get_search_string(trim($_GET['it_id'])) : '';
 $it_seo_title = isset($it_seo_title) ? $it_seo_title : '';
 
 $it = get_shop_item_with_category($it_id, $it_seo_title);
+
+//일반회원은 상품분류10(pet parents)만 보이도록 
+if(($member['mb_level'] == 2) && ($it['ca_id'] != 10)) {
+    echo "<script>alert('수의사전용등급 제품입니다.')</script>";
+    $prevPage = $_SERVER['HTTP_REFERER'];
+    // header('location:'.$prevPage);
+    echo "<script>document.location.href='{$prevPage}';</script>";
+}
+
+
 $it_id = $_REQUEST['it_id'] = $it['it_id'];
 
 if (! (isset($it['it_id']) && $it['it_id'])) {

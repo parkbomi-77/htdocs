@@ -22,6 +22,11 @@ if(!$is_gallery_list){
 }
 $li_width = ($is_gallery_list === 'gallery') ? intval(100 / $this->list_mod) : 100;
 $li_width_style = ' style="width:'.$li_width.'%;"';
+
+if($this->view_it_price && $member['mb_level'] == 2) {
+    $li_width_style = ' style="width:'.$li_width.'%; display:none;"';
+}
+
 $ul_sct_class = ($is_gallery_list === 'gallery') ? 'sct_30' : 'sct_20';
 
 $i = 0;
@@ -76,7 +81,7 @@ foreach((array) $list as $row){
     }
 	
     // 비 로그인상태에 가격표시 제한 
-	if ($this->view_it_price && $member['mb_level'] !== 1) {
+	if ($this->view_it_price && $member['mb_level'] != 1) {
         echo "<div class=\"sct_cost\">\n";
         echo display_price(get_price($row), $row['it_tel_inq'])."\n";
         echo "</div>\n";
