@@ -17,9 +17,9 @@ include_once('./admin.head.php');
         <h3>신용카드 전자결제 서비스<br><span>(계좌이체, 가상계좌 결제 포함)</span></h3>
 
         <ul>
-            <li><a href="http://sir.kr/main/service/p_pg.php" target="_blank"><img src="<?php echo G5_ADMIN_URL ?>/img/svc_btn_01.jpg" alt="KCP 신용카드 전자결제 신청하기"></a></li>
+            <!-- <li><a href="http://sir.kr/main/service/p_pg.php" target="_blank"><img src="<?php echo G5_ADMIN_URL ?>/img/svc_btn_01.jpg" alt="KCP 신용카드 전자결제 신청하기"></a></li> -->
             <li><a href="http://sir.kr/main/service/lg_pg.php" target="_blank"><img src="<?php echo G5_ADMIN_URL ?>/img/svc_btn_02.jpg?v2" alt="토스페이먼츠 전자결제 신청하기"></a></li>
-            <li class="last"><a href="http://sir.kr/main/service/inicis_pg.php" target="_blank"><img src="<?php echo G5_ADMIN_URL ?>/img/svc_btn_06.jpg" alt="KG 이니시스 전자결제 신청하기"></a></li>
+            <!-- <li class="last"><a href="http://sir.kr/main/service/inicis_pg.php" target="_blank"><img src="<?php echo G5_ADMIN_URL ?>/img/svc_btn_06.jpg" alt="KG 이니시스 전자결제 신청하기"></a></li> -->
         </ul>
     </div>
 

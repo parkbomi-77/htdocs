@@ -636,7 +636,7 @@ if(!$default['de_kakaopay_cancelpwd']){
                 <?php echo help("KG이니시스 가상계좌 사용시 다음 주소를 <strong><a href=\"https://iniweb.inicis.com/\" target=\"_blank\">KG이니시스 관리자</a> &gt; 거래내역 &gt; 가상계좌 &gt; 입금통보방식선택 &gt; URL 수신 설정</strong>에 넣으셔야 상점에 자동으로 입금 통보됩니다."); ?>
                 <?php echo G5_SHOP_URL; ?>/settle_inicis_common.php</td>
         </tr>
-        <tr>
+        <tr style="display:none;">
             <th scope="row"><label for="de_hp_use">휴대폰결제사용</label></th>
             <td>
                 <?php echo help("주문시 휴대폰 결제를 가능하게 할것인지를 설정합니다.", 50); ?>
@@ -656,7 +656,7 @@ if(!$default['de_kakaopay_cancelpwd']){
                 </select>
             </td>
         </tr>
-        <tr>
+        <tr style="display:none;">
             <th scope="row"><label for="de_card_noint_use">신용카드 무이자할부사용<br>( KCP 만 해당 )</label></th>
             <td>
                 <?php echo help("주문시 신용카드 무이자할부를 가능하게 할것인지를 설정합니다.<br>사용으로 설정하시면 KCP PG사 가맹점 관리자 페이지에서 설정하신 무이자할부 설정이 적용됩니다.<br>사용안함으로 설정하시면 KCP PG사 무이자 이벤트 카드를 제외한 모든 카드의 무이자 설정이 적용되지 않습니다.", 50); ?>
@@ -757,7 +757,7 @@ if(!$default['de_kakaopay_cancelpwd']){
                 주문 완료 <input type="text" name="de_point_days" value="<?php echo get_sanitize_input($default['de_point_days']); ?>" id="de_point_days" class="frm_input" size="2"> 일 이후에 포인트를 지급
             </td>
         </tr>
-        <tr>
+        <tr style="display:none;">
             <th scope="row"><label for="de_pg_service">결제대행사</label></th>
             <td>
                 <input type="hidden" name="de_pg_service" id="de_pg_service" value="<?php echo $default['de_pg_service']; ?>" >
@@ -769,7 +769,7 @@ if(!$default['de_kakaopay_cancelpwd']){
                 </ul>
             </td>
         </tr>
-        <tr class="pg_info_fld kcp_info_fld" id="kcp_info_anchor">
+        <tr class="pg_info_fld kcp_info_fld" id="kcp_info_anchor" style="display:none;">
             <th scope="row">
                 <label for="de_kcp_mid">KCP SITE CODE</label><br>
                 <a href="http://sir.kr/main/service/p_pg.php" target="_blank" id="scf_kcpreg" class="kcp_btn">NHN KCP 신청하기</a>
@@ -779,14 +779,14 @@ if(!$default['de_kakaopay_cancelpwd']){
                 <span class="sitecode">SR</span> <input type="text" name="de_kcp_mid" value="<?php echo get_sanitize_input($default['de_kcp_mid']); ?>" id="de_kcp_mid" class="frm_input code_input" size="2" maxlength="3"> 영대문자, 숫자 혼용 3자리
             </td>
         </tr>
-        <tr class="pg_info_fld kcp_info_fld">
+        <tr class="pg_info_fld kcp_info_fld" style="display:none;">
             <th scope="row"><label for="de_kcp_site_key">NHN KCP SITE KEY</label></th>
             <td>
                 <?php echo help("25자리 영대소문자와 숫자 - 그리고 _ 로 이루어 집니다. SITE KEY 발급 NHN KCP 전화: 1544-8660\n예) 1Q9YRV83gz6TukH8PjH0xFf__"); ?>
                 <input type="text" name="de_kcp_site_key" value="<?php echo get_sanitize_input($default['de_kcp_site_key']); ?>" id="de_kcp_site_key" class="frm_input" size="36" maxlength="25">
             </td>
         </tr>
-        <tr class="pg_info_fld kcp_info_fld">
+        <tr class="pg_info_fld kcp_info_fld" style="display:none;">
             <th scope="row"><label for="de_kcp_easy_pays">NHN KCP 간편결제</label></th>
             <td>
                 <?php echo help("체크시 NHN KCP 간편결제들을 활성화 합니다.\nNHN_KCP > 네이버페이, 카카오페이는 테스트결제가 되지 않습니다."); ?>
@@ -795,14 +795,14 @@ if(!$default['de_kakaopay_cancelpwd']){
                 <input type="checkbox" id="de_easy_nhnkcp_kakaopay" name="de_easy_pays[]" value="nhnkcp_kakaopay" <?php if(stripos($default['de_easy_pay_services'], 'nhnkcp_kakaopay') !== false){ echo 'checked="checked"'; } ?> > <label for="de_easy_nhnkcp_kakaopay">KAKAOPAY (카카오페이)</label>
             </td>
         </tr>
-        <tr class="pg_info_fld kcp_info_fld">
+        <tr class="pg_info_fld kcp_info_fld" style="display:none;">
             <th scope="row"><label for="de_global_nhnkcp_naverpay">NHN KCP 네이버페이 사용</label></th>
             <td>
                 <?php echo help("체크시 타 PG (토스페이먼츠, KG 이니시스) 사용중일때도 NHN_KCP 를 통한 네이버페이 간편결제를 사용할수 있습니다.\n실결제시 반드시 결제대행사 NHN_KCP 항목에 KCP SITE CODE와 NHN KCP SITE KEY를 입력해야 합니다."); ?>
                 <input type="checkbox" id="de_global_nhnkcp_naverpay" name="de_easy_pays[]" value="global_nhnkcp_naverpay" <?php if(stripos($default['de_easy_pay_services'], 'global_nhnkcp_naverpay') !== false){ echo 'checked="checked"'; } ?> > <label for="de_global_nhnkcp_naverpay">NAVERPAY (네이버페이)</label><br>
             </td>
         </tr>
-        <tr class="pg_info_fld kcp_info_fld">
+        <tr class="pg_info_fld kcp_info_fld" style="display:none;">
             <th scope="row"><label for="used_nhnkcp_naverpay_point">NHN KCP 네이버페이<br>포인트결제 사용</label></th>
             <td>
                 <?php echo help("체크시 NHN_KCP 를 통한 네이버페이 결제시 네이버페이 포인트결제가 활성화 됩니다.\n체크를 했는데도 [DR02] 실결제시 가맹점 설정정보가 올바르지 않습니다 라고 메시지가 뜬다면, 체크를 해제하고 NHN_KCP 에 위에서 설정한 KCP SITE CODE 로 네이버페이 포인트 결제가 가능한지 문의해 주세요."); ?>
@@ -826,7 +826,7 @@ if(!$default['de_kakaopay_cancelpwd']){
                 <input type="text" name="cf_lg_mert_key" value="<?php echo get_sanitize_input($config['cf_lg_mert_key']); ?>" id="cf_lg_mert_key" class="frm_input " size="36" maxlength="50">
             </td>
         </tr>
-        <tr class="pg_info_fld inicis_info_fld" id="inicis_info_anchor">
+        <tr class="pg_info_fld inicis_info_fld" id="inicis_info_anchor" style="display:none;">
             <th scope="row">
                 <label for="de_inicis_mid">KG이니시스 상점아이디</label><br>
                 <a href="http://sir.kr/main/service/inicis_pg.php" target="_blank" id="scf_kgreg" class="kg_btn">KG이니시스 신청하기</a>
@@ -836,21 +836,21 @@ if(!$default['de_kakaopay_cancelpwd']){
                 <span class="sitecode">SIR</span> <input type="text" name="de_inicis_mid" value="<?php echo $default['de_inicis_mid']; ?>" id="de_inicis_mid" class="frm_input code_input" size="10" maxlength="10"> 영문소문자(숫자포함 가능)
             </td>
         </tr>
-        <tr class="pg_info_fld inicis_info_fld">
+        <tr class="pg_info_fld inicis_info_fld" style="display:none;">
             <th scope="row"><label for="de_inicis_admin_key">KG이니시스 키패스워드</label></th>
             <td>
                 <?php echo help("KG이니시스에서 발급받은 4자리 상점 키패스워드를 입력합니다.\nKG이니시스 상점관리자 패스워드와 관련이 없습니다.\n키패스워드 값을 확인하시려면 상점측에 발급된 키파일 안의 readme.txt 파일을 참조해 주십시오"); ?>
                 <input type="text" name="de_inicis_admin_key" value="<?php echo get_sanitize_input($default['de_inicis_admin_key']); ?>" id="de_inicis_admin_key" class="frm_input" size="5" maxlength="4">
             </td>
         </tr>
-        <tr class="pg_info_fld inicis_info_fld">
+        <tr class="pg_info_fld inicis_info_fld" style="display:none;">
             <th scope="row"><label for="de_inicis_sign_key">KG이니시스 웹결제 사인키</label></th>
             <td>
                 <?php echo help("KG이니시스에서 발급받은 웹결제 사인키를 입력합니다.\nKG이니시스 상점관리자 > 상점정보 > 계약정보 > 부가정보의 웹결제 signkey생성 조회 버튼 클릭, 팝업창에서 생성 버튼 클릭 후 해당 값을 입력합니다."); ?>
                 <input type="text" name="de_inicis_sign_key" value="<?php echo get_sanitize_input($default['de_inicis_sign_key']); ?>" id="de_inicis_sign_key" class="frm_input" size="40" maxlength="50">
             </td>
         </tr>
-        <tr class="pg_info_fld inicis_info_fld">
+        <tr class="pg_info_fld inicis_info_fld" style="display:none;">
             <th scope="row">
                 <label for="de_samsung_pay_use">KG이니시스 삼성페이 사용</label>
                 <a href="http://sir.kr/main/service/samsungpay.php" target="_blank" class="kg_btn">삼성페이 서비스신청하기</a>
@@ -860,7 +860,7 @@ if(!$default['de_kakaopay_cancelpwd']){
                 <input type="checkbox" name="de_samsung_pay_use" value="1" id="de_samsung_pay_use"<?php echo $default['de_samsung_pay_use']?' checked':''; ?>> <label for="de_samsung_pay_use">사용</label>
             </td>
         </tr>
-        <tr class="pg_info_fld inicis_info_fld">
+        <tr class="pg_info_fld inicis_info_fld" style="display:none;">
             <th scope="row">
                 <label for="de_inicis_lpay_use">KG이니시스 L.pay 사용</label>
             </th>
@@ -869,7 +869,7 @@ if(!$default['de_kakaopay_cancelpwd']){
                 <input type="checkbox" name="de_inicis_lpay_use" value="1" id="de_inicis_lpay_use"<?php echo $default['de_inicis_lpay_use']?' checked':''; ?>> <label for="de_inicis_lpay_use">사용</label>
             </td>
         </tr>
-        <tr class="pg_info_fld inicis_info_fld">
+        <tr class="pg_info_fld inicis_info_fld" style="display:none;">
             <th scope="row">
                 <label for="de_inicis_kakaopay_use">KG이니시스 카카오페이 사용</label>
             </th>
@@ -878,7 +878,7 @@ if(!$default['de_kakaopay_cancelpwd']){
                 <input type="checkbox" name="de_inicis_kakaopay_use" value="1" id="de_inicis_kakaopay_use"<?php echo $default['de_inicis_kakaopay_use']?' checked':''; ?>> <label for="de_inicis_kakaopay_use">사용</label>
             </td>
         </tr>
-        <tr class="pg_info_fld inicis_info_fld">
+        <tr class="pg_info_fld inicis_info_fld" style="display:none;">
             <th scope="row">
                 <label for="de_inicis_cartpoint_use">KG이니시스 신용카드 포인트 결제</label>
             </th>
@@ -887,7 +887,7 @@ if(!$default['de_kakaopay_cancelpwd']){
                 <input type="checkbox" name="de_inicis_cartpoint_use" value="1" id="de_inicis_cartpoint_use"<?php echo $default['de_inicis_cartpoint_use']?' checked':''; ?>> <label for="de_inicis_cartpoint_use">사용</label>
             </td>
         </tr>
-        <tr class="kakao_info_fld">
+        <tr class="kakao_info_fld" style="display:none;">
             <th scope="row">
                 <label for="de_kakaopay_mid">카카오페이 상점아이디<br>( KG이니시스 )</label>
                 <a href="http://sir.kr/main/service/kakaopay.php?kk=yc5" target="_blank" class="kakao_btn">카카오페이 서비스신청하기</a>
@@ -897,21 +897,21 @@ if(!$default['de_kakaopay_cancelpwd']){
                 <span class="sitecode">SIRK</span> <input type="text" name="de_kakaopay_mid" value="<?php echo get_sanitize_input($default['de_kakaopay_mid']); ?>" id="de_kakaopay_mid" class="frm_input code_input" size="10" maxlength="7">
             </td>
         </tr>
-        <tr class="kakao_info_fld">
+        <tr class="kakao_info_fld" style="display:none;">
             <th scope="row"><label for="de_kakaopay_key">카카오페이 상점키<br>( KG이니시스 )</label></th>
             <td>
                 <?php echo help("SIRK****** 아이디로 KG이니시스에서 발급받은 웹결제 사인키를 입력합니다.\nKG이니시스 상점관리자 > 상점정보 > 계약정보 > 부가정보의 웹결제 signkey생성 조회 버튼 클릭, 팝업창에서 생성 버튼 클릭 후 해당 값을 입력합니다."); ?>
                 <input type="text" name="de_kakaopay_key" value="<?php echo get_sanitize_input($default['de_kakaopay_key']); ?>" id="de_kakaopay_key" class="frm_input" size="100">
             </td>
         </tr>
-        <tr class="kakao_info_fld">
+        <tr class="kakao_info_fld" style="display:none;">
             <th scope="row"><label for="de_kakaopay_cancelpwd">카카오페이 키패스워드<br>( KG이니시스 )</label></th>
             <td>
                 <?php echo help("SIRK****** 아이디로 KG이니시스에서 발급받은 4자리 상점 키패스워드를 입력합니다.\nKG이니시스 상점관리자 패스워드와 관련이 없습니다.\n키패스워드 값을 확인하시려면 상점측에 발급된 키파일 안의 readme.txt 파일을 참조해 주십시오"); ?>
                 <input type="text" name="de_kakaopay_cancelpwd" value="<?php echo get_sanitize_input($default['de_kakaopay_cancelpwd']); ?>" id="de_kakaopay_cancelpwd" class="frm_input" size="20">
             </td>
         </tr>
-        <tr class="kakao_info_fld">
+        <tr class="kakao_info_fld" style="display:none;">
             <th scope="row">
                 <label for="de_kakaopay_enckey">카카오페이 사용</label>
             </th>
