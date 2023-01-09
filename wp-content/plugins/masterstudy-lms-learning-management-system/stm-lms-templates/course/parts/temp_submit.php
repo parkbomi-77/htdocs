@@ -14,10 +14,11 @@ $price = 1000;
 global $wpdb;
 
 //중복찾기 
-$results = $wpdb->get_results($wpdb->prepare("SELECT * from wp_wish_list where user_id =".$user_id." and item_id='".$item_id."'"));
+$sql = "SELECT * from wp_wish_list where user_id =".$user_id." and item_id='".$item_id."'";
+$results = $wpdb->get_results($wpdb->prepare($sql));
 var_dump($results);
 if($results){ // 중복이 있으면 ?????? 
-    echo "<script>alert('이미 장바구니에 담겨있는 상품입니다');</script>";
+    echo '<script>alert("이미 장바구니에 담겨있는 상품입니다 \n 메뉴탭 -> 장바구니 -> 이웃 쇼핑몰 장바구니에서 확인해주세요 !");</script>';
 }else { // 없으면
     $wpdb->insert(
         'wp_wish_list', 
@@ -29,7 +30,7 @@ if($results){ // 중복이 있으면 ??????
             'price' => $price,
         )
         );
-        echo "<script>alert('장바구니에 담았습니다!');</script>";
+        echo '<script>alert("상품을 장바구니에 담았습니다 \n 메뉴탭 -> 장바구니 -> 이웃 쇼핑몰 장바구니에서 확인해주세요 !");</script>';
 }
 
 

@@ -145,7 +145,8 @@
                         $product = new $classname($productname[0]->product_code);
                     ?>
                     <div id= <?php echo $results[$i]->play_idx ?> style="display:none"> 
-                        <form id="wishform" method='POST' target="iframe1">
+                        <form id="wishform" method='POST' target="iframe1"
+                        action='/wp-content/plugins/masterstudy-lms-learning-management-system/stm-lms-templates/course/parts/temp_vetsubmit.php'>
                             <iframe id="iframe1" name="iframe1" style="display:none"></iframe>
                             <div class="box-flex">
                                 <div class="box-name">
@@ -162,15 +163,15 @@
                                     </div>
                                 </div>
                                 <div class="box-cart">
-                                    <input type="hidden" name="user_id" value="<?php echo $current_user->ID ?>">
-                                    <input type="hidden" name="item_id" value="<?php echo $results[$i]->product_list_id ?>">
+                                    <!-- <input type="hidden" name="user_id" value="<?php echo $current_user->ID ?>">
+                                    <input type="hidden" name="item_id" value="<?php echo $results[$i]->product_list_id ?>"> -->
                                     <input type="hidden" name="product_code" value="<?php echo $productname[0]->product_code ?>">
                                     <!-- 쇼핑몰로 바로가기 -->
                                     <button type="submit" formaction="/page-shop.php">바로가기</button> 
                                     
                                     <!-- 장바구니 담기 -->
-                                    <div class="vetcart" onclick="vetcartmodal()">
-                                        <?php do_action( 'woocommerce_' . $product->get_type() . '_add_to_cart' ); ?>
+                                    <div class="vetcart">
+                                        <button type='submit'>장바구니</button>
                                     </div>
 
                                     <!-- <button onclick="vetsubmit()"><i class="fa-solid fa-cart-shopping"></i></button> -->
