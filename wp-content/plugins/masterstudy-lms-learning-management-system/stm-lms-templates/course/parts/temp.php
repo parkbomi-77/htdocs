@@ -62,15 +62,23 @@
             align-items: center;
             width: 100%;
         }
+        .box-name{
+            display:flex;
+        }
+        .box-shop{
+            line-height:25px;
+            font-size:smaller;
+        }
         .box-name .box-title{
             line-height: 22px;
             font-size: initial;
         }
         .box-time{
-            font-size: 13px;
+            font-size: inherit;
             color: #8e8e8e;
-            line-height: 14px;
-            margin-top: 5px;
+            line-height: 25px;
+            margin-left: 11px;
+            margin-top:22px
         }
         .box-cart{
             /* display: flex; */
@@ -128,7 +136,9 @@
         if($results){
             $num = count($results);
             for($i=0; $i<$num; $i++){ 
-                $productname = $wpdb->get_results($wpdb->prepare("SELECT * from wp_product_list where ID =".$results[$i]->product_list_id));
+                $productname = $wpdb->get_results($wpdb->prepare("SELECT a.*, b.name from wp_product_list as a
+                                                                join wp_shoppingmall as b
+                                                                on a.mall_code = b.code where ID =".$results[$i]->product_list_id));
                 if($productname[0]->mall_code === "1029"){ // 벳스쿨 제품일경우 벳스쿨 장바구니로 ?>
                     <?php      
                         $classname = "WC_Product_Simple";
@@ -139,8 +149,13 @@
                             <iframe id="iframe1" name="iframe1" style="display:none"></iframe>
                             <div class="box-flex">
                                 <div class="box-name">
-                                    <div class="box-title">
-                                        <?php echo $productname[0]->product_name ?> 
+                                    <div>
+                                        <div class="box-shop" style="color: #d6ba4a;">
+                                            <?php echo $productname[0]->name ?> 
+                                        </div>
+                                        <div class="box-title">
+                                            <?php echo $productname[0]->product_name ?> 
+                                        </div>
                                     </div>
                                     <div class="box-time"> 
                                         time
@@ -172,8 +187,18 @@
                     action='/wp-content/plugins/masterstudy-lms-learning-management-system/stm-lms-templates/course/parts/temp_submit.php'>
                         <iframe id="iframe1" name="iframe1" style="display:none"></iframe>
                         <div class="box-flex">
-                            <div>
-                                <?php echo $productname[0]->product_name ?> 
+                            <div class="box-name">
+                                <div>
+                                    <div class="box-shop" style="color: cadetblue;">
+                                        <?php echo $productname[0]->name ?> 
+                                    </div>
+                                    <div class="box-title">
+                                        <?php echo $productname[0]->product_name ?> 
+                                    </div>
+                                </div>
+                                <div class="box-time"> 
+                                    time
+                                </div>
                             </div>
                             <div class="box-cart">
                                 <!-- 유저 아이디, 상품명 디비로 전달 -->
