@@ -6,10 +6,9 @@ require_once( $_SERVER['DOCUMENT_ROOT'].'/wp-load.php' );
 $user_id = $_POST['user_id'];
 $item_id = $_POST['item_id'];
 $product_name = $_POST['product_name'];
+$course_id = $_POST['course_name'];
+$lessons_id = $_POST['lessons_name'];
 
-//수량,가격 일단 하드코딩
-$quantity = 1;
-$price = 1000;
 
 global $wpdb;
 
@@ -18,7 +17,7 @@ $sql = "SELECT * from wp_wish_list where user_id =".$user_id." and item_id='".$i
 $results = $wpdb->get_results($wpdb->prepare($sql));
 var_dump($results);
 if($results){ // 중복이 있으면 ?????? 
-    echo '<script>alert("이미 장바구니에 담겨있는 상품입니다 \n 메뉴탭 -> 장바구니 -> 이웃 쇼핑몰 장바구니에서 확인해주세요 !");</script>';
+    echo '<script>alert("이미 장바구니에 담겨있는 상품입니다 \n 메뉴탭 -> 장바구니 -> 제휴 쇼핑몰 장바구니에서 확인해주세요 !");</script>';
 }else { // 없으면
     $wpdb->insert(
         'wp_wish_list', 
@@ -26,11 +25,11 @@ if($results){ // 중복이 있으면 ??????
             'user_id' => $user_id,
             'item_id' => $item_id,
             'product_name' => $product_name,
-            'quantity' => $quantity,
-            'price' => $price,
+            'course_id' => $course_id,
+            'lessons_id' => $lessons_id,
         )
         );
-        echo '<script>alert("상품을 장바구니에 담았습니다 \n 메뉴탭 -> 장바구니 -> 이웃 쇼핑몰 장바구니에서 확인해주세요 !");</script>';
+        echo '<script>alert("상품을 장바구니에 담았습니다 \n 메뉴탭 -> 장바구니 -> 제휴 쇼핑몰 장바구니에서 확인해주세요 !");</script>';
 }
 
 

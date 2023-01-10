@@ -163,8 +163,8 @@
                                     </div>
                                 </div>
                                 <div class="box-cart">
-                                    <!-- <input type="hidden" name="user_id" value="<?php echo $current_user->ID ?>">
-                                    <input type="hidden" name="item_id" value="<?php echo $results[$i]->product_list_id ?>"> -->
+                                    <input type="hidden" name="user_id" value="<?php echo $current_user->ID ?>">
+                                    <input type="hidden" name="item_id" value="<?php echo $results[$i]->product_list_id ?>">
                                     <input type="hidden" name="product_code" value="<?php echo $productname[0]->product_code ?>">
                                     <!-- 쇼핑몰로 바로가기 -->
                                     <button type="submit" formaction="/page-shop.php">바로가기</button> 
@@ -206,6 +206,9 @@
                                 <input type="hidden" name="user_id" value="<?php echo $current_user->ID ?>">
                                 <input type="hidden" name="item_id" value="<?php echo $results[$i]->product_list_id ?>">
                                 <input type="hidden" name="product_name" value="<?php echo $productname[0]->product_name ?>">
+                                <input type="hidden" name="course_name" value="<?php echo $course->ID; ?>">
+                                <input type="hidden" name="lessons_name" value="<?php echo $post->ID; ?>">
+
                                 <!-- 쇼핑몰로 바로가기 -->
                                 <button type="submit" formaction="/page-shop.php">바로가기</button> 
                                 <!-- 장바구니 담기 -->

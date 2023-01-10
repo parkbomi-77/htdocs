@@ -1,9 +1,17 @@
 <style>
     .wish_table_head{
         background-color: rgb(177, 182, 180);
+        line-height: 26px;
     }
     .wish_table_body{
         text-align: center;
+    }
+    .wish_table_body tr{
+        line-height: 28px;
+    }
+    .wish_table_trash_item span{
+        color: #838282;
+        font-size: medium;
     }
     .wish_table_trash{
         border: 0;
@@ -23,17 +31,24 @@ get_header(); ?>
         <?php global $wpdb, $post;
             if($post->ID === 10656){
                 // 일단 유저 id 3으로 하드코딩 
-                $sql = "SELECT t.*
+                $sql = "SELECT t.*, m.name
                         FROM wp_wish_list as t
                         join wp_product_list as l
                         on t.item_id = l.ID
-                        where t.user_id = 3
+                        join wp_shoppingmall as m
+                        on l.mall_code = m.code
+                        where t.user_id = {$current_user->ID}
                         and l.adv_state = 1";
                 $results = $wpdb->get_results($wpdb->prepare($sql));
                 $num = count($results);
 
+
+
                 $tr = "";
                 for($i = 0; $i<$num; $i++){
+                    $course_name = $wpdb->get_var($wpdb->prepare("SELECT post_title FROM wp_posts where ID =".$results[$i]->course_id));
+                    $lessons_name = $wpdb->get_var($wpdb->prepare("SELECT post_title FROM wp_posts where ID =".$results[$i]->lessons_id));
+
                     $tr = $tr.
                     "
                     <form name='wishlist' method='POST'>
@@ -41,7 +56,8 @@ get_header(); ?>
                             <input type='hidden' name='user_id' value='".$results[$i]->user_id ."'>
                             <input type='hidden' name='item_id' value='".$results[$i]->item_id ."'>
                             <td>".($i+1)."</td>
-                            <td class='wish_table_trash_item'>".$results[$i]->product_name."</td>
+                            <td class='wish_table_trash_item'>".$results[$i]->name."</td>
+                            <td class='wish_table_trash_item'>{$results[$i]->product_name} <br> <span>{$course_name} - {$lessons_name}</span></td>
                             <td><button class='wish_table_trash' type='submit' onclick='trash(this)' formaction='../page-delete.php'><i class='fa-solid fa-trash'></i></button></td>
                             <td><button class='wish_table_trash' type='submit' formaction='../page-shop.php'><i class='fa-solid fa-shop'></i></button></td>
                         </tr>
@@ -52,7 +68,8 @@ get_header(); ?>
                 echo "<table>
                         <colgroup>
                         <col style='width:50px'>
-                        <col style='width:65%'>
+                        <col style='width:20%'>
+                        <col style='width:45%'>
                         <col style='width:80px'>
                         <col style='width:80px'>
                         </colgroup>
@@ -62,13 +79,16 @@ get_header(); ?>
                                 no.
                             </th>
                             <th scope='col'>
-                                제품명
+                                Shpping mall name
+                            </th>
+                            <th scope='col'>
+                                Product name
                             </th>
                             <th scope='col';>
-                            삭제
+                                delete
                             </th>
                             <th scope='col';>
-                            이동
+                                link
                             </th>
                         </tr>
                         </thead>
