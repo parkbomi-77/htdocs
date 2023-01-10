@@ -9,14 +9,15 @@
     .wish_table_body tr{
         line-height: 28px;
     }
-    .wish_table_trash_item span{
+    .wish_table_item span{
         color: #838282;
         font-size: medium;
     }
-    .wish_table_trash{
+    .wish_table_trash, .wish_table_link{
         border: 0;
         background-color: white;
     }
+
 </style>
 
 <?php
@@ -51,15 +52,15 @@ get_header(); ?>
 
                     $tr = $tr.
                     "
-                    <form name='wishlist' method='POST'>
+                    <form name='wishlist' method='POST' onsubmit='return true'>
                         <tr>
                             <input type='hidden' name='user_id' value='".$results[$i]->user_id ."'>
                             <input type='hidden' name='item_id' value='".$results[$i]->item_id ."'>
                             <td>".($i+1)."</td>
-                            <td class='wish_table_trash_item'>".$results[$i]->name."</td>
-                            <td class='wish_table_trash_item'>{$results[$i]->product_name} <br> <span>{$course_name} - {$lessons_name}</span></td>
-                            <td><button class='wish_table_trash' type='submit' onclick='trash(this)' formaction='../page-delete.php'><i class='fa-solid fa-trash'></i></button></td>
-                            <td><button class='wish_table_trash' type='submit' formaction='../page-shop.php'><i class='fa-solid fa-shop'></i></button></td>
+                            <td class='wish_table_item'>".$results[$i]->name."</td>
+                            <td class='wish_table_item'>{$results[$i]->product_name} <br> <span>{$course_name} - {$lessons_name}</span></td>
+                            <td><button class='wish_table_trash' type='submit' formaction='../page-delete.php'><i class='fa-solid fa-trash'></i></button></td>
+                            <td><button class='wish_table_link' type='submit' formaction='../page-shop.php'><i class='fa-solid fa-shop'></i></button></td>
                         </tr>
                     </form>
                     ";
@@ -67,11 +68,11 @@ get_header(); ?>
 
                 echo "<table>
                         <colgroup>
-                        <col style='width:50px'>
+                        <col style='width:60px'>
                         <col style='width:20%'>
                         <col style='width:45%'>
-                        <col style='width:80px'>
-                        <col style='width:80px'>
+                        <col style='width:60px'>
+                        <col style='width:60px'>
                         </colgroup>
                         <thead class='wish_table_head'>
                         <tr>
@@ -131,12 +132,15 @@ get_header(); ?>
 
 
 <script>
-    function trash (e) {
-        // 테이블 바디에서 해당 행 삭제
-        let playboxList = document.querySelector('.wish_table_body');
-        playboxList.removeChild(e.parentNode);
+    let trashbutton = document.getElementsByClassName('wish_table_trash');
+    for(let i=0; i<trashbutton.length; i++){
+        trashbutton[i].addEventListener('click',function(event){
+            if(confirm('삭제하시겠습니까?')){
+                return;
+            }
+            event.preventDefault();
+        })
     }
-
 
 </script>
 
