@@ -2,7 +2,8 @@
 include_once('./_common.php');
 include_once(G5_LIB_PATH.'/iteminfo.lib.php');
 
-if($member['mb_level'] == 1) {
+// 벳스쿨 유입이 아닌 비회원이 상세페이지 눌렀을 경우 
+if($member['mb_level'] == 1 && (!$_GET['vc'])) {
     echo "<script>alert('회원가입 후 이용가능한 서비스입니다.')</script>";
     $prevPage = $_SERVER['HTTP_REFERER'];
     // header('location:'.$prevPage);
