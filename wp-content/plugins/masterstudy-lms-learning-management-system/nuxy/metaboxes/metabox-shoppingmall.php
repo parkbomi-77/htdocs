@@ -50,11 +50,19 @@
     $year = substr($today,0,4);
     $month = substr($today,4,2);
 
+
+    // 상품 중분류 테이블 db 
+    $categorydb = $wpdb->get_results($wpdb->prepare("SELECT * from wp_product_category"));
+    $categoryoption ="";
+    for($i=0; $i<count($categorydb); $i++){
+        $categoryoption = $categoryoption.'<option value="">'.$categorydb[$i]->category.'</option>';
+    }
+
 ?>
 
 
 <div class="shoppingmall-container">
-    <div class="shoppingmall-title">
+    <div class="container-title">
         <h3> shopping mall list </h3>
     </div>
     <div class="shoppingmall-box">
@@ -139,6 +147,20 @@
     </div>
 </div>
 
+<div class="category-container">
+    <div class="container-title">
+        <h3> category </h3>
+    </div>
+    <div class="category-box">
+        <div>
+            <span>Middle category of products</span>
+            <select name="" id="">
+                <?php echo $categoryoption ?>
+            </select>
+        </div>
+    </div>
+
+</div>
 
 <script src="//code.jquery.com/jquery.min.js"></script>
 <!-- <script src="/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/test.js" defer></script> -->

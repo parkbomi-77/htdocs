@@ -372,24 +372,24 @@
 }
 
 /* shppingmall 페이지 */
-.shoppingmall-container{
+.shoppingmall-container {
     width: 100%;
     background-color: rgb(255, 255, 255);
-    padding: 20px 20px 80px;
+    padding: 0px 20px;
     border-radius: 10px;
     font-size: 13px;
     font-weight: 600;
     margin: 0 0 10px;
-    min-height: 595px;
 }
-/* .shoppingmall-title{
-    margin-bottom: 33px;
-} */
-.shoppingmall-title h3{
+
+.container-title h3{
     line-height: 4.5rem;
     margin: 0;
     color: #a2aab1;
     border-bottom: 1px solid #babfc2;
+}
+.shoppingmall-box{
+    margin-bottom: 80px;
 }
 .shoppingmalltable {
     width: 100%;
@@ -448,7 +448,6 @@ tbody .shoppingmall-row2{
     border-radius: 5px;
     color: #f6faf2;
     right: 21px;
-    bottom: 66px;
     font-size: 15px;
     margin-top: 8px;
     box-shadow: 0 2px 5px rgb(43 42 42 / 30%);
@@ -560,17 +559,7 @@ tbody .shoppingmall-row2{
     font-size: small;
     margin-left: 3px;
   }
-/* .shoppingmall-box {
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    white-space: nowrap;
-} */
 .shoppingmall-box2 {
-    /* width: 70%;
-    position: relative;
-    bottom: 48px;
-    left: 16%; */
     position: absolute;
     top: 150px;
     left: 200px;
@@ -748,6 +737,34 @@ tbody .shoppingmall-row2{
     margin-top: 200px;
     text-align: center;
 }
+
+/* category */
+.category-container{
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    padding: 0px 20px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0 0 10px;
+}
+.category-box{
+    padding: 15px;
+}
+.category-box div{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+.category-box span{
+    font-size: initial;
+}
+.category-box select{
+    width: 100%;
+}
+
+
 
 /* margin setting page */
 .margin-container{
