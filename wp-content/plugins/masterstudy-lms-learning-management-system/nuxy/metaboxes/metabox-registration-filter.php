@@ -3,10 +3,12 @@ require_once( $_SERVER['DOCUMENT_ROOT'].'/wp-load.php' );
 
 $code = $_POST['code'];
 
-$allsql = "select wp_product_list.*, wp_shoppingmall.name 
+$allsql = "select wp_product_list.*, wp_shoppingmall.name, wp_product_category.category
 from wp_product_list
 join wp_shoppingmall
 on wp_product_list.mall_code = wp_shoppingmall.code
+join wp_product_category
+on wp_product_list.ca_code = wp_product_category.ca_code
 where adv_state = 1";
 
 function productlist($sql) {
@@ -23,11 +25,18 @@ function printrow($results) {
                 <input type="hidden" name="registrationNum[]" value="'.($i+1).'">
                 <input type="hidden" name="registrationID[]" value="'.$results[$i]->ID.'">
                 <input type="hidden" name="shoppingMallList[]" value="'.$results[$i]->mall_code.'">
+                <input type="hidden" name="registrationcategory[]" value="'.$results[$i]->category.'">
                 <input type="hidden" name="registrationname[]" value="'.$results[$i]->product_name.'">
                 <input type="hidden" name="registrationlink[]" value="'.$results[$i]->product_code.'">
     
                 <div class="registration-mall" id="registration-mall2">
                     <input type="text" name="shoppingMallList[]" value="'.$results[$i]->name.'" disabled>
+                </div>
+                <div class="registration-category">
+                    <select name="registrationcategory[]" disabled>
+                        <option value="'.$results[$i]->ca_code.'" selected>'.$results[$i]->category.'</option>
+                        '.$cate_option.'
+                    </select>
                 </div>
                 <div class="registration-name" id="registration-name2">
                     <input type="text" name="registrationname[]" value="'.$results[$i]->product_name.'" disabled>

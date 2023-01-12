@@ -71,10 +71,12 @@
     width: 100%;
 }
 .registration-mall{
-    width: 180px;
+    width: 175px;
+    margin-right: 4px;
 }
 .registration-mall input{
     text-align: center;
+    width: 100%;
 }
 .registration-mall select{
     width: 100%;
@@ -84,12 +86,24 @@
 .registration-mall2{
     width: 25%;
 }
+.registration-category{
+    width: 130px;
+}
+.registration-category select{
+    width: 100%;
+    text-align: center;
+    padding: inherit;
+}
+
 #registration-name2{
-    width: 383px;
-    margin: 0 3px;
+    width: 300px;
+    margin: 0 4px;
 }
 .registration-name {
     width: 40%;
+}
+.registration-name input {
+    text-align: center;
 }
 .registration-link button {
     width: 180px;
@@ -104,7 +118,7 @@
     padding: 10px;
 }
 .registration-link{
-    width: 21%;
+    width: 133px;
     display: flex;
 }
 .possible{
@@ -124,16 +138,17 @@
 #registration-link2 input{
     width: 100%;
     height: 40px;
-    padding: 10px
+    padding: 10px;
+    text-align: center;
 }
 .registration-check{
     position: absolute;
-    right: -1px;
+    right: 0px;
     width: 77px;
 }
 .registration-check .edit{
     width: 74px;
-    height: 34px;
+    height: 38px;
     border-radius: 5px;
     border: none;
     background-color: #595757f5;
@@ -249,15 +264,19 @@
     width: 3%;
 }
 .registration-title-mall{
-    width: 181px;
+    width: 175px;
+    text-align: center;
+}
+.registration-title-category{
+    width: 130px;
     text-align: center;
 }
 .registration-title-name{
-    width: 382px;
+    width: 300px;
     text-align: center;
 }
 .registration-title-link{
-    width: 175px;
+    width: 130px;
     text-align: center;    
     margin-right: 7px;
 }
@@ -588,8 +607,12 @@ tbody .shoppingmall-row2{
     text-align: center;
     line-height: 40px;
 }
-.shoppingmall-box2-name{
+.shoppingmall-box2-name {
     width: 100%;
+}
+.shoppingmall-box2-category{
+    width: 100%;
+    margin: 16px 0;
 }
 .shoppingmall-box2-link{
     width: 100%;
@@ -612,6 +635,10 @@ tbody .shoppingmall-row2{
 }
 .shoppingmall-box2-link input{
     width: 100%;
+}
+.shoppingmall-box2-category select{
+    width: 100%;
+    max-width: 26rem;
 }
 .shoppingmall-box2-name select{
     width: 100%;

@@ -4,12 +4,21 @@
     $mallResults[0]->code;
     $mallResults[0]->name;
 
-
     $now_year = date('Y-m');
 
+    $category = $wpdb->get_results($wpdb->prepare("SELECT * from wp_product_category"));
+
+
+// 쇼핑몰명 option
 $option = '';
 for($i=0; $i<count($mallResults); $i++){
     $option = $option."<option value='{$mallResults[$i]->code}'>{$mallResults[$i]->name}</option>";
+}
+
+// 상품 중분류 option 
+$cate_option = '';
+for($i=0; $i<count($category); $i++){
+    $cate_option = $cate_option."<option value='{$category[$i]->ca_code}'>{$category[$i]->category}</option>";
 }
 ?>
 
@@ -23,11 +32,13 @@ for($i=0; $i<count($mallResults); $i++){
             return $wpdb->get_results($wpdb->prepare($sql));
         }
         // 등록한 제품 , 쇼핑몰 이름 join하여 list 불러오기 
-        $allsql = "select wp_product_list.*, wp_shoppingmall.name 
-                from wp_product_list
-                join wp_shoppingmall
-                on wp_product_list.mall_code = wp_shoppingmall.code
-                where adv_state = 1";
+        $allsql = "select wp_product_list.*, wp_shoppingmall.name, wp_product_category.category
+                    from wp_product_list
+                    join wp_shoppingmall
+                    on wp_product_list.mall_code = wp_shoppingmall.code
+                    join wp_product_category
+                    on wp_product_list.ca_code = wp_product_category.ca_code
+                    where adv_state = 1";
         $results = productlist($allsql);
 
         // 등록한 상품이 있는지 체크 
@@ -62,7 +73,7 @@ for($i=0; $i<count($mallResults); $i++){
         <!-- 등록한 상품들 조회 -->
         <?php } else { 
             
-            function productlist_filter ($num, $results) {
+            function productlist_filter ($num, $results, $cate_option) {
                 $all_registration = '';
                 for($i = 0; $i < $num; $i++){
                     $one_registration = ' 
@@ -72,11 +83,18 @@ for($i=0; $i<count($mallResults); $i++){
                             <input type="hidden" name="registrationNum[]" value="'.($i+1).'">
                             <input type="hidden" name="registrationID[]" value="'.$results[$i]->ID.'">
                             <input type="hidden" name="shoppingMallList[]" value="'.$results[$i]->mall_code.'">
+                            <input type="hidden" name="registrationcategory[]" value="'.$results[$i]->category.'">
                             <input type="hidden" name="registrationname[]" value="'.$results[$i]->product_name.'">
                             <input type="hidden" name="registrationlink[]" value="'.$results[$i]->product_code.'">
 
                             <div class="registration-mall" id="registration-mall2">
                                 <input type="text" name="shoppingMallList[]" value="'.$results[$i]->name.'" disabled>
+                            </div>
+                            <div class="registration-category">
+                                <select name="registrationcategory[]" disabled>
+                                    <option value="'.$results[$i]->ca_code.'" selected>'.$results[$i]->category.'</option>
+                                    '.$cate_option.'
+                                </select>
                             </div>
                             <div class="registration-name" id="registration-name2">
                                 <input type="text" name="registrationname[]" value="'.$results[$i]->product_name.'" disabled>
@@ -111,11 +129,12 @@ for($i=0; $i<count($mallResults); $i++){
                         </div>
                         <div class="registration-title">
                             <div class="registration-title-mall"> shoppingmall_name </div>
+                            <div class="registration-title-category"> category </div>
                             <div class="registration-title-name"> product_name </div>
                             <div class="registration-title-link"> product_code </div>
                         </div>
                         <div class="registration-list">
-                            '.productlist_filter($num, $results).'
+                            '.productlist_filter($num, $results, $cate_option).'
                         </div>
                         <div class="registration-add" onclick="create_registration_Tag()">
                             <div>+</div>
@@ -149,6 +168,13 @@ for($i=0; $i<count($mallResults); $i++){
                         <?php echo $option ?>
                     </select>
                 </div>
+                <div class="shoppingmall-box2-category">
+                    중분류 : 
+                    <select name="productCategory" class="editformmallcode" required>
+                        <option value="">중분류를 선택해주세요</option>
+                        <?php echo $cate_option ?>
+                    </select>
+                </div>
                 <div class="shoppingmall-box2-link">
                     상품명 : 
                     <input type="text" name="registrationname" id="editformmallname" onchange="overlapchange(this)" required>
@@ -169,17 +195,8 @@ for($i=0; $i<count($mallResults); $i++){
     </form>
 </div>
 
-
-
-
-
-
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
-
-
-
-
     // 등록할때 중복검사 
     function overlapchange(data) {
 
@@ -210,7 +227,6 @@ for($i=0; $i<count($mallResults); $i++){
             complete: function(jqXHR) {} // 요청의 실패, 성공과 상관 없이 완료 될 경우 호출
         });
     }
-
     // 신규 추가버튼 누르면 모달창 띄우기 
     function create_registration_Tag(){
         let new_registration = document.querySelector('.new_registration');
@@ -246,6 +262,8 @@ for($i=0; $i<count($mallResults); $i++){
         // 새로들어온 제품 이름 값 얻기 
         let list = document.querySelector(".registration-list")
         let row = list.children[num]
+        let categoryinput = row.querySelector(".registration-category").children;
+        let newcategory = categoryinput[0].value;
         let nameinput = row.querySelector(".registration-name").children;
         let newname = nameinput[0].value;
 
@@ -254,6 +272,7 @@ for($i=0; $i<count($mallResults); $i++){
             type: 'POST',
             data: { 
                 saveid : id,
+                savecategory : newcategory,
                 savename : newname,
             },
             dataType: 'text',
@@ -262,6 +281,7 @@ for($i=0; $i<count($mallResults); $i++){
                     alert("중복된 상품명입니다. 다시 입력해주세요.")
 
                 } else { // 중복이 아닐 경우 
+                    categoryinput[0].disabled = true;
                     nameinput[0].disabled = true;
                     let btn = row.querySelector(".registration-check").children;
                     btn[0].classList.remove('none')
@@ -315,6 +335,8 @@ for($i=0; $i<count($mallResults); $i++){
         // 상품이름 수정할수있도록 input 비활성화 풀기 
         let list = document.querySelector(".registration-list")
         let row = list.children[num]
+        let categoryinput = row.querySelector(".registration-category").children;
+        categoryinput[0].disabled = false;
         let nameinput = row.querySelector(".registration-name").children;
         nameinput[0].disabled = false;
 
@@ -330,9 +352,13 @@ for($i=0; $i<count($mallResults); $i++){
         // 상품이름 입력란 비활성화로 돌리기 
         let list = document.querySelector(".registration-list")
         let row = list.children[num]
+        let categoryinput = row.querySelector(".registration-category").children;
+        let before = categoryinput[0].options[0].value
+        categoryinput[0].value = before;
+        categoryinput[0].disabled = true;
         let nameinput = row.querySelector(".registration-name").children;
-        let before = nameinput[0].defaultValue;
-        nameinput[0].value = before;
+        let before2 = nameinput[0].defaultValue;
+        nameinput[0].value = before2;
         nameinput[0].disabled = true;
 
         let btn = row.querySelector(".registration-check").children;

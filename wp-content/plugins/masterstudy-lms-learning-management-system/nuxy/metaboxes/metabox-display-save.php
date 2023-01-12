@@ -5,33 +5,45 @@
     global $wpdb;
 
     $registrationmall = $_POST['shoppingMallList']; // 쇼핑몰 코드
+    $registrationcategory = $_POST['productCategory']; // 상품 중분류 코드
     $registrationname = $_POST['registrationname']; // 상품명
     $registrationlink = $_POST['registrationlink']; // 상품 코드
 
 
     // 개별수정사항 저장
     $saveid = $_POST['saveid'];
+    $savecategory = $_POST['savecategory'];
     $savename = $_POST['savename'];
 
     if($saveid){
-        // 디비에서 활성화되어있는 것중에 이름중복있는지 체크
-        $overlap = $wpdb->get_results($wpdb->prepare("SELECT * from wp_product_list where product_name ='".$savename."' and adv_state = 1"));
-        
-       // 중복 있으면 팅겨내기
-        if($overlap){
-            echo "중복";
+        // 디비에서 아이디에 해당하는 이름이 같으면 중복검사할 필요없음 
+        // 이름이 다르면 null, 중복검사 후 저장
+        $change = $wpdb->get_row($wpdb->prepare("SELECT * FROM wp_product_list where ID =".$saveid." and product_name ='".$savename."'"));
+
+        if(!$change){ // 이름이 변경되었으면 
+            // 디비에서 활성화되어있는 것중에 이름중복있는지 체크
+            $overlap = $wpdb->get_results($wpdb->prepare("SELECT * from wp_product_list where product_name ='".$savename."' and adv_state = 1"));
             
-        }else { // 중복없으면 업데이트
-            $wpdb->get_results($wpdb->prepare("UPDATE wp_product_list SET product_name = '".$savename."' WHERE ID =".$saveid));
+            // 중복 있으면 팅겨내기
+            if($overlap){
+                echo "중복";
+            }else {
+                $wpdb->get_results($wpdb->prepare("UPDATE wp_product_list SET product_name = '".$savename."', ca_code = '".$savecategory."' WHERE ID =".$saveid));
+                echo "등록";
+            }
+        }else {
+            // 이름이 변경되지않았거나, 바꾼 이름이 중복되지않았을 경우 저장 
+            $wpdb->get_results($wpdb->prepare("UPDATE wp_product_list SET product_name = '".$savename."', ca_code = '".$savecategory."' WHERE ID =".$saveid));
             echo "등록";
         }
+        
     // 신규등록 저장 
     // 쇼핑몰코드, 상품이름, 상품아이디 
-    } else if($registrationmall && $registrationname && $registrationlink) {
+    } else if($registrationmall && $registrationcategory && $registrationname && $registrationlink) {
         global $wpdb;
         // 벳스쿨 상품 테이블디비에 저장하는 sql
-        $sql = "INSERT INTO wp_product_list (`product_name`, `product_code`, `mall_code`, `adv_state`) 
-            VALUES ('{$registrationname}', '{$registrationlink}', '{$registrationmall}',1)";
+        $sql = "INSERT INTO wp_product_list (`product_name`, `product_code`, `mall_code`, `ca_code`, `adv_state`) 
+            VALUES ('{$registrationname}', '{$registrationlink}', '{$registrationmall}', '{$registrationcategory}',1)";
         $wpdb->get_results($wpdb->prepare($sql));
     
         if($registrationmall !== 1029){ // 벳스쿨 쇼핑몰 아닌 타 쇼피몰일 경우에만 광고 업데이트 api 보내기 
