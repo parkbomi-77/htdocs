@@ -10,43 +10,53 @@
 }
 .playbox{
     max-width: 900px;
+    margin-left: 13px;
     display: flex;
-    align-items : center;
+    border-bottom: 1px solid white;
 }
 .playbox-num{
     text-align: center;
     width: 21px;
+    line-height: 30px;
 }
 .playbox>div{
     margin: 0 1px;
 }
 .playbox-time {
-    width: 20%;
+    width: 15%;
 }
 .playbox-time input{
     width: 100%;
+    text-align: center;
 }
 .playbox-mall{
-    width: 30%;
-    background-color: #d2d2d3;
-    line-height: 1.8rem;
+    width: 25%;
     border-bottom: 1px solid #ffffff;
-    border-radius: 3px;
-    text-align: center;
-    font-weight: 700;
-    color: #8e8c8c;
+
 }
 .playbox-mall select{
     width: 100%;
+    text-align: center;
 }
+.playbox-category{
+    width:15%;
+}
+.playbox-category select{
+    width: 100%;
+    text-align: center;
+}
+
 .playbox-name {
-    width: 44.5%;
+    width: 45%;
 }
 .playbox-name select{
     width: 100%;
+    text-align: center;
 }
 .playbox-trash{
-    font: 30px;
+    font-size: 20px;
+    line-height: 30px;
+    padding-left: 5px;
 }
 .playbox-trash:hover{
     cursor: pointer;
@@ -55,23 +65,28 @@
 .playbox-add{
     display: flex;
     align-items: center;
-    border-radius: 0 0 4px 4px;
     height: 30px;
     background-color: white;
     padding: 0 0 30px;
+    border-bottom: 1px solid #c3c4c7;
+    border-left: 1px solid #c3c4c7;
+    border-right: 1px solid #c3c4c7;
 }
 .playbox-add:hover{
     cursor: pointer;
 }
 .playbox-list{
-    padding: 25px 0 0;
-    border-radius: 4px 4px 0 0;
+    padding: 30px 0 0;
     background-color: white;
+    border-top: 1px solid #c3c4c7;
+    border-left: 1px solid #c3c4c7;
+    border-right: 1px solid #c3c4c7;
+
 }
 .addbtn{
-    margin: 4px 0 0 24px;
-    width: 855px;
-    background-color: #2271b1;
+    margin: 5px 22px 0 37px;
+    width: 856px;
+    background-color: #3c424a94;
     text-align: center;
     border-radius: 3px;
     line-height: 30px;
@@ -85,15 +100,16 @@
     global $wpdb, $post;
 
     // 해당 lesson 포스터 영상 재생시간에 설정한 제품리스트가 있으면 play_time 테이블, 제품명, 쇼핑몰명 가져오기
-    $resultrow = $wpdb->get_results($wpdb->prepare("
-        SELECT t.ID, t.posts_lesson_id, t.play_idx, t.product_time, t.product_list_id, l.product_name, s.code, s.name
-        FROM wp_play_time as t
-        join wp_product_list as l
-        on t.product_list_id = l.ID
-        join wp_shoppingmall as s
-        on l.mall_code = s.code
-        where t.posts_lesson_id =".$post->ID." and l.adv_state = 1"
-    ));
+    $sql = "SELECT t.ID, t.posts_lesson_id, t.play_idx, t.product_time, t.product_list_id, l.product_name, s.code, s.name, c.*
+            FROM wp_play_time as t
+            join wp_product_list as l
+            on t.product_list_id = l.ID
+            join wp_shoppingmall as s
+            on l.mall_code = s.code
+            join wp_product_category as c
+            on l.ca_code = c.ca_code
+            where t.posts_lesson_id =".$post->ID." and l.adv_state = 1";
+    $resultrow = $wpdb->get_results($wpdb->prepare($sql));
     $num = count($resultrow);
 
     // 광고활성화 되어있는 쇼핑몰 리스트 불러오기
@@ -106,7 +122,12 @@
         $sp_option = $sp_option.$add_option;
     }
 
-
+    // 상품 중분류 option list 
+    $categoryrow = $wpdb->get_results($wpdb->prepare("SELECT * FROM wp_product_category;"));
+    $ca_option = '';
+    for($i=0; $i<count($categoryrow); $i++){
+        $ca_option = $ca_option."<option value =".$categoryrow[$i]->ca_code.">".$categoryrow[$i]->category."</option>";
+    }
 
     // 해당 lesson 포스터 영상에 제품 첫 등록일때
     if(!$resultrow){ ?> 
@@ -124,11 +145,16 @@
                 </div>
 
                 <div class="playbox-mall">
-                    <select name = "playmall[]" onchange="productfilter(this)">
+                    <select name = "playmall[]" onchange="loadcatagory(this)">
                         <option value = "" selected>쇼핑몰 선택</option>
                         <?php
                             echo $sp_option;
                         ?>
+                    </select>
+                </div>
+                <div class="playbox-category">
+                    <select name = "category[]" onchange="productfilter(this)">
+                        <option value = "" selected>중분류 선택</option>
                     </select>
                 </div>
 
@@ -138,11 +164,11 @@
                     </select>
                 </div>
 
-                <div class="playbox-trash" onclick="close_boxTag(this)" style="font-size:23px;">✖︎</div>
+                <div class="playbox-trash" onclick="close_boxTag(this)"><i class="fas fa-times"></i></div>
             </div>
         </div>
         <div class="playbox-add" onclick="create_boxTag()">
-            <div class="addbtn">신규</div>
+            <div class="addbtn">+</div>
         </div>
     </div>
     <?php $num++; ?>
@@ -161,9 +187,15 @@
                                     <input type="text" id="" name="playtime[]" value="'.$resultrow[$i]->product_time.'" maxlength="8" placeholder="00:00" onKeyup="inputTimeColon(this)" required>
                                 </div>
                                 <div class="playbox-mall">
-                                    <select name = "playmall[]" onchange="productfilter(this)">
+                                    <select name = "playmall[]" onchange="loadcatagory(this)">
                                         <option value = "'.$resultrow[$i]->code.'" selected>'.$resultrow[$i]->name.'</option>
                                         '.$sp_option.'
+                                    </select>
+                                </div>
+                                <div class="playbox-category">
+                                    <select name = "category[]" onchange="productfilter(this)">
+                                        <option value = "'.$resultrow[$i]->ca_code.'" selected>'.$resultrow[$i]->category.'</option>
+                                        '.$ca_option.'
                                     </select>
                                 </div>
                                 <div class="playbox-name">
@@ -171,7 +203,7 @@
                                         <option value = "'.$resultrow[$i]->product_list_id.'" selected>'.$resultrow[$i]->product_name.'</option>
                                     </select>
                                 </div>
-                                <div class="playbox-trash" onclick="close_boxTag(this)" style="font-size:23px;">✖︎</div>
+                                <div class="playbox-trash" onclick="close_boxTag(this)"><i class="fas fa-times"></i></div>
                             </div>';
             $play_box = $play_box.$add_play_box ;
 
@@ -184,7 +216,7 @@
                         '.$play_box.'
                     </div>
                     <div class="playbox-add" onclick="create_boxTag()">
-                        <div class="addbtn">신규</div>
+                        <div class="addbtn">+</div>
                     </div>
                 </div>');
 
@@ -195,7 +227,7 @@
 
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
-    var idxnum = <?php echo $num; ?>;
+    let idxnum = <?php echo $num; ?>;
 
     // 신규추가버튼 함수
     function create_boxTag(){
@@ -211,11 +243,16 @@
                     <input type="text" id="" name="playtime[]" value="<?php echo esc_attr( $post->playtime ); ?>" maxlength="8" placeholder="00:00" onKeyup="inputTimeColon(this)" required>
                 </div>
                 <div class="playbox-mall">
-                    <select name = "playmall[]" onchange="productfilter(this)">
+                    <select name = "playmall[]" onchange="loadcatagory(this)">
                         <option value = "" selected>쇼핑몰 선택</option>
                         <?php
                             echo $sp_option;
                         ?>
+                    </select>
+                </div>
+                <div class="playbox-category">
+                    <select name = "category[]" onchange="productfilter(this)">
+                        <option value = "" selected>중분류 선택</option>
                     </select>
                 </div>
                 <div class="playbox-name">
@@ -223,7 +260,7 @@
                             <option value = "" selected>제품 선택</option>
                     </select>
                 </div>
-                <div class="playbox-trash" onclick="close_boxTag(this)" style="font-size:23px;">✖︎</div>`
+                <div class="playbox-trash" onclick="close_boxTag(this)"><i class="fas fa-times"></i></div>`
     
      playboxList.appendChild(new_pTag);
     
@@ -265,18 +302,29 @@
 
     // 쇼핑몰
     // 벳스쿨 쇼핑몰일 경우 or 타 쇼핑몰일 경우
+    function loadcatagory(event) {
+        let nextBox = event.parentElement.nextElementSibling.firstElementChild;
+        nextBox.innerHTML = '<?php echo $ca_option?>';
+    }
+
     function productfilter(event){
-        let playboxName = event.parentElement.nextElementSibling.firstElementChild;
+        // 상품 나열하는 El 
+        let nextBox = event.parentElement.nextElementSibling.firstElementChild;
+        // 쇼핑몰 값
+        let mall = event.parentElement.previousElementSibling.firstElementChild;
+
+        // 중분류
         $.ajax({
-                url: "http://localhost:8888/wp-admin/edit-form-productlist.php",
-                type: "post",
-                dataType : 'json',
-                data: {
-                    code : event.value,
-                },
-            }).done((data) => {
-                playboxName.innerHTML = data;
-            })
+            url: "http://localhost:8888/wp-admin/edit-form-productlist.php",
+            type: "post",
+            dataType : 'json',
+            data: {
+                mall_code : mall.value, // 쇼핑몰코드
+                ca_code : event.value, // 중분류 코드
+            },
+        }).done((data) => {
+            nextBox.innerHTML = data;
+        })
     }
 
 
