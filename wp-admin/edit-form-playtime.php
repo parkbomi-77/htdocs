@@ -304,13 +304,23 @@
         time.value = minute + ":" + seconds;
     }
 
-    // 쇼핑몰
-    // 벳스쿨 쇼핑몰일 경우 or 타 쇼핑몰일 경우
+    // 쇼핑몰선택시 
     function loadcatagory(event) {
         let nextBox = event.parentElement.nextElementSibling.firstElementChild;
-        nextBox.innerHTML = '<?php echo $ca_option?>';
-    }
 
+        $.ajax({
+            url: "http://localhost:8888/wp-admin/edit-form-productlist.php",
+            type: "post",
+            dataType : 'json',
+            data: {
+                mall_code : event.value, // 쇼핑몰코드
+            },
+        }).done((data) => {
+            console.log(data);
+            nextBox.innerHTML = data;
+        })
+    }
+    // 중분류 선택시 
     function productfilter(event){
         // 상품 나열하는 El 
         let nextBox = event.parentElement.nextElementSibling.firstElementChild;
