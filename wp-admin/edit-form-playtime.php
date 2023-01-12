@@ -28,6 +28,7 @@
 .playbox-time input{
     width: 100%;
     text-align: center;
+    
 }
 .playbox-mall{
     width: 25%;
@@ -37,6 +38,7 @@
 .playbox-mall select{
     width: 100%;
     text-align: center;
+    border: 1px solid #bec5cb;
 }
 .playbox-category{
     width:15%;
@@ -44,6 +46,7 @@
 .playbox-category select{
     width: 100%;
     text-align: center;
+    border: 1px solid #bec5cb;
 }
 
 .playbox-name {
@@ -52,6 +55,7 @@
 .playbox-name select{
     width: 100%;
     text-align: center;
+    border: 1px solid #bec5cb;
 }
 .playbox-trash{
     font-size: 20px;
@@ -139,7 +143,7 @@
                 <input type="hidden" name="playboxNum[]" value="1">
                 
                 <div class="playbox-time">
-                    <input type="text" id="" name="playtime[]" 
+                    <input type="text" id="" name="playtime[]" style="border: 1px solid #bec5cb"
                     value="<?php echo esc_attr( $post->playtime ); ?>" placeholder="00:00" maxlength="8"
                     onKeyup="inputTimeColon(this)" required>
                 </div>
@@ -184,7 +188,7 @@
                                 <div class="playbox-num">'.($i+1).'</div>
                                 <input type="hidden" name="playboxNum[]" value="'.$resultrow[$i]->play_idx.'">
                                 <div class="playbox-time">
-                                    <input type="text" id="" name="playtime[]" value="'.$resultrow[$i]->product_time.'" maxlength="8" placeholder="00:00" onKeyup="inputTimeColon(this)" required>
+                                    <input type="text" id="" style="border: 1px solid #bec5cb" name="playtime[]" value="'.$resultrow[$i]->product_time.'" maxlength="8" placeholder="00:00" onKeyup="inputTimeColon(this)" required>
                                 </div>
                                 <div class="playbox-mall">
                                     <select name = "playmall[]" onchange="loadcatagory(this)">
@@ -240,7 +244,7 @@
                 `<div class="playbox-num">${idxnum+1}</div>
                 <input type="hidden" name="playboxNum[]" value=${idxnum+1}>
                 <div class="playbox-time">
-                    <input type="text" id="" name="playtime[]" value="<?php echo esc_attr( $post->playtime ); ?>" maxlength="8" placeholder="00:00" onKeyup="inputTimeColon(this)" required>
+                    <input type="text" style="border: 1px solid #bec5cb" name="playtime[]" value="<?php echo esc_attr( $post->playtime ); ?>" maxlength="8" placeholder="00:00" onKeyup="inputTimeColon(this)" required>
                 </div>
                 <div class="playbox-mall">
                     <select name = "playmall[]" onchange="loadcatagory(this)">
