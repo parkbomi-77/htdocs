@@ -64,6 +64,11 @@
         }
         .box-name{
             display:flex;
+            align-items: flex-end;
+            justify-content:space-between;
+            width: 100%;
+            margin-bottom:5px;
+            flex:1;
         }
         .box-shop{
             line-height:25px;
@@ -76,14 +81,14 @@
         .box-time{
             font-size: inherit;
             color: #8e8e8e;
-            line-height: 25px;
-            margin-left: 11px;
-            margin-top:22px
+            line-height: 40px;
+            margin-right: 14px;
+            margin-top:0px
         }
         .box-cart{
             /* display: flex; */
             font-size: 20px;
-            width: 146px;
+            width: 150px;
         }
 
         .box-cart .quantity{

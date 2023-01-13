@@ -199,7 +199,6 @@
                                 <div class="playbox-category">
                                     <select name = "category[]" onchange="productfilter(this)">
                                         <option value = "'.$resultrow[$i]->ca_code.'" selected>'.$resultrow[$i]->category.'</option>
-                                        '.$ca_option.'
                                     </select>
                                 </div>
                                 <div class="playbox-name">
