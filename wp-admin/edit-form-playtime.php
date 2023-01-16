@@ -60,7 +60,7 @@
 .playbox-trash{
     font-size: 20px;
     line-height: 30px;
-    padding-left: 5px;
+    padding: 0 7px;
 }
 .playbox-trash:hover{
     cursor: pointer;
@@ -88,8 +88,8 @@
 
 }
 .addbtn{
-    margin: 5px 22px 0 37px;
-    width: 856px;
+    margin: 5px 30px 0 37px;
+    width: 847px;
     background-color: #3c424a94;
     text-align: center;
     border-radius: 3px;
@@ -282,7 +282,6 @@
         }
     }
 
-
     // 재생시간 콜론(:) 으로 입력받는 함수 
     function inputTimeColon(time) {
         let replaceTime = time.value.replace(/\:/g, "");
@@ -339,6 +338,18 @@
             nextBox.innerHTML = data;
         })
     }
+    // 등록되어져있던 상품 중분류 재선택시
+    function re_category(){
+
+        // 바꿀 장소
+        // let nextBox = event.parentElement.nextElementSibling.firstElementChild;
+        console.log('ㅇㅇ')
+    }
+    // 등록되어져있던 상품명 재선택시 
+    function re_productlist(event){
+        
+    }
+
 
 
 </script>
