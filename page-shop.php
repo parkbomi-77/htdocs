@@ -28,15 +28,19 @@ if($mallcode === "1029"){ // 벳스쿨 제품일 경우 벳스쿨 상세페이�
     
 }
 $prevPage = $_SERVER['HTTP_REFERER'];
-$location = $prevPage.'#registrationbox';
 
 
 //팝업차단하라고 안내해줘야함 
-echo "<script>window.open('".$shoppingmallurl."')</script>";
+if($mallLink) {
+    echo "<script>window.open('".$shoppingmallurl."')</script>";
+}else {
+    echo "<script>window.close()</script>";
+}
 
 //로케이션 잠시 꺼두려면 주석
 echo "<script>
-document.location.href='".$location."';
+document.location.href='".$prevPage."'
 </script>";
+// header("location:".$prevPage);
 
 ?>

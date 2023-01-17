@@ -145,7 +145,7 @@ for($i=0; $i<count($cate_results); $i++) {
                                 <td>".($i+1)."</td>
                                 <td class='wish_table_item'>".$results[$i]->name."</td>
                                 <td class='wish_table_item'>".$results[$i]->category."</td>
-                                <td class='wish_table_item'>{$results[$i]->product_name} <br> <span>{$course_name} - {$lessons_name}</span></td>
+                                <td class='wish_table_item'>{$results[$i]->product_name} <br> <span>( {$course_name} - {$lessons_name} )</span></td>
                                 <td><button class='wish_table_trash' type='submit' formaction='../page-delete.php'><i class='fa-solid fa-trash'></i></button></td>
                                 <td><button class='wish_table_link' type='submit' formaction='../page-shop.php'><i class='fa-solid fa-shop'></i></button></td>
                             </tr>
