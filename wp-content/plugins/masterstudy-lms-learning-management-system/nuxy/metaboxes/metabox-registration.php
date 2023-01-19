@@ -82,7 +82,7 @@ for($i=0; $i<count($category); $i++){
                             <div class="registration-num">'.($i+1).'</div>
                             <input type="hidden" name="registrationNum[]" value="'.($i+1).'">
                             <input type="hidden" name="registrationID[]" value="'.$results[$i]->ID.'">
-                            <input type="hidden" name="shoppingMallList[]" value="'.$results[$i]->mall_code.'">
+                            <input type="hidden" class="m_code" name="shoppingMallList[]" value="'.$results[$i]->mall_code.'">
                             <input type="hidden" name="registrationcategory[]" value="'.$results[$i]->category.'">
                             <input type="hidden" name="registrationname[]" value="'.$results[$i]->product_name.'">
                             <input type="hidden" name="registrationlink[]" value="'.$results[$i]->product_code.'">
@@ -99,7 +99,7 @@ for($i=0; $i<count($category); $i++){
                             <div class="registration-name" id="registration-name2">
                                 <input type="text" name="registrationname[]" value="'.$results[$i]->product_name.'" disabled>
                             </div>
-                            <div class="registration-link" id="registration-link2">
+                            <div class="registration-link" id="registration-link2" onclick="pagelink(this)">
                                 <input type="text" name="registrationlink[]" value="'.$results[$i]->product_code.'" disabled>
                                 
                             </div>
@@ -135,6 +135,9 @@ for($i=0; $i<count($category); $i++){
                         </div>
                         <div class="registration-list">
                             '.productlist_filter($num, $results, $cate_option).'
+                        </div>
+                        <div align="right" class="guidetext">
+                            <span>▲ 각 상품별 상세페이지연결 확인</span>
                         </div>
                         <div class="registration-add" onclick="create_registration_Tag()">
                             <div>+</div>
@@ -190,7 +193,7 @@ for($i=0; $i<count($category); $i++){
                 </div>
             </div>
         </div>
-        <div class="editform-back-btn" onclick="modalbackbtn()">back</div>
+        <div class="editform-back-btn" onclick="modalbackbtn()">close</div>
         <div class="editform-save-btn" ><input type="submit" id="editformsave" value="save" onclick="savemodal()" formaction="/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-display-save.php"></div>
     </form>
 </div>
@@ -323,11 +326,11 @@ for($i=0; $i<count($category); $i++){
             success: function(data) {
                 window.open(data);
             }, // 요청 완료 시    
-            error: function(jqXHR) {}, // 요청 실패.    
+            error: function(jqXHR) {
+            }, // 요청 실패.    
             complete: function(jqXHR) {} // 요청의 실패, 성공과 상관 없이 완료 될 경우 호출
         });
         event.preventDefault();
-
     }
 
     // 수정할때 
@@ -403,12 +406,33 @@ for($i=0; $i<count($category); $i++){
         let new_registration = document.querySelector('.new_registration');
         new_registration.classList.add('none');
 
-
     }
     function savemodal () {
         confirm("저장하시겠습니까? \n저장 이후에는 제품 코드 수정이 불가합니다.");
     }
 
+    function pagelink(data) {
+        let mallcode = data.parentNode.querySelector(".m_code").value;
+        let productcode = data.firstChild.value;
 
+        $.ajax({
+            url: 'http://localhost:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-registration-check.php',
+            type: 'POST',
+            data: { 
+                mallcode,
+                productcode,
+            },
+            dataType: 'text',
+            success: function(data) {
+                window.open(data);
+            }, // 요청 완료 시    
+            error: function(jqXHR) {
+            }, // 요청 실패.    
+            complete: function(jqXHR) {} // 요청의 실패, 성공과 상관 없이 완료 될 경우 호출
+        });
+        event.preventDefault();
+
+
+    }
 
 </script>

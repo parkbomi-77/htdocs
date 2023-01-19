@@ -14,7 +14,12 @@ $link = $mall[0]->link;
 if($code === '1029'){ // 벳스쿨일 경우 
     echo $link."product/".$product;
 }else { // 타 쇼핑몰일 경우 
-    echo $link.$product;
+    $addvet = 'vet'.$product;
+    $encryption = str_replace("=", "",base64_encode(openssl_encrypt($addvet, "AES-256-CFB", 'vetschoolsecretkey', 0)));
+    
+    $shoppingmallurl = $link.$product.'&vc='.$encryption;
+
+    echo $shoppingmallurl;
 }
 
 
