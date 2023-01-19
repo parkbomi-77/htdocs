@@ -120,8 +120,57 @@
         .vetcart{
             display: inline;
         }
+        /* modal창 */
+        .none {
+            display:none;
+        }
+        .vetmodal {
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */                                  
+            background-color: rgb(0,0,0); /* Fallback color */   
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */   
+            padding-top: 30%;
+        }
+        .vetmodal>div{
+            width: 380px;
+            height: 200px;
+            background-color: #e3e3e3;
+            margin: auto;
+            padding: 3%;
+            border-radius: 2px;
+        }
+        .vetmodal p{
+            color: grey;
+            margin-bottom: 0px;
+            line-height: 1.4em;
+            font-size: smaller;
+        }
+        .vetmodal p i{
+            color: #22bd61;
+        }
+        .vetmodal .buttons{
+            display: inline-block;
+            float: right;
+            margin-top: 10px;
+            font-size: smaller;
+        }
+        .close-btn{
+            border: none;
+            background-color: #e3e3e3;
+            color: #424242;
+        }
+        .ok-btn{
+            border: none;
+            background-color: #eb9f38;
+            color: #f1f1f1;
+            border-radius: 4px;
+            padding: 2px 18px;
+        }
     </style>
-
 
     <p> <i class="fa-solid fa-store"></i> store</p>
 
@@ -151,7 +200,7 @@
                     ?>
                     <div id= <?php echo $results[$i]->play_idx ?> style="display:none"> 
                         <form id="wishform" method='POST' target="iframe1"
-                        action='/wp-content/plugins/masterstudy-lms-learning-management-system/stm-lms-templates/course/parts/temp_vetsubmit.php'>
+                        action='#'>
                             <iframe id="iframe1" name="iframe1" style="display:none"></iframe>
                             <div class="box-flex">
                                 <div class="box-name">
@@ -170,13 +219,12 @@
                                 <div class="box-cart">
                                     <input type="hidden" name="user_id" value="<?php echo $current_user->ID ?>">
                                     <input type="hidden" name="item_id" value="<?php echo $results[$i]->product_list_id ?>">
-                                    <input type="hidden" name="product_code" value="<?php echo $productname[0]->product_code ?>">
+                                    <input type="hidden" class="p_code" name="product_code" value="<?php echo $productname[0]->product_code ?>">
                                     <!-- 쇼핑몰로 바로가기 -->
                                     <button type="submit" formaction="/page-shop.php">바로가기</button> 
-                                    
                                     <!-- 장바구니 담기 -->
                                     <div class="vetcart">
-                                        <button type='submit'>장바구니</button>
+                                        <button type='button' onclick="vetbtn(this)">장바구니</button>
                                     </div>
 
                                     <!-- <button onclick="vetsubmit()"><i class="fa-solid fa-cart-shopping"></i></button> -->
@@ -217,7 +265,7 @@
                                 <!-- 쇼핑몰로 바로가기 -->
                                 <button type="submit" formaction="/page-shop.php">바로가기</button> 
                                 <!-- 장바구니 담기 -->
-                                <button type='submit'>장바구니</button>
+                                <button type='submit' onclick="otherbtn(this)">장바구니</button>
                             </div>
                         </div>
                     </form>
@@ -227,6 +275,54 @@
                 
     <?php   }
         } ?>
+</div>
+
+<div id="vetcart_modal" class="vetmodal none">
+    <div>
+        <p>이미 장바구니에 담은 상품입니다</p>
+        <p>메뉴탭 - 장바구니 - 벳스쿨 장바구니</p>
+        <p>장바구니로 이동하시겠습니까?</p>
+        <div class="buttons">
+            <button class="close-btn" onclick="">CLOSE</button>
+            <button class="vet ok-btn">CART</button>
+        </div>
+    </div>
+</div>
+
+<div id="new_vetcart_modal" class="vetmodal none">
+    <div>
+        <p>상품을 장바구니에 담았습니다 <i class="far fa-check-circle"></i></p>
+        <p>메뉴탭 - 장바구니 - 벳스쿨 장바구니</p>
+        <p>장바구니로 이동하시겠습니까?</p>
+        <div class="buttons">
+            <button class="close-btn">CLOSE</button>
+            <button class="vet ok-btn">CART</button>
+        </div>
+    </div>
+</div>
+
+<div id="othercart_modal" class="vetmodal none">
+    <div>
+        <p>이미 장바구니에 담은 상품입니다</p>
+        <p>메뉴탭 - 장바구니 - 제휴 쇼핑몰 장바구니</p>
+        <p>장바구니로 이동하시겠습니까?</p>
+        <div class="buttons">
+            <button class="close-btn" onclick="">CLOSE</button>
+            <button class="ok-btn">CART</button>
+        </div>
+    </div>
+</div>
+
+<div id="new_othercart_modal" class="vetmodal none">
+    <div>
+        <p>상품을 장바구니에 담았습니다 <i class="far fa-check-circle"></i></p>
+        <p>메뉴탭 - 장바구니 - 제휴 쇼핑몰 장바구니</p>
+        <p>장바구니로 이동하시겠습니까?</p>
+        <div class="buttons">
+            <button class="close-btn">CLOSE</button>
+            <button class="ok-btn">CART</button>
+        </div>
+    </div>
 </div>
 
 <script src="https://player.vimeo.com/api/player.js"></script>
@@ -249,12 +345,9 @@
             $num = count($results);
             for($i=0; $i<$num; $i++){ ?>
                 document.getElementById(<?= $results[$i]->play_idx ?>).style.display = "none"
-            <?php 
-                }
-                
+            <?php }
             for($i=0; $i<$num; $i++){ 
             $time = $results[$i]->product_time;
-           // var_dump($results[$i]->product_time);
                 $minute = substr($time, 0, 2); 
                 $seconds = substr($time, 3, 2); 
                 $play_time = $minute*60 + $seconds; ?> //초로 변환하기 
@@ -262,19 +355,98 @@
                     let block = document.getElementById(<?= $results[$i]->play_idx ?>);
                     block.style.display = "block";
                     block.querySelector('.box-time').innerText = "<?php echo $time ?>"
-                    
-
                 }
             <?php
             } ?>
-           
-
         });   
     }
    let interval = setInterval(getCurrentTime, 500);
 
-   function vetcartmodal() {
-        alert('장바구니에 담았습니다');
-   }
+   let vetmodal = document.querySelector("#vetcart_modal");
+   let newvetmodal = document.querySelector("#new_vetcart_modal");
+
+   let othermodal = document.querySelector("#othercart_modal");
+   let newothermodal = document.querySelector("#new_othercart_modal");
+
+
+    function vetbtn(event) {
+        let product_code = event.parentElement.parentElement.querySelector(".p_code").value;
+
+        $.ajax({
+            method: "POST",
+            url: "/wp-content/plugins/masterstudy-lms-learning-management-system/stm-lms-templates/course/parts/temp_vetsubmit.php",
+            data: {
+                product_code
+            },
+            dataType: "text",
+            success: function(data) {
+                // console.log( typeof data)
+                let result = $.trim(data);
+
+                if(result == '중복') {
+                    vetmodal.classList.remove('none')
+                }else{
+                    newvetmodal.classList.remove('none')
+                }
+            }
+        });
+    }
+
+    function otherbtn(event) {
+        let product_code = event.parentElement.children;
+
+        $.ajax({
+            method: "POST",
+            url: "/wp-content/plugins/masterstudy-lms-learning-management-system/stm-lms-templates/course/parts/temp_submit.php",
+            data: {
+                user_id: product_code[0].value,
+                item_id: product_code[1].value,
+                product_name: product_code[2].value,
+                course_name: product_code[3].value,
+                lessons_name: product_code[4].value,
+            },
+            dataType: "text",
+            success: function(data) {
+                let result = $.trim(data);
+                if(result == '중복') {
+                    othermodal.classList.remove('none')
+                }else{
+                    newothermodal.classList.remove('none')
+                }
+            }
+        });
+    }
+
+    let closebtn = document.querySelectorAll(".close-btn")
+    for(let i=0; i<closebtn.length; i++){
+        closebtn[i].addEventListener('click',function close(){
+            vetmodal.classList.add('none')
+            newvetmodal.classList.add('none')
+            othermodal.classList.add('none')
+            newothermodal.classList.add('none')
+        }) 
+    }
+    let okbtn = document.querySelectorAll(".ok-btn")
+    for(let i=0; i<okbtn.length; i++){
+        okbtn[i].addEventListener('click',function ok(e){
+            console.log(e.target.classList[0])
+            let url;
+            if(e.target.classList[0] === 'vet') {
+                url = window.location.protocol+'//'+window.location.host+'/cart/';
+            }else {
+                url = window.location.protocol+'//'+window.location.host+'/affiliateshoppingmall/';
+            }
+            window.open(url)
+            vetmodal.classList.add('none')
+            newvetmodal.classList.add('none')
+            othermodal.classList.add('none')
+            newothermodal.classList.add('none')
+        })
+    }
+
+    
+
+
+
 
 </script>
