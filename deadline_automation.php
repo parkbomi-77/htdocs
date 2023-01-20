@@ -33,7 +33,8 @@ for($i=0; $i<count($results); $i++){
             $wpdb->get_results($wpdb->prepare($sql4));
             
             // 배포쇼핑몰로 광고 비활성화 api 보내기
-            $link = $results[$i]->link2;
+            $link = $results[$i]->link;
+            $link = $link.'/product_list.php';
             $product_code = $product[$j]->product_code;
     
             $postdata = http_build_query(

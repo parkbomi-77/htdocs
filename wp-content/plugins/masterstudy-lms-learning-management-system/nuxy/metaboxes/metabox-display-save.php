@@ -51,7 +51,8 @@
             $mall = $wpdb->get_results($wpdb->prepare("SELECT * from wp_shoppingmall where code =".$registrationmall));
             $start_date = $mall[0]->start_date;
             $end_date = $mall[0]->end_date;
-            $link = $mall[0]->link2;
+            $link = $mall[0]->link;
+            $link = $link.'/product_list.php';
 
             // 마진율 오브젝트에 담아서 보내기
             $sql = "SELECT * FROM vetschool.wp_shoppingmall as a

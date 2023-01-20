@@ -15,7 +15,8 @@ for($i=0; $i<$num; $i++){
     if($results3 !==1029){ // 타 사이트일 경우에만 광고 비활성화 api 보내기 
         // 쇼핑몰코드로 쇼핑몰링크 얻어내기
         $mallcode = $wpdb->get_results($wpdb->prepare("SELECT * from wp_shoppingmall where code =".$results3));
-        $link = $mallcode[0]->link2;
+        $link = $mallcode[0]->link;
+        $link = $link.'/product_list.php';
         
         $postdata = http_build_query(
             array(

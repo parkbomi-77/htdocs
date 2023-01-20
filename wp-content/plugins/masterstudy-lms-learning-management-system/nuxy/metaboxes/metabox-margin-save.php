@@ -133,7 +133,8 @@ if($activate && ($code !== 1029 )){ // 광고활성화된 상품이 있고, 벳�
         $mall = $wpdb->get_results($wpdb->prepare("SELECT * from wp_shoppingmall where code =".$code));
         $start_date = $mall[0]->start_date;
         $end_date = $mall[0]->end_date;
-        $link = $mall[0]->link2;
+        $link = $mall[0]->link;
+        $link = $link.'/product_list.php';
     
         // 마진율 오브젝트에 담아서 보내기
         $sql = "SELECT * FROM vetschool.wp_shoppingmall as a
@@ -181,7 +182,8 @@ $result = $wpdb->get_results($wpdb->prepare($sql5));
 if($result && ($code !== 1029 )){ // 광고활성화된 상품이 있고, 벳스쿨이 아닐 경우 
     for($i=0; $i<count($result); $i++){
         $mall = $wpdb->get_results($wpdb->prepare("SELECT * from wp_shoppingmall where code =".$code));
-        $link = $mall[0]->link2;
+        $link = $mall[0]->link;
+        $link = $link.'/product_list.php';
     
         // 마진율 오브젝트에 담아서 보내기
         $sql = "SELECT * FROM vetschool.wp_shoppingmall as a

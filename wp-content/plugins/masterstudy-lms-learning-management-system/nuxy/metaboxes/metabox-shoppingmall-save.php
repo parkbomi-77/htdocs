@@ -9,7 +9,7 @@ require_once( $_SERVER['DOCUMENT_ROOT'].'/wp-load.php' );
 
 $mall = $_POST['name'];
 $link = $_POST['link'];
-$link2 = $_POST['link2'];
+// $link2 = $_POST['link2'];
 $startyear = $_POST['startyear'];
 $startmonth = $_POST['startmonth'];
 $endyear = $_POST['endyear'];
@@ -22,13 +22,22 @@ $end_date = $endyear.'-'.$endmonth.'-01';
 $newcode = $_POST['newcode'];
 $newname = $_POST['newname'];
 $newlink = $_POST['newlink'];
-$newlink2 = $_POST['newlink2'];
+// $newlink2 = $_POST['newlink2'];
 
 
 $delcode = $_POST['code'];
 $editcode = $_POST['editcode'];
 
+// 링크 주소 정리
+$laststr = substr($link, -1);
+if($laststr === '/') {
+    $link = substr($link, 0,-1);
+}
 
+$newlaststr = substr($newlink, -1);
+if($newlaststr === '/') {
+    $newlink = substr($newlink, 0,-1);
+}
 
 
 if($delcode){ // 삭제 요청
@@ -65,7 +74,8 @@ if($delcode){ // 삭제 요청
         
         // 쇼핑몰코드로 쇼핑몰링크 얻어내기
         $mallcode = $wpdb->get_results($wpdb->prepare("SELECT * from wp_shoppingmall where code =".$newcode));
-        $link = $mallcode[0]->link2;
+        $link = $mallcode[0]->link;
+        $link = $link.'/product_list.php';
 
         // 쇼핑몰 상품들도 활성화시키기 adv_state 0이면서 del 0인것들 adv_state 1로 변경 
         $sql3 = "SELECT * FROM wp_product_list where mall_code = {$newcode} and del = 0";
@@ -153,8 +163,8 @@ if($delcode){ // 삭제 요청
 
     }
 }else { // 새 쇼핑몰 등록
-    $sql2="INSERT INTO wp_shoppingmall (name,link, link2, state, start_date, end_date) 
-    VALUES ('{$mall}','{$link}','{$link2}',1, '{$start_date}', '{$end_date}')";
+    $sql2="INSERT INTO wp_shoppingmall (name,link, state, start_date, end_date) 
+    VALUES ('{$mall}','{$link}',1, '{$start_date}', '{$end_date}')";
     $wpdb->get_results($wpdb->prepare($sql2));
 }
 
