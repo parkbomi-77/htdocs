@@ -11,13 +11,18 @@ $mall = $wpdb->get_results($wpdb->prepare("SELECT*FROM wp_shoppingmall where cod
 // mall link 얻기
 $link = $mall[0]->link;
 
+$laststr = substr($link, -1);
+if($laststr !== '/') {
+    $link = $link."/";
+}
+
 if($code === '1029'){ // 벳스쿨일 경우 
     echo $link."product/".$product;
 }else { // 타 쇼핑몰일 경우 
     $addvet = 'vet'.$product;
     $encryption = str_replace("=", "",base64_encode(openssl_encrypt($addvet, "AES-256-CFB", 'vetschoolsecretkey', 0)));
     
-    $shoppingmallurl = $link.$product.'&vc='.$encryption;
+    $shoppingmallurl = $link.'shop/item.php?it_id='.$product.'&vc='.$encryption;
 
     echo $shoppingmallurl;
 }

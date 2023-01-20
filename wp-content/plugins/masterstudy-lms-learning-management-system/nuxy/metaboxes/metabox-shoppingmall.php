@@ -140,7 +140,7 @@
                     </div>
                 </div>
             </div>
-            <div class="back-btn" onclick="back()">back</div>
+            <div class="back-btn" onclick="back()">close</div>
             <div class="save-btn" ><input type="submit" id="" value="save"></div>
             <div class="blankcheck none">빈 칸을 채워주세요.</div>
         </form>
