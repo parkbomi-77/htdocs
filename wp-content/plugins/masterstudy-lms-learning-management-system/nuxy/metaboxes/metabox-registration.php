@@ -78,7 +78,7 @@ for($i=0; $i<count($category); $i++){
                 for($i = 0; $i < $num; $i++){
                     $one_registration = ' 
                         <div class="registration-div">
-                            <input type="checkbox" name="deletecheck[]" value="'.$results[$i]->ID.'">
+                            <input type="checkbox" onclick="eachCheck(this)" class="registration-checkbox" name="deletecheck[]" value="'.$results[$i]->ID.'">
                             <div class="registration-num">'.($i+1).'</div>
                             <input type="hidden" name="registrationNum[]" value="'.($i+1).'">
                             <input type="hidden" name="registrationID[]" value="'.$results[$i]->ID.'">
@@ -128,7 +128,8 @@ for($i=0; $i<count($category); $i++){
                             </div>
                         </div>
                         <div class="registration-title">
-                            <div class="registration-title-mall"> shoppingmall_name </div>
+                            <input type="checkbox" id="registration-title-checkbox" onclick="allcheck(this)" name="deletecheck[]" value="">
+                            <div id="registration-title-mall"> shoppingmall_name </div>
                             <div class="registration-title-category"> category </div>
                             <div class="registration-title-name"> product_name </div>
                             <div class="registration-title-link"> product_code </div>
@@ -302,13 +303,11 @@ for($i=0; $i<count($category); $i++){
 
 
     }
-
     function deletebtn() {
         let deletecheck = confirm('삭제하시겠습니까?');
 
         return deletecheck;
     }
-
     // 신규등록할때 링크확인 잘 되었는지 체크
     function check() {
         let val = document.querySelector(".shoppingmall-box2-row")
@@ -332,7 +331,6 @@ for($i=0; $i<count($category); $i++){
         });
         event.preventDefault();
     }
-
     // 수정할때 
     let editfunc = function editbtn(num) {
         // 상품이름 수정할수있도록 input 비활성화 풀기 
@@ -373,6 +371,9 @@ for($i=0; $i<count($category); $i++){
         event.preventDefault();
     }
     function listchange (data) {
+        // 전체삭제 체크박스 초기화하기 
+        let checkbox = document.querySelector('#registration-title-checkbox')
+        checkbox.checked = false;
         // 쇼핑몰 코드
         let list = document.querySelector(".registration-list")
         // 리스트 다 지우고
@@ -410,7 +411,6 @@ for($i=0; $i<count($category); $i++){
     function savemodal () {
         confirm("저장하시겠습니까? \n저장 이후에는 제품 코드 수정이 불가합니다.");
     }
-
     function pagelink(data) {
         let mallcode = data.parentNode.querySelector(".m_code").value;
         let productcode = data.firstChild.value;
@@ -433,6 +433,35 @@ for($i=0; $i<count($category); $i++){
         event.preventDefault();
 
 
+    }
+    let checkbox;
+    function allcheck(data) {
+        checkbox = document.querySelectorAll(".registration-checkbox");
+        for(let i=0; i<checkbox.length; i++) {
+            checkbox[i].checked = data.checked;
+            checkbox[i].addEventListener('click', function(e) {
+                console.log(e.target.checked)
+                if(e.target.checked === false){
+                    data.checked = false;
+                }
+            })
+        } 
+    }
+    function eachCheck(data) {
+        console.log(data.checked)
+        if(data.checked === true) {
+            checkbox = document.querySelectorAll(".registration-checkbox");
+            let ho = true;
+            for(let i=0; i<checkbox.length; i++) {
+                if(!checkbox[i].checked){
+                    ho = false;
+                }
+            }
+            console.log(ho)
+            if(ho) { // 다 체크상태면
+                document.querySelector("#registration-title-checkbox").checked = true;
+            }
+        }
     }
 
 </script>

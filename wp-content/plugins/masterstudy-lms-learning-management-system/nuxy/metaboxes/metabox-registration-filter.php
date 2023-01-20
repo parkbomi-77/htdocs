@@ -20,7 +20,7 @@ function printrow($results) {
     $all_registration = '';
     for($i = 0; $i < count($results); $i++){
         $one_registration = '<div class="registration-div">
-                <input type="checkbox" name="deletecheck[]" value="'.$results[$i]->ID.'">
+                <input type="checkbox" onclick="eachCheck(this)" class="registration-checkbox" name="deletecheck[]" value="'.$results[$i]->ID.'">
                 <div class="registration-num">'.($i+1).'</div>
                 <input type="hidden" name="registrationNum[]" value="'.($i+1).'">
                 <input type="hidden" name="registrationID[]" value="'.$results[$i]->ID.'">
@@ -69,8 +69,9 @@ if($code === ""){ // 전체 리스트 불러와야할때
     
     $data = printrow($results);
     echo $data;
-
-
 }
 
 ?>
+<script>
+    document.querySelector("#registration-title-checkbox").checked = false
+</script>
