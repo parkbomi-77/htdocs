@@ -452,7 +452,8 @@ tbody .shoppingmall-row2{
     height: 40px;
 }
 .editdate input{
-    width: 20%;
+    width: 47%;
+    padding: 0 7px;
 }
 #shoppingmall-box-btn{
     padding: 0px;

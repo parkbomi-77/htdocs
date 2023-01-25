@@ -9,7 +9,7 @@ require_once( $_SERVER['DOCUMENT_ROOT'].'/wp-load.php' );
 
 $mall = $_POST['name'];
 $link = $_POST['link'];
-// $link2 = $_POST['link2'];
+
 $startyear = $_POST['startyear'];
 $startmonth = $_POST['startmonth'];
 $endyear = $_POST['endyear'];
@@ -17,13 +17,9 @@ $endmonth = $_POST['endmonth'];
 $start_date = $startyear.'-'.$startmonth.'-01';
 $end_date = $endyear.'-'.$endmonth.'-01';
 
-
-
 $newcode = $_POST['newcode'];
 $newname = $_POST['newname'];
 $newlink = $_POST['newlink'];
-// $newlink2 = $_POST['newlink2'];
-
 
 $delcode = $_POST['code'];
 $editcode = $_POST['editcode'];
@@ -68,7 +64,7 @@ if($delcode){ // 삭제 요청
     // 마감날짜가 안지난 경우 쇼핑몰 광고활성화 state 1로 변경하기 
     if( ($thisyear < $endyear) || (($thisyear === $endyear) && ($thismonth <= $endmonth )) ){
         $sql1 = "UPDATE wp_shoppingmall 
-        set name= '".$newname."', link='".$newlink."', link2='".$newlink2."', 
+        set name= '".$newname."', link='".$newlink."',
         state=1, start_date='".$start_date."', end_date='".$end_date."' where code ='".$newcode."' ";
         $wpdb->get_results($wpdb->prepare($sql1));
         
@@ -130,7 +126,7 @@ if($delcode){ // 삭제 요청
     }else {
     // 마감날짜가 지난 경우 광고 비활성화
         $wpdb->get_results($wpdb->prepare("UPDATE wp_shoppingmall 
-        set name= '".$newname."', link='".$newlink."', link2='".$newlink2."', 
+        set name= '".$newname."', link='".$newlink."',
         state=0, start_date='".$start_date."', end_date='".$end_date."' where code ='".$newcode."' "));
 
     // 해당 쇼핑몰 광고활성화되어있는 제품들 -> 비활성화 
@@ -140,6 +136,7 @@ if($delcode){ // 삭제 요청
             $sql6 = "UPDATE wp_product_list SET adv_state = 0 WHERE ID =".$result[$i]->ID;
             $wpdb->get_results($wpdb->prepare($sql6));
 
+            $newlink = $newlink.'/product_list.php';
             // 배포쇼핑몰로 광고 비활성화 api 보내기
             $product_code = $result[$i]->product_code;
     
@@ -156,7 +153,7 @@ if($delcode){ // 삭제 요청
                 )
             );
             $context = stream_context_create($opts);
-            file_get_contents($newlink2, false, $context);
+            file_get_contents($newlink, false, $context);
         }
     
     

@@ -7,17 +7,14 @@
         $mall_lists = "";
         for($i=0; $i<count($results); $i++){
             $mall_list = '<tr id="shoppingmall-row">
-            <td rowspan="2">'.($i+1).'</td>
-            <td rowspan="2">'.$results[$i]->name.'</td>
+            <td>'.($i+1).'</td>
+            <td>'.$results[$i]->name.'</td>
             <td>'.$results[$i]->link.'</td>
-            <td>'.$results[$i]->link2.'</td>
-            <td id="shoppingmall-box-btn" rowspan="2">
+            <td>'.substr($results[$i]->start_date, 0, 7).' ~ '.substr($results[$i]->end_date, 0, 7).'</td>
+            <td id="shoppingmall-box-btn">
                 <button class="shoppingmall-box-edit" onclick="edit(this)" value="'.$results[$i]->name.'"><i class="fas fa-edit"></i></button>
                 <button class="shoppingmall-box-del" onclick="del(this)" value="'.$results[$i]->code.'"><i class="fas fa-times-circle"></i></button>
             </td>
-            </tr>
-            <tr class="shoppingmall-row2"> 
-                <td colspan="2">'.substr($results[$i]->start_date, 0, 7).' ~ '.substr($results[$i]->end_date, 0, 7).'</td>
             </tr>';
             $mall_lists = $mall_lists.$mall_list;
         }
@@ -31,17 +28,14 @@
         $d_mall_lists = "";
         for($i=0; $i<count($d_results); $i++){
             $mall_list = '<tr id="shoppingmall-row">
-            <td rowspan="2">'.($i+1).'</td>
-            <td rowspan="2">'.$d_results[$i]->name.'</td>
+            <td>'.($i+1).'</td>
+            <td>'.$d_results[$i]->name.'</td>
             <td>'.$d_results[$i]->link.'</td>
-            <td>'.$d_results[$i]->link2.'</td>
-            <td id="shoppingmall-box-btn" rowspan="2">
+            <td>'.substr($d_results[$i]->start_date, 0, 7).' ~ '.substr($d_results[$i]->end_date, 0, 7).'</td>
+            <td id="shoppingmall-box-btn">
                 <button class="shoppingmall-box-edit" onclick="edit(this)" value="'.$d_results[$i]->name.'"><i class="fas fa-edit"></i></button>
                 <button class="shoppingmall-box-del" onclick="del(this)" value="'.$d_results[$i]->code.'"><i class="fas fa-times-circle"></i></button>
             </td>
-            </tr>
-            <tr class="shoppingmall-row2"> 
-                <td colspan="2">'.substr($d_results[$i]->start_date, 0, 7).' ~ '.substr($d_results[$i]->end_date, 0, 7).'</td>
             </tr>';
             $d_mall_lists = $d_mall_lists.$mall_list;
         }
@@ -80,14 +74,11 @@
             </colgroup>
             <thead>
                 <tr> 
-                    <th rowspan='2'></th>
-                    <th rowspan='2'>name</th>
+                    <th></th>
+                    <th>name</th>
                     <th>link</th>
-                    <th>link2</th>
-                    <th rowspan='2'></th>
-                </tr>
-                <tr class="shoppingmall-row2"> 
-                    <th colspan='2'>start date - end date</th>
+                    <th>start date - end date</th>
+                    <th></th>
                 </tr>
             </thead>
             <form action="http://localhost:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-shoppingmall-save.php" method="post">
@@ -103,9 +94,6 @@
     <div class="shoppingmall-box2 none" id="popup">
         <form action="http://localhost:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-shoppingmall-save.php" method="post" name="box2form" onsubmit="return box2submit(this)">
             <div class="shoppingmall-box2-header">
-                <!-- <div class="shoppingmall-box2-name">name</div>
-                <div class="shoppingmall-box2-link">link</div>
-                <div class="shoppingmall-box2-link">link2</div> -->
                 add shoppingmall
             </div>
             <div class="shoppingmall-box2-body">
@@ -117,20 +105,20 @@
                         <div class="overlap none">* 중복된 쇼핑몰명 입니다.</div>
                     </div>
                     <div class="shoppingmall-box2-link">
-                        <label for="link">쇼핑몰 url (상세페이지용) : </label>
+                        <label for="link">쇼핑몰 url : </label>
                         <input type="text" name="link" id="link" onchange="linkcheck(this)">
                         <div class="overlapno none">* 사용할 수 있는 링크주소 입니다.</div>
                         <div class="overlap none">* 중복된 링크주소 입니다.</div>
                     </div>
-                    <div class="shoppingmall-box2-link">
+                    <!-- <div class="shoppingmall-box2-link">
                         <label for="link2">쇼핑몰 api링크 (광고활성화) : </label>
                         <input type="text" name="link2" id="link2">
-                    </div>
+                    </div> -->
                     <div class="shoppingmall-box2-date">
                         <label for="year">기간 : </label>
                         <div>
-                            <input name="startyear" type="number" value="<?php echo $year ?>" min="2022">
-                            <input name="startmonth" type="number" value="<?php echo $month ?>" min="1" max="12">
+                            <input name="startyear" type="number" value="<?php echo $year ?>" min="<?php echo $year ?>">
+                            <input name="startmonth" type="number" value="<?php echo $month ?>" min="<?php echo $month ?>" max="12">
                              ~ 
                             <input name="endyear" type="number" value="<?php echo $year ?>" min="2022">
                             <input name="endmonth" type="number" value="<?php echo $month ?>" min="1" max="12">
@@ -178,38 +166,32 @@
       
     }
     function edit(e) {
-        console.log(e);
         if(state === ''){
             let trtag = e.parentElement.parentElement;
             let name = trtag.children[1];
             let link = trtag.children[2];
-            let link2 = trtag.children[3];
+            let date = trtag.children[3];
             let btn = trtag.children[4];
             let code = btn.children[1].value;
 
-            let daterow = trtag.nextElementSibling.children[0]
-            let date = trtag.nextElementSibling.children[0].innerText;
-            let datedivide = date.split("~");
+            // let daterow = trtag.nextElementSibling.children[0]
+            let datetext = trtag.children[3].innerText;
+            let datedivide = datetext.split("~");
             let startyear = datedivide[0].split('-')[0].trim();
             let startmonth = datedivide[0].split('-')[1].trim();
 
             let endyear = datedivide[1].split('-')[0].trim();
             let endmonth = datedivide[1].split('-')[1].trim();
 
-            console.log(startmonth)
       
             name.innerHTML = `<input type="text" style="width:98%;" name="name" value="${e.value}">`
             link.innerHTML = `<input type="text" style="width:100%" name="link" value="${link.innerHTML}">`
-            link2.innerHTML = `<input type="text" style="width:100%" name="link" value="${link2.innerHTML}">`
-            daterow.innerHTML = `<div class="editdate">
-                                <input name="startyear" type="number" value="${startyear}" min="2022">
-                                <input name="startmonth" type="number" value="${startmonth}" min="1" max="12">
-                                ~ 
-                                <input name="endyear" type="number" value="${endyear}" min="2022">
-                                <input name="endmonth" type="number" value="${endmonth}" min="1" max="12">
-                                </div>`
+            date.innerHTML = `<div class="editdate">
+                                <input name="startyear" type="month" value="${startyear}-${startmonth}" min="${startyear}-${startmonth}">-
+                                <input name="endyear" type="month" value="${endyear}-${endmonth}">
+                            </div>`
             btn.innerHTML = 
-            `<button type="submit" class="shoppingmall-edit-confirm" onclick="editsave(this)" value="${code}"><i class="fas fa-check"></i></button>
+            `<button type="submit" class="shoppingmall-edit-confirm" onclick="editsave(this,${startyear},${startmonth})" value="${code}"><i class="fas fa-check"></i></button>
             <button type="submit" class="shoppingmall-edit-confirm" onclick="reset(this,${startyear},${startmonth},${endyear},${endmonth})" value="${code}"><i class="fas fa-redo"></i></i></button>`
             state = e.value;
         }else {
@@ -251,20 +233,21 @@
         }
         event.preventDefault();
     }
-    function editsave(e) {
+    function editsave(e,origin_startyear,origin_startmonth) {
         let trtag = e.parentElement.parentElement;
         let name = trtag.children[1];
         let new_name = name.children[0].value;
         let link = trtag.children[2];
         let new_link = link.children[0].value;
-        let link2 = trtag.children[3];
-        let new_link2 = link2.children[0].value;
         let newcode = e.value;
 
-        let startyear = trtag.nextElementSibling.children[0].children[0].children[0].value;
-        let startmonth = trtag.nextElementSibling.children[0].children[0].children[1].value;
-        let endyear = trtag.nextElementSibling.children[0].children[0].children[2].value;
-        let endmonth = trtag.nextElementSibling.children[0].children[0].children[3].value;
+        let startdate = trtag.children[3].children[0].children[0].value;
+        let enddate = trtag.children[3].children[0].children[1].value;
+
+        let startyear = startdate.split('-')[0];
+        let startmonth = startdate.split('-')[1];
+        let endyear = enddate.split('-')[0];
+        let endmonth = enddate.split('-')[1];
 
         if(window.confirm("수정하시겠습니까?")){
             if( (startyear > endyear) || ((startyear === endyear) && (Number(startmonth) > Number(endmonth))) ){
@@ -278,7 +261,6 @@
                         newcode,
                         newname : new_name,
                         newlink : new_link,
-                        newlink2 : new_link2,
                         startyear,
                         startmonth,
                         endyear,
@@ -295,27 +277,37 @@
     }
     function reset(e,startyear,startmonth,endyear,endmonth) {
         let trtag = e.parentElement.parentElement;
+
         let num = trtag.children[0];
         let reset_num = num.innerHTML
 
-        
+        // 두자리 
+        if(startmonth < 10) {
+            startmonth = "0"+startmonth;
+        }   
+        if(endmonth < 10) {
+            endmonth = "0"+endmonth;
+        }   
+
         let name = trtag.children[1];
         let reset_name = name.children[0].value;
         let link = trtag.children[2];
         let reset_link = link.children[0].value;
-        let link2 = trtag.children[3];
-        let reset_link2 = link2.children[0].value;
+        // let date = trtag.children[3];
+        // console.log(date)
+        // let reset_date = date.innerText;
+        // console.log(reset_date)
         let btn = trtag.children[4];
         let code = e.value;
 
-        let daterow = trtag.nextElementSibling.children[0];
-        daterow.innerHTML = `${startyear}-${startmonth} ~ ${endyear}-${endmonth}`;
+        // let daterow = trtag.nextElementSibling.children[0];
+        // date.innerHTML = `${startyear}-${startmonth} ~ ${endyear}-${endmonth}`;
 
-        trtag.innerHTML = `<td rowspan='2'>${reset_num}</td>
-            <td rowspan='2'>${reset_name}</td>
+        trtag.innerHTML = `<td>${reset_num}</td>
+            <td>${reset_name}</td>
             <td>${reset_link}</td>
-            <td>${reset_link2}</td>
-            <td id="shoppingmall-box-btn" rowspan='2'>
+            <td>${startyear}-${startmonth} ~ ${endyear}-${endmonth}</td>
+            <td id="shoppingmall-box-btn">
                 <button class="shoppingmall-box-edit" onclick="edit(this)" value="${reset_name}"><i class="fas fa-edit"></i></button>
                 <button class="shoppingmall-box-del" onclick="del(this)" value="${code}"><i class="fas fa-times-circle"></i></button>
             </td>`;
@@ -325,10 +317,9 @@
         // 입력값 빈칸으로 초기화
         let mallname = document.getElementById("mallname")
         let link = document.getElementById("link")
-        let link2 = document.getElementById("link2")
+
         mallname.value = null;
         link.value = null;
-        link2.value = null;
 
         //중복체크 초기화
         let overlapno = document.querySelectorAll(".overlapno")
@@ -397,7 +388,6 @@
     function box2submit(e) {
         let namevalue = document.getElementById('mallname').value;
         let linkvalue = document.getElementById('link').value;
-        let linkvalue2 = document.getElementById('link2').value;
         let blankcheck = document.querySelector(".blankcheck");
 
         let startyear = document.querySelector(".shoppingmall-box2-date").children[1].children[0].value;
@@ -406,8 +396,7 @@
         let endmonth = document.querySelector(".shoppingmall-box2-date").children[1].children[3].value;
 
 
-
-        if(!(namevalue && linkvalue && linkvalue2)){ // 빈 칸이 있을 경우
+        if(!(namevalue && linkvalue)){ // 빈 칸이 있을 경우
             blankcheck.classList.remove('none')
             return false;
         }else { // 빈칸없이 다 들어왔을 경우 중복검사 

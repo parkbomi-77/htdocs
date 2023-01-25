@@ -1,6 +1,5 @@
 <?php 
 
-echo "zzzz";
 require_once( '/Applications/MAMP/htdocs/wp-load.php' );
 
 $wpdb;
