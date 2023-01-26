@@ -656,7 +656,9 @@ $result = sql_query($sql, false);
 
 $sql3 = "select * from g5_shop_cart where od_id = '$od_id' ";
 $que = sql_query($sql3);
-function post($url, $fields){
+function post($url, $fields, $host){
+    // fields에 더하기 
+    $fields['host'] = $host;
     $post_field_string = http_build_query($fields, '', '&');
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
@@ -671,7 +673,7 @@ function post($url, $fields){
 }
 for($i=0; $result2 = sql_fetch_array($que); $i++) {
     if($result2['ct_vetcode'] === 'vet'){
-        post('http://localhost:8888/sample.php', $result2);
+        post('http://localhost:8888/sample.php', $result2, $HTTP_HOST); 
     }
 }
 

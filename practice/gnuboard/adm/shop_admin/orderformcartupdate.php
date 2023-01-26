@@ -28,7 +28,9 @@ $mod_history = '';
 $cnt = (isset($_POST['ct_id']) && is_array($_POST['ct_id'])) ? count($_POST['ct_id']) : 0;
 $arr_it_id = array();
 
-function post($url, $fields){
+function post($url, $fields, $host){
+    // fields에 더하기 
+    $fields['host'] = $host;
     $post_field_string = http_build_query($fields, '', '&');
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
@@ -174,7 +176,7 @@ for ($i=0; $i<$cnt; $i++)
     $result = sql_fetch($sql);
     if($result['ct_vetcode'] === 'vet'){
 
-        post('http://localhost:8888/sample.php', $result);
+        post('http://localhost:8888/sample.php', $result, $HTTP_HOST);
     }
 
     // it_id를 배열에 저장

@@ -166,7 +166,9 @@ else // 장바구니에 담기
     $post_io_types = (isset($_POST['io_type']) && is_array($_POST['io_type'])) ? $_POST['io_type'] : array();
     $post_ct_qtys = (isset($_POST['ct_qty']) && is_array($_POST['ct_qty'])) ? $_POST['ct_qty'] : array();
 
-    function post($url, $fields){
+    function post($url, $fields, $host){
+        // fields에 더하기 
+        $fields['host'] = $host;
         $post_field_string = http_build_query($fields, '', '&');
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -423,7 +425,7 @@ else // 장바구니에 담기
             $sql = "select * from g5_shop_cart where od_id = '$tmp_cart_id' ";
             $result = sql_fetch($sql);
             if($result['ct_vetcode'] === 'vet'){
-                post('http://localhost:8888/sample.php', $result);
+                post('http://localhost:8888/sample.php', $result, $HTTP_HOST);
             }
     }
 }

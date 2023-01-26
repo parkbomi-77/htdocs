@@ -136,7 +136,9 @@ sql_query(" update {$g5['g5_shop_cart_table']} set ct_status = '취소' where od
 
 $sql2 = "select * from g5_shop_cart where od_id = '$od_id' ";
 $que = sql_query($sql2);
-function post($url, $fields){
+function post($url, $fields, $host){
+    // fields에 더하기 
+    $fields['host'] = $host;
     $post_field_string = http_build_query($fields, '', '&');
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
@@ -149,9 +151,9 @@ function post($url, $fields){
     curl_close ($ch);
     return $response;
 }
-for($i=0; $result2=sql_fetch_array($que); $i++){
+for($i=0; $result2 = sql_fetch_array($que); $i++) {
     if($result2['ct_vetcode'] === 'vet'){
-        post('http://localhost:8888/sample.php', $result2);
+        post('http://localhost:8888/sample.php', $result2, $HTTP_HOST); 
     }
 }
 

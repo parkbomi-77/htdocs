@@ -67,7 +67,7 @@ $sql  = "select g5_shop_cart.mb_id,
         g5_shop_cart.ct_select_time,
         g5_shop_item.it_margin
         from g5_shop_cart
-        left join gnuboard.g5_shop_item
+        left join g5_shop_item
         on g5_shop_cart.it_id = g5_shop_item.it_id
         $sql_search
         limit $from_record, $rows ";
