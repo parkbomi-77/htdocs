@@ -55,6 +55,9 @@
 </div>
 
 <div class="Inflowbox-container">
+    <div class="Inflowbox-count">
+        <p>총 <span>0</span>개</p>
+    </div>
     <table style="text-align:center;" id="inflowtable">
         <colgroup>
             <col width="15%">
@@ -105,10 +108,13 @@
     let status3 = ''; // 상태
     let tabletag ='';
     let month = document.querySelector(".month")
+    let countspan = '';
 
     
     function changeState(e) { //select value 값으로 url 구분하여 불러오기 
         tabletag = document.getElementById("name"); 
+        countspan = document.querySelector(".Inflowbox-count").getElementsByTagName('span');
+
         if(e  >= 1000){
             $.ajax({
                 url: "http://localhost:8888/inflowbox-db.php",
@@ -136,16 +142,17 @@
                     datadata = datadata 
                     + "<tr><td>"+data[i].user_id+"</td>"
                     + "<td>"+data[i].it_name+"</td>"
-                    + "<td>"+data[i].price+" 원</td>"
+                    + "<td>"+(data[i].price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+" 원</td>"
                     + "<td>"+data[i].qty+" 개</td>"
-                    + "<td>"+onetotal+" 원</td>"
+                    + "<td>"+onetotal.toLocaleString('ko-KR')+" 원</td>"
                     + "<td>"+data[i].margin+" %</td>"
-                    + "<td>"+(onetotal*data[i].margin)/100+" 원</td>"
+                    + "<td>"+((onetotal*data[i].margin)/100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+" 원</td>"
                     + "<td>"+data[i].status_time+" </td>"
                     + "<td>"+data[i].status+"</td></tr>"
                 }
                 tabletag.innerHTML = datadata;
                 totaltd.innerText = total+" 원 / "+margin+" 원"
+                countspan[0].innerText = data.length;
             });
         }else if(e >= 100) { // 주문 상태 선택
             let totaltd= document.querySelector("#tabletotal")
@@ -172,16 +179,17 @@
                 datadata = datadata 
                 + "<tr><td>"+status3[i].user_id+"</td>"
                 + "<td>"+status3[i].it_name+"</td>"
-                + "<td>"+status3[i].price+" 원</td>"
+                + "<td>"+(status3[i].price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+" 원</td>"
                 + "<td>"+status3[i].qty+" 개</td>"
-                + "<td>"+(status3[i].qty)*(status3[i].price)+" 원</td>"
+                + "<td>"+((status3[i].qty)*(status3[i].price)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+" 원</td>"
                 + "<td>"+status3[i].margin+" %</td>"
-                + "<td>"+((status3[i].qty)*(status3[i].price)*status3[i].margin)/100+" 원</td>"
+                + "<td>"+(((status3[i].qty)*(status3[i].price)*status3[i].margin)/100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+" 원</td>"
                 + "<td>"+status3[i].status_time+" </td>"
                 + "<td>"+status3[i].status+"</td></tr>"
             }
                 tabletag.innerHTML = datadata;
                 totaltd.innerText = total+" 원 / "+margin+" 원"
+                countspan[0].innerText = status3.length;
 
         }else if(e < 100){ // 닐짜
             let totaltd= document.querySelector("#tabletotal")
@@ -208,16 +216,17 @@
                     datadata = datadata 
                     + "<tr><td>"+status[i].user_id+"</td>"
                     + "<td>"+status[i].it_name+"</td>"
-                    + "<td>"+status[i].price+" 원</td>"
+                    + "<td>"+(status[i].price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+" 원</td>"
                     + "<td>"+status[i].qty+" 개</td>"
-                    + "<td>"+(status[i].qty)*(status[i].price)+" 원</td>"
+                    + "<td>"+((status[i].qty)*(status[i].price)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+" 원</td>"
                     + "<td>"+status[i].margin+" %</td>"
-                    + "<td>"+((status[i].qty)*(status[i].price)*status[i].margin)/100+" 원</td>"
+                    + "<td>"+(((status[i].qty)*(status[i].price)*status[i].margin)/100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+" 원</td>"
                     + "<td>"+status[i].status_time+" </td>"
                     + "<td>"+status[i].status+"</td></tr>"
                 }
                 tabletag.innerHTML = datadata;
                 totaltd.innerText = total+" 원 / "+margin+" 원"
+                countspan[0].innerText = status.length;
 
 
             }else if(e < 20){ // 월 선택시 
@@ -239,16 +248,17 @@
                     datadata = datadata 
                     + "<tr><td>"+status2[i].user_id+"</td>"
                     + "<td>"+status2[i].it_name+"</td>"
-                    + "<td>"+status2[i].price+" 원</td>"
+                    + "<td>"+(status2[i].price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+" 원</td>"
                     + "<td>"+status2[i].qty+" 개</td>"
-                    + "<td>"+(status2[i].qty)*(status2[i].price)+" 원</td>"
+                    + "<td>"+((status2[i].qty)*(status2[i].price)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+" 원</td>"
                     + "<td>"+status2[i].margin+" %</td>"
-                    + "<td>"+((status2[i].qty)*(status2[i].price)*status2[i].margin)/100+" 원</td>"
+                    + "<td>"+(((status2[i].qty)*(status2[i].price)*status2[i].margin)/100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+" 원</td>"
                     + "<td>"+status2[i].status_time+" </td>"
                     + "<td>"+status2[i].status+"</td></tr>"
                 }
                 tabletag.innerHTML = datadata;
                 totaltd.innerText = total+" 원 / "+margin+" 원"
+                countspan[0].innerText = status2.length;
 
             }
  

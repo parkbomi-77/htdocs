@@ -357,7 +357,10 @@
     padding: 20px;
     position: relative;
 }
-
+.Inflowbox-count p{
+    margin: 0 30px;
+    text-align: end;
+}
 #inflowtable {
     width: 95%;
     margin: 8px auto;
