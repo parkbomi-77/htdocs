@@ -317,28 +317,31 @@
     background-color: #e4e4e4;
 }
 
-
 /* Inflowbox 페이지 */
 
 .Inflowbox-selectcontainer{
     width: 100%;
     background-color: rgb(255, 255, 255);
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 20px;
+    flex-direction: column;
+    padding: 20px 25px 60px;
     border-radius: 10px;
     font-size: 18px;
     font-weight: 600;
     margin: 0 0 10px;
+    position: relative;
+    align-items: end;
 }
 .Inflowbox-name{
-    width: 40%;
-    padding-right: 2rem;
+    margin: 12px 0 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 .Inflowbox-select {
+    display: inline-flex;
     width: 60%;
-    display: flex;
 }
 .Inflowbox-select select{
     width: 100%;
@@ -357,45 +360,67 @@
     padding: 20px;
     position: relative;
 }
+.Inflowbox-count{
+    margin-top: 30px;
+}
 .Inflowbox-count p{
-    margin: 0 30px;
+    margin: 0 7px;
     text-align: end;
 }
+.Inflowbox-button-reset{
+    height: 38px;
+    width: 110px;
+    background-color: #fffffff2;
+    border: 1px solid #3482e7;
+    border-radius: 5px;
+    color: #3482e7;
+    font-size: smaller;
+    margin: 10px 0 15px;
+    cursor: pointer;
+}
+.Inflowbox-button{
+    height: 38px;
+    width: 110px;
+    background-color: #237ae6f2;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: smaller;
+    margin: 10px 0 15px;
+    cursor: pointer;
+}
 #inflowtable {
-    width: 95%;
-    margin: 8px auto;
-    border: 1px solid #a39485;
+    width: 98%;
+    margin: 0 5px;
+    /* border: 1px solid #a39485; */
     border-collapse: collapse;
-    border-radius: 3px;
+    border-radius: 6px;
     box-shadow: 0 0px 5px rgb(43 42 42 / 25%);
     overflow: hidden;
+    font-size: small;
 }
 
 #inflowtable thead {
-    font-weight: bold;
+    /* font-weight: bold; */
     color: #fff;
-    background: rgb(33, 47, 63);
+    background: rgb(53 69 86)
   }
 
 #inflowtable td, #inflowtable th {
-    padding: 1em .5em;
+    padding: 0.9em 0.5em;
     vertical-align: middle;
     border: 1px;
   }
 
 .download-btn {
-    background-color: #237ae6;
+    background-color: #4cc85d;;
     width: 110px;
-    position: absolute;
     line-height: 2.4rem;
     text-align: center;
-    border-radius: 9px;
+    border-radius: 5px;
     color: #f6faf2;
-    right: 40px;
     font-size: 15px;
-    margin-top: 3px;
-    box-shadow: 0 2px 5px rgb(43 42 42 / 30%);
-    border: 1px solid #237ae6;
+    margin-top: 9px;
 }
 .download-btn:hover{
     cursor: pointer;

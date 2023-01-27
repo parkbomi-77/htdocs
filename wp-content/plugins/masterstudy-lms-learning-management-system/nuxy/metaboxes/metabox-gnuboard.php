@@ -7,72 +7,65 @@
 ?>
 
 <div class="Inflowbox-selectcontainer">
-    <div class="Inflowbox-name">Site selection</div>
-    <div class="Inflowbox-select">
-        <select name="shopStatus" id="shopStatus-id" onchange="changeState(this.value)">
-            <option value="none">'쇼핑몰' 을 선택해주세요 </option>
-            <?php
-                for($i=0; $i<count($results); $i++){
-                    echo "<option value='{$results[$i]->code}'>{$results[$i]->name}</option>";
+    <div class="Inflowbox-name">
+        <div>Site</div>
+        <div class="Inflowbox-select">
+            <select name="shopStatus" id="shopStatus-id">
+                <option value="">'쇼핑몰' 을 선택해주세요 </option>
+                <?php
+                    for($i=0; $i<count($results); $i++){
+                        echo "<option value='{$results[$i]->code}'>{$results[$i]->name}</option>";
+                    }
+                ?>
+            </select>
+        </div>
+    </div>
+    <div class="Inflowbox-name">
+        <div>Date</div>
+        <div class="Inflowbox-select">
+            <select name="orderdate" class="orderdate years">
+                <option value="">'년도' 를 선택해주세요 </option>
+                <option value="2022">2022년</option>
+                <option value="2023">2023년</option>
+                <option value="2024">2024년</option>
+            </select>
+            <select name="orderdate" class="orderdate month" onchange="monthcheck(this)">
+                <option value="">'월' 을 선택해주세요 </option>
+                <?php
+                for($i=0; $i<12; $i++){ // value 1 ~ 12
+                    echo "<option value='".($i+1)."'>".($i+1)."월</option>";
                 }
-            ?>
-        </select>
+                ?>
+            </select>
+        </div>
     </div>
-</div>
-
-<div class="Inflowbox-selectcontainer">
-    <div class="Inflowbox-name">Date</div>
-    <div class="Inflowbox-select">
-        <select name="orderdate" class="orderdate years" onchange="changeState(this.value)">
-            <option value="21">'년도' 를 선택해주세요 </option>
-            <option value="22">2022년</option>
-            <option value="23">2023년</option>
-            <option value="24">2024년</option>
-        </select>
-        <select name="orderdate" class="orderdate month" onchange="changeState(this.value)">
-            <option value="13">'월' 을 선택해주세요 </option>
-            <?php
-            for($i=0; $i<12; $i++){ // value 1 ~ 12
-                echo "<option value='".($i+1)."'>".($i+1)."월</option>";
-            }
-            ?>
-        </select>
+    <div class="Inflowbox-name">
+        <div>State</div>
+        <div class="Inflowbox-select">
+            <select name="orderStatus" id="orderStatus-id">
+                <option value="">'주문 상태' 를 선택해주세요 </option>
+                <option value="주문">주문</option>
+                <option value="배송">배송</option>
+                <option value="완료">완료</option>
+                <option value="취소">취소</option>
+                <!-- <option value="105">최종 완료</option> -->
+            </select>
+        </div>
     </div>
-</div>
-
-<div class="Inflowbox-selectcontainer">
-    <div class="Inflowbox-name">State</div>
-    <div class="Inflowbox-select">
-        <select name="orderStatus" id="orderStatus-id" onchange="changeState(this.value)">
-            <option value="100">'주문 상태' 를 선택해주세요 </option>
-            <option value="101">주문</option>
-            <!-- <option value="102">배송</option> -->
-            <option value="103">완료</option>
-            <!-- <option value="104">취소</option> -->
-            <!-- <option value="105">최종 완료</option> -->
-        </select>
+    <div>
+        <input type="button" class="Inflowbox-button-reset" value="reset" onclick="reselect(this)">
+        <input type="button" class="Inflowbox-button" value="select" onclick="change(this)">
     </div>
-</div>
 
-<div class="Inflowbox-container">
     <div class="Inflowbox-count">
         <p>총 <span>0</span>개</p>
     </div>
     <table style="text-align:center;" id="inflowtable">
-        <colgroup>
-            <col width="15%">
-            <col width="10%">
-            <col width="10%">
-            <col width="10%">
-            <col width="10%">
-            <col width="10%">
-            <col width="10%">
-            <col width="15%">
-            <col width="10%">
-        </colgroup>
         <thead>
             <tr> 
+                <th></th>
                 <th>사용자</th>
+                <th>쇼핑몰</th>
                 <th>제품</th>
                 <th>제품가격</th>
                 <th>수량</th>
@@ -81,14 +74,16 @@
                 <th>마진</th>
                 <th>날짜</th>
                 <th>상태</th>
+                <th></th>
             </tr>
         </thead>
         <tbody  id="name">
+            <tr><td colspan='12' style="padding: 30px;">판매현황 결과가 없습니다.</td></tr>
         </tbody>
         <tfoot class="tfoottag">
             <tr>
-                <th scope="row" colspan='5'>총 액 / 마 진</th>
-                <td colspan='4' id="tabletotal">원</td>
+                <th scope="row" colspan='6'>총 액 / 마 진</th>
+                <td colspan='6' id="tabletotal">원</td>
             </tr>
         </tfoot>
     </table>
@@ -110,181 +105,106 @@
     let month = document.querySelector(".month")
     let countspan = '';
 
-    
-    function changeState(e) { //select value 값으로 url 구분하여 불러오기 
+    function monthcheck(e) {
+        console.log(e.previousElementSibling.value)
+        if(!e.previousElementSibling.value) {
+            alert('"년도"를 먼저 선택해주세요.')
+            e.value = "";
+        }
+    }
+
+    function change(e) {
+        let siteCode = e.parentElement.parentElement.getElementsByTagName('select')[0].value;
+        let year = e.parentElement.parentElement.getElementsByTagName('select')[1].value;
+        let month = e.parentElement.parentElement.getElementsByTagName('select')[2].value;
+        let orderState = e.parentElement.parentElement.getElementsByTagName('select')[3].value;
+
         tabletag = document.getElementById("name"); 
         countspan = document.querySelector(".Inflowbox-count").getElementsByTagName('span');
 
-        if(e  >= 1000){
-            $.ajax({
-                url: "http://localhost:8888/inflowbox-db.php",
-                type: "post",
-                dataType : 'json',
-                data: {
-                    code : e,
-                },
-            }).done(function(data) {
-                let totaltd= document.querySelector("#tabletotal")
-                let total = 0;
-                let margin = 0;
-                purchase_status = data;
+        // 년도없이 월만 들어왔을 경우 예외처리
+        if(month && !year) {
+            alert('"년도"를 선택해주세요')
+            return;
+        }
 
-                // 년도, 월, 주문상태 초기화
-                document.querySelector(".years").value = "21"
-                document.querySelector(".month").value = "13"
-                document.querySelector("#orderStatus-id").value = "100"
+        if(month < 10 && month > 0) {
+            month = '0'+month;
+        }
 
-                let datadata = ''
-                for(let i=0; i<data.length; i++){
-                    let onetotal = (data[i].qty)*(data[i].price);
-                    margin = margin + (onetotal*data[i].margin)/100;
-                    total = total + (data[i].qty)*(data[i].price)
-                    datadata = datadata 
-                    + "<tr><td>"+data[i].user_id+"</td>"
-                    + "<td>"+data[i].it_name+"</td>"
-                    + "<td>"+(data[i].price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+" 원</td>"
-                    + "<td>"+data[i].qty+" 개</td>"
-                    + "<td>"+onetotal.toLocaleString('ko-KR')+" 원</td>"
-                    + "<td>"+data[i].margin+" %</td>"
-                    + "<td>"+((onetotal*data[i].margin)/100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+" 원</td>"
-                    + "<td>"+data[i].status_time+" </td>"
-                    + "<td>"+data[i].status+"</td></tr>"
-                }
-                tabletag.innerHTML = datadata;
-                totaltd.innerText = total+" 원 / "+margin+" 원"
-                countspan[0].innerText = data.length;
-            });
-        }else if(e >= 100) { // 주문 상태 선택
+        $.ajax({
+            url: "http://localhost:8888/inflowbox-db.php",
+            type: "post",
+            dataType : 'json',
+            data: {
+                siteCode,
+                year,
+                month,
+                orderState,
+            },
+        }).done(function(data){
             let totaltd= document.querySelector("#tabletotal")
             let total = 0;
             let margin = 0;
 
-            let code;
-            if(e > 100){
-                if(e === '101'){
-                    code = '주문';
-                }else if(e === '103'){
-                    code = '완료';
-                }
-                status3 = status2.filter(el => el.status === code)
-            }else if(e === '100'){
-                status3 = status2;
-            }
-            
             let datadata = ''
-            for(let i=0; i<status3.length; i++){
-                total = total + (status3[i].qty)*(status3[i].price);
-                margin = margin + ((status3[i].qty)*(status3[i].price)*status3[i].margin)/100;
-
+            for(let i=0; i<data.length; i++){
+                let onetotal = (data[i].qty)*(data[i].price);
+                margin = margin + (onetotal*data[i].margin)/100;
+                total = total + (data[i].qty)*(data[i].price)
                 datadata = datadata 
-                + "<tr><td>"+status3[i].user_id+"</td>"
-                + "<td>"+status3[i].it_name+"</td>"
-                + "<td>"+(status3[i].price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+" 원</td>"
-                + "<td>"+status3[i].qty+" 개</td>"
-                + "<td>"+((status3[i].qty)*(status3[i].price)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+" 원</td>"
-                + "<td>"+status3[i].margin+" %</td>"
-                + "<td>"+(((status3[i].qty)*(status3[i].price)*status3[i].margin)/100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+" 원</td>"
-                + "<td>"+status3[i].status_time+" </td>"
-                + "<td>"+status3[i].status+"</td></tr>"
+                + "<tr> <td></td><td>"+data[i].user_id+"</td>"
+                + "<td>"+data[i].name+"</td>"
+                + "<td>"+data[i].it_name+"</td>"
+                + "<td>"+(data[i].price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+" 원</td>"
+                + "<td>"+data[i].qty+"</td>"
+                + "<td>"+onetotal.toLocaleString('ko-KR')+" 원</td>"
+                + "<td>"+data[i].margin+" %</td>"
+                + "<td>"+((onetotal*data[i].margin)/100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+" 원</td>"
+                + "<td>"+data[i].status_time+" </td>"
+                + "<td>"+data[i].status+"</td><td></td> </tr>"
             }
-                tabletag.innerHTML = datadata;
-                totaltd.innerText = total+" 원 / "+margin+" 원"
-                countspan[0].innerText = status3.length;
+            tabletag.innerHTML = datadata;
+            totaltd.innerText = total.toLocaleString('ko-KR')+" 원 / "+margin.toLocaleString('ko-KR')+" 원"
+            countspan[0].innerText = data.length;
+        })
 
-        }else if(e < 100){ // 닐짜
-            let totaltd= document.querySelector("#tabletotal")
+    }
+    function reselect(e) {
+        console.log(e)
+        e.parentElement.parentElement.getElementsByTagName('select')[0].value = "";
+        e.parentElement.parentElement.getElementsByTagName('select')[1].value = "";
+        e.parentElement.parentElement.getElementsByTagName('select')[2].value = "";
+        e.parentElement.parentElement.getElementsByTagName('select')[3].value = "";
+        
+        let totaltd= document.querySelector("#tabletotal")
+        tabletag = document.getElementById("name"); 
+        countspan = document.querySelector(".Inflowbox-count").getElementsByTagName('span');
 
-            if(e > 20){ // 년도 선택시
-                let total = 0;
-                let margin = 0;
+        // 테이블
+        tabletag.innerHTML = "<tr><td colspan='12' style='padding: 30px;'>판매현황 결과가 없습니다.</td></tr>";
+        totaltd.innerText = "원"
+        countspan[0].innerText = 0;
 
-                // 월 초기화
-                document.querySelector(".month").value = "13"
-                document.querySelector("#orderStatus-id").value = "100"
-
-                if(e === '21'){
-                    status = purchase_status;
-                }else {
-                    status = purchase_status.filter(el => 
-                    el.status_time.substr(2,2) === e)
-                }
-                let datadata = ''
-                for(let i=0; i<status.length; i++){
-                    total = total + (status[i].qty)*(status[i].price);
-                    margin = margin + ((status[i].qty)*(status[i].price)*status[i].margin)/100;
-
-                    datadata = datadata 
-                    + "<tr><td>"+status[i].user_id+"</td>"
-                    + "<td>"+status[i].it_name+"</td>"
-                    + "<td>"+(status[i].price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+" 원</td>"
-                    + "<td>"+status[i].qty+" 개</td>"
-                    + "<td>"+((status[i].qty)*(status[i].price)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+" 원</td>"
-                    + "<td>"+status[i].margin+" %</td>"
-                    + "<td>"+(((status[i].qty)*(status[i].price)*status[i].margin)/100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+" 원</td>"
-                    + "<td>"+status[i].status_time+" </td>"
-                    + "<td>"+status[i].status+"</td></tr>"
-                }
-                tabletag.innerHTML = datadata;
-                totaltd.innerText = total+" 원 / "+margin+" 원"
-                countspan[0].innerText = status.length;
-
-
-            }else if(e < 20){ // 월 선택시 
-                document.querySelector("#orderStatus-id").value = "100"
-                let total = 0;
-                let margin = 0;
-
-                if(e === '13'){
-                    status2 = status;
-                }else {
-                    status2 = status.filter(el => 
-                    Number(el.status_time.substr(5,2)) === Number(e))
-                }
-                let datadata = ''
-                for(let i=0; i<status2.length; i++){
-                    total = total + (status[i].qty)*(status[i].price);
-                    margin = margin + ((status2[i].qty)*(status2[i].price)*status2[i].margin)/100;
-
-                    datadata = datadata 
-                    + "<tr><td>"+status2[i].user_id+"</td>"
-                    + "<td>"+status2[i].it_name+"</td>"
-                    + "<td>"+(status2[i].price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+" 원</td>"
-                    + "<td>"+status2[i].qty+" 개</td>"
-                    + "<td>"+((status2[i].qty)*(status2[i].price)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+" 원</td>"
-                    + "<td>"+status2[i].margin+" %</td>"
-                    + "<td>"+(((status2[i].qty)*(status2[i].price)*status2[i].margin)/100).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')+" 원</td>"
-                    + "<td>"+status2[i].status_time+" </td>"
-                    + "<td>"+status2[i].status+"</td></tr>"
-                }
-                tabletag.innerHTML = datadata;
-                totaltd.innerText = total+" 원 / "+margin+" 원"
-                countspan[0].innerText = status2.length;
-
-            }
- 
-        }else {
-            $('#name').html("")
-        }
-
+        
     }
     function exportExcel(){ 
-    // step 1. workbook 생성
-    var wb = XLSX.utils.book_new();
+        // step 1. workbook 생성
+        var wb = XLSX.utils.book_new();
 
-    // step 2. 시트 만들기 
-    var newWorksheet = excelHandler.getWorksheet();
+        // step 2. 시트 만들기 
+        var newWorksheet = excelHandler.getWorksheet();
 
-    // step 3. workbook에 새로만든 워크시트에 이름을 주고 붙인다.  
-    XLSX.utils.book_append_sheet(wb, newWorksheet, excelHandler.getSheetName());
+        // step 3. workbook에 새로만든 워크시트에 이름을 주고 붙인다.  
+        XLSX.utils.book_append_sheet(wb, newWorksheet, excelHandler.getSheetName());
 
-    // step 4. 엑셀 파일 만들기 
-    var wbout = XLSX.write(wb, {bookType:'xlsx',  type: 'binary'});
+        // step 4. 엑셀 파일 만들기 
+        var wbout = XLSX.write(wb, {bookType:'xlsx',  type: 'binary'});
 
-    // step 5. 엑셀 파일 내보내기 
-    saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), excelHandler.getExcelFileName());
+        // step 5. 엑셀 파일 내보내기 
+        saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), excelHandler.getExcelFileName());
     }
-
-    var excelHandler = {
+    let excelHandler = {
         getExcelFileName : function(){
             return 'table-test.xlsx';	//파일명
         },
@@ -300,9 +220,9 @@
     }
 
     function s2ab(s) { 
-    var buf = new ArrayBuffer(s.length); //convert s to arrayBuffer
-    var view = new Uint8Array(buf);  //create uint8array as viewer
-    for (var i=0; i<s.length; i++) view[i] = s.charCodeAt(i) & 0xFF; //convert to octet
+    let buf = new ArrayBuffer(s.length); //convert s to arrayBuffer
+    let view = new Uint8Array(buf);  //create uint8array as viewer
+    for (let i=0; i<s.length; i++) view[i] = s.charCodeAt(i) & 0xFF; //convert to octet
     return buf;    
     }
 </script>
