@@ -53,7 +53,7 @@ $mb_recommend   = isset($_POST['mb_recommend'])     ? trim($_POST['mb_recommend'
 $mb_mailling    = isset($_POST['mb_mailling'])      ? trim($_POST['mb_mailling'])    : "";
 $mb_sms         = isset($_POST['mb_sms'])           ? trim($_POST['mb_sms'])         : "";
 $mb_open        = isset($_POST['mb_open'])          ? trim($_POST['mb_open'])        : "0";
-$mb_1           = isset($_POST['mb_1'])             ? trim($_POST['mb_1'])           : "";
+$mb_1           = isset($_POST['mb_vetid'])         ? trim($_POST['mb_vetid'])       : "";
 $mb_2           = isset($_POST['mb_2'])             ? trim($_POST['mb_2'])           : "";
 $mb_3           = isset($_POST['mb_3'])             ? trim($_POST['mb_3'])           : "";
 $mb_4           = isset($_POST['mb_4'])             ? trim($_POST['mb_4'])           : "";
@@ -117,7 +117,7 @@ if ($w == '' || $w == 'u') {
         if ($msg = valid_mb_hp($mb_hp))     alert($msg, "", true, true);
     }
 
-    if ($w=='') {
+    if ($w=='') { // 회원가입일 경우 
         if ($msg = exist_mb_id($mb_id))     alert($msg);
 
         if (get_session('ss_check_mb_id') != $mb_id || get_session('ss_check_mb_nick') != $mb_nick || get_session('ss_check_mb_email') != $mb_email) {

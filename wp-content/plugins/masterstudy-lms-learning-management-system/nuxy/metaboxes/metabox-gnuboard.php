@@ -106,7 +106,6 @@
     let countspan = '';
 
     function monthcheck(e) {
-        console.log(e.previousElementSibling.value)
         if(!e.previousElementSibling.value) {
             alert('"년도"를 먼저 선택해주세요.')
             e.value = "";

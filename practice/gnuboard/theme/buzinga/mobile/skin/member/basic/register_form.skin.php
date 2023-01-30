@@ -205,7 +205,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
             <li>
                 <div class="certification">
                     <input type="hidden" id="reg_mb_certification" name="certification" value="">
-                    <input type="text" id="reg_mb_name" name="mb_vetid" value="" <?php echo $required ?> class="frm_input full_input <?php echo $required ?>" placeholder="벳스쿨 아이디를 입력해주세요.">
+                    <input type="text" id="reg_mb_vetid" name="mb_vetid" value="" <?php echo $required ?> class="frm_input full_input <?php echo $required ?>" placeholder="벳스쿨 아이디를 입력해주세요.">
                     <button class="btn_frmline btn" onclick="vetcertification()">인증하기</button>
                 </div>
                 <span class="certification_guide frm_info"> 벳스쿨 인증을 진행해주세요.</span>
@@ -358,6 +358,8 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 
     // 벳스쿨 계정 인증체크
     function vetcertification() {
+        console.log('인증요청')
+
         let val = document.fregisterform.mb_vetid.value;
         let certification = document.getElementById("reg_mb_certification")
 
@@ -391,10 +393,20 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
     function fregisterform_submit(f)
     {
         // 벳스쿨 인증 확인 
-        console.log(f.certification.value);
         if(!f.certification.value){ 
+            console.log(f.certification.value);
             alert("인증하기버튼을 눌러 인증을 완료해주세요.");
             return false;
+        }
+
+        // 벳스쿨아이디 인증 중복 검사 
+        if(f.mb_vetid.value){ 
+            var msg = reg_mb_vetid_check();
+            if (msg) {
+                alert(msg);
+                f.mb_vetid.select();
+                return false;
+            }
         }
 
         // 회원아이디 검사

@@ -11,7 +11,7 @@ $vetid = $_POST['val'];
 
 // 벳스쿨 유저 DB 테이블에서 아이디있으면 -> 회원 등급 보내기 
 $sql = "SELECT m.user_id, u.user_login, m.meta_key, m.meta_value
-        FROM vetschool.wp_users as u
+        FROM wp_users as u
         join wp_usermeta as m
         on u.ID = m.user_id
         where u.user_login = '{$vetid}'

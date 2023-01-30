@@ -1,3 +1,20 @@
+var reg_mb_vetid_check = function() {
+    var result = "";
+    $.ajax({
+        type: "POST",
+        url: g5_bbs_url+"/ajax.mb_vetid.php",
+        data: {
+            "reg_mb_vetid": $("#reg_mb_vetid").val()
+        },
+        cache: false,
+        async: false,
+        success: function(data) {
+            result = data;
+        }
+    });
+    return result;
+}
+
 var reg_mb_id_check = function() {
     var result = "";
     $.ajax({

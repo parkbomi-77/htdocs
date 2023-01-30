@@ -40,6 +40,21 @@ function exist_mb_id($reg_mb_id)
         return "";
 }
 
+function exist_vet_id($mb_vetid)
+{
+    global $g5;
+
+    $mb_vetid = trim($mb_vetid);
+    if ($mb_vetid == "") return "";
+
+    $sql = " select count(*) as cnt from `{$g5['member_table']}` where mb_1 = '$mb_vetid' ";
+    $row = sql_fetch($sql);
+    if ($row['cnt'])
+        return "이미 인증된 벳스쿨 계정입니다.";
+    else
+        return "";
+}
+
 function reserve_mb_id($reg_mb_id)
 {
     global $config;
