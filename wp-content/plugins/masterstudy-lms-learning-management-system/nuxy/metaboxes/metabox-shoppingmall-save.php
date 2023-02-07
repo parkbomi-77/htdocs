@@ -4,25 +4,25 @@ define( 'SHORTINIT', true );
 require_once( $_SERVER['DOCUMENT_ROOT'].'/wp-load.php' );
  global $wpdb;
 
- $thisyear = date('Y');
- $thismonth = date('m');
+ // 오늘 날짜 
+ $thisdate = date('Y-m');
 
 $mall = $_POST['name'];
 $link = $_POST['link'];
 
-$startyear = $_POST['startyear'];
-$startmonth = $_POST['startmonth'];
-$endyear = $_POST['endyear'];
-$endmonth = $_POST['endmonth'];
-$start_date = $startyear.'-'.$startmonth.'-01';
-$end_date = $endyear.'-'.$endmonth.'-01';
+// 새로 등록
+$start_date = $_POST['new_startday'].'-01';
+$end_date = $_POST['new_endday'].'-01';
 
+// 수정할때
 $newcode = $_POST['newcode'];
 $newname = $_POST['newname'];
 $newlink = $_POST['newlink'];
+$startdate = $_POST['startdate'].'-01';
+$enddate = $_POST['enddate'].'-01';
 
+//삭제할때
 $delcode = $_POST['code'];
-$editcode = $_POST['editcode'];
 
 // 링크 주소 정리
 $laststr = substr($link, -1);
@@ -56,16 +56,12 @@ if($delcode){ // 삭제 요청
         }
     }
     
-}else if($editcode){ // 수정 사항 보여주기 요청
-    $results = $wpdb->get_results($wpdb->prepare("SELECT * from wp_shoppingmall where code ='".$editcode."' "));
-    $dataArray[0] = '삽입 성공';
-    echo json_encode($dataArray);
 }else if($newcode){ // 수정사항 저장하기 
     // 마감날짜가 안지난 경우 쇼핑몰 광고활성화 state 1로 변경하기 
-    if( ($thisyear < $endyear) || (($thisyear === $endyear) && ($thismonth <= $endmonth )) ){
+    if($enddate >= $thisdate){
         $sql1 = "UPDATE wp_shoppingmall 
         set name= '".$newname."', link='".$newlink."',
-        state=1, start_date='".$start_date."', end_date='".$end_date."' where code ='".$newcode."' ";
+        state=1, start_date='".$startdate."', end_date='".$enddate."' where code ='".$newcode."' ";
         $wpdb->get_results($wpdb->prepare($sql1));
         
         // 쇼핑몰코드로 쇼핑몰링크 얻어내기
@@ -76,13 +72,13 @@ if($delcode){ // 삭제 요청
         // 쇼핑몰 상품들도 활성화시키기 adv_state 0이면서 del 0인것들 adv_state 1로 변경 
         $sql3 = "SELECT * FROM wp_product_list where mall_code = {$newcode} and del = 0";
         $results = $wpdb->get_results($wpdb->prepare($sql3)); // 쇼핑몰 상품들 리스트
-        for($i=0; $i<count($results); $i++){ // 36개 .. 
+        for($i=0; $i<count($results); $i++){  
             $sql4 = "UPDATE wp_product_list SET adv_state = 1 WHERE ID =".$results[$i]->ID;
             $wpdb->get_results($wpdb->prepare($sql4));
             
             // 배포쇼핑몰에 다시 광고활성화 api 보내기 
             // 마진율 오브젝트에 담아서 보내기
-            $sql = "SELECT * FROM vetschool.wp_shoppingmall as a
+            $sql = "SELECT * FROM wp_shoppingmall as a
                     left join wp_shoppingmall_margin as b
                     on a.code = b.code
                     where a.code = {$results[$i]->mall_code}
@@ -107,8 +103,8 @@ if($delcode){ // 삭제 요청
             $postdata = http_build_query(
                 array(
                     'product_code' => $code,
-                    'start_date' => $start_date,
-                    'end_date' => $end_date,
+                    'start_date' => $startdate,
+                    'end_date' => $enddate,
                     'margin' => $obj,
                 )
             );
@@ -127,7 +123,7 @@ if($delcode){ // 삭제 요청
     // 마감날짜가 지난 경우 광고 비활성화
         $wpdb->get_results($wpdb->prepare("UPDATE wp_shoppingmall 
         set name= '".$newname."', link='".$newlink."',
-        state=0, start_date='".$start_date."', end_date='".$end_date."' where code ='".$newcode."' "));
+        state=0, start_date='".$startdate."', end_date='".$enddate."' where code ='".$newcode."' "));
 
     // 해당 쇼핑몰 광고활성화되어있는 제품들 -> 비활성화 
         $sql5 ="SELECT * FROM wp_product_list where mall_code = {$newcode} and adv_state = 1";
@@ -160,9 +156,16 @@ if($delcode){ // 삭제 요청
 
     }
 }else { // 새 쇼핑몰 등록
-    $sql2="INSERT INTO wp_shoppingmall (name,link, state, start_date, end_date) 
-    VALUES ('{$mall}','{$link}',1, '{$start_date}', '{$end_date}')";
-    $wpdb->get_results($wpdb->prepare($sql2));
+    // 계약마감일이 현재시점보다 과거일 경우 광고 비활성화상태에 두기 
+    if($end_date < $thisdate) {
+        $sql2="INSERT INTO wp_shoppingmall (name,link, state, start_date, end_date) 
+        VALUES ('{$mall}','{$link}',0, '{$start_date}', '{$end_date}')";
+        $wpdb->get_results($wpdb->prepare($sql2));
+    }else {
+        $sql2="INSERT INTO wp_shoppingmall (name,link, state, start_date, end_date) 
+        VALUES ('{$mall}','{$link}',1, '{$start_date}', '{$end_date}')";
+        $wpdb->get_results($wpdb->prepare($sql2));
+    }
 }
 
 

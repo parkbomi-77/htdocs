@@ -470,6 +470,9 @@
     height: 41px;
     word-break: break-word;
 }
+#shoppingmall-row td input{
+    text-align: center;
+}
 tbody .shoppingmall-row2{
     background-color: aliceblue;
 }
@@ -482,6 +485,9 @@ tbody .shoppingmall-row2{
 .editdate input{
     width: 47%;
     padding: 0 7px;
+    border: 1px solid #bec5cb;
+    background-color: #f6f9fc;
+    height: 40px;
 }
 #shoppingmall-box-btn{
     padding: 0px;
@@ -706,7 +712,11 @@ tbody .shoppingmall-row2{
     margin-top: 2px;
 }
 .shoppingmall-box2-date input{
-    width: 23.2%;
+    width: 47.6%;
+    border: 1px solid #bec5cb;
+    background-color: #f6f9fc;
+    height: 40px;
+    text-align: center;
 }
 .shoppingmall-box2-add{
     width: 88.2%;
@@ -874,7 +884,7 @@ tbody .shoppingmall-row2{
 .margin_setting>div{    
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     font-size: medium;
     font-weight: 500;
     line-height: 41px;

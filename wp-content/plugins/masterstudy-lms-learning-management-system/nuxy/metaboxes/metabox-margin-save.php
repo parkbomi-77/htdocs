@@ -7,11 +7,9 @@ $margin = $_POST['margin'];
 
 $startyear = $_POST['startyear'];
 $startmonth = $_POST['startmonth'];
-$startdate = $year.'-'.$month.'-01';
 
 $endyear = $_POST['endyear'];
 $endmonth = $_POST['endmonth'];
-$enddate = $year.'-'.$month.'-01';
 
 $nowdate = date("Y-m");
 

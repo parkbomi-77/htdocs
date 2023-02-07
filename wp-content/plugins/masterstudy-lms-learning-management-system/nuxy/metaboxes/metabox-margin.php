@@ -8,22 +8,6 @@
     $month = substr($today,4,2);
     $date = $year.'-'.$month.'%';
 
-    // $sql = "SELECT a.code, a.name, b.margin, b.date_setting
-    // from wp_shoppingmall as a
-    // left outer join wp_shoppingmall_margin as b
-    // on a.code = b.code
-    // where a.state = 1
-    // and (b.date_setting like '".$date."' 
-    // or b.date_setting is null)";
-    // $mallName = $wpdb->get_results($wpdb->prepare($sql));
-
-    // if(!$mallName){ // 새로운 달 데이터 없는 경우 
-    //     $sql2 = "SELECT wp_shoppingmall.code, wp_shoppingmall.name 
-    //             FROM wp_shoppingmall
-    //             where state = 1 ";
-    //     $mallName = $wpdb->get_results($wpdb->prepare($sql2));
-    // }
-
     $sql3 ="SELECT code, name, start_date, end_date
             FROM wp_shoppingmall
             where state = 1";
@@ -41,7 +25,6 @@
         return $datearr;
     }
 
-
     // 쇼핑몰 이름
     function mall_name($date) {
         $mallname = "";
@@ -50,30 +33,6 @@
         }
         return $mallname;
     }
-
-    // function years($year) {
-    //     $allyears = '';
-    //     for($i=2022; $i<=2032; $i++){
-    //         if($i === (int)$year){
-    //             $allyears = $allyears.'<option value='.($i).' selected>'.($i).년도.'</option>';
-    //         }else {
-    //             $allyears = $allyears.'<option value='.($i).'>'.($i).년도.'</option>';
-    //         }
-    //     }
-    //     return $allyears;
-    // }
-    
-    // function month($month) {
-    //     $allmonth = '';
-    //     for($i=1; $i<=12; $i++){
-    //         if($i === (int)$month){
-    //             $allmonth = $allmonth.'<option value='.($i).' selected>'.($i).월.'</option>';
-    //         }else {
-    //             $allmonth = $allmonth.'<option value='.($i).'>'.($i).월.'</option>';
-    //         }
-    //     }
-    //     return $allmonth;
-    // }
     
     function margin_percent() {
         $marginoption = "";
@@ -241,7 +200,7 @@
                             <?php echo tablemonth(); ?>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="margin_tbody">
                         <?php echo tabledata($mallNamedata);?>
                     </tbody>
                 </table>
@@ -265,14 +224,6 @@
         let year = today.getFullYear();
         let month = ('0' + (today.getMonth() + 1)).slice(-2);
 
-        console.log(startmonth);
-        console.log(month);
-
-        // 시작날짜가 현재 년도, 달보다 같거나 커야 변경가능하도록 
-        // if(){
-
-        // }
-
         if((startyear < year) || ((startyear === endyear) && (Number(startmonth) < Number(month))) ){
             alert("지나간 기한은 수정할 수 없습니다.")
             return false;
@@ -284,8 +235,6 @@
             return false;
         }
         return true;
-
-
     }
     function moveyear(num) {
         
@@ -296,8 +245,8 @@
         } else if(num === 2){ // 오른쪽으로 이동
             year = year+1;
         }
-        let tbody = document.querySelector("tbody");
-        tbody.innerHTML ="";
+        let tbody = document.querySelector(".margin_tbody");
+        tbody.innerHTML ="<tr><td colspan='13' style='background-color: white;'>리스트를 불러오는 중입니다..</td></tr>";
 
         $.ajax({
             url: '/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-margin-table.php',

@@ -110,18 +110,12 @@
                         <div class="overlapno none">* 사용할 수 있는 링크주소 입니다.</div>
                         <div class="overlap none">* 중복된 링크주소 입니다.</div>
                     </div>
-                    <!-- <div class="shoppingmall-box2-link">
-                        <label for="link2">쇼핑몰 api링크 (광고활성화) : </label>
-                        <input type="text" name="link2" id="link2">
-                    </div> -->
                     <div class="shoppingmall-box2-date">
                         <label for="year">기간 : </label>
                         <div>
-                            <input name="startyear" type="number" value="<?php echo $year ?>" min="<?php echo $year ?>">
-                            <input name="startmonth" type="number" value="<?php echo $month ?>" min="<?php echo $month ?>" max="12">
-                             ~ 
-                            <input name="endyear" type="number" value="<?php echo $year ?>" min="2022">
-                            <input name="endmonth" type="number" value="<?php echo $month ?>" min="1" max="12">
+                            <input name="new_startday" type="month" value="<?php echo $year.'-'.$month ?>">
+                            ~
+                            <input name="new_endday" type="month" value="<?php echo $year.'-'.$month ?>">
                         </div>
 
 
@@ -174,7 +168,6 @@
             let btn = trtag.children[4];
             let code = btn.children[1].value;
 
-            // let daterow = trtag.nextElementSibling.children[0]
             let datetext = trtag.children[3].innerText;
             let datedivide = datetext.split("~");
             let startyear = datedivide[0].split('-')[0].trim();
@@ -187,11 +180,11 @@
             name.innerHTML = `<input type="text" style="width:98%;" name="name" value="${e.value}">`
             link.innerHTML = `<input type="text" style="width:100%" name="link" value="${link.innerHTML}">`
             date.innerHTML = `<div class="editdate">
-                                <input name="startyear" type="month" value="${startyear}-${startmonth}" min="${startyear}-${startmonth}">-
+                                <input name="startyear" type="month" value="${startyear}-${startmonth}">-
                                 <input name="endyear" type="month" value="${endyear}-${endmonth}">
                             </div>`
             btn.innerHTML = 
-            `<button type="submit" class="shoppingmall-edit-confirm" onclick="editsave(this,${startyear},${startmonth})" value="${code}"><i class="fas fa-check"></i></button>
+            `<button type="submit" class="shoppingmall-edit-confirm" onclick="editsave(this)" value="${code}"><i class="fas fa-check"></i></button>
             <button type="submit" class="shoppingmall-edit-confirm" onclick="reset(this,${startyear},${startmonth},${endyear},${endmonth})" value="${code}"><i class="fas fa-redo"></i></i></button>`
             state = e.value;
         }else {
@@ -233,7 +226,7 @@
         }
         event.preventDefault();
     }
-    function editsave(e,origin_startyear,origin_startmonth) {
+    function editsave(e) {
         let trtag = e.parentElement.parentElement;
         let name = trtag.children[1];
         let new_name = name.children[0].value;
@@ -244,27 +237,20 @@
         let startdate = trtag.children[3].children[0].children[0].value;
         let enddate = trtag.children[3].children[0].children[1].value;
 
-        let startyear = startdate.split('-')[0];
-        let startmonth = startdate.split('-')[1];
-        let endyear = enddate.split('-')[0];
-        let endmonth = enddate.split('-')[1];
-
         if(window.confirm("수정하시겠습니까?")){
-            if( (startyear > endyear) || ((startyear === endyear) && (Number(startmonth) > Number(endmonth))) ){
+            if(startdate > enddate){
                 alert("기한을 확인해주세요.")
             }else {
                 $.ajax({
-                    url: "http://localhost:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-shoppingmall-save.php",
+                    url: "/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-shoppingmall-save.php",
                     type: "post",
                     dataType : 'json',
                     data: {
                         newcode,
                         newname : new_name,
                         newlink : new_link,
-                        startyear,
-                        startmonth,
-                        endyear,
-                        endmonth,
+                        startdate,
+                        enddate
                     },
                 })
                 state = "";
@@ -312,6 +298,7 @@
                 <button class="shoppingmall-box-del" onclick="del(this)" value="${code}"><i class="fas fa-times-circle"></i></button>
             </td>`;
         state = "";
+        
     }
     function back() {
         // 입력값 빈칸으로 초기화
@@ -390,10 +377,10 @@
         let linkvalue = document.getElementById('link').value;
         let blankcheck = document.querySelector(".blankcheck");
 
-        let startyear = document.querySelector(".shoppingmall-box2-date").children[1].children[0].value;
-        let startmonth = document.querySelector(".shoppingmall-box2-date").children[1].children[1].value;
-        let endyear = document.querySelector(".shoppingmall-box2-date").children[1].children[2].value;
-        let endmonth = document.querySelector(".shoppingmall-box2-date").children[1].children[3].value;
+        let startD = document.querySelector(".shoppingmall-box2-date").children[1].children[0].value;
+        // let startmonth = document.querySelector(".shoppingmall-box2-date").children[1].children[1].value;
+        let endD = document.querySelector(".shoppingmall-box2-date").children[1].children[1].value;
+        // let endmonth = document.querySelector(".shoppingmall-box2-date").children[1].children[3].value;
 
 
         if(!(namevalue && linkvalue)){ // 빈 칸이 있을 경우
@@ -403,7 +390,7 @@
             blankcheck.classList.add('none')
             // 시작년도가 크거나 
             // 년도가 같을때 시작달이 더 크면 안됨
-            if( (startyear > endyear) || ((startyear === endyear) && (Number(startmonth) > Number(endmonth))) ){
+            if(startD > endD){
                 alert("기한을 확인해주세요.");
                 return false;
             }else {
@@ -422,11 +409,11 @@
     
 
     function togglechange() {
-       
+        state = "";
         let label = document.querySelector(".toggleSwitch");
-        let state = label.classList.contains('active')
+        let activeState = label.classList.contains('active')
         label.classList.toggle('active');
-        if(state){
+        if(activeState){
             document.querySelector(".toggletitle").innerText = "광고 ON list";
 
             shoppingmall_tabletag = document.querySelector('.shoppingmalltable_body');

@@ -3,10 +3,6 @@ require_once( $_SERVER['DOCUMENT_ROOT'].'/wp-load.php' );
 global $wpdb;
 
 
-
-// $date = $year.'-'.$month.'%';
-
-
 $sql1 ="SELECT code, name, start_date, end_date
 FROM wp_shoppingmall
 where state = 1";

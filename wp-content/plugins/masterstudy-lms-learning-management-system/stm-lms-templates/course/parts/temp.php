@@ -405,6 +405,7 @@
                 course_name: product_code[3].value,
                 lessons_name: product_code[4].value,
             },
+            async : false,
             dataType: "text",
             success: function(data) {
                 let result = $.trim(data);

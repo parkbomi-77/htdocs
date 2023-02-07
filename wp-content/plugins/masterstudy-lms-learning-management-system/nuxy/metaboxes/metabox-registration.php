@@ -291,7 +291,7 @@ for($i=0; $i<count($category); $i++){
                     btn[0].classList.remove('none')
                     btn[1].classList.add('none')
                     btn[2].classList.add('none')
-                    alert("상품명을 수정하였습니다")
+                    alert("수정되었습니다")
                     
                 }
             }, // 요청 완료 시    

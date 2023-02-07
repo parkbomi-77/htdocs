@@ -70,6 +70,7 @@ $sql  = "select g5_shop_cart.mb_id,
         left join g5_shop_item
         on g5_shop_cart.it_id = g5_shop_item.it_id
         $sql_search
+        order by g5_shop_cart.ct_select_time desc
         limit $from_record, $rows ";
 $result = sql_query($sql);
 
@@ -196,7 +197,7 @@ $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목�
         <!-- 마진율 -->
         <td class="td_code">
             <input type="hidden" name="it_id[<?php echo $i; ?>]" value="<?php echo $onemargin; ?>">
-            <?php echo ($onemargin/100); ?> %
+            <?php echo $onemargin; ?> %
         </td>
         <!-- 수수료 -->
         <td class="td_code">
