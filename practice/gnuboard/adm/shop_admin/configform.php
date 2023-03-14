@@ -757,7 +757,7 @@ if(!$default['de_kakaopay_cancelpwd']){
                 주문 완료 <input type="text" name="de_point_days" value="<?php echo get_sanitize_input($default['de_point_days']); ?>" id="de_point_days" class="frm_input" size="2"> 일 이후에 포인트를 지급
             </td>
         </tr>
-        <tr style="display:none;">
+        <tr style="display:;">
             <th scope="row"><label for="de_pg_service">결제대행사</label></th>
             <td>
                 <input type="hidden" name="de_pg_service" id="de_pg_service" value="<?php echo $default['de_pg_service']; ?>" >
@@ -1283,7 +1283,7 @@ if(!$default['de_kakaopay_cancelpwd']){
                 <input type="text" name="de_mimg_height" value="<?php echo get_sanitize_input($default['de_mimg_height']); ?>" id="de_mimg_height" class="frm_input" size="5"> 픽셀
             </td>
         </tr>
-        <!-- <tr>
+         <!-- <tr>
             <th scope="row">상단로고이미지</th>
             <td>
                 <?php echo help("쇼핑몰 상단로고를 직접 올릴 수 있습니다. 이미지 파일만 가능합니다."); ?>
@@ -1330,7 +1330,7 @@ if(!$default['de_kakaopay_cancelpwd']){
                 </script>
                 <?php } ?>
             </td>
-        </tr>
+        </tr>  -->
         <tr>
             <th scope="row">모바일 상단로고이미지</th>
             <td>
@@ -1378,7 +1378,7 @@ if(!$default['de_kakaopay_cancelpwd']){
                 </script>
                 <?php } ?>
             </td>
-        </tr> -->
+        </tr> 
         <tr>
             <th scope="row"><label for="de_item_use_write">사용후기 작성권한</label></th>
             <td>

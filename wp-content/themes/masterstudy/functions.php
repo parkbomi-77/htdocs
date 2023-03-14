@@ -87,3 +87,35 @@ function wooc_extra_register_fields() {?>
 	<?php
 }
 add_action( 'woocommerce_register_form_start', 'wooc_extra_register_fields' );*/
+
+
+add_filter('wp_head', function() {
+    $lang = get_locale();
+    global $WOOCS;
+    switch ($lang)
+    {
+        case 'ko_KR':
+            $WOOCS->set_currency('KRW');
+            break;
+        case 'en_US':
+            $WOOCS->set_currency('USD');
+            break;
+        default:
+            $WOOCS->set_currency('KRW');
+            break;
+    }
+});
+
+
+// $lang=get_locale();
+// global $WOOCS;
+// switch($lang){
+//  case 'ko_KR':
+//       $WOOCS->current_currency='KRW';
+//       $WOOCS->storage->set_val('woocs_current_currency', 'KRW');
+//    break;
+//  case 'en_US':
+//       $WOOCS->current_currency='USD';
+//       $WOOCS->storage->set_val('woocs_current_currency', 'USD');
+//    break;
+// }

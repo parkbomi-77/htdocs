@@ -4,9 +4,6 @@ include_once('./_common.php');
 
 auth_check_menu($auth, $sub_menu, "r");
 
-// $doc = isset($_GET['doc']) ? clean_xss_tags($_GET['doc'], 1, 1) : '';
-// $sfl = in_array($sfl, array('it_name', 'it_id')) ? $sfl : '';
-
 $g5['title'] = '광고 현황';
 include_once (G5_ADMIN_PATH.'/admin.head.php');
 include_once(G5_PLUGIN_PATH.'/jquery-ui/datepicker.php');
@@ -76,7 +73,6 @@ $result = sql_query($sql);
 
 $total = " select FORMAT(sum(ct_price),'#,#') 
         $sql_common
-       
         ";
 $result2 = sql_fetch($total);
 $result2["FORMAT(sum(ct_price),'#,#')"];
@@ -218,8 +214,12 @@ $listall = '<a href="'.$_SERVER['SCRIPT_NAME'].'" class="ov_listall">전체목�
     </tbody>
     <tfoot>
         <tr>
-            <th scope="row" colspan='4'>Totals</th>
-            <td colspan='5'><?php echo $result2["FORMAT(sum(ct_price),'#,#')"] ?>원</td>
+            <th colspan='3'></th>
+            <th scope="row">Totals</th>
+            <td colspan='2'><?php echo $result2["FORMAT(sum(ct_price),'#,#')"] ?>원</td>
+            <th scope="row">광고 수수료</th>
+            <th colspan='2'><?php echo $result2["FORMAT(sum(ct_price),'#,#')"] ?>원</th>
+
         </tr>
     </tfoot>
     </table>

@@ -150,7 +150,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
     </div>
 
     <div class="form_01">  
-        <h2>기타 개인설정</h2>
+        <h2>기타</h2>
 		<ul>
 			<!-- <?php if ($config['cf_use_signature']) { ?>
 	        <li>
@@ -376,11 +376,11 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
                 // 비회원 1 일반회원 2 수의대생 3 수의사 4
                 // input value 에 등급 넣어주기 
                 if(Number(data) === 1){ // 벳스쿨 회원이 아닐 경우 
-                    alert("vet school 회원을 인증할 수 없습니다.");
+                    alert("vet school 회원이 아닙니다.");
                     document.querySelector(".certification_guide").style.display = "block";
 
                 }else {
-                    alert("vet school 회원인증이 완료되었습니다.");
+                    alert("올바른 vet school 계정입니다.");
                     document.querySelector(".certification_guide").style.display = "none";
                     certification.value = data.trim();
                 }

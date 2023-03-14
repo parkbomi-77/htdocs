@@ -109,7 +109,7 @@ define( 'LOGGED_IN_SALT',   'jy1<4uN2IY1V3-s#=BBvT@d~Spu7bX8qOI28*X3-=pi,t+$|IM7
 
 define( 'NONCE_SALT',       'fGh1f7wJ4FY8HoumslwFtce[ 6HrNo9QAZrWVKg3 YgR;6n;0s)O0igH;7[-+3);' );
 
-
+define('DISABLE_WP_CRON', true);
 /**#@-*/
 
 

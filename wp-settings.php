@@ -535,7 +535,22 @@ wp_templating_constants();
 // Load the default text localization domain.
 load_default_textdomain();
 
-$locale      = get_locale();
+$locale = get_locale();
+
+// en 에서 출발해서 
+$ref = $_SERVER["HTTP_REFERER"];
+$ref_lang = substr($ref, -3, 2);
+
+// en 으로 가는지 
+$req = $_SERVER["REQUEST_URI"];
+$req_lang = substr($req, 1, 2);
+
+if(($ref_lang === 'en') && ($req_lang !== 'ko')) {
+	$locale = "en_US"; 
+	$TRP_LANGUAGE = "en_US"; 
+	$TRP_NEEDED_LANGUAGE = "en_US"; 
+}
+
 $locale_file = WP_LANG_DIR . "/$locale.php";
 if ( ( 0 === validate_file( $locale ) ) && is_readable( $locale_file ) ) {
 	require $locale_file;
@@ -595,6 +610,14 @@ $GLOBALS['wp']->init();
  *
  * @since 1.5.0
  */
+
+// add_action( 'init', 'process_post' );
+
+// function process_post() {
+// 	if( isset( $_POST['locale_lan'] ) ) {
+// 		$_POST['locale_lan'] =get_locale();
+// 	}
+// }
 do_action( 'init' );
 
 // Check site status.

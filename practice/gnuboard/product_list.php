@@ -10,7 +10,10 @@ $end_date = $_POST['end_date'];
 $now = date('Y-m');
 $now_date = $now.'-01';
 
-if($_POST['product_code']){ //벳스쿨에 광고제품 등록했을때
+$startdate = $_POST['startdate'];
+$enddate = $_POST['enddate'];
+
+if($_POST['product_code']){ //벳스쿨에 광고제품 등록했을때, 수정했을때 
     // 벳스쿨에서 등록한 제품ID가 그누보드쪽 제품ID와 일치하는지 체크
     $sql = "SELECT * FROM {$g5['g5_shop_item_table']} where it_id = {$_POST['product_code']}";
     $item = sql_query($sql);
@@ -30,8 +33,14 @@ if($_POST['product_code']){ //벳스쿨에 광고제품 등록했을때
     $item = sql_query($sql);
 
     if($item){ // 맞으면 it_1_subj( 광고여부필드 ) 0으로 변경
-        $sql2 = "UPDATE {$g5['g5_shop_item_table']} SET `it_1_subj` = '0', it_margin_end = '{$now_date}' where it_id = {$_POST['delete_code']}";
+        // 계약기간 종료일때
+        if($enddate) {
+            $sql2 = "UPDATE {$g5['g5_shop_item_table']} SET `it_1_subj` = '0', it_margin_start = '{$startdate}', it_margin_end = '{$enddate}' where it_id = {$_POST['delete_code']}";
+        }else { // 광고상품 삭제했을때 
+            $sql2 = "UPDATE {$g5['g5_shop_item_table']} SET `it_1_subj` = '0', it_margin_start = '{$startdate}', it_margin_end = '{$now_date}' where it_id = {$_POST['delete_code']}";
+        }
         sql_query($sql2);
+        
     }else { // 없으면? 잘못들어온 데이터 
         return;
     }

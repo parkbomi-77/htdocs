@@ -119,7 +119,7 @@ if($delcode){ // 삭제 요청
             file_get_contents($link, false, $context);
         }
 
-    }else {
+    }else { 
     // 마감날짜가 지난 경우 광고 비활성화
         $wpdb->get_results($wpdb->prepare("UPDATE wp_shoppingmall 
         set name= '".$newname."', link='".$newlink."',
@@ -139,6 +139,7 @@ if($delcode){ // 삭제 요청
             $postdata = http_build_query(
                 array(
                     'delete_code' => $product_code,
+                    'enddate' => $enddate,
                 )
             );
             $opts = array('http' =>

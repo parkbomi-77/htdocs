@@ -165,8 +165,24 @@ class STM_LMS_Helpers {
 
     public static function display_price($price)
     {
+        $lang=get_locale();
+        global $WOOCS;
+        switch($lang){
+         case 'ko_KR':
+              $WOOCS->current_currency='KRW';
+              $symbol = STM_LMS_Options::get_option('currency_symbol', '$');
+
+           break;
+         case 'en_US':
+              $WOOCS->current_currency='USD';
+              $price=$WOOCS->woocs_exchange_value($price);
+              $symbol = "$";
+
+           break;
+        }
+
         if (!isset($price)) return '';
-        $symbol = STM_LMS_Options::get_option('currency_symbol', '$');
+        // $symbol = STM_LMS_Options::get_option('currency_symbol', '$');
         $position = STM_LMS_Options::get_option('currency_position', 'left');
         $currency_thousands = STM_LMS_Options::get_option('currency_thousands', ',');
         $currency_decimals = STM_LMS_Options::get_option('currency_decimals', '.');
@@ -180,6 +196,7 @@ class STM_LMS_Helpers {
         } else {
             $price = number_format($price, 0, '', $currency_thousands);
         }
+
 
         if ($position == 'left') {
             return $symbol . $price;

@@ -9,7 +9,12 @@
                     <i class="fa fa-user"></i><?php echo esc_attr($current_user['login']); ?>
                 </a>
                 <span class="vertical_divider"></span>
+				<?php 
+				$hoho = wp_logout_url(get_home_url());
+				$jojo = get_home_url();
+				// $jojo2 = curPageURL();
 
+				?>
                 <a class="logout-link" href="<?php echo wp_logout_url(get_home_url()); ?>"
                    title="<?php esc_attr_e('Log out', 'masterstudy'); ?>">
 					<?php _e('Log out', 'masterstudy'); ?>

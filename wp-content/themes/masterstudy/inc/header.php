@@ -93,3 +93,18 @@ add_filter('elementor/frontend/builder_content_data', function ($data, $post_id)
     return $data;
 
 }, 10, 2);
+
+
+// $lang=get_locale();
+// global $WOOCS;
+// switch($lang){
+//  case 'ko_KR':
+//       $WOOCS->current_currency='KRW';
+//       $WOOCS->storage->set_val('woocs_current_currency', 'KRW');
+//    break;
+//  case 'en_US':
+//       $WOOCS->current_currency='USD';
+//       $WOOCS->storage->set_val('woocs_current_currency', 'USD');
+//    break;
+// }
+

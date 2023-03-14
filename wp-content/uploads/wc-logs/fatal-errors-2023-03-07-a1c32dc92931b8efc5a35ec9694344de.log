@@ -1,0 +1,1193 @@
+2023-03-07T00:51:55+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T01:20:57+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T01:26:43+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T01:26:52+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T01:27:49+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T01:27:56+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T01:29:46+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T01:30:04+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T01:31:58+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T01:35:25+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T01:36:48+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T01:36:55+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T01:39:38+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T01:39:48+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T01:40:39+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T01:41:29+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T01:41:51+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T01:41:53+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T01:42:05+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T01:43:41+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T01:43:49+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T02:13:28+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T02:13:38+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T02:14:43+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T02:14:47+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T02:14:52+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T02:14:59+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T02:16:54+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T03:04:48+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T03:05:16+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T03:05:27+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T03:10:47+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T03:10:53+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T03:10:57+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T03:11:59+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T03:12:12+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T03:12:24+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T03:40:38+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T03:40:43+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T05:28:07+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T05:28:14+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T05:28:59+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T05:29:10+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T05:30:12+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T05:30:37+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T05:31:34+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T05:31:43+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T05:31:47+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T05:35:22+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T05:35:32+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T05:35:38+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T05:39:27+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T05:41:08+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T05:42:03+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T05:57:51+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T05:58:17+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T05:59:05+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T06:51:44+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T06:51:58+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T06:52:06+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T06:53:09+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T06:54:43+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T06:56:18+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=652#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T06:57:13+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T06:57:16+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=652#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T06:57:22+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=652#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T06:58:11+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T06:59:26+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T07:09:52+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T07:12:13+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T07:13:30+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T07:14:48+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T07:17:04+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T07:42:11+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T07:45:43+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T07:58:08+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T08:19:01+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T08:22:16+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T08:25:01+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T08:25:04+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T08:25:07+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T08:35:24+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T08:35:28+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T08:41:01+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T08:43:05+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T08:46:24+00:00 CRITICAL Uncaught Error: Call to a member function calculate_totals() on null in /Applications/MAMP/htdocs/wp-content/plugins/woocommerce-currency-switcher/classes/woocs.php:4029
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(307): WOOCS->woocommerce_before_mini_cart('')
+#1 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(331): WP_Hook->apply_filters('', Array)
+#2 /Applications/MAMP/htdocs/wp-includes/plugin.php(476): WP_Hook->do_action(Array)
+#3 /Applications/MAMP/htdocs/wp-content/themes/masterstudy/woocommerce/cart/mini-cart.php(22): do_action('woocommerce_bef...')
+#4 /Applications/MAMP/htdocs/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include('/Applications/M...')
+#5 /Applications/MAMP/htdocs/wp-content/plugins/woocommerce/includes/wc-template-functions.php(2218): wc_get_template('cart/mini-cart....', Array)
+#6 /Applications/MAMP/htdocs/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(183): woocommerce_mini_cart()
+#7 /Applications/MAMP/htdocs/wp-inc in /Applications/MAMP/htdocs/wp-content/plugins/woocommerce-currency-switcher/classes/woocs.php on line 4029
+
+2023-03-07T08:46:25+00:00 CRITICAL Uncaught Error: Call to a member function calculate_totals() on null in /Applications/MAMP/htdocs/wp-content/plugins/woocommerce-currency-switcher/classes/woocs.php:4029
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(307): WOOCS->woocommerce_before_mini_cart('')
+#1 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(331): WP_Hook->apply_filters('', Array)
+#2 /Applications/MAMP/htdocs/wp-includes/plugin.php(476): WP_Hook->do_action(Array)
+#3 /Applications/MAMP/htdocs/wp-content/themes/masterstudy/woocommerce/cart/mini-cart.php(22): do_action('woocommerce_bef...')
+#4 /Applications/MAMP/htdocs/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include('/Applications/M...')
+#5 /Applications/MAMP/htdocs/wp-content/plugins/woocommerce/includes/wc-template-functions.php(2218): wc_get_template('cart/mini-cart....', Array)
+#6 /Applications/MAMP/htdocs/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(183): woocommerce_mini_cart()
+#7 /Applications/MAMP/htdocs/wp-inc in /Applications/MAMP/htdocs/wp-content/plugins/woocommerce-currency-switcher/classes/woocs.php on line 4029
+
+2023-03-07T08:46:26+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241
+
+2023-03-07T08:46:37+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241
+
+2023-03-07T08:46:41+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241
+
+2023-03-07T08:52:40+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T08:52:46+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T09:09:19+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T09:09:27+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T09:11:55+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T09:12:01+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T09:12:06+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T09:12:18+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T09:14:40+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T09:14:48+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T09:16:58+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T09:25:56+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T09:26:03+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T09:43:53+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T09:44:25+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T09:48:33+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T09:50:35+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T09:50:44+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T09:50:48+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T09:56:10+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(112): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T09:56:52+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(112): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T09:57:01+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(112): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T09:57:08+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(112): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T09:57:35+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(112): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T11:25:39+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T11:25:49+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T11:25:55+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T11:31:34+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T11:31:43+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T11:38:27+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T11:38:41+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T11:38:51+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T11:39:35+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T11:39:42+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T11:39:58+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T11:41:11+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T11:41:17+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T11:42:07+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T11:42:20+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T11:42:25+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T11:42:34+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T11:42:49+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T11:46:03+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T11:46:13+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T11:47:18+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T11:47:26+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T11:47:36+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T11:51:09+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T11:51:13+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T11:51:20+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T11:51:46+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T11:55:04+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T11:55:08+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
+2023-03-07T12:12:38+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T12:30:27+00:00 CRITICAL Uncaught Error: Call to a member function calculate_totals() on null in /Applications/MAMP/htdocs/wp-content/plugins/woocommerce-currency-switcher/classes/woocs.php:4029
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(307): WOOCS->woocommerce_before_mini_cart('')
+#1 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(331): WP_Hook->apply_filters('', Array)
+#2 /Applications/MAMP/htdocs/wp-includes/plugin.php(476): WP_Hook->do_action(Array)
+#3 /Applications/MAMP/htdocs/wp-content/themes/masterstudy/woocommerce/cart/mini-cart.php(22): do_action('woocommerce_bef...')
+#4 /Applications/MAMP/htdocs/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include('/Applications/M...')
+#5 /Applications/MAMP/htdocs/wp-content/plugins/woocommerce/includes/wc-template-functions.php(2218): wc_get_template('cart/mini-cart....', Array)
+#6 /Applications/MAMP/htdocs/wp-content/plugins/woocommerce/includes/class-wc-ajax.php(183): woocommerce_mini_cart()
+#7 /Applications/MAMP/htdocs/wp-inc in /Applications/MAMP/htdocs/wp-content/plugins/woocommerce-currency-switcher/classes/woocs.php on line 4029
+
+2023-03-07T12:30:28+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241
+
+2023-03-07T12:30:47+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 241#!trpst#/trp-gettext#!trpen#
+
+2023-03-07T12:30:55+00:00 CRITICAL Uncaught Error: Call to undefined function table_list() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:241
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 241)
+
