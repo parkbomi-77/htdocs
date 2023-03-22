@@ -74,7 +74,7 @@ if ( ! class_exists( 'MSM_Social_Login' ) ) {
 			add_filter( 'mfd_get_post_value', array( __CLASS__, 'maybe_set_social_profile' ), 10, 4 );
 		}
 		public static function maybe_set_social_profile( $value, $name, $post, $form ) {
-			$params = json_decode( stripslashes( msm_get( $_COOKIE, 'msm_oauth' ) ), true );
+			$params = json_decode( stripslashes( msm_get( $_COOKIE, 'wp_msm_oauth' ) ), true );
 
 			if ( $params && ! empty( $params['user_data'] ) && ! empty( $params['user_data'][ $name ] ) ) {
 				$value = $params['user_data'][ $name ];
@@ -85,13 +85,13 @@ if ( ! class_exists( 'MSM_Social_Login' ) ) {
 
 		public static function clear_session() {
 			$expire = time() + intval( 60 * 5 );
-			setcookie( 'msm_oauth', '', $expire, '/', COOKIE_DOMAIN );
+			setcookie( 'wp_msm_oauth', '', $expire, '/', COOKIE_DOMAIN );
 		}
 		public static function set_session( $value ) {
 			self::clear_session();
 
 			$expire = time() + intval( 60 * 5 );
-			setcookie( 'msm_oauth', $value, $expire, '/', COOKIE_DOMAIN );
+			setcookie( 'wp_msm_oauth', $value, $expire, '/', COOKIE_DOMAIN );
 		}
 		public static function providers() {
 			if ( is_null( self::$providers ) ) {
@@ -148,7 +148,7 @@ if ( ! class_exists( 'MSM_Social_Login' ) ) {
 			return null;
 		}
 		public static function process_social_register( $params, $form ) {
-			$session = json_decode( stripslashes( msm_get( $_COOKIE, 'msm_oauth' ) ), true );
+			$session = json_decode( stripslashes( msm_get( $_COOKIE, 'wp_msm_oauth' ) ), true );
 
 			if ( $session ) {
 				if ( ! empty( $params['email'] ) ) {

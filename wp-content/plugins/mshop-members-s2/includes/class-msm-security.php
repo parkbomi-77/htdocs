@@ -42,9 +42,12 @@ if ( ! class_exists( 'MSM_Security' ) ) {
 
 	class MSM_Security {
 
+		protected static $maybe_postpone_verify_recaptcha = true;
+
 		public static function init() {
 			add_action( 'msm_before_submit_form', array( __CLASS__, 'verify_recaptcha' ), 10, 2 );
 			add_action( 'msm_before_submit_form', array( __CLASS__, 'verify_phone_number' ), 10, 2 );
+			add_action( 'msm_before_submit_form', array( __CLASS__, 'verify_email_verification' ), 10, 2 );
 
 			add_action( 'template_redirect', array( __CLASS__, 'maybe_check_phone_number_authentication_is_needed' ) );
 			add_filter( 'comment_author', array( __CLASS__, 'maybe_hide_comment_author' ), 999 );
@@ -67,8 +70,14 @@ if ( ! class_exists( 'MSM_Security' ) ) {
 
 					$phone_number = preg_replace( '~\D~', '', $params[ $field_name ] );
 					$saved_hash   = get_transient( 'msm_phone_certification_' . $phone_number );
+					$saved_salt   = get_transient( 'msm_phone_certification_salt_' . $phone_number );
+					$retry_count  = intval( get_transient( 'msm_phone_certification_retry_' . $phone_number ) );
 
-					$success = ! empty( $saved_hash ) && $saved_hash === MSM_Phone_Certification::get_certification_hash( $params[ $field_name . '_certification_number' ] );
+					if ( $retry_count > 5 ) {
+						throw new Exception( __( '인증 가능 횟수가 초과되었습니다.', 'mshop-members-s2' ), '2001' );
+					}
+
+					$success = ! empty( $saved_hash ) && $saved_hash === MSM_Phone_Certification::get_certification_hash( $params[ $field_name . '_certification_number' ], $saved_salt );
 
 					if ( ! apply_filters( 'msm_verify_phone_number', $success, $params, $phone_field, $form ) ) {
 						throw new Exception( __( '휴대폰 인증 정보가 올바르지 않습니다.', 'mshop-members-s2' ) );
@@ -76,7 +85,48 @@ if ( ! class_exists( 'MSM_Security' ) ) {
 				}
 			}
 		}
+		public static function verify_email_verification( $params, $form ) {
+			$input_fields = $form->get_field( array( 'MFD_Input_Field' ) );
+
+			if ( ! empty( $input_fields ) ) {
+				foreach ( $input_fields as $input_field ) {
+
+					$require_verification = 'yes' == mfd_get( $input_field->property, 'emailVerification' );
+
+					if ( $require_verification ) {
+						$field_name = mfd_get( $input_field->property, 'name' );
+
+						if ( empty( $params[ $field_name ] ) || empty( $params[ $field_name . '_certification_number' ] ) ) {
+							throw new Exception( __( '에메일 인증 정보가 올바르지 않습니다.', 'mshop-members-s2' ) );
+						}
+
+						$user_email = $params[ $field_name ];
+
+						$saved_hash  = get_transient( 'msm_email_verification_' . $user_email );
+						$saved_salt  = get_transient( 'msm_email_verification_salt_' . $user_email );
+						$retry_count = intval( get_transient( 'msm_email_verification_retry_' . $user_email ) );
+
+						if ( $retry_count > 5 ) {
+							throw new Exception( __( '인증 가능 횟수가 초과되었습니다.', 'mshop-members-s2' ), '2001' );
+						}
+
+						$success = ! empty( $saved_hash ) && $saved_hash === MSM_Email_Authenticate::get_certification_hash( $params[ $field_name . '_certification_number' ], $saved_salt );
+
+						if ( ! apply_filters( 'msm_verify_email_address', $success, $params, $input_field, $form ) ) {
+							throw new Exception( __( '이메일 인증 정보가 올바르지 않습니다.', 'mshop-members-s2' ) );
+						}
+					}
+				}
+			}
+		}
 		public static function verify_recaptcha( $params, $form ) {
+			if ( self::$maybe_postpone_verify_recaptcha && in_array( $form->get_submit_action(), apply_filters( 'msm_postpone_verify_recaptcha_actions', array( 'msm_action_login', 'msm_action_register', 'msm_action_lost_passwords' ) ) ) ) {
+				self::$maybe_postpone_verify_recaptcha = false;
+				add_action( 'msm_maybe_verify_recaptcha', array( __CLASS__, 'verify_recaptcha' ), 10, 2 );
+
+				return;
+			}
+
 			$recaptcha = $form->get_field( array( 'MFD_Recaptcha_Field' ) );
 
 			if ( ! empty( $recaptcha ) ) {
@@ -155,17 +205,30 @@ if ( ! class_exists( 'MSM_Security' ) ) {
 			return false;
 		}
 		public static function maybe_check_phone_number_authentication_is_needed() {
+			// 전화번호 인증 필수 체크했는지 
 			if ( ! msm_is_ajax() && is_user_logged_in() && ! current_user_can( 'manage_woocommerce' ) && 'yes' == get_option( 'mssms_use_phone_certification', 'no' ) && 'yes' == get_option( 'mssms_phone_certification_required', 'no' ) ) {
+				// 결제페이지인지
 				if ( 'yes' == get_option( 'mssms_phone_certification_only_checkout', 'no' ) && ! apply_filters( 'msm_is_checkout', is_checkout() ) ) {
 					return;
 				}
+				// 소셜미디어가입인지 
 				if ( 'yes' == get_option( 'msm_phone_certification_social_except', 'no' ) && ! empty( get_user_meta( get_current_user_id(), '_msm_oauth_registered_by', true ) ) ) {
 					return;
 				}
+				// 사용자가 휴대폰인증을 한 이력이 있는지 체크해서 없으면 인증하도록하게함
 				if ( empty( get_user_meta( get_current_user_id(), 'mshop_auth_method', true ) ) ) {
+					// 리디렉션 URL을 전화번호 인증 페이지의 URL로 설정
 					$redirect_url = str_replace( home_url(), '', get_permalink( get_option( 'mssms_phone_certification_page_id' ) ) );
 
+					// 현재 URL이 이미 전화번호 인증 페이지가 아닌지 확인 !!!! 
+					$ko_lang = (0 === strpos( $_SERVER['REQUEST_URI'], "/ko_kr".$redirect_url ));
+					$en_lang = (0 === strpos( $_SERVER['REQUEST_URI'], "/en".$redirect_url ));
+					
+					if( ! empty( $redirect_url ) && ($ko_lang || $en_lang)) {
+						return;
+					}
 					if ( ! empty( $redirect_url ) && 0 !== strpos( $_SERVER['REQUEST_URI'], $redirect_url ) ) {
+						// 인증페이지로 리디렉션
 						wp_safe_redirect( $redirect_url );
 					}
 				}

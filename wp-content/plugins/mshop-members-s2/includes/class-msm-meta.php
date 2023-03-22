@@ -42,7 +42,7 @@ if ( ! class_exists( 'MSM_Meta' ) ) {
 
 	class MSM_Meta {
 
-		static $_files = array ();
+		static $_files = array();
 
 		static function get_upload_dir( $args ) {
 			$upload_dir   = wp_upload_dir();
@@ -54,42 +54,49 @@ if ( ! class_exists( 'MSM_Meta' ) ) {
 			return $user_dirname;
 		}
 		static function move_upload_files( $args, $post_processing_data ) {
-			$files = array ();
+			$files = array();
 
 			if ( isset( $_FILES ) ) {
 				foreach ( $_FILES as $key => $file ) {
-					$file_name = apply_filters( 'msm_upload_file_name', $file['name'], $args, $key, $post_processing_data );
+					$file_count = count( $file['name'] );
 
-					if ( apply_filters( 'msm_url_encode_to_upload_filename', true ) ) {
-						$file_name = urlencode( $file_name );
-					}
+					for ( $i = 0; $i < $file_count; $i ++ ) {
+						$unique_key = $key . '#' . $i;
 
-					$destination = self::get_upload_dir( $args ) . basename( $file_name );
+						$file_name = apply_filters( 'msm_upload_file_name', $file['name'][ $i ], $args, $key, $post_processing_data );
 
-					if ( empty( self::$_files[ $key ] ) ) {
-						if ( move_uploaded_file( $file['tmp_name'], $destination ) ) {
-							$files[ uniqid() ]    = array (
-								'field_key' => explode( '#', $key )[0],
-								'filename'  => $destination
-							);
-							self::$_files[ $key ] = $destination;
-						} else {
-							throw new Exception( __( '파일 업로드중 오류가 발생했습니다.', 'mshop-members-s2' ) );
+						if ( apply_filters( 'msm_url_encode_to_upload_filename', true ) ) {
+							$file_name = urlencode( $file_name );
 						}
-					} else if ( ! file_exists( $destination ) ) {
-						if ( copy( self::$_files[ $key ], $destination ) ) {
+
+						$destination = self::get_upload_dir( $args ) . basename( $file_name );
+
+						if ( empty( self::$_files[ $unique_key ] ) ) {
+							if ( move_uploaded_file( $file['tmp_name'][ $i ], $destination ) ) {
+								$files[ uniqid() ] = array(
+									'field_key' => $key,
+									'filename'  => $destination
+								);
+
+								self::$_files[ $unique_key ] = $destination;
+							} else {
+								throw new Exception( __( '파일 업로드중 오류가 발생했습니다.', 'mshop-members-s2' ) );
+							}
+						} else if ( ! file_exists( $destination ) ) {
+							if ( copy( self::$_files[ $unique_key ], $destination ) ) {
+								$files[ uniqid() ] = array (
+									'field_key' => $key,
+									'filename'  => $destination
+								);
+							} else {
+								throw new Exception( __( '파일 업로드중 오류가 발생했습니다.', 'mshop-members-s2' ) );
+							}
+						} else {
 							$files[ uniqid() ] = array (
-								'field_key' => explode( '#', $key )[0],
+								'field_key' => $key,
 								'filename'  => $destination
 							);
-						} else {
-							throw new Exception( __( '파일 업로드중 오류가 발생했습니다.', 'mshop-members-s2' ) );
 						}
-					} else {
-						$files[ uniqid() ] = array (
-							'field_key' => explode( '#', $key )[0],
-							'filename'  => $destination
-						);
 					}
 				}
 			}
@@ -97,8 +104,8 @@ if ( ! class_exists( 'MSM_Meta' ) ) {
 			return $files;
 		}
 
-		public static function update_user_meta( $id, $post_processing_data, $form_meta_name = '', $args = array () ) {
-			$args = array_merge( $args, array (
+		public static function update_user_meta( $id, $post_processing_data, $form_meta_name = '', $args = array() ) {
+			$args = array_merge( $args, array(
 				'type'      => 'user',
 				'id'        => $id,
 				'meta_name' => $form_meta_name
@@ -106,8 +113,8 @@ if ( ! class_exists( 'MSM_Meta' ) ) {
 			self::update( 'update_user_meta', $id, $post_processing_data, $form_meta_name, $args );
 		}
 
-		public static function update_post_meta( $id, $post_processing_data, $form_meta_name = '', $args = array () ) {
-			$args = array_merge( $args, array (
+		public static function update_post_meta( $id, $post_processing_data, $form_meta_name = '', $args = array() ) {
+			$args = array_merge( $args, array(
 				'type'      => 'post',
 				'id'        => $id,
 				'meta_name' => $form_meta_name
@@ -159,7 +166,7 @@ if ( ! class_exists( 'MSM_Meta' ) ) {
 
 			return apply_filters( 'msm_filter_fields', $fields, $args );
 		}
-		public static function update( $updator, $id, $post_processing_data, $form_meta_name = '', $args = array () ) {
+		public static function update( $updator, $id, $post_processing_data, $form_meta_name = '', $args = array() ) {
 			try {
 				$files = self::move_upload_files( $args, $post_processing_data );
 
@@ -169,13 +176,13 @@ if ( ! class_exists( 'MSM_Meta' ) ) {
 
 				$args['files'] = $files;
 
-				$forms = array ();
+				$forms = array();
 
 				foreach ( $post_processing_data as $data ) {
 					$form = $data['form'];
 
 					$fields = array_filter( $form->get_fields(), function ( $field ) use ( $data ) {
-						if( ! is_a( $field, 'MFD_Toggle_Field') || 'radio' != $field->property['checkType'] || $field->property['value'] == $data['params'][$field->property['name']] ) {
+						if ( ! is_a( $field, 'MFD_Toggle_Field' ) || 'radio' != $field->property['checkType'] || $field->property['value'] == $data['params'][ $field->property['name'] ] ) {
 							return $field;
 						}
 					} );
@@ -187,7 +194,7 @@ if ( ! class_exists( 'MSM_Meta' ) ) {
 							$field->update_meta( $id, $updator, $data['params'], $args );
 						}
 
-						$forms[] = array (
+						$forms[] = array(
 							'id'   => $form->id,
 							'data' => $form->form_data
 						);
@@ -195,7 +202,7 @@ if ( ! class_exists( 'MSM_Meta' ) ) {
 				}
 
 				if ( ! empty( $form_meta_name ) ) {
-					$args = array (
+					$args = array(
 						'forms'        => $forms,
 						'form_version' => MSM_VERSION,
 						'args'         => $args
@@ -218,7 +225,7 @@ if ( ! class_exists( 'MSM_Meta' ) ) {
 		}
 
 		public static function get( $getter, $id, $form_meta_name ) {
-			$metas     = array ();
+			$metas     = array();
 			$form_info = $getter( $id, $form_meta_name, true );
 
 			if ( ! empty( $form_info ) ) {
@@ -227,10 +234,12 @@ if ( ! class_exists( 'MSM_Meta' ) ) {
 
 					foreach ( $fields as $field ) {
 						if ( ! empty( $field->name ) ) {
-							$metas[] = array (
+							$value = $getter( $id, $field->name, true );
+
+							$metas[] = array(
 								'name'  => $field->name,
 								'title' => $field->title,
-								'value' => str_replace( "\n", "<br>", $getter( $id, $field->name, true ) ),
+								'value' => is_scalar( $value ) ? str_replace( "\n", "<br>", $value ) : '',
 								'label' => str_replace( "\n", "<br>", $getter( $id, $field->name . '_label', true ) )
 							);
 						}

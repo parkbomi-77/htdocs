@@ -52,49 +52,68 @@ if ( ! class_exists( 'MSM_OAuth_Kakao' ) ) {
                 );
             }
 
-            if ( ! empty( $kakao_account ) && msm_get( $kakao_account, 'profile_nickname_needs_agreement', false ) ) {
+            if ( empty( $kakao_account ) ) {
+                return $user_data;
+            }
+
+            if ( ! empty( msm_get( $kakao_account['profile'], 'nickname' ) ) && ! msm_get( $kakao_account, 'profile_nickname_needs_agreement', false ) ) {
                 $user_data['first_name']    = msm_get( $kakao_account['profile'], 'nickname' );
                 $user_data['display_name']  = msm_get( $kakao_account['profile'], 'nickname' );
                 $user_data['user_nicename'] = msm_get( $kakao_account['profile'], 'nickname' );
             }
 
-            if ( ! empty( $kakao_account ) && msm_get( $kakao_account, 'profile_image_needs_agreement', false ) ) {
+            if ( ! empty( msm_get( $kakao_account['profile_image'], 'nickname' ) ) && ! msm_get( $kakao_account, 'profile_image_needs_agreement', false ) ) {
                 $user_data['profile_image']   = msm_get( $kakao_account['profile_image'], 'nickname' );
                 $user_data['thumbnail_image'] = msm_get( $kakao_account['thumbnail_image'], 'nickname' );
             }
 
-            if ( ! empty( $kakao_account['name'] ) && ! msm_get( $kakao_account, 'name_needs_agreement', false ) ) {
+            if ( ! empty( msm_get( $kakao_account, 'name' ) ) && ! msm_get( $kakao_account, 'name_needs_agreement', false ) ) {
                 $user_data['first_name'] = msm_get( $kakao_account, 'name' );
             }
 
-            if ( ! empty( $kakao_account ) && msm_get( $kakao_account, 'has_email', false ) ) {
+            if ( ! empty( msm_get( $kakao_account, 'email' ) ) && msm_get( $kakao_account, 'has_email', false ) ) {
                 $user_data['email'] = msm_get( $kakao_account, 'email' );
             }
 
-            if ( ! empty( $kakao_account ) && msm_get( $kakao_account, 'has_phone_number', false ) ) {
+            if ( ! empty( msm_get( $kakao_account, 'phone_number' ) ) && msm_get( $kakao_account, 'has_phone_number', false ) ) {
                 $user_data['billing_phone'] = msm_get( $kakao_account, 'phone_number' );
             }
 
-            if ( ! empty( $kakao_account ) && msm_get( $kakao_account, 'has_gender', false ) ) {
+            if ( ! empty( msm_get( $kakao_account, 'gender' ) ) && msm_get( $kakao_account, 'has_gender', false ) ) {
                 $user_data['gender'] = msm_get( $kakao_account, 'gender' );
             }
 
-            if ( ! empty( $kakao_account ) && msm_get( $kakao_account, 'has_age_range', false ) ) {
+            if ( ! empty( msm_get( $kakao_account, 'age_range' ) ) && msm_get( $kakao_account, 'has_age_range', false ) ) {
                 $user_data['age_range'] = msm_get( $kakao_account, 'age_range' );
             }
 
-            if ( ! empty( $kakao_account ) && msm_get( $kakao_account, 'has_birthyear', false ) ) {
+            if ( ! empty( msm_get( $kakao_account, 'birthyear' ) ) && msm_get( $kakao_account, 'has_birthyear', false ) ) {
                 $user_data['birthyear'] = msm_get( $kakao_account, 'birthyear' );
             }
 
-            if ( ! empty( $kakao_account ) && msm_get( $kakao_account, 'has_birthday', false ) ) {
+            if ( ! empty( msm_get( $kakao_account, 'birthday' ) ) && msm_get( $kakao_account, 'has_birthday', false ) ) {
                 $user_data['birthday'] = msm_get( $kakao_account, 'birthday' );
             }
 
-            if ( ! empty( $user_data['birthyear'] && $user_data['birthday'] ) ) {
+            if ( ! empty( $user_data['birthyear'] ) && ! empty( $user_data['birthday'] ) ) {
                 $month                 = substr( $user_data['birthday'], 0, 2 );
                 $day                   = substr( $user_data['birthday'], 2, 2 );
                 $user_data['birthday'] = $user_data['birthyear'] . '-' . $month . '-' . $day;
+            }
+
+            if ( ! empty( msm_get( $kakao_account, 'ci' ) ) && ! msm_get( $kakao_account, 'ci_needs_agreement', false ) ) {
+                $user = get_users(
+                    array(
+                        'meta_key'    => 'mshop_auth_dupinfo',
+                        'meta_value'  => msm_get( $kakao_account, 'ci' ),
+                        'number'      => 1,
+                        'count_total' => false
+                    )
+                );
+
+                if ( count( $user ) > 0 ) {
+                    throw new Exception( sprintf( __( '이미 가입된 사용자(%s)입니다. 로그인 후 소셜 계정 연동을 진행해주세요', 'mshop-members-s2' ), $user[0]->data->user_login ) );
+                }
             }
 
             return $user_data;

@@ -496,14 +496,16 @@ class MSM_Meta_Box_Members_Form {
 							"type"        => "Select",
 							'default'     => 'msm_action_none',
 							'options'     => apply_filters( 'msm_submit_action', array(
-								'msm_action_none'           => __( '없음', 'mshop-members-s2' ),
-								'msm_action_login'          => __( '로그인', 'mshop-members-s2' ),
-								'msm_action_register'       => __( '회원가입', 'mshop-members-s2' ),
-								'msm_action_ubsubscribe'    => __( '회원탈퇴', 'mshop-members-s2' ),
-								'msm_action_find_login'     => __( '아이디/이메일 찾기', 'mshop-members-s2' ),
-								'msm_action_lost_passwords' => __( '비밀번호찾기', 'mshop-members-s2' ),
-								'msm_action_write_post'     => __( '포스트 등록', 'mshop-members-s2' ),
-								'msm_action_do_action'      => __( '커스텀 액션', 'mshop-members-s2' )
+								'msm_action_none'               => __( '없음', 'mshop-members-s2' ),
+								'msm_action_login'              => __( '로그인', 'mshop-members-s2' ),
+								'msm_action_register'           => __( '회원가입', 'mshop-members-s2' ),
+								'msm_action_agreement'          => __( '약관동의', 'mshop-members-s2' ),
+								'msm_action_ubsubscribe'        => __( '회원탈퇴', 'mshop-members-s2' ),
+								'msm_action_find_login'         => __( '아이디/이메일 찾기', 'mshop-members-s2' ),
+								'msm_action_lost_passwords'     => __( '비밀번호 찾기', 'mshop-members-s2' ),
+								'msm_action_temporary_password' => __( '임시 비밀번호 발급', 'mshop-members-s2' ),
+								'msm_action_write_post'         => __( '포스트 등록', 'mshop-members-s2' ),
+								'msm_action_do_action'          => __( '커스텀 액션', 'mshop-members-s2' )
 							) ),
 						),
 						array(

@@ -537,19 +537,19 @@ load_default_textdomain();
 
 $locale = get_locale();
 
-// // en 에서 출발해서 
-// $ref = $_SERVER["HTTP_REFERER"];
-// $ref_lang = substr($ref, -3, 2);
+// en 에서 출발해서 
+$ref = $_SERVER["HTTP_REFERER"];
+$ref_lang = substr($ref, -3, 2);
 
-// // en 으로 가는지 
-// $req = $_SERVER["REQUEST_URI"];
-// $req_lang = substr($req, 1, 2);
+// en 으로 가는지 
+$req = $_SERVER["REQUEST_URI"];
+$req_lang = substr($req, 1, 2);
 
-// if(($ref_lang === 'en') && ($req_lang !== 'ko')) {
-// 	$locale = "en_US"; 
-// 	$TRP_LANGUAGE = "en_US"; 
-// 	$TRP_NEEDED_LANGUAGE = "en_US"; 
-// }
+if(($ref_lang === 'en') && ($req_lang !== 'ko')) {
+	$locale = "en_US"; 
+	$TRP_LANGUAGE = "en_US"; 
+	$TRP_NEEDED_LANGUAGE = "en_US"; 
+}
 
 $locale_file = WP_LANG_DIR . "/$locale.php";
 if ( ( 0 === validate_file( $locale ) ) && is_readable( $locale_file ) ) {

@@ -46,15 +46,11 @@ if ( ! class_exists( 'MSM_Message' ) ) {
 			add_filter( 'msm_user_registered', array( __CLASS__, 'send_sms' ) );
 			add_filter( 'msm_user_registered', array( __CLASS__, 'send_alimtalk' ) );
 		}
-
 		public static function add_status_for_new_account( $order_statuses ) {
-			$order_statuses = array_merge( array(
+			return array_merge( array(
 				'msm_new_account' => __( '신규회원가입', 'mshop-members-s2' )
 			), $order_statuses );
-
-			return $order_statuses;
 		}
-
 		public static function send_sms( $user_id ) {
 			$user = get_userdata( $user_id );
 
@@ -98,7 +94,6 @@ if ( ! class_exists( 'MSM_Message' ) ) {
 				}
 			}
 		}
-
 		public static function send_alimtalk( $user_id ) {
 			$user = get_userdata( $user_id );
 

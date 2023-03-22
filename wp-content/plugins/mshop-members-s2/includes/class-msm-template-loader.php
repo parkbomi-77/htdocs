@@ -85,12 +85,13 @@ if ( ! class_exists( 'MSM_Template_Loader' ) ) {
 
 		public static function template_redirect() {
 			if ( class_exists( 'WooCommerce' ) ) {
-
-				if ( MSM_Security::validate_url() ) {
+				// url 유효성검사. 유효한 url 이면 이 함수를 빠져나감 
+				if ( MSM_Security::validate_url() ) { 
 					return;
 				}
-
+				// 유저가 로그인했고 슈퍼 어드민이 아닌지 체크
 				if ( is_user_logged_in() && ! is_super_admin() ) {
+					// 이메일 인증 프로세스를 인증했으면 패스 
 					if ( ! is_page( 'email-authentication' ) && 'yes' === get_option( 'msm_required', 'no' ) && 'yes' != get_user_meta( get_current_user_id(), 'msm_email_certified', true ) ) {
 						if ( 'yes' != get_option( 'msm_social_except', 'no' ) || empty( get_user_meta( get_current_user_id(), 'wsl_current_provider', true ) ) ) {
 							$email_auth_page = get_page_by_path( 'email-authentication' );

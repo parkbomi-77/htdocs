@@ -34,33 +34,45 @@
 =====================================================================================
 */
 
-if ( ! defined( 'ABSPATH' ) ){
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
- 
-if ( ! class_exists( 'MSM_Emails' ) ) {
-	class MSM_Emails
-    {
-		public static function init(){
-			add_filter( 'woocommerce_email_classes', array( __CLASS__, 'woocommerce_email_classes') );
 
-			add_action( 'msm_new_role_application', array( __CLASS__, 'send_new_role_application'), 10 );
+if ( ! class_exists( 'MSM_Emails' ) ) {
+	class MSM_Emails {
+		public static function init() {
+			add_filter( 'woocommerce_email_classes', array( __CLASS__, 'woocommerce_email_classes' ) );
+
+			add_action( 'msm_new_role_application', array( __CLASS__, 'send_new_role_application' ), 10 );
 		}
 
 		static function woocommerce_email_classes( $emails ) {
 
-			$emails[ 'MSM_Email_New_Role_Application' ] = include( 'emails/class-msm-email-new-role-application.php' );
+			$emails['MSM_Email_New_Role_Application'] = include( 'emails/class-msm-email-new-role-application.php' );
+
+            $emails['MSM_Email_Personal_Information'] = include( 'emails/class-msm-email-personal-info.php' );
 
 			return $emails;
 		}
 
 		static function send_new_role_application( $post_id ) {
-            if(class_exists( 'WC_Emails' )) {
-                WC_Emails::instance();
-            }
+			if ( class_exists( 'WC_Emails' ) ) {
+				WC_Emails::instance();
+			}
 
 			do_action( 'msm_new_role_application_notification', $post_id );
 		}
+
+        public static function send_personal_info_email( $user ) {
+            if ( $user instanceof WP_User && is_email( $user->user_email ) ) {
+                if ( 'yes' == get_option( 'mshop_members_personal_info_noti', 'no' ) ) {
+
+                    WC_Emails::instance();
+
+                    do_action( 'msm_send_personal_info_email_notification', $user );
+                }
+            }
+        }
 	}
 
 	MSM_Emails::init();

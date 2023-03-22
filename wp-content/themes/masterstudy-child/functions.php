@@ -18,3 +18,18 @@ function woocommerce_save_account_details_required_fields($fields = array()) {
 unset($fields['account_last_name']);
 return $fields;
 }
+
+// add_filter( 'woocommerce_checkout_fields' , 'set_custom_checkout_fields_min_value' );
+
+// function set_custom_checkout_fields_min_value( $fields ) {
+//     $fields['billing']['billing_weight'] = array(
+//         'type'          => 'number',
+//         'label'         => __('몸무게(kg)', 'woocommerce'),
+//         'placeholder'   => _x('My Input Field Placeholder', 'placeholder', 'woocommerce'),
+//         'required'      => true,
+//         'class'         => array('input-text '),
+//         'min'           => 2,
+//     );
+
+//     return $fields;
+// }

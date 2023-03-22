@@ -88,13 +88,13 @@ if ( ! class_exists( 'MSM_Settings_Profile' ) ) :
 								"default" => "yes",
 								"desc"    => "우커머스의 기본 계정상세 탭을 숨깁니다."
 							),
-                            array(
-                                "id"      => "msm_profile_image_review",
-                                "title"   => "프로필 이미지",
-                                "type"    => "Toggle",
-                                "default" => "no",
-                                "desc"    => "회원은 프로필 이미지를 직접 설정할 수 있습니다. <a href='https://manual.codemshop.com/docs/members-s2/profile/image' target='_blank'>프로필 업로드 설정 가이드 <i class='file alternate outline icon'></i></a>"
-                            ),
+							array(
+								"id"      => "msm_profile_image_review",
+								"title"   => "프로필 이미지",
+								"type"    => "Toggle",
+								"default" => "no",
+								"desc"    => "회원은 프로필 이미지를 직접 설정할 수 있습니다. <a href='https://manual.codemshop.com/docs/members-s2/profile/image' target='_blank'>프로필 업로드 설정 가이드 <i class='file alternate outline icon'></i></a>"
+							),
 							array(
 								"id"        => "msm_profile_page_setting",
 								"title"     => "프로필 페이지",
@@ -105,6 +105,7 @@ if ( ! class_exists( 'MSM_Settings_Profile' ) ) :
 								"type"      => "SortableTable",
 								"template"  => array(
 									"user_roles"   => "",
+									"social_login" => "include",
 									"edit_form_id" => ""
 								),
 								"elements"  => array(
@@ -118,9 +119,20 @@ if ( ! class_exists( 'MSM_Settings_Profile' ) ) :
 										'options'     => apply_filters( 'msm_get_roles', array() ),
 									),
 									array(
+										"id"          => "social_login",
+										"title"       => __( "소셜로그인", 'mshop-members-s2' ),
+										"className"   => "two wide column fluid",
+										"type"        => "Select",
+										"placeholder" => "소셜로그인",
+										'options'     => array(
+											'include' => __( '포함', 'mshop-members-s2' ),
+											'exclude' => __( '제외', 'mshop-members-s2' ),
+										),
+									),
+									array(
 										"id"          => "edit_form_id",
 										"title"       => __( "프로필 편집 폼", 'mshop-members-s2' ),
-										"className"   => "five wide column fluid",
+										"className"   => "four wide column fluid",
 										"type"        => "Select",
 										"placeholder" => "프로필 편집 폼을 선택하세요.",
 										'options'     => msm_get_members_forms(),
@@ -128,7 +140,7 @@ if ( ! class_exists( 'MSM_Settings_Profile' ) ) :
 									array(
 										"id"          => "view_form_id",
 										"title"       => __( "프로필 조회 폼", 'mshop-members-s2' ),
-										"className"   => "five wide column fluid",
+										"className"   => "four wide column fluid",
 										"type"        => "Select",
 										"placeholder" => "프로필 조회 폼을 선택하세요.",
 										'options'     => msm_get_members_forms(),
@@ -142,8 +154,8 @@ if ( ! class_exists( 'MSM_Settings_Profile' ) ) :
 		}
 
 		static function enqueue_scripts() {
-			wp_enqueue_style( 'mshop-setting-manager', MSM()->plugin_url() . '/includes/admin/setting-manager/css/setting-manager.min.css', array (), MSM_VERSION );
-			wp_enqueue_script( 'mshop-setting-manager', MSM()->plugin_url() . '/includes/admin/setting-manager/js/setting-manager.min.js', array ( 'jquery', 'jquery-ui-core', 'underscore' ), MSM_VERSION );
+			wp_enqueue_style( 'mshop-setting-manager', MSM()->plugin_url() . '/includes/admin/setting-manager/css/setting-manager.min.css', array(), MSM_VERSION );
+			wp_enqueue_script( 'mshop-setting-manager', MSM()->plugin_url() . '/includes/admin/setting-manager/js/setting-manager.min.js', array( 'jquery', 'jquery-ui-core', 'underscore' ), MSM_VERSION );
 		}
 		public static function output() {
 			require_once( ABSPATH . 'wp-admin/includes/dashboard.php' );

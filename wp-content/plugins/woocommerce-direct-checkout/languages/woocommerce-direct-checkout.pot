@@ -1,0 +1,778 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Direct Checkout for WooCommerce\n"
+"POT-Creation-Date: 2023-02-25 20:32-0300\n"
+"PO-Revision-Date: 2019-08-09 07:24-0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.2.2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: woocommerce-direct-checkout.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: jetpack_vendor/automattic/jetpack-assets/src/class-assets.php:389
+#, php-format
+msgid "Script \"%s\" depends on wp-i18n but does not specify \"textdomain\""
+msgstr ""
+
+#: jetpack_vendor/automattic/jetpack-assets/src/class-assets.php:554
+#, php-format
+msgid ""
+"Textdomain aliases should be registered before the %1$s hook. This notice "
+"was triggered by the %2$s domain."
+msgstr ""
+
+#: jetpack_vendor/quadlayers/wp-dashboard-widget-news/src/Load.php:71
+msgid ""
+"Hi! We are Quadlayers! We’re a team of international people who have been "
+"working in the WordPress sphere for the last ten years."
+msgstr ""
+
+#: jetpack_vendor/quadlayers/wp-dashboard-widget-news/src/Load.php:74
+msgid "More products"
+msgstr ""
+
+#: jetpack_vendor/quadlayers/wp-dashboard-widget-news/src/Load.php:97
+msgid "Untitled"
+msgstr ""
+
+#: jetpack_vendor/quadlayers/wp-dashboard-widget-news/src/Load.php:125
+msgid "Read more like this on our blog"
+msgstr ""
+
+#: jetpack_vendor/quadlayers/wp-dashboard-widget-news/src/Load.php:148
+#: jetpack_vendor/quadlayers/wp-dashboard-widget-news/src/Load.php:154
+msgid ""
+"An error has occurred, which probably means the feed is down. Try again later"
+msgstr ""
+
+#: jetpack_vendor/quadlayers/wp-notice-plugin-promote/src/Load.php:296
+#, php-format
+msgid "Unknow notice index %s"
+msgstr ""
+
+#: jetpack_vendor/quadlayers/wp-notice-plugin-promote/src/Load.php:300
+#, php-format
+msgid "Notice index %s removed"
+msgstr ""
+
+#: jetpack_vendor/quadlayers/wp-notice-plugin-promote/src/Traits/PluginActions.php:36
+msgid "Activate"
+msgstr ""
+
+#: jetpack_vendor/quadlayers/wp-notice-plugin-promote/src/Traits/PluginActions.php:43
+msgid "Install"
+msgstr ""
+
+#: jetpack_vendor/quadlayers/wp-notice-plugin-required/src/Load.php:99
+#, php-format
+msgid "Activate % s"
+msgstr ""
+
+#: jetpack_vendor/quadlayers/wp-notice-plugin-required/src/Load.php:100
+#, php-format
+msgid "%1$s not working because you need to activate the %2$s plugin . "
+msgstr ""
+
+#: jetpack_vendor/quadlayers/wp-notice-plugin-required/src/Load.php:113
+#, php-format
+msgid "Install % s"
+msgstr ""
+
+#: jetpack_vendor/quadlayers/wp-notice-plugin-required/src/Load.php:114
+#, php-format
+msgid "%1$s not working because you need to install the %2$s plugin . "
+msgstr ""
+
+#: jetpack_vendor/quadlayers/wp-plugin-suggestions/src/Page.php:78
+#: jetpack_vendor/quadlayers/wp-plugin-suggestions/src/Page.php:93
+#: jetpack_vendor/quadlayers/wp-plugin-suggestions/src/Page.php:94
+#: jetpack_vendor/quadlayers/wp-plugin-suggestions/src/view/suggestions.php:47
+#: lib/view/backend/pages/parts/header.php:11
+#: lib/view/backend/pages/parts/tabs.php:19
+msgid "Suggestions"
+msgstr ""
+
+#: jetpack_vendor/quadlayers/wp-plugin-suggestions/src/Table.php:157
+msgid "Search Results"
+msgstr ""
+
+#: jetpack_vendor/quadlayers/wp-plugin-suggestions/src/Table.php:160
+msgctxt "Plugin Installer"
+msgid "Beta Testing"
+msgstr ""
+
+#: jetpack_vendor/quadlayers/wp-plugin-suggestions/src/Table.php:162
+msgctxt "Plugin Installer"
+msgid "Featured"
+msgstr ""
+
+#: jetpack_vendor/quadlayers/wp-plugin-suggestions/src/Table.php:163
+msgctxt "Plugin Installer"
+msgid "Popular"
+msgstr ""
+
+#: jetpack_vendor/quadlayers/wp-plugin-suggestions/src/Table.php:164
+msgctxt "Plugin Installer"
+msgid "Recommended"
+msgstr ""
+
+#: jetpack_vendor/quadlayers/wp-plugin-suggestions/src/Table.php:165
+msgctxt "Plugin Installer"
+msgid "Favorites"
+msgstr ""
+
+#: jetpack_vendor/quadlayers/wp-plugin-suggestions/src/view/suggestions.php:50
+#: lib/view/backend/pages/parts/header.php:13
+msgid ""
+"Thanks for using our product! We recommend these extensions that will add "
+"new features to stand out your business and improve your sales."
+msgstr ""
+
+#. Author of the plugin/theme
+#: jetpack_vendor/quadlayers/wp-plugin-suggestions/src/view/suggestions.php:79
+#: lib/view/backend/pages/parts/header.php:37
+msgid "QuadLayers"
+msgstr ""
+
+#: lib/controller/class-archives.php:54 lib/controller/class-archives.php:65
+#: lib/view/frontend/class-archives.php:49
+msgid "Archives"
+msgstr ""
+
+#: lib/controller/class-archives.php:70 lib/controller/class-archives.php:71
+#: lib/controller/class-products.php:106 lib/controller/class-products.php:107
+#: lib/controller/class-products.php:262 lib/controller/class-products.php:264
+msgid "Replace Add to cart text"
+msgstr ""
+
+#: lib/controller/class-archives.php:76 lib/controller/class-archives.php:110
+#: lib/controller/class-checkout.php:77 lib/controller/class-checkout.php:89
+#: lib/controller/class-checkout.php:166 lib/controller/class-checkout.php:178
+#: lib/controller/class-checkout.php:190 lib/controller/class-checkout.php:202
+#: lib/controller/class-checkout.php:214 lib/controller/class-checkout.php:226
+#: lib/controller/class-checkout.php:238 lib/controller/class-general.php:77
+#: lib/controller/class-general.php:89 lib/controller/class-general.php:103
+#: lib/controller/class-products.php:88 lib/controller/class-products.php:100
+#: lib/controller/class-products.php:112 lib/controller/class-products.php:131
+#: lib/controller/class-products.php:181 lib/controller/class-products.php:242
+#: lib/controller/class-products.php:254 lib/controller/class-products.php:268
+#: lib/controller/class-products.php:292
+msgid "Yes"
+msgstr ""
+
+#: lib/controller/class-archives.php:77 lib/controller/class-archives.php:111
+#: lib/controller/class-checkout.php:78 lib/controller/class-checkout.php:90
+#: lib/controller/class-checkout.php:167 lib/controller/class-checkout.php:179
+#: lib/controller/class-checkout.php:191 lib/controller/class-checkout.php:203
+#: lib/controller/class-checkout.php:215 lib/controller/class-checkout.php:227
+#: lib/controller/class-checkout.php:239 lib/controller/class-general.php:78
+#: lib/controller/class-general.php:90 lib/controller/class-general.php:101
+#: lib/controller/class-general.php:134 lib/controller/class-products.php:89
+#: lib/controller/class-products.php:101 lib/controller/class-products.php:113
+#: lib/controller/class-products.php:132 lib/controller/class-products.php:182
+#: lib/controller/class-products.php:243 lib/controller/class-products.php:255
+#: lib/controller/class-products.php:269 lib/controller/class-products.php:293
+msgid "No"
+msgstr ""
+
+#: lib/controller/class-archives.php:82
+msgid "Replace Add to cart text in"
+msgstr ""
+
+#: lib/controller/class-archives.php:83
+msgid "Replace \"Add to cart\" text in product types."
+msgstr ""
+
+#: lib/controller/class-archives.php:88
+msgid "Simple Products"
+msgstr ""
+
+#: lib/controller/class-archives.php:89
+msgid "Grouped Products"
+msgstr ""
+
+#: lib/controller/class-archives.php:90
+msgid "Virtual Products"
+msgstr ""
+
+#: lib/controller/class-archives.php:91
+msgid "Variable Products"
+msgstr ""
+
+#: lib/controller/class-archives.php:92
+msgid "Downloadable Products"
+msgstr ""
+
+#: lib/controller/class-archives.php:97 lib/controller/class-products.php:118
+#: lib/controller/class-products.php:274
+msgid "Replace Add to cart text content"
+msgstr ""
+
+#: lib/controller/class-archives.php:98 lib/controller/class-products.php:119
+#: lib/controller/class-products.php:276
+msgid "Replace \"Add to cart\" text with this text."
+msgstr ""
+
+#: lib/controller/class-archives.php:101 lib/controller/class-products.php:122
+#: lib/view/backend/pages/parts/header.php:16
+msgid "Purchase"
+msgstr ""
+
+#: lib/controller/class-archives.php:104
+msgid "Add quick view button"
+msgstr ""
+
+#: lib/controller/class-archives.php:105
+msgid "Add product quick view modal button."
+msgstr ""
+
+#: lib/controller/class-backend.php:65 lib/controller/class-backend.php:73
+#: lib/controller/class-products.php:339
+msgid "Direct Checkout"
+msgstr ""
+
+#: lib/controller/class-checkout.php:55 lib/controller/class-checkout.php:66
+#: lib/controller/class-general.php:115 lib/controller/class-general.php:135
+#: lib/controller/class-products.php:163 lib/controller/class-products.php:323
+#: lib/view/frontend/class-general.php:61
+#: lib/view/frontend/class-general.php:77
+msgid "Checkout"
+msgstr ""
+
+#: lib/controller/class-checkout.php:71
+msgid "Add cart to checkout"
+msgstr ""
+
+#: lib/controller/class-checkout.php:72
+msgid ""
+"Simplifies the checkout process including the shopping cart page inside "
+"checkout."
+msgstr ""
+
+#: lib/controller/class-checkout.php:83
+msgid "Add cart to checkout via ajax"
+msgstr ""
+
+#: lib/controller/class-checkout.php:84
+msgid "Prevent page reload when users change the products qty."
+msgstr ""
+
+#: lib/controller/class-checkout.php:95
+msgid "Add cart to checkout fields"
+msgstr ""
+
+#: lib/controller/class-checkout.php:96
+msgid "Include this fields inside the checkout cart."
+msgstr ""
+
+#: lib/controller/class-checkout.php:101
+msgid "Remove"
+msgstr ""
+
+#: lib/controller/class-checkout.php:102
+msgid "Thumbnail"
+msgstr ""
+
+#: lib/controller/class-checkout.php:103
+msgid "Name"
+msgstr ""
+
+#: lib/controller/class-checkout.php:104
+msgid "Price"
+msgstr ""
+
+#: lib/controller/class-checkout.php:105
+msgid "Quantity"
+msgstr ""
+
+#: lib/controller/class-checkout.php:115
+msgid "Remove checkout coupon form"
+msgstr ""
+
+#: lib/controller/class-checkout.php:116
+msgid "Simplifies the checkout process removing the coupon form."
+msgstr ""
+
+#: lib/controller/class-checkout.php:121
+msgid "Leave coupon form"
+msgstr ""
+
+#: lib/controller/class-checkout.php:122
+msgid "Remove coupon form"
+msgstr ""
+
+#: lib/controller/class-checkout.php:123
+msgid "Remove coupon toggle"
+msgstr ""
+
+#: lib/controller/class-checkout.php:124
+msgid "Move to checkout order"
+msgstr ""
+
+#: lib/controller/class-checkout.php:129
+msgid "Add custom class to cart table"
+msgstr ""
+
+#: lib/controller/class-checkout.php:130
+msgid "Add a custom class to the cart table form in the checkot."
+msgstr ""
+
+#: lib/controller/class-checkout.php:136 lib/view/backend/pages/premium.php:43
+msgid "Remove checkout fields"
+msgstr ""
+
+#: lib/controller/class-checkout.php:137
+msgid ""
+"Simplifies the checkout process removing the unnecessary checkout fields."
+msgstr ""
+
+#: lib/controller/class-checkout.php:142
+msgid "First Name"
+msgstr ""
+
+#: lib/controller/class-checkout.php:143
+msgid "Last Name"
+msgstr ""
+
+#: lib/controller/class-checkout.php:144
+msgid "Country"
+msgstr ""
+
+#: lib/controller/class-checkout.php:145
+msgid "State"
+msgstr ""
+
+#: lib/controller/class-checkout.php:146
+msgid "City"
+msgstr ""
+
+#: lib/controller/class-checkout.php:147
+msgid "Postcode"
+msgstr ""
+
+#: lib/controller/class-checkout.php:148
+msgid "Address 1"
+msgstr ""
+
+#: lib/controller/class-checkout.php:149
+msgid "Address 2"
+msgstr ""
+
+#: lib/controller/class-checkout.php:150
+msgid "Company"
+msgstr ""
+
+#: lib/controller/class-checkout.php:151
+msgid "Phone"
+msgstr ""
+
+#: lib/controller/class-checkout.php:160
+msgid "Remove checkout shipping address"
+msgstr ""
+
+#: lib/controller/class-checkout.php:161
+msgid "Simplifies the checkout process removing the shipping address."
+msgstr ""
+
+#: lib/controller/class-checkout.php:172
+msgid "Remove checkout order comments"
+msgstr ""
+
+#: lib/controller/class-checkout.php:173
+msgid "Simplifies the checkout process removing the order notes."
+msgstr ""
+
+#: lib/controller/class-checkout.php:184
+msgid "Remove checkout policy text"
+msgstr ""
+
+#: lib/controller/class-checkout.php:185
+msgid "Simplifies the checkout process removing the policy text."
+msgstr ""
+
+#: lib/controller/class-checkout.php:196
+msgid "Remove checkout terms and conditions"
+msgstr ""
+
+#: lib/controller/class-checkout.php:197
+msgid "Simplifies the checkout process removing the terms and conditions."
+msgstr ""
+
+#: lib/controller/class-checkout.php:208
+msgid "Remove checkout gateway icons"
+msgstr ""
+
+#: lib/controller/class-checkout.php:209
+msgid "Simplifies the checkout view by removing the payment gateway icons."
+msgstr ""
+
+#: lib/controller/class-checkout.php:220 lib/view/backend/pages/premium.php:49
+msgid "Remove checkout columns"
+msgstr ""
+
+#: lib/controller/class-checkout.php:221
+msgid ""
+"Try to remove the columns and display the checkout form and order review in "
+"one column."
+msgstr ""
+
+#: lib/controller/class-checkout.php:232
+msgid "Remove order details address"
+msgstr ""
+
+#: lib/controller/class-checkout.php:233
+msgid "Remove the billing address of the customer in the order received page."
+msgstr ""
+
+#: lib/controller/class-general.php:55 lib/controller/class-general.php:65
+msgid "General"
+msgstr ""
+
+#: lib/controller/class-general.php:67
+msgid "Simplifies the checkout process."
+msgstr ""
+
+#: lib/controller/class-general.php:71
+msgid "Added to cart alert"
+msgstr ""
+
+#: lib/controller/class-general.php:72
+msgid "Replace \"View Cart\" alert with direct checkout."
+msgstr ""
+
+#: lib/controller/class-general.php:83
+msgid "Added to cart link in shop"
+msgstr ""
+
+#: lib/controller/class-general.php:84
+msgid "Replace \"View Cart\" link with \"Checkout\" link in the shop page."
+msgstr ""
+
+#: lib/controller/class-general.php:95
+msgid "Added to cart redirect"
+msgstr ""
+
+#: lib/controller/class-general.php:96
+msgid "Add to cart button behaviour."
+msgstr ""
+
+#: lib/controller/class-general.php:108
+msgid "Added to cart redirect to"
+msgstr ""
+
+#: lib/controller/class-general.php:109 lib/controller/class-general.php:122
+msgid "Redirect to the cart or checkout page after successful addition."
+msgstr ""
+
+#: lib/controller/class-general.php:114 lib/controller/class-products.php:162
+#: lib/controller/class-products.php:322
+msgid "Cart"
+msgstr ""
+
+#: lib/controller/class-general.php:116 lib/controller/class-general.php:136
+msgid "Custom URL"
+msgstr ""
+
+#: lib/controller/class-general.php:121
+msgid "Added to cart redirect to custom url"
+msgstr ""
+
+#: lib/controller/class-general.php:128 lib/controller/class-general.php:129
+msgid "Replace cart url"
+msgstr ""
+
+#: lib/controller/class-general.php:141 lib/controller/class-general.php:142
+msgid "Replace cart url with custom url"
+msgstr ""
+
+#: lib/controller/class-premium.php:49 lib/controller/class-premium.php:67
+#: lib/view/backend/pages/premium.php:17
+#: vendor_packages/wp-plugin-table-links.php:12
+msgid "Premium"
+msgstr ""
+
+#: lib/controller/class-products.php:66 lib/controller/class-products.php:77
+msgid "Products"
+msgstr ""
+
+#: lib/controller/class-products.php:82 lib/controller/class-products.php:236
+msgid "Add ajax add to cart"
+msgstr ""
+
+#: lib/controller/class-products.php:83 lib/controller/class-products.php:237
+msgid "Add products to cart via ajax."
+msgstr ""
+
+#: lib/controller/class-products.php:94 lib/controller/class-products.php:248
+msgid "Add ajax add to cart alert"
+msgstr ""
+
+#: lib/controller/class-products.php:95 lib/controller/class-products.php:249
+msgid "Display alert when product is added to the cart."
+msgstr ""
+
+#: lib/controller/class-products.php:125 lib/controller/class-products.php:285
+msgid "Add quick purchase button"
+msgstr ""
+
+#: lib/controller/class-products.php:126
+msgid "Add a quick purchase button to the products pages."
+msgstr ""
+
+#: lib/controller/class-products.php:137
+msgid "Add quick purchase button type"
+msgstr ""
+
+#: lib/controller/class-products.php:138
+msgid "Select the WooCommerce button type."
+msgstr ""
+
+#: lib/controller/class-products.php:143
+msgid "Default"
+msgstr ""
+
+#: lib/controller/class-products.php:144
+msgid "Alternative"
+msgstr ""
+
+#: lib/controller/class-products.php:149 lib/controller/class-products.php:298
+msgid "Add quick purchase class"
+msgstr ""
+
+#: lib/controller/class-products.php:150
+msgid "Add a custom class to the quick purchase button."
+msgstr ""
+
+#: lib/controller/class-products.php:156 lib/controller/class-products.php:316
+msgid "Redirect quick purchase to"
+msgstr ""
+
+#: lib/controller/class-products.php:157
+msgid "Redirect the quick purchase button to the cart or checkout page."
+msgstr ""
+
+#: lib/controller/class-products.php:168 lib/controller/class-products.php:307
+msgid "Add quick purchase text"
+msgstr ""
+
+#: lib/controller/class-products.php:169
+msgid "Add a custom text to the quick purchase button."
+msgstr ""
+
+#: lib/controller/class-products.php:172 lib/controller/class-products.php:388
+#: lib/view/backend/pages/premium.php:27
+#: vendor_packages/wp-notice-plugin-promote.php:75
+msgid "Purchase Now"
+msgstr ""
+
+#: lib/controller/class-products.php:175
+msgid "Add default attributes in variable products"
+msgstr ""
+
+#: lib/controller/class-products.php:176
+msgid ""
+"Add default attributes in all variable products to avoid disabled Add to "
+"cart button."
+msgstr ""
+
+#: lib/controller/class-products.php:287
+msgid "Add quick purchase button to single product page."
+msgstr ""
+
+#: lib/controller/class-products.php:300
+msgid "Add quick purchase custom class."
+msgstr ""
+
+#: lib/controller/class-products.php:309
+msgid "Add quick purchase custom text."
+msgstr ""
+
+#: lib/controller/class-products.php:318
+msgid "Redirect quick purchase to the cart or checkout page."
+msgstr ""
+
+#: lib/controller/class-products.php:387
+#: lib/view/backend/pages/parts/header.php:17
+#: lib/view/backend/pages/parts/tabs.php:18
+#: vendor_packages/wp-plugin-table-links.php:22
+msgid "Documentation"
+msgstr ""
+
+#: lib/view/backend/pages/premium.php:23
+#, php-format
+msgid ""
+"%s allows you to simplifies the checkout process by skipping the shopping "
+"cart page. This plugin allows you to redirect your customers directly to the "
+"checkout page and includes the cart inside the checkout page."
+msgstr ""
+
+#: lib/view/backend/pages/premium.php:28
+msgid "Get Support"
+msgstr ""
+
+#: lib/view/backend/pages/premium.php:32
+msgid "One page checkout"
+msgstr ""
+
+#: lib/view/backend/pages/premium.php:38
+#, php-format
+msgid ""
+"%s allows you to include the cart form in the checkout page allowing your "
+"users to edit the cart and confirm the order on the same page."
+msgstr ""
+
+#: lib/view/backend/pages/premium.php:45
+msgid ""
+"Our checkout settings allow you to easily remove the unnecessary fields and "
+"reduce the user spend completing those fields like the order comments, "
+"shipping address, coupon form, policy text, and terms and conditions."
+msgstr ""
+
+#: lib/view/backend/pages/premium.php:51
+msgid ""
+"This option allows you to simplify the checkout page by removing the two "
+"columns in the checkout page."
+msgstr ""
+
+#: lib/view/backend/pages/premium.php:63
+msgid "Checkout redirect"
+msgstr ""
+
+#: lib/view/backend/pages/premium.php:65
+msgid ""
+"This option allows you to redirect your users directly to the checkout page "
+"reducing the total checkout process in one step."
+msgstr ""
+
+#: lib/view/backend/pages/premium.php:69
+msgid "Quick purchase on single products"
+msgstr ""
+
+#: lib/view/backend/pages/premium.php:71
+msgid ""
+"If you want to give the option to the user to make a direct purchase or the "
+"default add to cart product you can include a direct purchase button to the "
+"products page."
+msgstr ""
+
+#: lib/view/backend/pages/premium.php:75
+msgid "Quick view in product archives"
+msgstr ""
+
+#: lib/view/backend/pages/premium.php:77
+msgid ""
+"This option allows you to include a button which displays a quick view in "
+"the WooCommerce shop page and products categories."
+msgstr ""
+
+#: lib/view/backend/pages/premium.php:80
+msgid ""
+"This is especially useful for the variable products because it allows users "
+"to select the products attributes and include directly into the cart."
+msgstr ""
+
+#: lib/view/backend/pages/premium.php:85
+msgid "Quick purchase"
+msgstr ""
+
+#: lib/view/backend/pages/premium.php:87
+msgid ""
+"The Quick purchase button allows you to include a direct button in the "
+"single products, variable, grouped and virtual products wich redirects user "
+"to the checkout page."
+msgstr ""
+
+#: lib/view/frontend/class-general.php:77
+msgid "View cart"
+msgstr ""
+
+#: vendor_packages/wp-notice-plugin-promote.php:21
+#, php-format
+msgid ""
+"Today we want to make you a special gift. Using the coupon code %1$s before "
+"the next 48 hours you can get a 20 percent discount on the premium version "
+"of the %2$s plugin."
+msgstr ""
+
+#: vendor_packages/wp-notice-plugin-promote.php:35
+msgid ""
+"WooCommerce Checkout Manager allows you to add custom fields to the checkout "
+"page, related to billing, Shipping or Additional fields sections."
+msgstr ""
+
+#: vendor_packages/wp-notice-plugin-promote.php:42
+msgid ""
+"Perfect WooCommerce Brands the perfect tool to improve customer experience "
+"on your site. It allows you to highlight product brands and organize them in "
+"lists, dropdowns, thumbnails, and as a widget."
+msgstr ""
+
+#: vendor_packages/wp-notice-plugin-promote.php:54
+#, php-format
+msgid "Hello! Thank you for choosing the %s plugin!"
+msgstr ""
+
+#: vendor_packages/wp-notice-plugin-promote.php:59
+msgid ""
+"Could you please give it a 5-star rating on WordPress?. Your feedback will "
+"boost our motivation and help us promote and continue to improve this "
+"product."
+msgstr ""
+
+#: vendor_packages/wp-notice-plugin-promote.php:62
+msgid "Yes, of course!"
+msgstr ""
+
+#: vendor_packages/wp-notice-plugin-promote.php:67
+msgid "Report a bug"
+msgstr ""
+
+#: vendor_packages/wp-notice-plugin-promote.php:81
+msgid "Hello! We have a special gift!"
+msgstr ""
+
+#: vendor_packages/wp-notice-plugin-promote.php:87
+#: vendor_packages/wp-notice-plugin-promote.php:105
+#: vendor_packages/wp-notice-plugin-promote.php:123
+msgid "More info!"
+msgstr ""
+
+#: vendor_packages/wp-notice-plugin-promote.php:97
+#: vendor_packages/wp-notice-plugin-promote.php:115
+#, php-format
+msgid "Hello! We want to invite you to try our %s plugin!"
+msgstr ""
+
+#: vendor_packages/wp-plugin-table-links.php:8
+msgid "Settings"
+msgstr ""
+
+#: vendor_packages/wp-plugin-table-links.php:17
+msgid "Support"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "WooCommerce Direct Checkout"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://quadlayers.com/documentation/woocommerce-direct-checkout/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Simplifies the checkout process to improve your sales rate."
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://quadlayers.com"
+msgstr ""

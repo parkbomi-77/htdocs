@@ -99,11 +99,79 @@ if ( ! class_exists( 'MSM_Email_Authenticate' ) ) :
 				}
 			}
 		}
-        public static function user_register( $user_id ) {
-            if ( class_exists( 'WooCommerce' ) ) {
-                self::send_authentication_email( get_user_by( 'id', $user_id ) );
-            }
-        }
+		public static function user_register( $user_id ) {
+			if ( class_exists( 'WooCommerce' ) ) {
+				self::send_authentication_email( get_user_by( 'id', $user_id ) );
+			}
+		}
+		protected static function get_certification_number() {
+			return rand( 100000, 999999 );
+		}
+		public static function get_certification_hash( $certification_number, $salt ) {
+			return md5( $certification_number . $salt );
+		}
+		public static function send_verification_email( $field_name, $field_value, $field_label, $form_slug ) {
+			$user = get_user_by( 'email', $field_value );
+
+			if ( $user ) {
+				throw new Exception( __( '이미 사용중인 이메일입니다.', 'mshop-members-s2' ), 8100 );
+			}
+
+			delete_transient( 'msm_email_verification_' . $field_value );
+			delete_transient( 'msm_email_verification_salt_' . $field_value );
+			delete_transient( 'msm_email_verification_retry_' . $field_value );
+
+			do_action( 'msm_before_send_verification_email', $field_name, $field_value, $field_label, $form_slug );
+
+			$certification_number = self::get_certification_number();
+
+			$blog_name = wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES );
+
+			ob_start();
+			msm_get_template( 'emails/email-verification.php', array( 'blog_name' => $blog_name, 'certification_number' => $certification_number ), array(), MSM()->plugin_path() . '/templates/' );
+			$content = ob_get_clean();
+
+			wp_mail( $field_value, sprintf( __( "[%s] 이메일 인증번호를 알려드립니다.", "mshop-members-s2" ), $blog_name ), $content, array( 'Content-Type: text/html; charset=UTF-8' ) );
+
+			$salt = bin2hex( random_bytes( 10 ) );
+			$hash = self::get_certification_hash( $certification_number, $salt );
+
+			$expiration = apply_filters( 'msm_email_verification_expiration', 10 * MINUTE_IN_SECONDS );
+
+			set_transient( 'msm_email_verification_' . $field_value, $hash, $expiration );
+			set_transient( 'msm_email_verification_salt_' . $field_value, $salt, $expiration );
+			set_transient( 'msm_email_verification_retry_' . $field_value, 0, $expiration );
+
+			do_action( 'msm_after_send_verification_email', $field_name, $field_value, $field_label, $form_slug, $hash );
+
+			return $hash;
+		}
+		public static function validate_certification_number( $field_name, $field_value, $certificate_hash, $certification_number, $form_slug ) {
+			$saved_hash  = get_transient( 'msm_email_verification_' . $field_value );
+			$saved_salt  = get_transient( 'msm_email_verification_salt_' . $field_value );
+			$retry_count = intval( get_transient( 'msm_email_verification_retry_' . $field_value ) );
+			$expiration  = apply_filters( 'msm_email_verification_expiration', 10 * MINUTE_IN_SECONDS );
+
+			if ( $retry_count >= 5 ) {
+				throw new Exception( __( '인증 가능 횟수가 초과되었습니다.', 'mshop-members-s2' ), '2001' );
+			} else {
+				set_transient( 'msm_email_verification_retry_' . $field_value, $retry_count + 1, $expiration );
+			}
+
+			if ( empty( $saved_hash ) || empty( $saved_salt ) ) {
+				throw new Exception( __( '인증 정보가 존재하지 않습니다.', 'mshop-members-s2' ), '2002' );
+			}
+
+			if ( $saved_hash != $certificate_hash ) {
+				throw new Exception( __( '인증 정보가 올바르지 않습니다.', 'mshop-members-s2' ), '2003' );
+			}
+
+			if ( $saved_hash != MSM_Phone_Certification::get_certification_hash( $certification_number, $saved_salt ) ) {
+				throw new Exception( sprintf( __( '올바르지 않은 인증번호입니다. 남은 시도횟수 : %d', 'mshop-members-s2' ), 5 - ( $retry_count + 1 ) ), '2004' );
+			}
+
+			return true;
+		}
 	}
 
 endif;

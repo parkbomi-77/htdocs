@@ -49,6 +49,12 @@ if ( ! class_exists( 'MSM_Settings_Members' ) ) :
 
 			MSM_Setting_Helper::update_settings( $this->get_setting_fields() );
 
+			if ( 'yes' == $_REQUEST['mshop_members_personal_info_noti'] ) {
+				MSM_Personal_Info::maybe_register_scheduled_action();
+			} else {
+				MSM_Personal_Info::maybe_deregister_scheduled_action();
+			}
+
 			wp_send_json_success();
 		}
 
@@ -79,7 +85,7 @@ if ( ! class_exists( 'MSM_Settings_Members' ) ) :
 					$this->get_setting_members_rule(),
 					$this->get_access_stibee(),
 					$this->get_access_mailchimp(),
-                    $this->get_setting_cookie(),
+					$this->get_setting_cookie(),
 					$this->get_settings_access_control(),
 					$this->get_setting_tools(),
 				) )
@@ -106,6 +112,58 @@ if ( ! class_exists( 'MSM_Settings_Members' ) ) :
 						'className' => '',
 						'type'      => 'TextArea',
 						'default'   => __( '<h4>고객님은 진행중인 정기결제권을 보유하고 있습니다.<br>회원탈퇴를 하시려면, 정기결제권을 모두 취소해주셔야합니다.</h4>', 'mshop-members-s2' )
+					),
+				);
+			}
+
+			if ( class_exists( 'MSSMS_Manager' ) ) {
+				$notification_settings = array(
+					array(
+						"id"        => "mshop_members_sleep_notification_sms_template",
+						"title"     => __( "휴면예고 문자 템플릿", 'mshop-members-s2' ),
+						'showIf'    => array( array( 'mshop_members_use_sleep' => 'yes' ), array( 'mshop_members_sleep_notification_method' => 'sms' ) ),
+						"className" => "center aligned fluid",
+						"type"      => "TextArea",
+						"default"   => __( "[{쇼핑몰명}] 안녕하세요? {고객명} 회원님.
+
+저희 {쇼핑몰명} 쇼핑몰에 장기간 미접속으로 인해, 휴면회원으로 전환이 될 예정임을 안내해 드립니다.
+
+휴면회원으로 전환이 되었어도, 다시 접속을 하시면, 휴면회원 처리에서 제외되오니 이점 참고하여 주세요.
+
+* 휴면회원으로 전환된 이후 {휴면회원삭제대기일} 일 이후에는 회원 정보가 자동으로 삭제처리 됩니다.
+
+그동안 저희 {쇼핑몰명}을 이용 해 주셔서 감사합니다." ),
+						"rows"      => 8,
+					),
+					array(
+						"id"          => "mshop_members_sleep_notification_alimtalk_template",
+						'showIf'      => array( array( 'mshop_members_use_sleep' => 'yes' ), array( 'mshop_members_sleep_notification_method' => 'alimtalk' ) ),
+						"title"       => __( "휴면예고 알림톡 템플릿", "mshop-members-s2" ),
+						"placeholder" => __( "휴면예고 템플릿을 선택해주세요.", "mshop-members-s2" ),
+						"className"   => "",
+						"type"        => "Select",
+						'options'     => MSSMS_Manager::get_alimtalk_templates()
+					),
+				);
+			} else {
+				$notification_settings = array(
+					array(
+						"id"       => "mshop_members_sleep_notification_sms_template",
+						"title"    => __( "휴면예고 문자 템플릿", 'mshop-members-s2' ),
+						'showIf'   => array( array( 'mshop_members_use_sleep' => 'yes' ), array( 'mshop_members_sleep_notification_method' => 'sms' ) ),
+						'type'     => 'Label',
+						'readonly' => 'yes',
+						'default'  => '',
+						'desc2'    => __( '<div class="desc2">휴면예고 문자알림 기능을 이용하시려면 "<a target="_blank" href="https://www.codemshop.com/shop/sms_out/">엠샵 문자 알림톡 자동발송 플러그인</a>"이 설치되어 있어야 합니다.</div>', 'mshop-members-s2' ),
+					),
+					array(
+						"id"       => "mshop_members_sleep_notification_alimtalk_template",
+						'showIf'   => array( array( 'mshop_members_use_sleep' => 'yes' ), array( 'mshop_members_sleep_notification_method' => 'alimtalk' ) ),
+						"title"    => __( "휴면예고 알림톡 템플릿", "mshop-members-s2" ),
+						'type'     => 'Label',
+						'readonly' => 'yes',
+						'default'  => '',
+						'desc2'    => __( '<div class="desc2">휴면예고 알림톡 기능을 이용하시려면 "<a target="_blank" href="https://www.codemshop.com/shop/sms_out/">엠샵 문자 알림톡 자동발송 플러그인</a>"이 설치되어 있어야 합니다.</div>', 'mshop-members-s2' ),
 					),
 				);
 			}
@@ -137,21 +195,57 @@ if ( ! class_exists( 'MSM_Settings_Members' ) ) :
 							array(
 								'id'      => 'msm_user_can_edit_fields',
 								'title'   => __( '회원 정보 수정', 'mshop-members-s2' ),
-								'desc'    => __( '회원은 회원가입 시 입력한 정보를 내계정 페이지에서 수정할 수 있습니다.', 'mshop-members-s2' ),
+								'desc'    => __( '<div class="desc2">회원은 회원가입 시 입력한 정보를 내계정 페이지에서 수정할 수 있습니다.</div>', 'mshop-members-s2' ),
 								'default' => 'no',
 								'type'    => 'Toggle'
 							),
 							array(
 								'id'      => 'mshop_members_using_footer_script',
 								'title'   => __( '스크립트 Footer 사용', 'mshop-members-s2' ),
-								'desc'    => __( '스크립트를 Footer 영역에서 읽도록 설정 할 수 있습니다. 타 플러그인과의 스크립트 충돌로 기능이 정상 동작되지 않는 경우에만 활성화를 해 주세요.', 'mshop-members-s2' ),
+								'desc'    => __( '<div class="desc2">스크립트를 Footer 영역에서 읽도록 설정 할 수 있습니다. 타 플러그인과의 스크립트 충돌로 기능이 정상 동작되지 않는 경우에만 활성화를 해 주세요.</div>', 'mshop-members-s2' ),
 								'default' => 'no',
 								'type'    => 'Toggle'
 							),
 							array(
+								'id'      => 'msm_display_customer_info',
+								'title'   => __( '고객정보 표시', 'mshop-members-s2' ),
+								'desc'    => __( '<div class="desc2">로그인 후 로그인 링크 위치에 고객정보를 표시합니다.</div>', 'mshop-members-s2' ),
+								'default' => 'no',
+								'type'    => 'Toggle'
+							),
+							array(
+								'id'        => 'msm_customer_info_string',
+								'showIf'    => array( 'msm_display_customer_info' => 'yes' ),
+								'title'     => __( '고객정보 문구', 'mshop-members-s2' ),
+								'className' => 'fluid',
+								'default'   => __( '{고객명}님 반갑습니다' ),
+								'type'      => 'Text'
+							),
+						)
+					),
+					array(
+						'type'     => 'Section',
+						'title'    => '개인정보 설정',
+						'showIf'   => array( 'mshop_members_enabled' => 'yes' ),
+						'elements' => array(
+							array(
+								'id'      => 'mshop_members_personal_info_noti',
+								'title'   => __( '개인정보 이용 메일 활성화', 'mshop-members-s2' ),
+								'desc'    => __( '<div class="desc2">개인정보 이용내역은 연1회 발송되는 법적의무 사항입니다.<br>발송되는 메일에 대한 설정은 <a style="color:red;" target="_blank" href="/wp-admin/admin.php?page=wc-settings&tab=email&section=msm_email_personal_information">개인정보 이용내역 안내 메일 설정</a>에서 진행 해주세요.</div>', 'mshop-members-s2' ),
+								'default' => 'no',
+								'type'    => 'Toggle'
+							),
+						)
+					),
+					array(
+						'type'     => 'Section',
+						'title'    => '로그인 제한',
+						'showIf'   => array( 'mshop_members_enabled' => 'yes' ),
+						'elements' => array(
+							array(
 								'id'       => 'mshop_members_restrict_login',
 								'title'    => __( '로그인 제한', 'mshop-members-s2' ),
-								'desc'     => __( '지정된 등급의 사용자는 로그인할 수 없습니다.', 'mshop-members-s2' ),
+								'desc'     => __( '<div class="desc2">지정된 등급의 사용자는 로그인할 수 없습니다.</div>', 'mshop-members-s2' ),
 								"type"     => "Select",
 								'default'  => '',
 								'multiple' => true,
@@ -163,6 +257,13 @@ if ( ! class_exists( 'MSM_Settings_Members' ) ) :
 								'className' => 'fluid',
 								"type"      => "Text",
 								'default'   => __( '등록되지 않은 이메일이거나 비밀번호가 잘못되었습니다.', 'mshop-members-s2' )
+							),
+							array(
+								'id'          => 'mshop_members_restrict_login_redirect_url',
+								'title'       => __( '회원가입시 이동할 URL', 'mshop-members-s2' ),
+								'className'   => 'fluid',
+								"type"        => "Text",
+								'placeholder' => __( '회원가입 시 기본사용자 등급이 로그인 제한 사용자인 경우, 지정된 URL로 이동됩니다.', 'mshop-members-s2' )
 							),
 						)
 					),
@@ -224,7 +325,7 @@ if ( ! class_exists( 'MSM_Settings_Members' ) ) :
 						'type'     => 'Section',
 						'title'    => '휴면회원',
 						'showIf'   => array( 'mshop_members_enabled' => 'yes' ),
-						'elements' => array(
+						'elements' => array_merge( array(
 							array(
 								'id'        => 'mshop_members_use_sleep',
 								'title'     => '활성화',
@@ -276,8 +377,22 @@ if ( ! class_exists( 'MSM_Settings_Members' ) ) :
 								)
 							),
 							array(
-								'id'        => 'mshop_members_sleep_warning_email_title',
+								"id"        => "mshop_members_sleep_notification_method",
 								'showIf'    => array( 'mshop_members_use_sleep' => 'yes' ),
+								"title"     => "휴면 예고 발송 수단",
+								"className" => "",
+								"type"      => "Select",
+								"multiple"  => "true",
+								'default'   => 'email',
+								'options'   => array(
+									'email'    => '이메일',
+									'sms'      => '문자 (LMS)',
+									'alimtalk' => '알림톡'
+								),
+							),
+							array(
+								'id'        => 'mshop_members_sleep_warning_email_title',
+								'showIf'    => array( array( 'mshop_members_use_sleep' => 'yes' ), array( 'mshop_members_sleep_notification_method' => 'email' ) ),
 								'title'     => '휴면예고 이메일 제목',
 								'className' => 'fluid',
 								'type'      => 'Text',
@@ -285,7 +400,7 @@ if ( ! class_exists( 'MSM_Settings_Members' ) ) :
 							),
 							array(
 								'id'        => 'mshop_members_sleep_warning_email',
-								'showIf'    => array( 'mshop_members_use_sleep' => 'yes' ),
+								'showIf'    => array( array( 'mshop_members_use_sleep' => 'yes' ), array( 'mshop_members_sleep_notification_method' => 'email' ) ),
 								'title'     => '휴면예고 이메일 내용',
 								'className' => '',
 								'type'      => 'TextArea',
@@ -297,9 +412,10 @@ if ( ! class_exists( 'MSM_Settings_Members' ) ) :
 
 * 휴면회원으로 전환된 이후 {휴면회원삭제대기일} 일 이후에는 회원 정보가 자동으로 삭제처리 됩니다.
 
-그동안 저희 {쇼핑몰명}을 이용 해 주셔서 감사합니다.'
-							),
-						)
+그동안 저희 {쇼핑몰명}을 이용 해 주셔서 감사합니다.',
+								"rows"      => 8,
+							)
+						), $notification_settings )
 					),
 				)
 			);
@@ -619,6 +735,10 @@ HTML 태그를 이용하여 작성도 가능합니다.",
 				include( 'html/sms-message-guide.php' );
 				$guide = ob_get_clean();
 
+				ob_start();
+				include( 'html/temporary-password-message-guide.php' );
+				$temporary_password_guide = ob_get_clean();
+
 				$pages = get_pages();
 				$pages = array_combine( array_column( $pages, 'ID' ), array_column( $pages, 'post_title' ) );
 
@@ -720,10 +840,11 @@ HTML 태그를 이용하여 작성도 가능합니다.",
 									"title"   => "소셜 로그인 예외 처리",
 									"type"    => "Toggle",
 									"default" => "no",
-									"desc"      => __( "<div class='desc2'>소셜 로그인 사용자는 휴대폰 인증을 하지 않습니다.</div>", "mshop-members-s2" )
+									"desc"    => __( "<div class='desc2'>소셜 로그인 사용자는 휴대폰 인증을 하지 않습니다.</div>", "mshop-members-s2" )
 								),
 								array(
 									"id"        => "mssms_phone_certification_only_checkout",
+									"showIf"    => array( 'mssms_phone_certification_required' => 'yes' ),
 									"title"     => "결제 시 인증",
 									"className" => "",
 									"type"      => "Toggle",
@@ -738,6 +859,52 @@ HTML 태그를 이용하여 작성도 가능합니다.",
 									"className"   => "",
 									"type"        => "Select",
 									'options'     => $pages
+								)
+							)
+						),
+						array(
+							'type'     => 'Section',
+							'title'    => '임시 비밀번호 발급 설정',
+							'showIf'   => array( 'mssms_use_phone_certification' => 'yes' ),
+							'elements' => array(
+								array(
+									"id"        => "msm_use_issue_temporary_password",
+									"title"     => "임시 비밀번호 발급 기능",
+									"className" => "",
+									"type"      => "Toggle",
+									"default"   => "no",
+									"desc"      => __( "<div class='desc2'>고객은 임시 비밀번호를 휴대폰으로 받을 수 있습니다.</div>", "mshop-members-s2" )
+								),
+								array(
+									"id"        => "msm_issue_temporary_password_method",
+									"title"     => "발송 수단",
+									'showIf'    => array( 'msm_use_issue_temporary_password' => 'yes' ),
+									"className" => "",
+									"type"      => "Select",
+									'default'   => 'alimtalk',
+									'options'   => array(
+										'sms'      => '문자 (LMS)',
+										'alimtalk' => '알림톡'
+									),
+								),
+								array(
+									"id"        => "msm_issue_temporary_password_sms_template",
+									"title"     => __( "인증문자 템플릿", 'mshop-members-s2' ),
+									'showIf'    => array( array( 'msm_use_issue_temporary_password' => 'yes' ), array( 'msm_issue_temporary_password_method' => 'sms' ) ),
+									"className" => "center aligned fluid",
+									"type"      => "TextArea",
+									"default"   => __( "[{쇼핑몰명}] 고객님의 임시 비밀번호는 [{임시비밀번호}] 입니다.", "mshop-members-s2" ),
+									"rows"      => 3,
+									"desc2"     => $temporary_password_guide
+								),
+								array(
+									"id"          => "msm_issue_temporary_password_alimtalk_template",
+									'showIf'      => array( array( 'msm_use_issue_temporary_password' => 'yes' ), array( 'msm_issue_temporary_password_method' => 'alimtalk' ) ),
+									"title"       => "알림톡 템플릿",
+									"placeholder" => "임시 비밀번호 발급을 위한 템플릿을 선택해주세요.",
+									"className"   => "",
+									"type"        => "Select",
+									'options'     => MSSMS_Manager::get_alimtalk_templates()
 								)
 							)
 						)
@@ -915,37 +1082,37 @@ HTML 태그를 이용하여 작성도 가능합니다.",
 			}
 		}
 
-        function get_setting_cookie() {
-            return array(
-                'type'     => 'Page',
-                'title'    => __( '쿠키 사용 동의 설정', 'mshop-members-s2' ),
-                'elements' => array(
-                    array(
-                        'type'     => 'Section',
-                        'title'    => __( '기본 설정', 'mshop-members-s2' ),
-                        'elements' => array(
-                            array(
-                                'id'        => 'msmp_use_cookie_agreement',
-                                'title'     => __( '활성화', 'mshop-members-s2' ),
-                                'className' => '',
-                                'type'      => 'Toggle',
-                                'default'   => 'no',
-                                'desc'      => __( '쿠키 사용동의 기능 기능을 사용합니다.', 'mshop-members-s2' )
-                            ),
-                            array(
-                                'id'        => 'msmp_cookie_agreement_message',
-                                'showIf'    => array( 'msmp_use_cookie_agreement' => 'yes' ),
-                                'title'     => '쿠키 사용동의 안내문구',
-                                'className' => 'fluid',
-                                'type'      => 'TextArea',
-                                'rows'      => 10,
-                                'default'   => __( '{사이트명}에 오신 것을 환영합니다! 웹사이트를 원활하게 표시하기 위해 쿠키를 사용합니다. {사이트명}을 계속 이용하려면 쿠키 사용에 동의해야 합니다.', 'mshop-members-s2' )
-                            ),
-                        )
-                    )
-                )
-            );
-        }
+		function get_setting_cookie() {
+			return array(
+				'type'     => 'Page',
+				'title'    => __( '쿠키 사용 동의 설정', 'mshop-members-s2' ),
+				'elements' => array(
+					array(
+						'type'     => 'Section',
+						'title'    => __( '기본 설정', 'mshop-members-s2' ),
+						'elements' => array(
+							array(
+								'id'        => 'msmp_use_cookie_agreement',
+								'title'     => __( '활성화', 'mshop-members-s2' ),
+								'className' => '',
+								'type'      => 'Toggle',
+								'default'   => 'no',
+								'desc'      => __( '쿠키 사용동의 기능 기능을 사용합니다.', 'mshop-members-s2' )
+							),
+							array(
+								'id'        => 'msmp_cookie_agreement_message',
+								'showIf'    => array( 'msmp_use_cookie_agreement' => 'yes' ),
+								'title'     => '쿠키 사용동의 안내문구',
+								'className' => 'fluid',
+								'type'      => 'TextArea',
+								'rows'      => 10,
+								'default'   => __( '{사이트명}에 오신 것을 환영합니다! 웹사이트를 원활하게 표시하기 위해 쿠키를 사용합니다. {사이트명}을 계속 이용하려면 쿠키 사용에 동의해야 합니다.', 'mshop-members-s2' )
+							),
+						)
+					)
+				)
+			);
+		}
 
 		function get_settings_access_control() {
 			return array(
@@ -972,14 +1139,14 @@ HTML 태그를 이용하여 작성도 가능합니다.",
 								'default'   => 'yes',
 								'desc'      => __( '스팸회원 가입 차단을 위해 우커머스의 기본 폼 핸들러를 비활성화합니다.' )
 							),
-							array (
+							array(
 								'id'          => 'msm_security_author_display',
 								'title'       => __( '댓글 작성자 숨김', 'mshop-members-s2' ),
 								'className'   => '',
 								'type'        => 'Select',
 								'default'     => "no",
 								'placeHolder' => __( "필드선택", 'mshop-members-s2' ),
-								"options"     => array (
+								"options"     => array(
 									"no"    => __( "사용안함", 'mshop-members-s2' ),
 									"left"  => __( "왼쪽 숨김", 'mshop-members-s2' ),
 									"right" => __( "오른쪽 숨김", 'mshop-members-s2' ),
@@ -1237,6 +1404,27 @@ HTML 태그를 이용하여 작성도 가능합니다.",
 				'domain'      => preg_replace( '#^https?://#', '', site_url() ),
 				'licenseInfo' => json_encode( $license_info )
 			) );
+
+			if ( MSM_Personal_Info::enabled() ) {
+				$next_schedule = MSM_Personal_Info::get_next_schedule();
+
+				if ( ! empty( $next_schedule ) ) {
+					?>
+                    <div class="notice notice-info">
+                        <p style="padding: 10px;">
+                        <p><?php echo sprintf( __( '개인정보 이용 안내 메일 발송 예약작업이 등록되어 있습니다. 다음 실행 예정 시간은 %s 입니다.', 'mshop-members-s2' ), $next_schedule ); ?></p>
+                        <a href="/wp-admin/admin.php?page=wc-status&tab=action-scheduler&status=pending&s=msm_personal_information_notification&action=-1&pahed=1&action2=-1"
+                           target="_blank" class="button" style="margin-left: 10px;">예약작업 확인하기</a>
+                    </div>
+					<?php
+				} else {
+					?>
+                    <div class="notice notice-error">
+                        <p style="padding: 10px;"><?php echo __( '개인정보 이용 안내 메일 발송 기능이 활성화되어 있지만, 발송 처리를 위한 예약작업이 등록되지 않았습니다. 개인정보 설정을 확인하신 후, 저장 버튼을 클릭해주세요.', 'mshop-members-s2' ); ?></p>
+                    </div>
+					<?php
+				}
+			}
 
 			?>
             <script>

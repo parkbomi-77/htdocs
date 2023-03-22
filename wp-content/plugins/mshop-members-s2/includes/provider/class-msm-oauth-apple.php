@@ -3,8 +3,14 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
-include_once( MSM()->plugin_path() . '/includes/lib/php-jwt/src/JWT.php' );
-include_once( MSM()->plugin_path() . '/includes/lib/php-jwt/src/JWK.php' );
+
+if ( ! class_exists( '\Firebase\JWT\JWT' ) ) {
+    include_once( MSM()->plugin_path() . '/includes/lib/php-jwt/src/JWT.php' );
+}
+
+if ( ! class_exists( '\Firebase\JWT\JWK' ) ) {
+    include_once( MSM()->plugin_path() . '/includes/lib/php-jwt/src/JWK.php' );
+}
 
 use Firebase\JWT\JWT;
 use Firebase\JWT\JWK;

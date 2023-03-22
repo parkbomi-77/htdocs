@@ -33,7 +33,9 @@
 =====================================================================================
 */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+} // Exit if accessed directly
 
 if ( ! class_exists( 'MSM_Cron' ) ) {
 
@@ -46,11 +48,24 @@ if ( ! class_exists( 'MSM_Cron' ) ) {
 			add_action( 'mshop_members_unsubscribe_delete_hook', array( $this, 'mshop_members_unsubscribe_delete' ) );
 
 			//휴면회원 관련 크론
-			add_action( 'mshop_members_sleep_warning_hook', array( $this, 'mshop_members_sleep_warning' ) );
-			add_action( 'mshop_members_sleep_process_hook', array( $this, 'mshop_members_sleep_process' ) );
+			add_action( 'mshop_members_sleep_warning_hook', array( $this, 'send_sleep_notification' ) );
+			add_action( 'mshop_members_sleep_process_hook', array( $this, 'do_process_dormant' ) );
 			add_action( 'mshop_members_sleep_delete_hook', array( $this, 'mshop_members_sleep_delete' ) );
 
 			add_action( 'mshop_members_login_time_check_hook', array( $this, 'mshop_members_login_time_check' ) );
+		}
+		protected function customer_has_active_subscriptions( $user_id ) {
+			if ( function_exists( 'wcs_get_users_subscriptions' ) ) {
+				$subscriptions = wcs_get_users_subscriptions( $user_id );
+
+				foreach ( $subscriptions as $subscription ) {
+					if ( 'active' == $subscription->get_status() ) {
+						return true;
+					}
+				}
+			}
+
+			return false;
 		}
 		public function mshop_members_cron_init() {
 			if ( MSM_Manager::use_unsubscribe() ) {
@@ -129,7 +144,7 @@ if ( ! class_exists( 'MSM_Cron' ) ) {
 				return;
 			}
 
-			require_once(ABSPATH.'wp-admin/includes/user.php');
+			require_once( ABSPATH . 'wp-admin/includes/user.php' );
 
 			$process_type = get_option( 'mshop_members_unsubscribe_after_process', 'none' );
 			$wait_day     = get_option( 'mshop_members_unsubscribe_auto_delete_wait_day', '' );
@@ -198,14 +213,98 @@ if ( ! class_exists( 'MSM_Cron' ) ) {
 				}
 			}
 		}
-		public function mshop_members_sleep_warning() {
-			// 휴면전환 처리 일자와 휴면예고일자를 가져와서
-			// 계산하여 휴면 예고일자가 이후라면 이메일 발송 처리(50명씩 조회하여 처리)
-			// 이메일을 발송한 사용자는 발송 여부를 따로 체크하여 제외한다. (로그인시 발송여부는 함께 초기화 처리)
+		protected function get_phone_number( $user ) {
+			$phone_number = get_user_meta( $user->ID, 'billing_phone', true );
 
+			if ( empty( $phone_number ) ) {
+				$phone_number = get_user_meta( $user->ID, 'phone_number', true );
+			}
+
+			return $phone_number;
+		}
+		protected function get_template_params( $user, $warning_day ) {
+			return array(
+				'쇼핑몰명'      => wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES ),
+				'고객명'       => $user->display_name,
+				'아이디'       => $user->user_login,
+				'휴면회원삭제대기일' => $warning_day
+			);
+		}
+		protected function send_sleep_notification_via_sms( $user, $warning_day ) {
+			try {
+				$message = get_option( 'mshop_members_sleep_notification_sms_template' );
+
+				$phone_number = $this->get_phone_number( $user );
+
+				if ( ! empty( $message ) && ! empty( $phone_number ) ) {
+					$template_params = $this->get_template_params( $user, $warning_day );
+
+					$recipients = array(
+						array(
+							'receiver'        => $phone_number,
+							'template_params' => $template_params
+						)
+					);
+
+					MSSMS_SMS::send_sms( 'LMS', '', $message, $recipients, get_option( 'mssms_rep_send_no' ) );
+				}
+			} catch ( Exception $e ) {
+
+			}
+		}
+		protected function send_sleep_notification_via_alimtalk( $user, $warning_day ) {
+			try {
+				$phone_number = $this->get_phone_number( $user );
+
+				$template_code = get_option( 'mssms_phone_certification_alimtalk_template' );
+
+				if ( empty( $phone_number ) || empty( $template_code ) ) {
+					return;
+				}
+
+				$template = MSSMS_Kakao::get_template( $template_code );
+
+				if ( empty( $template ) ) {
+					return;
+				}
+
+				$recipients[] = $phone_number;
+
+				$profile = MSSMS_Kakao::get_profile( $template['plus_id'] );
+
+				if ( 'yes' == mssms_get( $profile, 'is_resend' ) ) {
+					$resend_params = array(
+						'isResend'     => 'true',
+						'resendSendNo' => $profile['resend_send_no']
+					);
+				} else {
+					$resend_params = array( 'isResend' => 'false' );
+				}
+
+				$template_params = $this->get_template_params( $user, $warning_day );
+
+				MSSMS_Kakao::send_alimtalk( $template_code, $recipients, $template_params, $resend_params, true );
+			} catch ( Exception $e ) {
+
+			}
+		}
+		protected function send_sleep_notification_via_email( $user, $warning_day ) {
+			try {
+				$email_contents = get_option( 'mshop_members_sleep_warning_email' );
+				$email_contents = $this->replace_string_email( $email_contents, $user );
+				$email_title    = get_option( 'mshop_members_sleep_warning_email_title', '휴면 전환 예고입니다.' );
+
+				wp_mail( $user->data->user_email, $email_title, $email_contents );
+			} catch ( Exception $e ) {
+
+			}
+		}
+		public function send_sleep_notification() {
 			if ( ! MSM_Manager::use_sleep_account() ) {
 				return;
 			}
+
+			$notification_methods = explode( ',', get_option( 'mshop_members_sleep_notification_method', 'email' ) );
 
 			$warning_day    = get_option( 'mshop_members_sleep_warning_day', '' );
 			$sleep_wait_day = get_option( 'mshop_members_sleep_wait_day', '' );
@@ -249,41 +348,35 @@ if ( ! class_exists( 'MSM_Cron' ) ) {
 
 				$users = new WP_User_Query( $args );
 
-				if ( count( $users->results ) > 0 ) {
+				if ( count( $users->get_results() ) > 0 ) {
 
-					foreach ( $users->results as $user ) {
-
+					foreach ( $users->get_results() as $user ) {
 						//사용자 권한 체크. 관리자 권한인 경우 휴면 처리 하지 않음.
-						if ( ! empty( $user->roles ) && is_array( $user->roles ) ) {
-							foreach ( $user->roles as $role ) {
-								if ( $role != 'administrator' ) {
+						if ( ! empty( $user->roles ) && is_array( $user->roles ) && ! in_array( 'administrator', $user->roles ) ) {
 
-									//메일 발송후 메일 발송 표시 처리
-									$email_contents = get_option( 'mshop_members_sleep_warning_email', '안녕하세요? {고객명} 회원님.
-
-저희 {쇼핑몰명} 쇼핑몰에 장기간 미접속으로 인해, 휴면회원으로 전환이 될 예정임을 안내해 드립니다.
-
-휴면회원으로 전환이 되었어도, 다시 접속을 하시면, 휴면회원 처리에서 제외되오니 이점 참고하여 주세요.
-
-* 휴면회원으로 전환된 이후 {휴면회원삭제대기일} 일 이후에는 회원 정보가 자동으로 삭제처리 됩니다.
-
-그동안 저희 {쇼핑몰명}을 이용 해 주셔서 감사합니다.' );
-
-									$email_contents = $this->replace_string_email( $email_contents, $user );
-									$email_title    = get_option( 'mshop_members_sleep_warning_email_title', '휴면 전환 예고입니다.' );
-
-									wp_mail( $user->data->user_email, $email_title, $email_contents );
-									add_user_meta( $user->ID, 'mshop_members_sleep_warning_mail_sent', true );
-
-									do_action( 'msm_send_sleeper_account_warning_email', $user );
+							if ( $this->customer_has_active_subscriptions( $user->ID ) ) {
+								update_user_meta( $user->ID, 'last_login_time', current_time( 'mysql' ) );
+							} else {
+								if ( in_array( 'email', $notification_methods ) ) {
+									$this->send_sleep_notification_via_email( $user, $warning_day );
 								}
+								if ( in_array( 'sms', $notification_methods ) ) {
+									$this->send_sleep_notification_via_sms( $user, $warning_day );
+								}
+								if ( in_array( 'alimtalk', $notification_methods ) ) {
+									$this->send_sleep_notification_via_alimtalk( $user, $warning_day );
+								}
+
+								update_user_meta( $user->ID, 'mshop_members_sleep_warning_mail_sent', true );
+
+								do_action( 'msm_send_sleeper_account_warning_email', $user );
 							}
 						}
-					}//end foreach
-				}//end if
+					}
+				}
 			}
 		}
-		public function mshop_members_sleep_process() {
+		public function do_process_dormant() {
 			// 휴면전환 처리 일자가 지난 이후의 사용자라면 휴면회원으로 전환 한다.
 			if ( ! MSM_Manager::use_sleep_account() ) {
 				return;
@@ -329,18 +422,12 @@ if ( ! class_exists( 'MSM_Cron' ) ) {
 
 				$users = new WP_User_Query( $args );
 
-				if ( count( $users->results ) > 0 ) {
-					foreach ( $users->results as $user ) {
-						//사용자 권한 체크. 관리자 권한인 경우 휴면 처리 하지 않음.
-						if ( ! empty( $user->roles ) && is_array( $user->roles ) ) {
-							foreach ( $user->roles as $role ) {
-								if ( $role != 'administrator' ) {
-									//휴면회원 전환 처리
-									update_user_meta( $user->ID, 'is_unsubscribed', '2' );
+				if ( count( $users->get_results() ) > 0 ) {
+					foreach ( $users->get_results() as $user ) {
+						if ( ! empty( $user->roles ) && is_array( $user->roles ) && ! in_array( 'administrator', $user->roles ) ) {
+							update_user_meta( $user->ID, 'is_unsubscribed', '2' );
 
-									do_action( 'msm_process_sleeper_account', $user );
-								}
-							}
+							do_action( 'msm_process_sleeper_account', $user );
 						}
 					}
 				}
@@ -355,7 +442,7 @@ if ( ! class_exists( 'MSM_Cron' ) ) {
 				return;
 			}
 
-			require_once(ABSPATH.'wp-admin/includes/user.php');
+			require_once( ABSPATH . 'wp-admin/includes/user.php' );
 
 			$sleep_wait_day  = get_option( 'mshop_members_sleep_wait_day', '' );
 			$delete_wait_day = get_option( 'mshop_members_sleep_auto_delete_wait_day', '' );
@@ -409,19 +496,12 @@ if ( ! class_exists( 'MSM_Cron' ) ) {
 
 				$users = new WP_User_Query( $args );
 
-				if ( count( $users->results ) > 0 ) {
-					foreach ( $users->results as $user ) {
-						//사용자 권한 체크. 관리자 권한인 경우 휴면 처리 하지 않음.
-						if ( ! empty( $user->roles ) && is_array( $user->roles ) ) {
-							foreach ( $user->roles as $role ) {
-								if ( $role != 'administrator' ) {
+				if ( count( $users->get_results() ) > 0 ) {
+					foreach ( $users->get_results() as $user ) {
+						if ( ! empty( $user->roles ) && is_array( $user->roles ) && ! in_array( 'administrator', $user->roles ) ) {
+							do_action( 'msm_delete_sleeper_account', $user );
+							wp_delete_user( $user->ID );
 
-									do_action( 'msm_delete_sleeper_account', $user );
-
-									//휴면회원 삭제 처리
-									wp_delete_user( $user->ID );
-								}
-							}
 						}
 					}
 				}

@@ -87,6 +87,10 @@ if ( ! class_exists( 'MSM_Profile' ) ) {
 				foreach ( $settings as $setting ) {
 					$roles = explode( ',', $setting['user_roles'] );
 					if ( in_array( $user_role, $roles ) ) {
+						if ( 'exclude' == msm_get( $setting, 'social_login', 'include' ) && ! empty( get_user_meta( get_current_user_id(), '_msm_oauth_registered_by', true ) ) ) {
+							continue;
+						}
+
 						return $setting;
 					}
 				}
@@ -122,9 +126,9 @@ if ( ! class_exists( 'MSM_Profile' ) ) {
 		}
 
 		public static function maybe_unset_redirect_url( $response, $form, $action, $params ) {
-		    if( ! apply_filters( 'msm_profile_unset_redirect_action', true ) ) {
-		        return $response;
-            }
+			if ( ! apply_filters( 'msm_profile_unset_redirect_action', true ) ) {
+				return $response;
+			}
 
 			if ( 'msm_action_edit_user_profile' == $form->submit_action && empty( $params['password'] ) ) {
 				unset( $response['redirect_url'] );
@@ -146,7 +150,7 @@ if ( ! class_exists( 'MSM_Profile' ) ) {
 					}
 
 					wp_update_user( array(
-						'ID' => $user->ID,
+						'ID'        => $user->ID,
 						'user_pass' => $params['password']
 					) );
 				}
@@ -213,7 +217,7 @@ if ( ! class_exists( 'MSM_Profile' ) ) {
 					}
 
 					wp_update_user( array(
-						'ID' => $user->ID,
+						'ID'        => $user->ID,
 						'user_pass' => $params['password']
 					) );
 				}

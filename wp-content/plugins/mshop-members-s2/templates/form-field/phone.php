@@ -42,8 +42,9 @@ $hash = '';
 
 if ( function_exists( 'is_account_page' ) && is_account_page() ) {
 	if ( ! empty( $value ) ) {
-		$hash = md5( preg_replace( '~\D~', '', $value ) );
-		set_transient( 'msm_phone_certification_' . preg_replace( '~\D~', '', $value ), $hash, 3 * MINUTE_IN_SECONDS );
+		$expiration = apply_filters( 'msm_phone_certification_expiration', 10 * MINUTE_IN_SECONDS );
+		$hash       = md5( preg_replace( '~\D~', '', $value ) );
+		set_transient( 'msm_phone_certification_' . preg_replace( '~\D~', '', $value ), $hash, $expiration );
 	}
 }
 
@@ -63,6 +64,18 @@ if ( function_exists( 'is_account_page' ) && is_account_page() ) {
 </style>
 <div class="<?php echo $classes; ?>" data-element_name="<?php echo mfd_get( $element, 'name' ); ?>" data-form_slug="<?php echo $form->get_slug(); ?>" style="<?php echo mfd_get_conditional_style( $conditional_classes ); ?>">
 	<?php mfd_output_title( $element ); ?>
+
+	<?php if ( 'yes' == mfd_get( $element, 'temporary_password' ) ) : ?>
+        <div class="fields">
+            <div class="twelve wide column field">
+                <input type="text" name="<?php echo mfd_get( $element, 'name' ); ?>_user_login" value="" placeholder="<?php _e( '아이디 또는 이메일을 입력해주세요.', 'mshop-members-s2' ); ?>"/>
+            </div>
+            <div class="four wide column field">
+            </div>
+        </div>
+        <input type="hidden" name="<?php echo mfd_get( $element, 'name' ); ?>_temporary_password" value="yes"/>
+	<?php endif; ?>
+
     <div class="three fields phone-number-wrapper">
         <div class="field">
             <select name="part1" class="ui dropdown phone-part">

@@ -29,10 +29,10 @@ if ( ! class_exists( 'MSM_Phone_Certification' ) ) {
 			return $actions;
 		}
 		protected static function get_certification_number() {
-			return rand( 0, 999999 );
+			return rand( 100000, 999999 );
 		}
-		public static function get_certification_hash( $certification_number ) {
-			return md5( $certification_number );
+		public static function get_certification_hash( $certification_number, $salt ) {
+			return md5( $certification_number . $salt );
 		}
 		protected static function get_certification_method() {
 			return get_option( 'mssms_phone_certification_method', 'alimtalk' );
@@ -98,7 +98,7 @@ if ( ! class_exists( 'MSM_Phone_Certification' ) ) {
 
 			MSSMS_Kakao::send_alimtalk( $template_code, $recipients, $template_params, $resend_params, true );
 		}
-		public static function send_certification_number( $phone_number, $find_login, $allow_duplicate, $form_slug ) {
+		public static function send_certification_number( $phone_number, $find_login, $allow_duplicate, $temporary_password, $user_login, $form_slug ) {
 			$phone_number = apply_filters( 'msm_phone_number_to_certificate', $phone_number );
 
 			if ( 'yes' != get_option( 'mssms_use_phone_certification', 'no' ) ) {
@@ -113,22 +113,38 @@ if ( ! class_exists( 'MSM_Phone_Certification' ) ) {
 				throw new Exception( __( '휴대폰 인증 기능을 이용하려면 엠샵 문자 알림 플러그인이 필요합니다.', 'mshop-members-s2' ) );
 			}
 
-			if ( 'yes' == $find_login ) {
+			if ( 'yes' == $find_login || 'yes' == $temporary_password ) {
 				if ( 'yes' == get_option( 'mssms_phone_certification_required', 'no' ) ) {
-					$users = MSM_Find_Login::get_users( $phone_number, array( 'mshop_auth_phone' ) );
+					$users = MSM_Action_Find_Login::get_users( $phone_number, array( 'mshop_auth_phone' ) );
 				}
 				if ( empty( $users ) ) {
-					$users = MSM_Find_Login::get_users( $phone_number );
+					$users = MSM_Action_Find_Login::get_users( $phone_number );
 				}
 
 				if ( empty( $users ) ) {
 					throw new Exception( __( '가입된 회원 정보가 없습니다.', 'mshop-members-s2' ) );
 				}
+
+				if ( 'yes' == $temporary_password ) {
+					$user_exist = false;
+
+					foreach ( $users as $user ) {
+						if ( $user->user_login == $user_login || $user->user_email == $user_login ) {
+							$user_exist = true;
+							break;
+						}
+					}
+
+					if ( ! $user_exist ) {
+						throw new Exception( __( '일치하는 회원 정보가 없습니다.', 'mshop-members-s2' ) );
+					}
+				}
+
 			} else if ( 'yes' == get_option( 'mssms_phone_certification_restrict_duplicate', 'no' ) && 'yes' != $allow_duplicate ) {
 				if ( 'yes' == get_option( 'mssms_phone_certification_required', 'no' ) ) {
-					$users = MSM_Find_Login::get_users( $phone_number, array( 'mshop_auth_phone' ) );
+					$users = MSM_Action_Find_Login::get_users( $phone_number, array( 'mshop_auth_phone' ) );
 				} else {
-					$users = MSM_Find_Login::get_users( $phone_number );
+					$users = MSM_Action_Find_Login::get_users( $phone_number );
 				}
 
 				if ( ! empty( $users ) ) {
@@ -141,6 +157,8 @@ if ( ! class_exists( 'MSM_Phone_Certification' ) ) {
 			}
 
 			delete_transient( 'msm_phone_certification_' . preg_replace( '~\D~', '', $phone_number ) );
+			delete_transient( 'msm_phone_certification_salt_' . preg_replace( '~\D~', '', $phone_number ) );
+			delete_transient( 'msm_phone_certification_retry_' . preg_replace( '~\D~', '', $phone_number ) );
 
 			do_action( 'msm_before_send_certification_number', $phone_number, $find_login, $allow_duplicate, $form_slug );
 
@@ -152,13 +170,46 @@ if ( ! class_exists( 'MSM_Phone_Certification' ) ) {
 				self::send_certification_number_via_alimtalk( $phone_number, $certification_number );
 			}
 
-			$hash = self::get_certification_hash( $certification_number );
+			$salt = bin2hex( random_bytes( 10 ) );
+			$hash = self::get_certification_hash( $certification_number, $salt );
 
-			set_transient( 'msm_phone_certification_' . preg_replace( '~\D~', '', $phone_number ), $hash, 3 * MINUTE_IN_SECONDS );
+			$expiration = apply_filters( 'msm_phone_certification_expiration', 10 * MINUTE_IN_SECONDS );
+
+			set_transient( 'msm_phone_certification_' . preg_replace( '~\D~', '', $phone_number ), $hash, $expiration );
+			set_transient( 'msm_phone_certification_salt_' . preg_replace( '~\D~', '', $phone_number ), $salt, $expiration);
+			set_transient( 'msm_phone_certification_retry_' . preg_replace( '~\D~', '', $phone_number ), 0, $expiration );
 
 			do_action( 'msm_after_send_certification_number', $phone_number, $find_login, $allow_duplicate, $form_slug, $hash );
 
 			return $hash;
+		}
+		public static function validate_certification_number( $phone_number, $certificate_hash, $certification_number, $form_slug ) {
+			$phone_number = preg_replace( '~\D~', '', $phone_number );
+			$saved_hash   = get_transient( 'msm_phone_certification_' . $phone_number );
+			$saved_salt   = get_transient( 'msm_phone_certification_salt_' . $phone_number );
+			$retry_count  = intval( get_transient( 'msm_phone_certification_retry_' . $phone_number ) );
+
+			if ( $retry_count >= 5 ) {
+				throw new Exception( __( '인증 가능 횟수가 초과되었습니다.', 'mshop-members-s2' ), '2001' );
+			} else {
+				$expiration = apply_filters( 'msm_phone_certification_expiration', 10 * MINUTE_IN_SECONDS );
+
+				set_transient( 'msm_phone_certification_retry_' . preg_replace( '~\D~', '', $phone_number ), $retry_count + 1, $expiration );
+			}
+
+			if ( empty( $saved_hash ) || empty( $saved_salt ) ) {
+				throw new Exception( __( '인증 정보가 존재하지 않습니다.', 'mshop-members-s2' ), '2002' );
+			}
+
+			if ( $saved_hash != $certificate_hash ) {
+				throw new Exception( __( '인증 정보가 올바르지 않습니다.', 'mshop-members-s2' ), '2003' );
+			}
+
+			if ( $saved_hash != MSM_Phone_Certification::get_certification_hash( $certification_number, $saved_salt ) ) {
+				throw new Exception( sprintf( __( '올바르지 않은 인증번호입니다. 남은 시도횟수 : %d', 'mshop-members-s2' ), 5 - ( $retry_count + 1 ) ), '2004' );
+			}
+
+			return true;
 		}
 		public static function save_user_info( $user_id, $new_customer_data, $params ) {
 			self::$customer_id = $user_id;
@@ -302,9 +353,10 @@ if ( ! class_exists( 'MSM_Phone_Certification' ) ) {
 				$phone_field = $form->get_field( array( 'MFD_Phone_Field' ) );
 
 				if ( ! empty( $phone_field ) ) {
+					$expiration = apply_filters( 'msm_phone_certification_expiration', 10 * MINUTE_IN_SECONDS );
 					$phone_field = reset( $phone_field );
 
-					set_transient( msm_get_state() . '-msm_auth_phone_number', $params[ $phone_field->get_name() ], 3 * MINUTE_IN_SECONDS );
+					set_transient( msm_get_state() . '-msm_auth_phone_number', $params[ $phone_field->get_name() ], $expiration );
 				}
 			}
 		}

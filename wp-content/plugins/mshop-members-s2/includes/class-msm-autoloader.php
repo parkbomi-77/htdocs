@@ -20,29 +20,31 @@ class MSM_Autoloader {
 	private function load_file( $path ) {
 		if ( $path && is_readable( $path ) ) {
 			include_once( $path );
+
 			return true;
 		}
+
 		return false;
 	}
 	public function autoload( $class ) {
 		$class = strtolower( $class );
 
-		if ( strpos( $class, 'msm_') === FALSE && strpos( $class, 'mfd_') === FALSE ){
+		if ( strpos( $class, 'msm_' ) === false && strpos( $class, 'mfd_' ) === false ) {
 			return;
 		}
 
-		$file  = $this->get_file_name_from_class( $class );
-		$path  = '';
+		$file = $this->get_file_name_from_class( $class );
+		$path = '';
 
 		if ( strpos( $class, 'msm_admin' ) === 0 ) {
 			$path = $this->include_path . 'admin/';
-		}elseif ( strpos( $class, 'msm_settings' ) === 0 ) {
+		} elseif ( strpos( $class, 'msm_settings' ) === 0 ) {
 			$path = $this->include_path . 'admin/settings/';
-		}elseif ( strpos( $class, 'msm_meta_box' ) === 0 ) {
+		} elseif ( strpos( $class, 'msm_meta_box' ) === 0 ) {
 			$path = $this->include_path . 'admin/meta-boxes/';
-		}elseif ( strpos( $class, 'mfd_action_' ) === 0 ) {
+		} elseif ( strpos( $class, 'msm_action_' ) === 0 ) {
 			$path = $this->include_path . 'actions/';
-		}elseif ( strpos( $class, 'mfd_' ) === 0 ) {
+		} elseif ( strpos( $class, 'mfd_' ) === 0 ) {
 			$path = $this->include_path . 'fields/';
 		}
 

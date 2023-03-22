@@ -20,38 +20,42 @@ class MSM_Ajax {
 	public static function add_ajax_events() {
 
 		$ajax_events = array(
-			'request_certificate_number' => true,
-			'load_members_form'          => true,
-			'submit'                     => true,
+			'request_certificate_number'        => true,
+			'validate_certificate_number'       => true,
+			'load_members_form'                 => true,
+			'submit'                            => true,
+			'check_duplicate'                   => true,
+			'request_email_certificate_number'  => true,
+			'validate_email_certificate_number' => true,
 		);
 
 		if ( is_admin() ) {
-			$ajax_events = array_merge( $ajax_events, array(
-				'search_page'                => false,
-				'page_search'                => false,
-				'search_taxonomy'            => false,
-				'search_product'             => false,
-				'search_payment_method'      => false,
-				'search_msm_field'           => false,
-				'search_post_type'           => false,
-				'search_post_status'         => false,
-				'form_search'                => false,
-				'update_msm_settings'        => false,
-				'update_msm_role_settings'   => false,
-				'update_field_settings'      => false,
-				'update_msm_settings_social' => false,
-				'update_profile_settings'    => false,
-				'install_pages'              => false,
-				'install_forms'              => false,
-				'install_agreements'         => false,
-				'export_forms'               => false,
-				'install_default_forms'      => false,
-				'import_forms2'              => false,
-				'search_agreement_terms'     => false,
-				'search_post_category'       => false,
-				'approved'                   => false,
-				'rejected'                   => false
-			) );
+            $ajax_events = array_merge( $ajax_events, array(
+                'search_page'                          => false,
+                'page_search'                          => false,
+                'search_taxonomy'                      => false,
+                'search_product'                       => false,
+                'search_payment_method'                => false,
+                'search_msm_field'                     => false,
+                'search_post_type'                     => false,
+                'search_post_status'                   => false,
+                'form_search'                          => false,
+                'update_msm_settings'                  => false,
+                'update_msm_role_settings'             => false,
+                'update_field_settings'                => false,
+                'update_msm_settings_social'           => false,
+                'update_profile_settings'              => false,
+                'install_pages'                        => false,
+                'install_forms'                        => false,
+                'install_agreements'                   => false,
+                'export_forms'                         => false,
+                'install_default_forms'                => false,
+                'import_forms2'                        => false,
+                'search_agreement_terms'               => false,
+                'search_post_category'                 => false,
+                'approved'                             => false,
+                'rejected'                             => false
+            ) );
 		}
 
 		foreach ( $ajax_events as $ajax_event => $nopriv ) {
@@ -192,13 +196,13 @@ class MSM_Ajax {
 						parse_str( urldecode( $_REQUEST[ 'form_' . $form_id ] ), $params );
 
 						do_action( 'msm_before_submit_form', $params, $form );
-						do_action( $form->submit_action, $params, $form );
-						if ( 'msm_action_do_action' == $form->submit_action && ! empty( $form->custom_action ) ) {
+						do_action( $form->get_submit_action(), $params, $form );
+						if ( 'msm_action_do_action' == $form->get_submit_action() && ! empty( $form->custom_action ) ) {
 							do_action( $form->custom_action, $params, $form );
 						}
 
 						do_action( 'msm_submit', $params, $form );
-						if ( in_array( $form->submit_action, apply_filters( 'msm_post_processing_action', array( 'msm_action_none' ) ) ) ) {
+						if ( in_array( $form->get_submit_action(), apply_filters( 'msm_post_processing_action', array( 'msm_action_none' ) ) ) ) {
 							MSM_Manager::add_post_processing_data( $form, $params );
 						}
 
@@ -234,60 +238,6 @@ class MSM_Ajax {
 		}
 
 		wp_send_json_error( __( '잘못된 요청입니다', 'mshop-members-s2' ) );
-	}
-
-	public static function do_submit( $submit_params ) {
-
-		if ( isset( $submit_params['form_ids'] ) ) {
-
-			try {
-				$form_ids = explode( ',', $submit_params['form_ids'] );
-
-				foreach ( $form_ids as $form_id ) {
-					// Get Members Form
-					$form = mfd_get_form( $form_id );
-
-					if ( $form instanceof MSM_Form ) {
-						// Parse Form Parameter
-						parse_str( urldecode( $submit_params[ 'form_' . $form_id ] ), $params );
-
-						// Do Submit Actions
-						do_action( $form->submit_action, $params, $form );
-
-						// Do Custom Actions
-						if ( 'msm_action_do_action' == $form->submit_action && ! empty( $form->custom_action ) ) {
-							do_action( $form->custom_action, $params, $form );
-						}
-
-						do_action( 'msm_submit', $params, $form );
-
-						if ( in_array( $form->submit_action, apply_filters( 'msm_post_processing_action', array( 'msm_action_none' ) ) ) ) {
-							MSM_Manager::add_post_processing_data( $form, $params );
-						}
-
-						// Do Post Actions
-						$response = array();
-
-						foreach ( $form->msm_submit_actions as $action ) {
-							$response = apply_filters( 'msm-post-actions-' . $action['action_type'], $response, $form, $action, $params );
-
-							if ( is_wp_error( $response ) ) {
-								return false;
-							}
-						}
-					}
-
-				}
-
-				do_action( 'msm_submit_success' );
-
-				return true;
-			} catch ( Exception $e ) {
-				return false;
-			}
-		}
-
-		return false;
 	}
 
 	public static function update_msm_settings() {
@@ -650,11 +600,56 @@ class MSM_Ajax {
 		check_ajax_referer( 'mshop-members-s2' );
 
 		try {
-			$hash = MSM_Phone_Certification::send_certification_number( $_REQUEST['phone_number'], $_REQUEST['find_login'], $_REQUEST['allow_duplicate'], $_REQUEST['form_slug'] );
+			$hash = MSM_Phone_Certification::send_certification_number( $_REQUEST['phone_number'], $_REQUEST['find_login'], $_REQUEST['allow_duplicate'], $_REQUEST['temporary_password'], $_REQUEST['user_login'], $_REQUEST['form_slug'] );
 
 			wp_send_json_success( array( 'certification_hash' => $hash ) );
 		} catch ( Exception $e ) {
 			wp_send_json_error( $e->getMessage() );
+		}
+	}
+
+	static function validate_certificate_number() {
+		check_ajax_referer( 'mshop-members-s2' );
+
+		try {
+			MSM_Phone_Certification::validate_certification_number( $_REQUEST['phone_number'], $_REQUEST['certificate_hash'], $_REQUEST['certification_number'], $_REQUEST['form_slug'] );
+
+			wp_send_json_success();
+		} catch ( Exception $e ) {
+			wp_send_json_error( sprintf( "[%s] %s", $e->getCode(), $e->getMessage() ) );
+		}
+	}
+	static function request_email_certificate_number() {
+		check_ajax_referer( 'mshop-members-s2' );
+
+		try {
+			$field_name  = trim( sanitize_text_field( msm_get( $_POST, 'field_name' ) ) );
+			$field_value = trim( sanitize_text_field( msm_get( $_POST, 'field_value' ) ) );
+			$field_label = trim( sanitize_text_field( msm_get( $_POST, 'field_label' ) ) );
+			$form_slug   = trim( sanitize_text_field( msm_get( $_POST, 'form_slug' ) ) );
+
+			$hash = MSM_Email_Authenticate::send_verification_email( $field_name, $field_value, $field_label, $form_slug );
+
+			wp_send_json_success( array( 'certification_hash' => $hash ) );
+		} catch ( Exception $e ) {
+			wp_send_json_error( $e->getMessage() );
+		}
+	}
+	static function validate_email_certificate_number() {
+		check_ajax_referer( 'mshop-members-s2' );
+
+		try {
+			$field_name           = trim( sanitize_text_field( msm_get( $_POST, 'field_name' ) ) );
+			$field_value          = trim( sanitize_text_field( msm_get( $_POST, 'field_value' ) ) );
+			$certificate_hash     = trim( sanitize_text_field( msm_get( $_POST, 'certificate_hash' ) ) );
+			$certification_number = trim( sanitize_text_field( msm_get( $_POST, 'certification_number' ) ) );
+			$form_slug            = trim( sanitize_text_field( msm_get( $_POST, 'form_slug' ) ) );
+
+			MSM_Email_Authenticate::validate_certification_number( $field_name, $field_value, $certificate_hash, $certification_number, $form_slug );
+
+			wp_send_json_success();
+		} catch ( Exception $e ) {
+			wp_send_json_error( sprintf( "[%s] %s", $e->getCode(), $e->getMessage() ) );
 		}
 	}
 
@@ -671,7 +666,6 @@ class MSM_Ajax {
 			wp_send_json_error( $e->getMessage() );
 		}
 	}
-
 	public static function approved() {
 		if ( is_super_admin() && check_admin_referer( 'msm-role-application' ) ) {
 			$role_application = new MSM_Role_Application( $_GET['request_id'] );
@@ -681,7 +675,6 @@ class MSM_Ajax {
 		wp_safe_redirect( wp_get_referer() ? wp_get_referer() : admin_url( 'edit.php?post_type=mshop_role_request' ) );
 		exit;
 	}
-
 	public static function rejected() {
 		if ( is_super_admin() && check_admin_referer( 'msm-role-application' ) ) {
 			$role_application = new MSM_Role_Application( $_GET['request_id'] );
@@ -691,6 +684,40 @@ class MSM_Ajax {
 		wp_safe_redirect( wp_get_referer() ? wp_get_referer() : admin_url( 'edit.php?post_type=mshop_role_request' ) );
 		exit;
 	}
+	public static function check_duplicate() {
+		check_ajax_referer( 'mshop-members-s2' );
+
+		try {
+			$field_name  = sanitize_text_field( msm_get( $_POST, 'field_name' ) );
+			$field_value = sanitize_text_field( msm_get( $_POST, 'field_value' ) );
+			$field_label = sanitize_text_field( msm_get( $_POST, 'field_label' ) );
+
+			if ( empty( $field_name ) || empty( $field_value ) || ! in_array( $field_name, apply_filters( 'msm_check_duplicate_fields', array( 'login', 'user_login' ) ) ) ) {
+				throw new Exception( __( '잘못된 요청입니다.', 'mshop-members-s2' ), '5001' );
+			}
+
+			if ( 'login' == $field_name ) {
+				$user = get_user_by( 'login', $field_value );
+			} else if ( 'user_login' == $field_name ) {
+				if ( ! is_email( $field_value ) ) {
+					throw new Exception( __( '이메일 형식이 올바르지 않습니다.', 'mshop-members-s2' ), '5002' );
+				} else {
+					$user = get_user_by( 'email', $field_value );
+				}
+			} else {
+				$user = apply_filters( 'msm_duplicate_checked_user', null, $field_name, $field_value );
+			}
+
+			if ( is_a( $user, 'WP_User' ) ) {
+				throw new Exception( sprintf( __( '이미 사용중인 %s 입니다.', 'mshop-members-s2' ), $field_label ), '5003' );
+			}
+
+			wp_send_json_success( sprintf( __( '사용할 수 있는 %s 입니다.', 'mshop-members-s2' ), $field_label ) );
+		} catch ( Exception $e ) {
+			wp_send_json_error( $e->getMessage() );
+		}
+	}
+
 }
 
 MSM_Ajax::init();

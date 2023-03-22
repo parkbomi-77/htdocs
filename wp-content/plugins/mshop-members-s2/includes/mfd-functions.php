@@ -112,14 +112,20 @@ function mfd_get_conditional_class( $element ) {
 
 	if ( ! empty( $element['showIf'] ) ) {
 		foreach ( $element['showIf'] as $condition ) {
-			if ( 0 === strpos( $condition['value'], "!" ) ) {
-				$show_if[] = 'hide-if';
-				$show_if[] = 'hide-if-' . $condition['id'];
-				$show_if[] = 'hide-if-' . $condition['id'] . '-' . substr( $condition['value'], 1 );
-			} else {
-				$show_if[] = 'show-if';
-				$show_if[] = 'show-if-' . $condition['id'];
-				$show_if[] = 'show-if-' . $condition['id'] . '-' . $condition['value'];
+			$values = explode( ',', $condition['value'] );
+
+			foreach ( $values as $value ) {
+				$value = trim( $value );
+
+				if ( 0 === strpos( $value, "!" ) ) {
+					$show_if[] = 'hide-if';
+					$show_if[] = 'hide-if-' . $condition['id'];
+					$show_if[] = 'hide-if-' . $condition['id'] . '-' . substr( $value, 1 );
+				} else {
+					$show_if[] = 'show-if';
+					$show_if[] = 'show-if-' . $condition['id'];
+					$show_if[] = 'show-if-' . $condition['id'] . '-' . $value;
+				}
 			}
 		}
 
@@ -137,11 +143,11 @@ function mfd_output_title( $element ) {
 	if ( ! empty( $element['title'] ) ) {
 		if ( empty( $element['tooltip'] ) ) {
 			?>
-            <label><?php echo $element['title']; ?></label>
+            <label for="<?php echo mfd_get( $element, 'name' ); ?>"><?php echo $element['title']; ?></label>
 			<?php
 		} else {
 			?>
-            <label class="msm-tooltip"><?php echo $element['title']; ?><i class="fa fa-question-circle " data-variation="mini"></i></label>
+            <label for="<?php echo mfd_get( $element, 'name' ); ?>" class="msm-tooltip"><?php echo $element['title']; ?><i class="fa fa-question-circle " data-variation="mini"></i></label>
             <div class="ui icon popup">
                 <div class="content"><?php echo $element['tooltip']; ?></div>
             </div>

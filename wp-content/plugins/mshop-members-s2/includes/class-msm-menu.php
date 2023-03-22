@@ -34,48 +34,62 @@
 =====================================================================================
 */
 
-if ( ! defined( 'ABSPATH' ) ){
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
- 
+
 if ( ! class_exists( 'MSM_Menu' ) ) {
 
-    class MSM_Menu {
-        public static function wp_nav_menu_objects( $sorted_menu_items, $args ) {
+	class MSM_Menu {
+		public static function wp_nav_menu_objects( $sorted_menu_items, $args ) {
 
-        	$menu_items = array();
+			$menu_items = array();
 
-        	foreach( $sorted_menu_items as $menu_item ) {
-		        $show = true;
+			foreach ( $sorted_menu_items as $menu_item ) {
+				$show = true;
 
-		        if ( in_array( 'mshop_show_if_login', $menu_item->classes ) ) {
-			        $show = is_user_logged_in();
-		        } else if ( in_array( 'mshop_show_if_logout', $menu_item->classes ) ) {
-			        $show = ! is_user_logged_in();
-		        }
+				if ( in_array( 'mshop_show_if_login', $menu_item->classes ) ) {
+					$show = is_user_logged_in();
+				} else if ( in_array( 'mshop_show_if_logout', $menu_item->classes ) ) {
+					$show = ! is_user_logged_in();
+				}
 
-		        if ( $show ) {
-			        switch ( $menu_item->url ) {
-				        case '/login' :
-					        $menu_item->url = wp_login_url();
-					        break;
-				        case '/register' :
-					        $menu_item->url = wp_registration_url();
-					        break;
-				        case '/logout' :
-					        $menu_item->url = wp_logout_url( home_url() );
-					        break;
-				        case '/my-account' :
-					        $menu_item->url = get_permalink( get_option( 'woocommerce_myaccount_page_id' ) );
-					        break;
-			        }
+				if ( $show ) {
+					switch ( $menu_item->url ) {
+						case '/login' :
+							$menu_item->url = wp_login_url();
+							break;
+						case '/register' :
+							$menu_item->url = wp_registration_url();
+							break;
+						case '/logout' :
+							$menu_item->url = wp_logout_url( home_url() );
+							break;
+						case '/my-account' :
+							$menu_item->url = get_permalink( get_option( 'woocommerce_myaccount_page_id' ) );
+							break;
+					}
 
-			        $menu_items[] = $menu_item;
-		        }
-	        }
+					$menu_items[] = $menu_item;
+				} else {
+					$url = parse_url( $menu_item->url );
+					if ( 'yes' == get_option( 'msm_display_customer_info', 'no' ) && 0 === strpos( $url['path'], '/login' ) ) {
+						$user = get_userdata( get_current_user_id() );
 
-            return $menu_items;
-        }
-    }
+						$menu_item->url = '';
+						$templates      = apply_filters( 'msm_display_customer_info_template', array(
+							'search'  => array( '{고객명}' ),
+							'replace' => $user->display_name
+						), $user );
+
+						$menu_item->title = str_replace( $templates['search'], $templates['replace'], get_option( 'msm_customer_info_string', '{고객명}님 반갑습니다' ) );
+						$menu_items[]     = $menu_item;
+					}
+				}
+			}
+
+			return $menu_items;
+		}
+	}
 
 }

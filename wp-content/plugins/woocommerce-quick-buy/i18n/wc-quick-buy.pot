@@ -1,0 +1,385 @@
+# Copyright (C) 2022 Varun Sridharan
+# This file is distributed under the same license as the Quick Buy For WooCommerce plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Quick Buy For WooCommerce 2.8.4\n"
+"Report-Msgid-Bugs-To: https:\/\/wordpress.org\/support\/plugin\/woocommerce-quick-buy\n\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: varunsridharan23@gmail.com\n\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2022-02-12T07:00:38+05:30\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.2.0\n"
+"X-Domain: wc-quick-buy\n"
+
+#. Plugin Name of the plugin
+#: wc-quick-buy.php:22
+msgid "Quick Buy For WooCommerce"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://wordpress.org/plugins/woocommerce-quick-buy/"
+msgstr ""
+
+#. Description of the plugin
+#: bootstrap.php:41
+msgid "Add Quick buy button to redirect user to checkout / cart immediately when he click quick buy button"
+msgstr ""
+
+#. Author of the plugin
+msgid "Varun Sridharan"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "http://varunsridharan.in"
+msgstr ""
+
+#: bootstrap.php:49
+#: includes/admin/settings/trait-button-styling.php:31
+#: includes/admin/settings/trait-button-styling.php:33
+#: includes/admin/settings/trait-button-styling.php:47
+msgid "Quick Buy"
+msgstr ""
+
+#: bootstrap.php:107
+msgid "Settings"
+msgstr ""
+
+#: bootstrap.php:108
+#: includes/admin/class-settings.php:31
+msgid "System Info"
+msgstr ""
+
+#: bootstrap.php:109
+msgid "📚 F.A.Q"
+msgstr ""
+
+#: bootstrap.php:110
+msgid "📦 View On Github"
+msgstr ""
+
+#: bootstrap.php:111
+msgid "📝 Report An Issue"
+msgstr ""
+
+#: includes/admin/class-settings.php:23
+#: includes/admin/settings/trait-general.php:20
+msgid "General"
+msgstr ""
+
+#: includes/admin/class-settings.php:24
+msgid "Button Styling"
+msgstr ""
+
+#: includes/admin/class-settings.php:26
+msgid "Documentation"
+msgstr ""
+
+#: includes/admin/settings/trait-button-styling.php:30
+msgid "Button Label"
+msgstr ""
+
+#: includes/admin/settings/trait-button-styling.php:45
+msgid "Button Style"
+msgstr ""
+
+#: includes/admin/settings/trait-button-styling.php:51
+msgid "**Note** : <span class=\"wpo-text-danger\">The Actual Button Style May Vary Due To Themes Style's Interference</span>"
+msgstr ""
+
+#: includes/admin/settings/trait-button-styling.php:53
+msgid "Button CSS Class"
+msgstr ""
+
+#: includes/admin/settings/trait-button-styling.php:57
+msgid "Custom CSS"
+msgstr ""
+
+#: includes/admin/settings/trait-button-styling.php:70
+msgid "You Can Customize Quick Buy Button By Adding Your Custom CSS Styles. Please Refer Below On CSS Class Used In Quick Buy Button.!"
+msgstr ""
+
+#: includes/admin/settings/trait-button-styling.php:71
+msgid "**1. `quick_buy_a_tag` :** This class used in button when the button renders as HTML Link {a} Tag"
+msgstr ""
+
+#: includes/admin/settings/trait-button-styling.php:72
+msgid "**2. `quick_buy_button_tag` :** This class used in button when the button renders as HTML button Tag"
+msgstr ""
+
+#: includes/admin/settings/trait-button-styling.php:73
+msgid "**3. `wcqb_button` :** This class used in all types of button. its general any style applied to this will be applied to all buttons."
+msgstr ""
+
+#: includes/admin/settings/trait-button-styling.php:74
+msgid "**4. `quick_buy_producttype` :** This class is dynamic and each product type gets it own css class. eg : `quick_buy_producttype` replaces with simple if current product type is `quick_buy_simple` "
+msgstr ""
+
+#: includes/admin/settings/trait-button-styling.php:75
+msgid "**5. `quick_buy_productid` :** This class is dynamic and each product gets it own css class. eg : `quick_buy_productid` replaces with simple if current product type is `quick_buy_31` "
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:21
+msgid "Product"
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:22
+msgid "Button Placement"
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:35
+msgid "Basic Config"
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:36
+msgid "Auto Clear Cart ?"
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:37
+msgid "if Enabled then cart contents will be auto cleared if quick buy button used."
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:39
+msgid "WordPress URL Type"
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:44
+msgid "Site URL"
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:48
+msgid "Home URL"
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:52
+msgid "**Site Url** : Retrieves the URL for the current site where WordPress application files `(e.g. wp-blog-header.php or the wp-admin/ folder)` are accessible."
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:53
+msgid "**Home Url** : Retrieves the URL for the current site where the front end is accessible."
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:56
+msgid "URL Endpoint"
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:63
+msgid "Customize the URL Endpoint for Quick Buy URL Action"
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:64
+msgid "1. `{id}` : Product ID"
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:65
+msgid "2. `{slug}` : Product Slug"
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:66
+msgid "3. `{sku}` : Product SKU"
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:67
+msgid "4. `{qty}` : Quantity"
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:70
+msgid "If Quick Buy Link Not Working. Then Try Updating Permalink "
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:85
+msgid "Enabled Product Types"
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:90
+msgid "`Quick Buy` Button Will Be Generated Only For Selected Product Types"
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:92
+msgid "Auto Hide Button"
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:93
+msgid "Hide"
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:94
+msgid "Non Clickable"
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:95
+msgid "Remove"
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:97
+#: includes/class-helper.php:95
+msgid "None"
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:100
+msgid "1. if `Hide` Selected then button will be **hidden** untill product removed from cart / purchase is completed"
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:101
+msgid "2. if `Non Clickable` Selected then button will be **disabled** untill product removed from cart / purchase is completed"
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:102
+msgid "3. if `Remove` Selected then button will not be rendered & button also will not be shown even if product removed from cart via ajax "
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:105
+msgid "Cart Quantity"
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:108
+msgid " You can set min product Quantity. works only with shop page (`Product listing`) & `[wc_quick_buy_link]` shortcode"
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:110
+msgid "Shop Page Enabled Types"
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:113
+msgid "EXPERIMENTAL"
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:121
+msgid "Selected Product Types Will Get `Quick Buy` Button Generated Only in Places Where Products are listed. example places like ***Shop*** / ***Archive*** / ***Search***"
+msgstr ""
+
+#. translators: Added Red Color Description
+#: includes/admin/settings/trait-general.php:123
+msgid "%1$s Note : Not All Product Types Will Work. only product types that are related to simple will work. and product types like variable / will not work. %2$s"
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:135
+msgid "Redirect Configuration"
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:136
+msgid "Location"
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:137
+msgid "Location To Redirect Once Product Added To Cart"
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:142
+msgid "Custom Redirect Location"
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:144
+msgid "Enter a full url if custom selected in redirect location"
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:159
+msgid "Single Product Page Placement"
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:163
+msgid "Where the button need to be added in single product page "
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:164
+#: includes/admin/settings/trait-general.php:173
+msgid "if `Disabled` selected then you need to modify your **WooCommerce** template and quick buy shortcode"
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:168
+msgid "Shop Page Placement"
+msgstr ""
+
+#: includes/admin/settings/trait-general.php:172
+msgid "Where the button need to be added in shop page "
+msgstr ""
+
+#: includes/class-helper.php:36
+msgid "Cart"
+msgstr ""
+
+#: includes/class-helper.php:37
+msgid "Checkout"
+msgstr ""
+
+#: includes/class-helper.php:38
+msgid "Custom URL"
+msgstr ""
+
+#: includes/class-helper.php:39
+msgid "No Redirect"
+msgstr ""
+
+#: includes/class-helper.php:50
+msgid "All Product Types"
+msgstr ""
+
+#: includes/class-helper.php:51
+msgid "Simple Products"
+msgstr ""
+
+#: includes/class-helper.php:52
+msgid "Variable Products"
+msgstr ""
+
+#: includes/class-helper.php:53
+msgid "YITH Product Bundles"
+msgstr ""
+
+#: includes/class-helper.php:54
+msgid "WC Product Bundles"
+msgstr ""
+
+#: includes/class-helper.php:55
+#: includes/class-helper.php:56
+msgid "WC Variable Subscription"
+msgstr ""
+
+#: includes/class-helper.php:67
+#: includes/class-helper.php:82
+msgid "Disable"
+msgstr ""
+
+#: includes/class-helper.php:68
+msgid "Before Add To Cart"
+msgstr ""
+
+#: includes/class-helper.php:69
+msgid "After Add To Cart"
+msgstr ""
+
+#: includes/class-helper.php:70
+#: includes/class-helper.php:83
+msgid "Next To Add To Cart Button"
+msgstr ""
+
+#: includes/class-helper.php:71
+#: includes/class-helper.php:84
+msgid "Prev To Add To Cart Button"
+msgstr ""
+
+#: includes/class-helper.php:96
+msgid "Carrot Orange"
+msgstr ""
+
+#: includes/class-helper.php:97
+msgid "Mango Color"
+msgstr ""
+
+#: includes/class-helper.php:98
+msgid "Hydrate Leaf"
+msgstr ""
+
+#: includes/class-helper.php:99
+msgid "Sea & Cloud"
+msgstr ""
+
+#: includes/class-helper.php:100
+msgid "Dark Room"
+msgstr ""
+
+#: includes/class-helper.php:101
+msgid "Tomato"
+msgstr ""

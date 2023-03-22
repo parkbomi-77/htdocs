@@ -10,8 +10,8 @@ class MFD_Select_Field extends MFD_Field {
 		return true;
 	}
 
-	public function value_label( $params, $args = array () ) {
-		$labels = array ();
+	public function value_label( $params, $args = array() ) {
+		$labels = array();
 		$values = $this->value( $params );
 
 		if ( ! empty( $values ) ) {
@@ -30,8 +30,8 @@ class MFD_Select_Field extends MFD_Field {
 
 		return apply_filters( 'mfd_field_value_label', implode( ',', $labels ), $this );
 	}
-	static function get_options( $element ) {
-		$options   = array ();
+	static function get_options( $element, $post = null, $form = null ) {
+		$options   = array();
 		$data_type = mfd_get( $element, 'data_type' );
 
 		if ( 'taxonomy' == $data_type ) {
@@ -40,7 +40,7 @@ class MFD_Select_Field extends MFD_Field {
 			$keys = array_keys( $taxonomy );
 
 			if ( ! empty( $keys ) ) {
-				$terms = get_terms( $keys[0], array (
+				$terms = get_terms( $keys[0], array(
 					'hide_empty' => false,
 				) );
 
@@ -66,11 +66,11 @@ class MFD_Select_Field extends MFD_Field {
 
 		}
 
-		return $options;
+		return apply_filters( 'mfd_select_field_options', $options, $element, $post, $form );
 	}
 
 	static function get_values( $element, $post, $form ) {
-		$values = array ();
+		$values = array();
 
 		if ( 'yes' == mfd_get( $element, 'is_taxonomy' ) ) {
 			$taxonomy = key( mfd_get( $element, 'taxonomy' ) );
@@ -90,10 +90,10 @@ class MFD_Select_Field extends MFD_Field {
 
 	public function output( $element, $post, $form ) {
 
-		$options = self::get_options( $element );
+		$options = self::get_options( $element, $post, $form );
 		$values  = self::get_values( $element, $post, $form );
 
-		msm_get_template( 'form-field/select.php', array (
+		msm_get_template( 'form-field/select.php', array(
 			'element' => $element,
 			'values'  => $values,
 			'options' => $options

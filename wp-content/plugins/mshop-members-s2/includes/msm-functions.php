@@ -210,7 +210,7 @@ function msm_get_members_forms( $term = null ) {
 
 	$args = array(
 		'post_type'      => 'mshop_members_form',
-		'posts_per_page' => - 1,
+		'posts_per_page' => -1,
 		'post_status'    => 'publish',
 		'orderby'        => 'title',
 		'order'          => 'ASC'
@@ -247,9 +247,9 @@ if ( 'yes' === get_option( 'mshop_members_use_terms_and_conditions', 'no' ) && '
 	add_action( 'woocommerce_new_order', array( 'MSM_Order', 'woocommerce_new_order' ) );
 }
 
-add_action( 'wp_login', 'MSM_User_Login::wp_login', 99, 2 );
-add_action( 'woocommerce_customer_reset_password', 'MSM_User_Login::woocommerce_customer_reset_password', 99 );
-add_action( 'comment_form_defaults', 'MSM_User_Login::comment_form_defaults', 99 );
+add_action( 'wp_login', 'MSM_Action_Login::wp_login', 99, 2 );
+add_action( 'woocommerce_customer_reset_password', array( 'MSM_Action_Login', 'woocommerce_customer_reset_password' ), 99 );
+add_action( 'comment_form_defaults', 'MSM_Action_Login::comment_form_defaults', 99 );
 add_action( 'mshop_members_register_form', 'MSM_Manager::mshop_members_register_form' );
 
 add_action( 'woocommerce_before_my_account', 'MSM_Myaccount::output' );
@@ -257,25 +257,27 @@ add_action( 'woocommerce_before_my_account', 'MSM_Myaccount::output' );
 add_filter( 'wp_nav_menu_objects', 'MSM_Menu::wp_nav_menu_objects', 10, 2 );
 
 add_filter( 'msm_get_roles', 'msm_get_roles' );
-add_action( 'msm_action_register', 'MSM_User_Register::do_action', 10, 3 );
-add_action( 'msm_action_login', 'MSM_User_Login::do_action', 10, 3 );
-add_action( 'msm_action_lost_passwords', 'MSM_User_Lostpassword::do_action', 10, 3 );
-add_action( 'msm_action_ubsubscribe', 'MSM_User_Unsubscribe::do_action', 10, 3 );
-add_action( 'msm_action_write_post', 'MFD_Action_Write_Post::do_action', 10, 3 );
-add_action( 'msm_action_find_login', 'MSM_Find_Login::do_action', 10, 3 );
+add_action( 'msm_action_register', array( 'MSM_Action_Register', 'do_action' ), 10, 3 );
+add_action( 'msm_action_login', array( 'MSM_Action_Login', 'do_action' ), 10, 3 );
+add_action( 'msm_action_agreement', array( 'MSM_Action_Agreement', 'do_action' ), 10, 3 );
+add_action( 'msm_action_lost_passwords', array( 'MSM_Action_Password', 'lost_password_action' ), 10, 3 );
+add_action( 'msm_action_temporary_password', array( 'MSM_Action_Password', 'temporary_password_action' ), 10, 3 );
+add_action( 'msm_action_ubsubscribe', array( 'MSM_Action_Unsubscribe', 'do_action' ), 10, 3 );
+add_action( 'msm_action_write_post', array( 'MSM_Action_Write_Post', 'do_action' ), 10, 3 );
+add_action( 'msm_action_find_login', array( 'MSM_Action_Find_Login', 'do_action' ), 10, 3 );
 
-add_filter( 'msm_rule_conditions', 'MSM_Rules::rule_conditions' );
-add_filter( 'msm_check_rule_conditions', 'MSM_Rules::check_rule_conditions', 10, 2 );
-add_filter( 'msm_check_pre_conditions', 'MSM_Rules::msm_check_pre_conditions', 10, 2 );
+add_filter( 'msm_rule_conditions', array( 'MSM_Rules', 'rule_conditions' ) );
+add_filter( 'msm_check_rule_conditions', array( 'MSM_Rules', 'check_rule_conditions' ), 10, 2 );
+add_filter( 'msm_check_pre_conditions', array( 'MSM_Rules', 'msm_check_pre_conditions' ), 10, 2 );
 
-add_action( 'woocommerce_after_my_account', 'MSM_User_Unsubscribe::output_form', 999 );
-add_action( 'wp_authenticate_user', 'MSM_User_Unsubscribe::wp_authenticate_user', 999, 2 );
+add_action( 'woocommerce_after_my_account', array( 'MSM_Action_Unsubscribe', 'output_form' ), 999 );
+add_action( 'wp_authenticate_user', array( 'MSM_Action_Unsubscribe', 'wp_authenticate_user' ), 999, 2 );
 
 add_action( 'output_msm_form', 'output_msm_form' );
 
-add_filter( 'login_url', array( 'MSM_User_Login', 'url' ), 10, 3 );
-add_filter( 'register_url', array( 'MSM_User_Register', 'url' ) );
-add_filter( 'woocommerce_new_customer_data', 'MSM_User_Register::set_user_role' );
+add_filter( 'login_url', array( 'MSM_Action_Login', 'url' ), 10, 3 );
+add_filter( 'register_url', array( 'MSM_Action_Register', 'url' ) );
+add_filter( 'woocommerce_new_customer_data', array( 'MSM_Action_Register', 'set_user_role' ) );
 
 function output_msm_form( $slug ) {
 	echo do_shortcode( "[mshop_form_designer slug='" . $slug . "' default=true]" );
@@ -301,6 +303,7 @@ function msm_load_single_template( $template ) {
 add_filter( 'single_template', 'msm_load_single_template' );
 add_filter( 'show_user_profile', array( 'MSM_Admin_Profile', 'add_members_fields' ) );
 add_filter( 'edit_user_profile', array( 'MSM_Admin_Profile', 'add_members_fields' ) );
+add_filter( 'user_edit_form_tag', array( 'MSM_Admin_Profile', 'add_form_tag' ) );
 add_filter( 'personal_options_update', array( 'MSM_Admin_Profile', 'save_members_fields' ) );
 add_filter( 'edit_user_profile_update', array( 'MSM_Admin_Profile', 'save_members_fields' ) );
 function msm_wp_targeted_link_rel( $rel, $html = '' ) {
@@ -380,7 +383,7 @@ function msm_pre_get_avatar( $image, $id_or_email, $args ) {
 		}
 
 		if ( is_a( $user, 'WP_User' ) ) {
-			$image_id = get_user_meta( $user->user_id, 'profile_image', true );
+			$image_id = get_user_meta( $user->ID, 'profile_image', true );
 
 			if ( ! empty( $image_id ) ) {
 				if ( is_numeric( $image_id ) && wp_attachment_is_image( $image_id ) ) {
@@ -423,7 +426,7 @@ function msm_maybe_change_avatar( $avatar, $id_or_email, $size, $default, $alt, 
 add_filter( 'get_avatar', 'msm_maybe_change_avatar', 10, 6 );
 
 function msm_enqueue_cookie_script() {
-    ?>
+	?>
     <script>
         jQuery( document ).ready( function ( $ ) {
             function getCookie( cname ) {
@@ -457,19 +460,20 @@ function msm_enqueue_cookie_script() {
             } );
         } );
     </script>
-    <?php
+	<?php
 }
 
 add_action( 'wp_footer', 'msm_enqueue_cookie_script', 100 );
 
 function msm_output_cookie_message() {
-    if ( 'yes' == get_option( 'msmp_use_cookie_agreement', 'no' ) ) {
-        msm_get_template( 'cookie-agreement.php', array(), '', MSM()->plugin_path() . '/templates/' );
-    }
+	if ( 'yes' == get_option( 'msmp_use_cookie_agreement', 'no' ) ) {
+		msm_get_template( 'cookie-agreement.php', array(), '', MSM()->plugin_path() . '/templates/' );
+	}
 }
 
 add_action( 'wp_head', 'msm_output_cookie_message', 1 );
 
+add_action( 'msm_personal_information_notification', array( 'MSM_Personal_Info', 'run' ) );
 
 //포스트 플러그인
 add_filter( 'msm_post_actions', array( 'MSM_Post_Post_Actions', 'post_actions' ) );

@@ -1,14 +1,17 @@
 <?php
-/*
-Plugin Name: 엠샵 멤버스
-Plugin URI: 
-Description: 쇼핑몰에서 필요한 회원가입 및 관리 운영에 필요한 기능을 지원하며, 다양한 템플릿 제작을 위한 폼 디자이너를 제공 합니다.
-Version: 5.8.2
-Author: CodeMShop
-Author URI: www.codemshop.com
-License: Commercial License
-*/
-
+/**
+ * Plugin Name:       엠샵 멤버스
+ * Plugin URI:        
+ * Description:       쇼핑몰에서 필요한 회원가입 및 관리 운영에 필요한 기능을 지원하며, 다양한 템플릿 제작을 위한 폼 디자이너를 제공 합니다.
+ * Version:           6.1.6
+ * Requires at least: 5.2
+ * Requires PHP:      7.2
+ * Author:            CodeMShop
+ * Author URI:        https://www.codemshop.com/
+ * License:           Commercial License
+ * Text Domain:       mshop-members-s2
+ * Domain Path:       /languages
+ */
 /*
 =====================================================================================
                 ﻿엠샵 멤버스 / Copyright 2015 by CodeM(c)
@@ -51,13 +54,15 @@ if ( ! class_exists( 'MShop_Members' ) ) {
 
 		protected static $_instance = null;
 		protected $plugin_file = 'mshop-members-s2/mshop-members-s2.php';
-		public $version = '5.8.2';
+		public $version = '6.1.6';
 		public $plugin_url;
 		public $plugin_path;
 
 
 		private $_body_classes = array();
 		public function __construct() {
+            global $wpdb;
+
 			define( 'MSHOP_MEMBERS_VERSION', $this->version );
 
 			$this->slug = 'mshop-members-s2';
@@ -65,6 +70,10 @@ if ( ! class_exists( 'MShop_Members' ) ) {
 			define( 'MSM_PLUGIN_FILE', __FILE__ );
 			define( 'MSM_VERSION', $this->version );
 			define( 'MSM_DB_VERSION', '1.0.0' );
+
+            if ( ! defined( 'MSM_GET_USERS_TABLE' ) ) {
+                define( 'MSM_GET_USERS_TABLE', $wpdb->prefix . 'users' );
+            }
 
 			add_action( 'init', array( $this, 'init' ), 0 );
 			add_action( 'plugins_loaded', array( $this, 'load_plugin_textdomain' ) );
@@ -213,7 +222,8 @@ if ( ! class_exists( 'MShop_Members' ) ) {
 		}
 		public function plugin_row_meta( $plugin_meta, $plugin_file, $plugin_data, $status ) {
 			if ( $this->plugin_file == $plugin_file ) {
-				$plugin_meta[] = '<a target="_blank" href="https://www.codemshop.com/product-category/outside/">함께 사용하면 좋은 플러그인</a>';
+				$plugin_meta[] = '<a target="_blank" href="https://www.codemshop.com/product-category/outside/">함께 사용하면 유용한 플러그인</a>';
+                $plugin_meta[] = '<a target="_blank" href="https://www.codemshop.com/manual/docs/members-s2/faq/">FAQ</a>';
 				$plugin_meta[] = '<a target="_blank" href="https://www.codemshop.com/support/">기술지원</a>';
 			}
 

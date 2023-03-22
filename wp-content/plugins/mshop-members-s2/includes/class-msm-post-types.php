@@ -47,6 +47,15 @@ class MSM_Post_types {
 
 		if ( 'user' == $type || 'users' == $type ) {
 			$files = get_user_meta( $id, $meta_name, true );
+
+			if ( empty( $files ) && apply_filters( 'msm_find_file_info_from_registration_fields', false ) ) {
+				$registration_fields = get_user_meta( $id, '_msm_register_fields', true );
+
+				if ( isset( $registration_fields['args'] ) && isset( $registration_fields['args']['files'] ) ) {
+					$files = $registration_fields['args']['files'];
+				}
+
+			}
 		} else {
 			$files = get_post_meta( $id, $meta_name, true );
 		}

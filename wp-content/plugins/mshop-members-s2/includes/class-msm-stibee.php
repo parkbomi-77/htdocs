@@ -140,16 +140,12 @@ if ( ! class_exists( 'MSM_Stibee' ) ) {
 
         public static function unsubscribe( $email, $list_id = '' ) {
             return self::call( 'unsubscribe', array ( $email ), $list_id );
-
         }
         public static function delete( $email, $list_id = '' ) {
-
-
             return self::call( 'delete', array ( $email ), $list_id );
-
         }
         public static function register_stibee( $user_id ) {
-            if ( 'YES' == get_user_meta( $user_id, 'email_agreement_label', true ) ) {
+            if ( 'on' == get_user_meta( $user_id, 'email_agreement', true ) ) {
                 $user = get_userdata( $user_id );
 
                 $result = self::subscribe( $user->user_email, $user->first_name );

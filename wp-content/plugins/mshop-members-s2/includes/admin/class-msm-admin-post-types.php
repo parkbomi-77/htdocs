@@ -17,6 +17,7 @@ class MSM_Admin_Post_types {
 
 		add_filter( 'manage_users_columns', array( __CLASS__, 'manage_users_columns' ) );
 		add_filter( 'manage_users_custom_column', array( __CLASS__, 'manage_users_custom_column' ), 10, 3 );
+		add_filter( 'manage_users_sortable_columns', array( __CLASS__, 'manage_users_sortable_columns' ) );
 
 		add_action( 'bulk_actions-edit-mshop_members_form', array( __CLASS__, 'add_bulk_actions' ) );
 		add_action( 'handle_bulk_actions-edit-mshop_members_form', array( __CLASS__, 'do_bulk_action' ), 10, 3 );
@@ -45,6 +46,9 @@ class MSM_Admin_Post_types {
 		//포스트 플러그인
 		add_filter( 'bulk_actions-users', array( __CLASS__, 'add_bulk_actions' ) );
 		add_action( 'handle_bulk_actions-users', array( __CLASS__, 'do_bulk_action' ), 10, 3 );
+
+		add_filter( 'msex_user_field_type', array( __CLASS__, 'add_msex_user_field_type' ) );
+		add_filter( 'msex_user_field_msm_agreement', array( __CLASS__, 'get_msm_agreement_value' ), 10, 3 );
 	}
 
 	static function do_bulk_action( $redirect_to, $action, $ids ) {
@@ -62,7 +66,7 @@ class MSM_Admin_Post_types {
 
 			wp_redirect( $redirect_to );
 			exit;
-		}  else if ( 'reset_email_auth' == $action && ! empty( $ids ) ) {
+		} else if ( 'reset_email_auth' == $action && ! empty( $ids ) ) {
 			foreach ( $ids as $id ) {
 				delete_user_meta( $id, 'msm_email_certified' );
 			}
@@ -300,6 +304,22 @@ class MSM_Admin_Post_types {
 			return get_user_meta( $userid, 'mssms_agreement_label', true );
 		} else if ( 'email_agreement_label' == $column_name ) {
 			return get_user_meta( $userid, 'email_agreement_label', true );
+		} else if ( 'msm_tac' == $column_name ) {
+			$outputs = array();
+
+			$user_tac = get_user_meta( $userid, 'msm_tac', true );
+
+			if ( is_array( $user_tac ) ) {
+				foreach ( $user_tac as $label => $tac ) {
+					if ( 'yes' == $tac['agree'] ) {
+						$outputs[] = sprintf( "%s : <span style='color: blue'>%s</span>", $label, __( '동의', 'mshop-members-s2' ) );
+					} else {
+						$outputs[] = sprintf( "%s : <span style='color: red'>%s</span>", $label, __( '미동의', 'mshop-members-s2' ) );
+					}
+				}
+			}
+
+			return implode( '<br>', $outputs );
 		} else {
 			$msm_fields = apply_filters( 'msm_users_custom_column', array( 'msm_register_fields' ) );
 
@@ -329,6 +349,7 @@ class MSM_Admin_Post_types {
 			'email_agreement_label' => __( '이메일수신동의', 'mshop-members-s2' ),
 			'msm_profile_fields'    => __( '프로필', 'mshop-members-s2' ),
 			'role_processing'       => __( '등급변경 처리일', 'mshop-members-s2' ),
+			'msm_tac'               => __( '이용약관 동의', 'mshop-members-s2' ),
 		) );
 
 		if ( 'yes' == get_option( 'msm_required' ) ) {
@@ -340,6 +361,11 @@ class MSM_Admin_Post_types {
 		}
 
 		$users_columns = array_merge( $users_columns, $columns );
+
+		return $users_columns;
+	}
+	static function manage_users_sortable_columns( $users_columns ) {
+		$users_columns['msm_last_login'] = 'msm_last_login';
 
 		return $users_columns;
 	}
@@ -529,23 +555,30 @@ class MSM_Admin_Post_types {
 	public static function pre_get_users( $query ) {
 		global $pagenow;
 
-		if ( is_admin() && 'users.php' == $pagenow && isset( $_GET['msm_status'] ) ) {
-			$args = self::get_query_args();
+		if ( is_admin() && 'users.php' == $pagenow ) {
+			if ( isset( $_GET['msm_status'] ) ) {
+				$args = self::get_query_args();
 
-			if ( ! empty( $args['meta_query'] ) ) {
-				$meta_query = $query->get( 'meta_query' );
+				if ( ! empty( $args['meta_query'] ) ) {
+					$meta_query = $query->get( 'meta_query' );
 
-				if ( is_null( $meta_query ) ) {
-					$meta_query = array();
+					if ( is_null( $meta_query ) ) {
+						$meta_query = array();
+					}
+
+					$meta_query = array_merge( $meta_query, $args['meta_query'] );
+
+					$query->set( 'meta_query', $meta_query );
 				}
 
-				$meta_query = array_merge( $meta_query, $args['meta_query'] );
-
-				$query->set( 'meta_query', $meta_query );
+				if ( ! empty( $args['date_query'] ) ) {
+					$query->set( 'date_query', $args['date_query'] );
+				}
 			}
 
-			if ( ! empty( $args['date_query'] ) ) {
-				$query->set( 'date_query', $args['date_query'] );
+			if ( 'msm_last_login' == msm_get( $_GET, 'orderby' ) ) {
+				$query->set( 'meta_key', 'last_login_time' );
+				$query->set( 'orderby', 'meta_value' );
 			}
 		}
 	}
@@ -833,5 +866,22 @@ class MSM_Admin_Post_types {
 
 		return $columns;
 	}
+	public static function add_msex_user_field_type( $fields ) {
+		$fields['msm_agreement'] = __( '이용약관동의', 'mshop-members-s2' );
 
+		return $fields;
+	}
+	public static function get_msm_agreement_value( $field_value, $field, $user ) {
+		$user_tac = get_user_meta( $user->ID, 'msm_tac', true );
+
+		if ( is_array( $user_tac ) && ! empty( msm_get( $user_tac, $field['field_label'], array() ) ) ) {
+			$agreement = msm_get( $user_tac, $field['field_label'], array() );
+
+			if ( is_array( $agreement ) ) {
+				$field_value = 'yes' == msm_get( $agreement, 'agree' ) ? __( '동의', 'mshop-members-s2' ) : __( '미동의', 'mshop-members-s2' );
+			}
+		}
+
+		return $field_value;
+	}
 }

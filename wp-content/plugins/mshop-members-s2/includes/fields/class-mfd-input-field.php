@@ -56,17 +56,20 @@ class MFD_Input_Field extends MFD_Field {
 		if ( 'password' == $type ) {
 			msm_get_template( 'form-field/password.php', array(
 				'element' => $element,
-				'value'   => $value
+				'value'   => $value,
+				'form'    => $form
 			) );
 		} else if ( 'file' == $type ) {
 			msm_get_template( 'form-field/file.php', array(
 				'element' => $element,
-				'value'   => $value
+				'value'   => $value,
+				'form'    => $form
 			) );
 		} else {
 			msm_get_template( 'form-field/input.php', array(
 				'element' => $element,
-				'value'   => $value
+				'value'   => $value,
+				'form'    => $form
 			) );
 		}
 	}

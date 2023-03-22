@@ -355,8 +355,8 @@ if ( ! class_exists( 'MSM_Settings_Members_Social' ) ) :
 										'profile_image'    => '프로필 이미지',
 										'shipping_address' => '배송지정보',
 										'birthyear'        => '출생 연도',
-										'birthday'         => '생일'
-
+										'birthday'         => '생일',
+										'account_ci'       => 'CI(연계정보)'
 									),
 									'desc2'    => '<div class="desc2">이메일과 전화번호의 경우, 앱 설정에 해당 권한이 설정되지 않은 경우 오류가 발생하니 주의해주시기 바랍니다.</div>'
 								),

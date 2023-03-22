@@ -76,173 +76,176 @@ if ( ! class_exists( 'MSM_Shortcodes' ) ) :
 			$i = 0;
 			foreach ( $container['property']['items'] as $step ) {
 				if ( 'StepItem' == $step['type'] ) {
-					$shortcodes .= sprintf( "[mshop_form_designer slug='%s' %s]", array_keys( $step['property']['form_id'] )[0], 0 === $i ++ ? 'default=true' : '' );
+					$shortcodes .= sprintf( "[mshop_form_designer slug='%s' %s]", array_keys( $step['property']['form_id'] )[0], 0 === $i++ ? 'default=true' : '' );
 				}
 			}
 
 			return do_shortcode( $shortcodes );
 		}
-		public static function get_field_rules( $formdata ) {
+		public static function get_field_rules( $formdata, $form ) {
 			$field_rules = array();
-			if( ! empty( $formdata ) ) {
-                foreach ( $formdata as $element ) {
-                    $property = $element[ 'property' ];
+			if ( ! empty( $formdata ) ) {
+				foreach ( $formdata as $element ) {
+					$property = $element['property'];
 
-                    if ( 'FormField' === $element[ 'type' ] ) {
-                        $field_rules = array_merge( $field_rules, self::get_field_rules( $element[ 'property' ][ 'items' ] ) );
-                    } else if ( 'Agreement' === $element[ 'type' ] ) {
-                        if ( is_array( $element[ 'property' ][ 'agreement_type' ] ) ) {
-                            $type = array_keys( $element[ 'property' ][ 'agreement_type' ] )[ 0 ];
-                        } else {
-                            $type = $element[ 'property' ][ 'agreement_type' ];
-                        }
+					if ( 'FormField' === $element['type'] ) {
+						$field_rules = array_merge( $field_rules, self::get_field_rules( $element['property']['items'], $form ) );
+					} else if ( 'Agreement' === $element['type'] ) {
+						if ( is_array( $element['property']['agreement_type'] ) ) {
+							$type = array_keys( $element['property']['agreement_type'] )[0];
+						} else {
+							$type = $element['property']['agreement_type'];
+						}
 
-                        $agreements = MSM_Manager::get_terms_and_conditions( $type );
+						$agreements = MSM_Manager::get_terms_and_conditions( $type );
 
-                        foreach ( $agreements as $agreement ) {
-                            $agreement = new MSM_Agreement( $agreement );
-                            if ( 'yes' == $agreement->mandatory ) {
-                                $field_rules[ $agreement->slug ] = array (
-                                    'rules' => array (
-                                        array (
-                                            'type'   => 'checked',
-                                            'prompt' => $agreement->title . '에 동의하셔야 합니다.'
-                                        )
-                                    )
-                                );
-                            }
-                        }
-                    } else if ( 'Input' === $element[ 'type' ] && 'password' == $property[ 'type' ] ) {
-                        if ( ! empty( $property[ 'use_strength_meter' ] ) && 'yes' == $property[ 'use_strength_meter' ] ) {
-                            $field_rules[ $property[ 'name' ] ] = array (
-                                'rules' => array (
-                                    array (
-                                        'type'   => ( 'yes' == msm_get( $property, 'required', 'no' ) ) ? 'validatePasswordStrength' : 'validatePasswordStrengthAllowEmpty',
-                                        'prompt' => __( '더 안전한 비밀번호를 입력해주세요.', 'mshop-members-s2' )
-                                    )
-                                )
-                            );
-                        } else {
-                            $rules = array ();
+						foreach ( $agreements as $agreement ) {
+							$agreement = new MSM_Agreement( $agreement );
+							if ( 'yes' == $agreement->mandatory ) {
+								$field_rules[ $agreement->slug ] = array(
+									'rules' => array(
+										array(
+											'type'   => 'checked',
+											'prompt' => $agreement->title . '에 동의하셔야 합니다.'
+										)
+									)
+								);
+							}
+						}
+					} else if ( 'Input' === $element['type'] && 'password' == $property['type'] ) {
+						if ( ! empty( $property['use_strength_meter'] ) && 'yes' == $property['use_strength_meter'] ) {
+							$field_rules[ $property['name'] ] = array(
+								'rules' => array(
+									array(
+										'type'   => ( 'yes' == msm_get( $property, 'required', 'no' ) ) ? 'validatePasswordStrength' : 'validatePasswordStrengthAllowEmpty',
+										'prompt' => __( '더 안전한 비밀번호를 입력해주세요.', 'mshop-members-s2' )
+									)
+								)
+							);
+						} else {
+							$rules = array();
 
-                            if ( 'password' == $property[ 'name' ] && ! empty( $property[ 'required' ] ) && 'yes' === $property[ 'required' ] ) {
-                                $rules[] = array (
-                                    'type'   => 'empty',
-                                    'prompt' => __( '비밀번호를 입력하세요.', 'mshop-members-s2' )
-                                );
-                            }
+							if ( 'password' == $property['name'] && ! empty( $property['required'] ) && 'yes' === $property['required'] ) {
+								$rules[] = array(
+									'type'   => 'empty',
+									'prompt' => __( '비밀번호를 입력하세요.', 'mshop-members-s2' )
+								);
+							}
 
-                            if ( 'confirm_password' == $property[ 'name' ] ) {
-                                $rules[] = array (
-                                    'type'   => 'match[password]',
-                                    'prompt' => __( '비밀번호가 일치하지 않습니다.', 'mshop-members-s2' )
-                                );
-                            }
+							if ( 'confirm_password' == $property['name'] ) {
+								$rules[] = array(
+									'type'   => 'match[password]',
+									'prompt' => __( '비밀번호가 일치하지 않습니다.', 'mshop-members-s2' )
+								);
+							}
 
-                            if ( ! empty( trim( msm_get( $property, 'regExp' ) ) ) ) {
-                                $rules[] = array (
-                                    'type'   => 'regExp[' . msm_get( $property, 'regExp' ) . ']',
-                                    'prompt' => msm_get( $property, 'regExpMsg' )
-                                );
-                            }
+							if ( ! empty( trim( msm_get( $property, 'regExp' ) ) ) ) {
+								$rules[] = array(
+									'type'   => 'regExp[' . msm_get( $property, 'regExp' ) . ']',
+									'prompt' => msm_get( $property, 'regExpMsg' )
+								);
+							}
 
-                            $field_rules[ $property[ 'name' ] ] = array (
-                                'rules' => $rules
-                            );
-                        }
-                    } else if ( 'Recaptcha' === $element[ 'type' ] ) {
-                        $field_rules[ '_grecaptcha' ] = array (
-                            'rules' => array (
-                                array (
-                                    'type'   => 'empty',
-                                    'prompt' => __( 'reCAPTCHA를 클릭해주세요.', 'mshop-members-s2' )
-                                )
-                            )
-                        );
-                    } else if ( 'Authentication' === $element[ 'type' ] ) {
-                        $field_rules[ $property[ 'id' ] ] = array (
-                            'rules' => array (
-                                array (
-                                    'type'   => 'empty',
-                                    'prompt' => __( '간편인증을 진행해주세요.', 'mshop-members-s2' )
-                                )
-                            )
-                        );
-                    } else if ( 'Phone' === $element[ 'type' ] ) {
-                        if ( ! empty( $property[ 'required' ] ) && 'yes' === $property[ 'required' ] ) {
-                            $field_rules[ $property[ 'name' ] ] = array (
-                                'rules' => array (
-                                    array (
-                                        'type'   => 'empty',
-                                        'prompt' => strip_tags( ! empty( $property[ 'requiredMsg' ] ) ? $property[ 'requiredMsg' ] : ( $property[ 'title' ] . '을(를) 입력하세요.' ) )
-                                    )
-                                )
-                            );
-                        }
+							$field_rules[ $property['name'] ] = array(
+								'rules' => $rules
+							);
+						}
+					} else if ( 'Recaptcha' === $element['type'] ) {
+						$field_rules['_grecaptcha'] = array(
+							'rules' => array(
+								array(
+									'type'   => 'empty',
+									'prompt' => __( 'reCAPTCHA를 클릭해주세요.', 'mshop-members-s2' )
+								)
+							)
+						);
+					} else if ( 'Authentication' === $element['type'] ) {
+						$field_rules[ $property['id'] ] = array(
+							'rules' => array(
+								array(
+									'type'   => 'empty',
+									'prompt' => __( '간편인증을 진행해주세요.', 'mshop-members-s2' )
+								)
+							)
+						);
+					} else if ( 'Phone' === $element['type'] ) {
+						if ( ! empty( $property['required'] ) && 'yes' === $property['required'] ) {
+							$field_rules[ $property['name'] ] = array(
+								'rules' => array(
+									array(
+										'type'   => 'empty',
+										'prompt' => strip_tags( ! empty( $property['requiredMsg'] ) ? $property['requiredMsg'] : ( $property['title'] . '을(를) 입력하세요.' ) )
+									)
+								)
+							);
+						}
 
-                        if ( 'yes' == $property[ 'certification' ] ) {
-                            $field_rules[ $property[ 'name' ] . '_certification_number' ] = array (
-                                'rules' => array (
-                                    array (
-                                        'type'   => 'empty',
-                                        'prompt' => __( '휴대폰 인증을 진행해주세요', 'mshop-members-s2' )
-                                    )
-                                )
-                            );
-                        }
-                    } else if ( ! empty( $property[ 'required' ] ) && 'yes' === $property[ 'required' ] ) {
-                        if ( has_filter( 'msm_field_rule_' . $element[ 'type' ] ) ) {
-                            $field_rules = apply_filters( 'msm_field_rule_' . $element[ 'type' ], $field_rules, $element );
-                        } else {
-	                        if ( 'Address' == $element['type'] && ! function_exists( 'MSADDR' ) ) {
-		                        continue;
-	                        }
+						if ( 'yes' == msm_get( $property, 'certification', 'no' ) ) {
+							$field_rules[ $property['name'] . '_certification_number' ] = array(
+								'rules' => array(
+									array(
+										'type'   => 'empty',
+										'prompt' => __( '휴대폰 인증을 진행해주세요', 'mshop-members-s2' )
+									)
+								)
+							);
+						}
+					} else if ( ! empty( $property['required'] ) && 'yes' === $property['required'] ) {
+						if ( has_filter( 'msm_field_rule_' . $element['type'] ) ) {
+							$field_rules = apply_filters( 'msm_field_rule_' . $element['type'], $field_rules, $element );
+						} else {
+							if ( 'Address' == $element['type'] && ! function_exists( 'MSADDR' ) ) {
+								continue;
+							}
 
-                            $rules = array (
-                                array (
-                                    'type'   => in_array( $element[ 'type' ], array (
-                                        'Toggle',
-                                        'Quiz'
-                                    ) ) ? 'checked' : 'empty',
-                                    'prompt' => strip_tags( ! empty( $property[ 'requiredMsg' ] ) ? $property[ 'requiredMsg' ] : ( $property[ 'title' ] . '을(를) 입력하세요.' ) )
-                                )
-                            );
+							$rules = array(
+								array(
+									'type'   => in_array( $element['type'], array(
+										'Toggle',
+										'Quiz'
+									) ) ? 'checked' : 'empty',
+									'prompt' => strip_tags( ! empty( $property['requiredMsg'] ) ? $property['requiredMsg'] : ( $property['title'] . '을(를) 입력하세요.' ) )
+								)
+							);
 
-                            if ( ! empty( trim( msm_get( $property, 'regExp' ) ) ) ) {
-                                $rules[] = array (
-                                    'type'   => 'regExp[' . msm_get( $property, 'regExp' ) . ']',
-                                    'prompt' => msm_get( $property, 'regExpMsg' )
-                                );
-                            }
+							if ( ! empty( trim( msm_get( $property, 'regExp' ) ) ) ) {
+								$rules[] = array(
+									'type'   => 'regExp[' . msm_get( $property, 'regExp' ) . ']',
+									'prompt' => msm_get( $property, 'regExpMsg' )
+								);
+							}
 
-                            $field_rules[ $property[ 'name' ] ] = array (
-                                'rules' => $rules
-                            );
-                        }
-                    }
-                }
-            }
+							$field_rules[ $property['name'] ] = array(
+								'rules' => $rules
+							);
+						}
+					}
 
-			return apply_filters( 'msm_get_field_rules', $field_rules, $formdata );
-		}
+					if ( 'Input' === $element['type'] && 'text' == $property['type'] ) {
+						if ( 'yes' == msm_get( $property, 'emailVerification', 'no' ) ) {
+							$field_rules[ $property['name'] . '_certification_number' ] = array(
+								'rules' => array(
+									array(
+										'type'   => 'empty',
+										'prompt' => __( '이메일 인증을 진행해주세요.', 'mshop-members-s2' )
+									)
+								)
+							);
+						} else if ( 'yes' == msm_get( $property, 'checkDuplicate', 'no' ) ) {
+							$field_rules[ $property['name'] . '_check_duplicate' ] = array(
+								'rules' => array(
+									array(
+										'type'   => 'empty',
+										'prompt' => sprintf( __( '%s 중복확인을 해주세요.', 'mshop-members-s2' ), $element['title'] )
+									)
+								)
+							);
+						}
+					}
+				}
+			}
 
-		public static function get_conditional_rules( $formdata ) {
-			$conditional_rules = array();
-            if( ! empty( $formdata ) ) {
-                foreach ( $formdata as $element ) {
-                    $property = $element[ 'property' ];
-
-                    if ( 'FormField' === $element[ 'type' ] ) {
-                        $conditional_rules = array_merge( $conditional_rules, self::get_conditional_rules( $property[ 'items' ] ) );
-                    } else if ( ! empty( $property[ 'showIf' ] ) ) {
-                        foreach ( $property[ 'showIf' ] as $condition ) {
-                            $conditional_rules[ $condition[ 'id' ] ] = $condition[ 'value' ];
-                        }
-                    }
-                }
-            }
-
-			return $conditional_rules;
+			return apply_filters( 'msm_get_field_rules', $field_rules, $formdata, $form );
 		}
 		static function enqueue_script() {
 			wp_enqueue_style( 'jquery-confirm', plugins_url( '/assets/vendor/jquery-confirm/jquery-confirm.min.css', MSM_PLUGIN_FILE ), array(), MSM_VERSION );
@@ -260,24 +263,22 @@ if ( ! class_exists( 'MSM_Shortcodes' ) ) :
 			wp_enqueue_style( 'msm-form-style', MSM()->plugin_url() . '/assets/css/mshop-members-form.css', array(), MSM_VERSION );
 			wp_enqueue_style( 'msm-semantic-calendar-css', MSM()->plugin_url() . '/assets/vendor/semantic-ui-calendar/calendar.min.css', array(), MSM_VERSION );
 
-			wp_enqueue_script( 'msm-crypto', plugins_url( 'assets/vendor/crypto/md5.js', MSM_PLUGIN_FILE ), array(), MSHOP_MEMBERS_VERSION );
-
 			if ( defined( 'ICL_LANGUAGE_CODE' ) ) {
 				wp_localize_script( 'mshop-members-form', '_msm', array(
-					'ajaxurl'   => admin_url( "admin-ajax.php?lang=" . ICL_LANGUAGE_CODE ),
-					'slug'      => MSM()->slug(),
-					'msm_is_ajax'   => defined( 'DOING_AJAX' ),
-					'is_mobile' => wp_is_mobile(),
-					'_wpnonce'  => wp_create_nonce( 'mshop-members-s2' )
+					'ajaxurl'     => admin_url( "admin-ajax.php?lang=" . ICL_LANGUAGE_CODE ),
+					'slug'        => MSM()->slug(),
+					'msm_is_ajax' => defined( 'DOING_AJAX' ),
+					'is_mobile'   => wp_is_mobile(),
+					'_wpnonce'    => wp_create_nonce( 'mshop-members-s2' )
 				) );
 
 			} else {
 				wp_localize_script( 'mshop-members-form', '_msm', array(
-					'ajaxurl'   => admin_url( 'admin-ajax.php', 'relative' ),
-					'slug'      => MSM()->slug(),
-					'msm_is_ajax'   => defined( 'DOING_AJAX' ),
-					'is_mobile' => wp_is_mobile(),
-					'_wpnonce'  => wp_create_nonce( 'mshop-members-s2' )
+					'ajaxurl'     => admin_url( 'admin-ajax.php', 'relative' ),
+					'slug'        => MSM()->slug(),
+					'msm_is_ajax' => defined( 'DOING_AJAX' ),
+					'is_mobile'   => wp_is_mobile(),
+					'_wpnonce'    => wp_create_nonce( 'mshop-members-s2' )
 				) );
 			}
 
@@ -291,6 +292,8 @@ if ( ! class_exists( 'MSM_Shortcodes' ) ) :
 		}
 		public static function mshop_form_designer( $attrs ) {
 			$form = null;
+
+			add_filter( 'msm_skip_on_checkout', '__return_false' );
 			if ( function_exists( 'is_checkout' ) && apply_filters( 'msm_skip_on_checkout', is_checkout() ) ) {
 				return '';
 			}
@@ -362,9 +365,8 @@ if ( ! class_exists( 'MSM_Shortcodes' ) ) :
 
 				$post = apply_filters( 'msm_post_data', $post, $form );
 
-				$field_rules       = self::get_field_rules( $formdata );
-				$conditional_rules = self::get_conditional_rules( $formdata );
-				$form_categories   = get_the_terms( $form->id, 'mshop_members_form_cat' );
+				$field_rules     = self::get_field_rules( $formdata, $form );
+				$form_categories = get_the_terms( $form->id, 'mshop_members_form_cat' );
 				if ( ! empty( $form_categories ) ) {
 					$form_types = wp_list_pluck( $form_categories, 'slug' );
 				}
@@ -389,7 +391,11 @@ if ( ! class_exists( 'MSM_Shortcodes' ) ) :
 				}
 
 				$form_classes = apply_filters( 'msm_form_classes', array( 'ui', 'form' ), $form );
-                $redirect_url = apply_filters( 'msm_form_redirect_url', $redirect_url );
+				$redirect_url = apply_filters( 'msm_form_redirect_url', $redirect_url );
+
+				if ( ! empty( $redirect_url ) && apply_filters( 'msm_use_safe_redirect', true ) ) {
+					$redirect_url = wp_validate_redirect( wp_sanitize_redirect( $redirect_url ), apply_filters( 'wp_safe_redirect_fallback', admin_url(), 302 ) );
+				}
 
 				?>
                 <script>
@@ -424,7 +430,7 @@ if ( ! class_exists( 'MSM_Shortcodes' ) ) :
 						do_action( 'before_output_form_' . $form->get_slug(), $form );
 
 						foreach ( $formdata as $element ) {
-							mfd_output( $element, $post, $form );
+							mfd_output( apply_filters( 'mfd_output_field_element', $element, $post, $form ), $post, $form );
 						}
 
 						if ( 'register' == $form->form_type || 'upgrade_request' == $form->form_type ) {

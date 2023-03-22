@@ -109,14 +109,14 @@ if ( ! class_exists( 'MSM_OAuth' ) ) {
 
 			return $this->call( $this->token_url, $args );
 		}
-        public function get_logout( $args = array() ) {
-            $args = apply_filters( 'msm_logout_args_' . $this->get_id(), array_merge( array(
-                'client_id'           => $this->get_client_id(),
-                'logout_redirect_uri' => home_url() . $this->get_logout_redirect_uri()
-            ), $args ), $this );
+		public function get_logout( $args = array() ) {
+			$args = apply_filters( 'msm_logout_args_' . $this->get_id(), array_merge( array(
+				'client_id'           => $this->get_client_id(),
+				'logout_redirect_uri' => home_url() . $this->get_logout_redirect_uri()
+			), $args ), $this );
 
-            return $this->logout_url . '?' . http_build_query( $args );
-        }
+			return $this->logout_url . '?' . http_build_query( $args );
+		}
 		public function refresh_access_token( $args ) {
 			$args = apply_filters( 'msm_oauth_access_token_args_' . $this->get_id(), array_merge( array(
 				'client_id'     => $this->get_client_id(),
@@ -237,7 +237,7 @@ if ( ! class_exists( 'MSM_OAuth' ) ) {
 			clean_user_cache( $user->ID );
 			wp_clear_auth_cookie();
 			wp_set_current_user( $user->ID, $user->user_login );
-			wp_set_auth_cookie( $user->ID, true );
+			wp_set_auth_cookie( $user->ID, apply_filters( 'msm_social_login_remember_user', false, $this ), is_ssl() );
 			update_user_caches( $user );
 
 			do_action( 'wp_login', $user->user_login, $user );

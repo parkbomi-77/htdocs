@@ -1,0 +1,2335 @@
+# Copyright (C) 2023 CodeMShop
+# This file is distributed under the Commercial License.
+msgid ""
+msgstr ""
+"Project-Id-Version: mshop-members-s2 6.1.6\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/mshop-members-"
+"s2\n"
+"POT-Creation-Date: 2023-03-06 06:57:41+00:00\n"
+"PO-Revision-Date: 2023-03-20 18:02+0900\n"
+"Last-Translator: \n"
+"Language-Team: CodeM\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.2.2\n"
+"Poedit: \n"
+
+#: includes/abstract/abstract-msm-oauth.php:284
+#: includes/provider/class-msm-oauth-kakao.php:115
+msgid "이미 가입된 사용자(%s)입니다. 로그인 후 소셜 계정 연동을 진행해주세요"
+msgstr ""
+
+#: includes/abstract/abstract-msm-oauth.php:290
+msgid "사용자를 생성할 수 없습니다. [%s]"
+msgstr ""
+
+#: includes/actions/class-msm-action-find-login.php:92
+msgid "아이디 찾기 기능은 휴대폰 인증 또는 간편인증 기능을 이용하셔야 합니다."
+msgstr ""
+
+#: includes/actions/class-msm-action-find-login.php:101
+msgid "휴대폰 번호가 없습니다."
+msgstr ""
+
+#: includes/actions/class-msm-action-find-login.php:112
+msgid "탈퇴한 사용자입니다"
+msgstr ""
+
+#: includes/actions/class-msm-action-find-login.php:115
+msgid "고객님의 휴대폰으로 가입된 회원 정보가 없습니다."
+msgstr ""
+
+#: includes/actions/class-msm-action-find-login.php:121
+msgid "간편인증 정보가 없습니다."
+msgstr ""
+
+#: includes/actions/class-msm-action-find-login.php:127
+#: includes/class-msm-phone-certification.php:125
+msgid "가입된 회원 정보가 없습니다."
+msgstr ""
+
+#: includes/actions/class-msm-action-find-login.php:136
+msgid "고객님의 로그인 아이디는 %s 입니다."
+msgstr ""
+
+#: includes/actions/class-msm-action-login.php:72
+#: includes/actions/class-msm-action-login.php:83
+#: includes/actions/class-msm-action-login.php:90
+#: includes/actions/class-msm-action-login.php:103
+#: includes/admin/settings/class-msm-settings-members.php:259
+msgid "등록되지 않은 이메일이거나 비밀번호가 잘못되었습니다."
+msgstr ""
+
+#: includes/actions/class-msm-action-login.php:99
+#: includes/actions/class-msm-action-password.php:57
+#: includes/class-msm-social-login.php:207
+msgid "탈퇴한 사용자입니다."
+msgstr ""
+
+#: includes/actions/class-msm-action-login.php:101
+msgid "휴면 사용자입니다. 비밀번호를 초기화 하여 이용해 주세요."
+msgstr ""
+
+#: includes/actions/class-msm-action-login.php:109
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr ""
+
+#: includes/actions/class-msm-action-password.php:70
+msgid "등록된 이메일이 아닙니다."
+msgstr ""
+
+#: includes/actions/class-msm-action-password.php:99
+#: includes/class-msm-phone-certification.php:77
+msgid "알림톡 템플릿 등록 후 이용해주세요"
+msgstr ""
+
+#: includes/actions/class-msm-action-password.php:105
+#: includes/class-msm-phone-certification.php:83
+msgid "템플릿이 존재하지 않습니다."
+msgstr ""
+
+#: includes/actions/class-msm-action-password.php:128
+msgid "임시 비밀번호 발급 기능을 사용할 수 없습니다. 관리자에게 문의해주세요."
+msgstr ""
+
+#: includes/actions/class-msm-action-password.php:132
+msgid "임시 비밀번호 찾기 기능은 휴대폰 인증 기능을 이용하셔야 합니다."
+msgstr ""
+
+#: includes/actions/class-msm-action-password.php:155
+#: includes/class-msm-phone-certification.php:139
+msgid "일치하는 회원 정보가 없습니다."
+msgstr ""
+
+#: includes/actions/class-msm-action-register.php:81
+msgid "이미 사용중인 아이디입니다."
+msgstr ""
+
+#: includes/actions/class-msm-action-register.php:89
+#: includes/actions/class-msm-action-register.php:94
+#: includes/actions/class-msm-action-register.php:97
+#: includes/actions/class-msm-action-register.php:189
+msgid "이메일이 올바르지 않거나 이미 사용중입니다."
+msgstr ""
+
+#: includes/actions/class-msm-action-register.php:193
+msgid "비밀번호가 일치하지 않거나 입력되지 않았습니다."
+msgstr ""
+
+#: includes/actions/class-msm-action-unsubscribe.php:52
+#: includes/class-msm-user-unsubscribe.php:52
+msgid ""
+"관리자는 탈퇴 처리를 할 수 없습니다.관리자 페이지 회원 리스트 기능을 이용해"
+"주세요."
+msgstr ""
+
+#: includes/actions/class-msm-action-unsubscribe.php:57
+#: includes/class-msm-shortcodes.php:138
+#: includes/class-msm-user-unsubscribe.php:57
+msgid "비밀번호가 일치하지 않습니다."
+msgstr ""
+
+#: includes/actions/class-msm-action-unsubscribe.php:88
+#: includes/class-msm-user-unsubscribe.php:88
+msgid "<strong>ERROR</strong>: Unsubscribed User."
+msgstr ""
+
+#: includes/actions/class-msm-action-unsubscribe.php:97
+#: includes/class-msm-user-unsubscribe.php:97
+msgid "<strong>ERROR</strong>: Sleep User."
+msgstr ""
+
+#: includes/actions/class-msm-action-write-post.php:71
+#: includes/admin/class-msm-admin-profile.php:137
+#: includes/class-msm-meta.php:83 includes/class-msm-meta.php:92
+msgid "파일 업로드중 오류가 발생했습니다."
+msgstr ""
+
+#: includes/actions/class-msm-action-write-post.php:121
+msgid "포스트 타입이 지정되지 않았습니다."
+msgstr ""
+
+#: includes/actions/class-msm-action-write-post.php:125
+msgid "포스트 상태가 지정되지 않았습니다."
+msgstr ""
+
+#: includes/actions/class-msm-action-write-post.php:153
+msgid "포스트 등록중 오류가 발생했습니다."
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:99
+msgid "내보내기(Export)"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:101
+msgid "이메일 인증 설정"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:102
+msgid "이메일 인증 초기화"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:103
+msgid "휴대폰 인증 설정"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:104
+msgid "휴대폰 인증 초기화"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:128
+msgid "모든 분류 보기"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:155
+#: includes/admin/class-msm-admin-post-types.php:772
+msgid "모든 카테고리 보기"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:249
+msgid "슬러그"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:250
+msgid "숏코드"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:260
+msgid "옵션"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:281
+#: includes/admin/class-msm-admin-profile.php:66
+msgid "탈퇴"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:283
+#: includes/admin/class-msm-admin-profile.php:67
+msgid "휴면"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:285
+#: includes/admin/class-msm-admin-profile.php:68
+msgid "정상"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:289
+#: includes/admin/class-msm-admin-post-types.php:293
+msgid "인증됨"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:315
+#: includes/admin/class-msm-admin-post-types.php:881
+msgid "동의"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:317
+#: includes/admin/class-msm-admin-post-types.php:881
+msgid "미동의"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:344
+msgid "가입일"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:345
+#: includes/admin/class-msm-admin-profile.php:33
+#: includes/admin/class-msm-admin.php:22
+msgid "멤버스 필드"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:346
+msgid "회원 상태"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:347
+msgid "마지막 로그인"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:348
+msgid "문자수신동의"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:349
+msgid "이메일수신동의"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:350
+#: includes/class-msm-endpoint.php:12 includes/class-msm-profile.php:63
+msgid "프로필"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:351
+msgid "등급변경 처리일"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:352
+msgid "이용약관 동의"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:356
+#: includes/class-msm-install-data.php:51
+msgid "이메일인증"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:360
+#: includes/class-msm-phone-certification.php:27
+msgid "휴대폰인증"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:633
+msgid "승인"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:634
+msgid "반려"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:651
+msgid "사용자"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:652
+msgid "요청역할"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:653
+msgid "처리일"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:654
+msgid "신청정보"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:655
+msgid "본인인증"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:656
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:493
+msgid "액션"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:720
+#: includes/emails/class-msm-email-new-role-application.php:40
+msgid "인증방식 : 휴대폰"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:722
+#: includes/emails/class-msm-email-new-role-application.php:42
+msgid "인증방식 : 아이핀"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:729
+#: includes/emails/class-msm-email-new-role-application.php:49
+msgid "남성"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:729
+#: includes/emails/class-msm-email-new-role-application.php:49
+msgid "여성"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:730
+#: includes/emails/class-msm-email-new-role-application.php:50
+msgid "외국인"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:730
+#: includes/emails/class-msm-email-new-role-application.php:50
+msgid "내국인"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:854
+msgid "상태"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:855
+msgid "포스트"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:856
+msgid "제목"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:857
+msgid "포스트 데이터"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:861
+msgid "날짜"
+msgstr ""
+
+#: includes/admin/class-msm-admin-post-types.php:870
+msgid "이용약관동의"
+msgstr ""
+
+#: includes/admin/class-msm-admin-profile.php:76
+#: includes/admin/class-msm-admin-profile.php:80
+msgid "회원상태"
+msgstr ""
+
+#: includes/admin/class-msm-admin-select-fields.php:66
+msgid "Slug \"%s\" is too long (28 characters max). Shorten it, please."
+msgstr ""
+
+#: includes/admin/class-msm-admin-select-fields.php:78
+#: includes/admin/class-msm-admin-select-fields.php:102
+msgid "Please, provide an attribute name and slug."
+msgstr ""
+
+#: includes/admin/class-msm-admin-select-fields.php:82
+#: includes/admin/class-msm-admin-select-fields.php:110
+msgid "Slug \"%s\" is already in use. Change it, please."
+msgstr ""
+
+#: includes/admin/class-msm-admin-select-fields.php:157
+msgid "Attribute updated successfully"
+msgstr ""
+
+#: includes/admin/class-msm-admin-select-fields.php:201
+msgid "Edit Attribute"
+msgstr ""
+
+#: includes/admin/class-msm-admin-select-fields.php:206
+msgid "Error: non-existing attribute ID."
+msgstr ""
+
+#: includes/admin/class-msm-admin-select-fields.php:221
+#: includes/admin/class-msm-admin-select-fields.php:270
+#: includes/admin/class-msm-admin-select-fields.php:298
+#: includes/admin/class-msm-admin-select-fields.php:321
+#: includes/admin/class-msm-admin-select-fields.php:376
+#: includes/admin/class-msm-admin-select-fields.php:411
+msgid "Name"
+msgstr ""
+
+#: includes/admin/class-msm-admin-select-fields.php:225
+msgid "Name for the attribute (shown on the front-end)."
+msgstr ""
+
+#: includes/admin/class-msm-admin-select-fields.php:230
+#: includes/admin/class-msm-admin-select-fields.php:299
+#: includes/admin/class-msm-admin-select-fields.php:382
+msgid "Slug"
+msgstr ""
+
+#: includes/admin/class-msm-admin-select-fields.php:234
+msgid ""
+"Unique slug/reference for the attribute; must be shorter than 28 characters."
+msgstr ""
+
+#: includes/admin/class-msm-admin-select-fields.php:239
+#: includes/admin/class-msm-admin-select-fields.php:388
+msgid "Enable Archives?"
+msgstr ""
+
+#: includes/admin/class-msm-admin-select-fields.php:243
+#: includes/admin/class-msm-admin-select-fields.php:390
+msgid ""
+"Enable this if you want this attribute to have product archives in your "
+"store."
+msgstr ""
+
+#: includes/admin/class-msm-admin-select-fields.php:248
+#: includes/admin/class-msm-admin-select-fields.php:300
+#: includes/admin/class-msm-admin-select-fields.php:394
+msgid "Type"
+msgstr ""
+
+#: includes/admin/class-msm-admin-select-fields.php:260
+#: includes/admin/class-msm-admin-select-fields.php:404
+msgid ""
+"Determines how you select attributes for products. Under admin panel -> "
+"products -> product data -> attributes -> values, <strong>Text</strong> "
+"allows manual entry whereas <strong>select</strong> allows pre-configured "
+"terms in a drop-down list."
+msgstr ""
+
+#: includes/admin/class-msm-admin-select-fields.php:265
+#: includes/admin/class-msm-admin-select-fields.php:408
+msgid "Default sort order"
+msgstr ""
+
+#: includes/admin/class-msm-admin-select-fields.php:269
+#: includes/admin/class-msm-admin-select-fields.php:330
+#: includes/admin/class-msm-admin-select-fields.php:410
+msgid "Custom ordering"
+msgstr ""
+
+#: includes/admin/class-msm-admin-select-fields.php:271
+#: includes/admin/class-msm-admin-select-fields.php:324
+#: includes/admin/class-msm-admin-select-fields.php:412
+msgid "Name (numeric)"
+msgstr ""
+
+#: includes/admin/class-msm-admin-select-fields.php:272
+#: includes/admin/class-msm-admin-select-fields.php:327
+#: includes/admin/class-msm-admin-select-fields.php:413
+msgid "Term ID"
+msgstr ""
+
+#: includes/admin/class-msm-admin-select-fields.php:274
+#: includes/admin/class-msm-admin-select-fields.php:415
+msgid ""
+"Determines the sort order of the terms on the frontend shop product pages. "
+"If using custom ordering, you can drag and drop the terms in this attribute."
+msgstr ""
+
+#: includes/admin/class-msm-admin-select-fields.php:279
+msgid "Update"
+msgstr ""
+
+#: includes/admin/class-msm-admin-select-fields.php:290
+msgid "Select Fields"
+msgstr ""
+
+#: includes/admin/class-msm-admin-select-fields.php:301
+msgid "Order by"
+msgstr ""
+
+#: includes/admin/class-msm-admin-select-fields.php:302
+msgid "Terms"
+msgstr ""
+
+#: includes/admin/class-msm-admin-select-fields.php:314
+msgid "Edit"
+msgstr ""
+
+#: includes/admin/class-msm-admin-select-fields.php:314
+msgid "Delete"
+msgstr ""
+
+#: includes/admin/class-msm-admin-select-fields.php:317
+msgid "Public"
+msgstr ""
+
+#: includes/admin/class-msm-admin-select-fields.php:359
+msgid "Configure terms"
+msgstr ""
+
+#: includes/admin/class-msm-admin-select-fields.php:363
+msgid "No attributes currently exist."
+msgstr ""
+
+#: includes/admin/class-msm-admin-select-fields.php:373
+msgid "Add New Select Field"
+msgstr ""
+
+#: includes/admin/class-msm-admin-select-fields.php:378
+msgid "Name for the select field."
+msgstr ""
+
+#: includes/admin/class-msm-admin-select-fields.php:384
+msgid ""
+"Unique slug/reference for the select field; must be shorter than 28 "
+"characters."
+msgstr ""
+
+#: includes/admin/class-msm-admin-select-fields.php:418
+msgid "Add Attribute"
+msgstr ""
+
+#: includes/admin/class-msm-admin-select-fields.php:428
+msgid "Are you sure you want to delete this attribute?"
+msgstr ""
+
+#: includes/admin/class-msm-admin.php:18
+msgid "멤버스 설정"
+msgstr ""
+
+#: includes/admin/class-msm-admin.php:19
+msgid "프로필 설정"
+msgstr ""
+
+#: includes/admin/class-msm-admin.php:20
+msgid "소셜로그인 설정"
+msgstr ""
+
+#: includes/admin/class-msm-admin.php:21
+msgid "회원등급 설정"
+msgstr ""
+
+#: includes/admin/class-msm-admin.php:28 includes/class-msm-post-types.php:213
+msgid "권한요청 목록"
+msgstr ""
+
+#: includes/admin/class-msm-admin.php:30
+msgid "매뉴얼"
+msgstr ""
+
+#: includes/admin/meta-boxes/class-msm-meta-box-agreement.php:52
+msgid "약관 옵션"
+msgstr ""
+
+#: includes/admin/meta-boxes/class-msm-meta-box-attachment-info.php:48
+msgid "의뢰정보"
+msgstr ""
+
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:104
+msgid "폼 관리자"
+msgstr ""
+
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:349
+#: includes/admin/settings/class-msm-settings-members.php:665
+msgid "사용자 조건"
+msgstr ""
+
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:360
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:438
+#: includes/admin/settings/class-msm-settings-members.php:676
+#: includes/admin/settings/class-msm-settings-members.php:1239
+msgid "값"
+msgstr ""
+
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:417
+msgid "필드명"
+msgstr ""
+
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:425
+msgid "조건"
+msgstr ""
+
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:494
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:574
+msgid "액션 타입을 선택하세요."
+msgstr ""
+
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:499
+msgid "없음"
+msgstr ""
+
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:500
+#: includes/class-msm-install-data.php:15
+msgid "로그인"
+msgstr ""
+
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:501
+#: includes/class-msm-install-data.php:21
+msgid "회원가입"
+msgstr ""
+
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:502
+msgid "약관동의"
+msgstr ""
+
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:503
+#: includes/class-msm-endpoint.php:11 includes/class-msm-install-data.php:27
+#: includes/class-msm-myaccount.php:135 includes/class-msm-myaccount.php:141
+msgid "회원탈퇴"
+msgstr ""
+
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:504
+msgid "아이디/이메일 찾기"
+msgstr ""
+
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:505
+msgid "비밀번호 찾기"
+msgstr ""
+
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:506
+msgid "임시 비밀번호 발급"
+msgstr ""
+
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:507
+msgid "포스트 등록"
+msgstr ""
+
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:508
+msgid "커스텀 액션"
+msgstr ""
+
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:573
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:605
+msgid "타입"
+msgstr ""
+
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:579
+msgid "리다이렉트"
+msgstr ""
+
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:580
+msgid "사용자 메타 업데이트"
+msgstr ""
+
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:581
+msgid "세션저장"
+msgstr ""
+
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:582
+msgid "이벤트 트리거"
+msgstr ""
+
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:583
+msgid "사용자 역할 설정"
+msgstr ""
+
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:584
+msgid "역할설정"
+msgstr ""
+
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:606
+msgid "리다이렉트 타입을 선택하세요."
+msgstr ""
+
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:610
+msgid "URL"
+msgstr ""
+
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:611
+msgid "Message"
+msgstr ""
+
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:642
+msgid "사용자 역할"
+msgstr ""
+
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:686
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:728
+msgid "Field"
+msgstr ""
+
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:693
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:735
+msgid "Value"
+msgstr ""
+
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:700
+msgid "Meta Key"
+msgstr ""
+
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:707
+msgid "Meta Value"
+msgstr ""
+
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:742
+msgid "Session Key"
+msgstr ""
+
+#: includes/admin/meta-boxes/class-msm-meta-box-members-form.php:749
+msgid "Session Value"
+msgstr ""
+
+#: includes/admin/setting-manager/mshop-setting-helper.php:100
+msgid "비회원"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-fields.php:132
+msgid "키"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-fields.php:140
+msgid "레이블"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-fields.php:146
+msgid "썸네일 이미지 URL"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members-social.php:84
+msgid "소셜로그인 후 이동할 페이지"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members-social.php:93
+msgid "소셜 회원가입 후 추가정보 입력"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members-social.php:97
+msgid "사용"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members-social.php:105
+#: includes/admin/settings/class-msm-settings-members-social.php:313
+msgid "추가정보 입력 화면"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members-social.php:107
+#: includes/admin/settings/class-msm-settings-members-social.php:315
+msgid "추가정보 입력화면을 선택하세요."
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members-social.php:126
+#: includes/admin/settings/class-msm-settings-profile.php:123
+msgid "소셜로그인"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members-social.php:131
+#: includes/provider/class-msm-oauth-facebook.php:13
+msgid "페이스북 ( Facebook )"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members-social.php:143
+#: includes/admin/settings/class-msm-settings-members-social.php:219
+#: includes/admin/settings/class-msm-settings-members-social.php:425
+msgid "앱 ID"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members-social.php:151
+#: includes/admin/settings/class-msm-settings-members-social.php:227
+msgid "앱 시크릿 코드"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members-social.php:159
+#: includes/admin/settings/class-msm-settings-members-social.php:197
+#: includes/admin/settings/class-msm-settings-members-social.php:235
+#: includes/admin/settings/class-msm-settings-members-social.php:273
+#: includes/admin/settings/class-msm-settings-members-social.php:335
+#: includes/admin/settings/class-msm-settings-members-social.php:395
+#: includes/admin/settings/class-msm-settings-members-social.php:449
+msgid "리다이렉트 URI"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members-social.php:169
+#: includes/provider/class-msm-oauth-google.php:13
+msgid "구글 ( Google )"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members-social.php:181
+#: includes/admin/settings/class-msm-settings-members-social.php:257
+msgid "클라이언트 ID"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members-social.php:189
+#: includes/admin/settings/class-msm-settings-members-social.php:265
+msgid "클라이언트 시크릿"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members-social.php:207
+#: includes/provider/class-msm-oauth-instagram.php:13
+msgid "인스타그램 ( Instagram )"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members-social.php:245
+#: includes/provider/class-msm-oauth-naver.php:13
+msgid "네이버 ( Naver )"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members-social.php:283
+#: includes/provider/class-msm-oauth-kakao.php:17
+msgid "카카오 ( Kakao )"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members-social.php:327
+msgid "REST API 키"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members-social.php:343
+msgid "요청 권한"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members-social.php:367
+#: includes/provider/class-msm-oauth-line.php:13
+msgid "라인 ( Line )"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members-social.php:379
+msgid "채널 ID"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members-social.php:387
+msgid "채널 시크릿"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members-social.php:405
+#: includes/provider/class-msm-oauth-apple.php:29
+msgid "애플 ( Apple )"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members-social.php:417
+msgid "식별 ID"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members-social.php:433
+msgid "키 ID"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members-social.php:441
+msgid "키 내용"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:71
+#: includes/msm-functions.php:139
+msgid "Guest"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:114
+#: templates/myaccount/can-not-unsubscribe.php:6
+msgid ""
+"<h4>고객님은 진행중인 정기결제권을 보유하고 있습니다.<br>회원탈퇴를 하시려"
+"면, 정기결제권을 모두 취소해주셔야합니다.</h4>"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:123
+#: includes/admin/settings/class-msm-settings-members.php:152
+msgid "휴면예고 문자 템플릿"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:127
+msgid ""
+"[{쇼핑몰명}] 안녕하세요? {고객명} 회원님.\n"
+"\n"
+"저희 {쇼핑몰명} 쇼핑몰에 장기간 미접속으로 인해, 휴면회원으로 전환이 될 예정"
+"임을 안내해 드립니다.\n"
+"\n"
+"휴면회원으로 전환이 되었어도, 다시 접속을 하시면, 휴면회원 처리에서 제외되오"
+"니 이점 참고하여 주세요.\n"
+"\n"
+"* 휴면회원으로 전환된 이후 {휴면회원삭제대기일} 일 이후에는 회원 정보가 자동"
+"으로 삭제처리 됩니다.\n"
+"\n"
+"그동안 저희 {쇼핑몰명}을 이용 해 주셔서 감사합니다."
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:141
+#: includes/admin/settings/class-msm-settings-members.php:162
+msgid "휴면예고 알림톡 템플릿"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:142
+msgid "휴면예고 템플릿을 선택해주세요."
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:157
+msgid ""
+"<div class=\"desc2\">휴면예고 문자알림 기능을 이용하시려면 \"<a "
+"target=\"_blank\" href=\"https://www.codemshop.com/shop/sms_out/\">엠샵 문"
+"자 알림톡 자동발송 플러그인</a>\"이 설치되어 있어야 합니다.</div>"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:166
+msgid ""
+"<div class=\"desc2\">휴면예고 알림톡 기능을 이용하시려면 \"<a "
+"target=\"_blank\" href=\"https://www.codemshop.com/shop/sms_out/\">엠샵 문"
+"자 알림톡 자동발송 플러그인</a>\"이 설치되어 있어야 합니다.</div>"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:197
+msgid "회원 정보 수정"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:198
+msgid ""
+"<div class=\"desc2\">회원은 회원가입 시 입력한 정보를 내계정 페이지에서 수정"
+"할 수 있습니다.</div>"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:204
+msgid "스크립트 Footer 사용"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:205
+msgid ""
+"<div class=\"desc2\">스크립트를 Footer 영역에서 읽도록 설정 할 수 있습니다. "
+"타 플러그인과의 스크립트 충돌로 기능이 정상 동작되지 않는 경우에만 활성화를 "
+"해 주세요.</div>"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:211
+msgid "고객정보 표시"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:212
+msgid ""
+"<div class=\"desc2\">로그인 후 로그인 링크 위치에 고객정보를 표시합니다.</"
+"div>"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:219
+msgid "고객정보 문구"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:221
+msgid "{고객명}님 반갑습니다"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:233
+msgid "개인정보 이용 메일 활성화"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:234
+msgid ""
+"<div class=\"desc2\">개인정보 이용내역은 연1회 발송되는 법적의무 사항입니다."
+"<br>발송되는 메일에 대한 설정은 <a style=\"color:red;\" target=\"_blank\" "
+"href=\"/wp-admin/admin.php?page=wc-"
+"settings&tab=email&section=msm_email_personal_information\">개인정보 이용내"
+"역 안내 메일 설정</a>에서 진행 해주세요.</div>"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:247
+msgid "로그인 제한"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:248
+msgid ""
+"<div class=\"desc2\">지정된 등급의 사용자는 로그인할 수 없습니다.</div>"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:256
+msgid "로그인 제한 메시지"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:263
+msgid "회원가입시 이동할 URL"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:266
+msgid ""
+"회원가입 시 기본사용자 등급이 로그인 제한 사용자인 경우, 지정된 URL로 이동됩"
+"니다."
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:515
+msgid ""
+"[주의] 엠샵 멤버스 기본 페이지를 생성하시겠습니까? \n"
+"기본 페이지 생성 시, 기존에 수정된 엠샵 멤버스 페이지는 모두 삭제 됩니다."
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:530
+msgid ""
+"[주의] 엠샵 멤버스 기본 템플릿을 생성하시겠습니까? \n"
+"기본 템플릿 생성 시, 기존에 수정된 엠샵 멤버스 템플릿은 모두 삭제됩니다."
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:545
+msgid ""
+"[주의] 엠샵 멤버스 이용약관을 생성하시겠습니까? \n"
+"이용 약관 생성 시, 기존에 수정된 이용약관은 모두 삭제됩니다."
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:760
+msgid "문자 또는 알림톡을 이용한 휴대폰 인증 기능을 사용합니다."
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:786
+msgid "이미 가입된 사용자의 휴대폰 번호인 경우 인증을 제한합니다."
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:790
+#: includes/admin/settings/class-msm-settings-members.php:892
+msgid "인증문자 템플릿"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:794
+msgid ""
+"[{쇼핑몰명}] 고객님이 요청하신 인증번호는 [{인증번호}] 입니다. (타인 노출 금"
+"지)"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:820
+msgid ""
+"<div class='desc2'>비회원 결제 시 약관동의 화면에서 휴대폰 인증을 진행합니"
+"다. 인증된 휴대폰 번호는 체크아웃 화면의 휴대폰 필드에 자동으로 설정됩니다."
+"</div>"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:835
+msgid ""
+"<div class='desc2'>휴대폰 미인증 사용자는 쇼핑몰 이용이 제한됩니다. 이미 가"
+"입된 회원도 반드시 휴대폰 인증을 진행해야 합니다.</div>"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:843
+msgid ""
+"<div class='desc2'>소셜 로그인 사용자는 휴대폰 인증을 하지 않습니다.</div>"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:852
+msgid ""
+"<div class='desc2'>고객이 결제를 진행할때 휴대폰 인증 여부를 체크합니다. 결"
+"제 페이지를 제외한 다른 페이지는 이용이 가능합니다.</div>"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:876
+msgid ""
+"<div class='desc2'>고객은 임시 비밀번호를 휴대폰으로 받을 수 있습니다.</div>"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:896
+msgid "[{쇼핑몰명}] 고객님의 임시 비밀번호는 [{임시비밀번호}] 입니다."
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:928
+msgid ""
+"<div class=\"desc2\">휴대폰 인증 기능을 이용하시려면 \"<a target=\"_blank\" "
+"href=\"https://www.codemshop.com/shop/sms_out/\">엠샵 문자 알림톡 자동발송 "
+"플러그인</a>\"이 설치되어 있어야 합니다.</div>"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:968
+#: includes/admin/settings/class-msm-settings-members.php:1096
+#: includes/admin/settings/class-msm-settings-members.php:1263
+#: includes/admin/settings/class-msm-settings-members.php:1317
+msgid "활성화"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:975
+msgid "허용 경로"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:977
+msgid "허용 경로를 입력하세요."
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1076
+msgid ""
+"<div class=\"desc2\">이메일 인증 기능을 이용하시려면 \"우커머스(Woocommere) "
+"플러그인\"이 설치되어 있어야 합니다.</div>"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1088
+msgid "쿠키 사용 동의 설정"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1092
+#: includes/admin/settings/class-msm-settings-members.php:1124
+msgid "기본 설정"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1100
+msgid "쿠키 사용동의 기능 기능을 사용합니다."
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1109
+msgid ""
+"{사이트명}에 오신 것을 환영합니다! 웹사이트를 원활하게 표시하기 위해 쿠키를 "
+"사용합니다. {사이트명}을 계속 이용하려면 쿠키 사용에 동의해야 합니다."
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1120
+msgid "보안 설정"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1129
+msgid "접근제어 기능 활성화"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1137
+msgid "우커머스 로그인 비활성화"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1140
+msgid "스팸회원 가입 차단을 위해 우커머스의 기본 폼 핸들러를 비활성화합니다."
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1144
+msgid "댓글 작성자 숨김"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1148
+msgid "필드선택"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1150
+#: includes/class-msm-ajax.php:513
+#: includes/class-msm-phone-certification.php:271
+msgid "사용안함"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1151
+msgid "왼쪽 숨김"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1152
+msgid "오른쪽 숨김"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1153
+msgid "이메일 숨김"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1159
+msgid "이동할 페이지 URL 주소"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1169
+msgid "사용자 등급별 URL 접근차단"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1184
+#: includes/admin/settings/class-msm-settings-members.php:1218
+msgid "경로 이름"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1191
+msgid "등급"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1193
+msgid "등급을 선택하세요."
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1204
+msgid "URL 접근차단 예외규칙"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1225
+msgid "파라미터"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1232
+msgid "경로"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1254
+#: includes/admin/settings/class-msm-settings-members.php:1259
+msgid "스티비 연동"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1272
+msgid "스티비 API"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1275
+msgid ""
+"스티비 API 키 값을 입력 해주세요. 스티비 -> 계정 및 결제 -> API키 에서 확인"
+"하실 수 있습니다."
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1277
+msgid "<div class=\"desc2\">스티비 API 키를 입력합니다.</div>"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1282
+msgid "스티비 주소록"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1285
+msgid ""
+"스티비 주소록의 아이디를 입력 해주세요. 스티비 -> 주소록 -> 목록 페이지의 "
+"URL 에서 확인하실 수 있습니다."
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1287
+msgid ""
+"<div class=\"desc2\">스티비 주소록의 아이디를 입력합니다.(예 : https://www."
+"stibee.com/lists/12345/subscribers/S/all -> 12345)</div>"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1292
+msgid "스티비 그룹 아이디 (선택사항)"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1295
+msgid ""
+"스티비 주소록의 그룹 아이디를 입력 해주세요. 스티비 -> 주소록 -> 목록 -> 그"
+"룹 페이지의 URL 에서 확인하실 수 있습니다."
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1297
+msgid ""
+"<div class=\"desc2\">스티비 그룹의 아이디를 입력합니다.(예 : https://www."
+"stibee.com/lists/12345/subscribers/S/00012 -> 00012)</div>"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1308
+#: includes/admin/settings/class-msm-settings-members.php:1313
+msgid "메일침프 연동"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1321
+msgid "메일침프 연동 기능을 사용합니다."
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1326
+msgid "메일침프 API"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1329
+msgid "메일침프 API 키 값을 입력 해주세요.(위치는 매뉴얼을 참고해주세요.)"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1336
+msgid "메일침프 프리픽스"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1339
+msgid "메일침프 서버 프리픽스를 입력해주세요."
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1341
+msgid ""
+"<div class=\"desc2\">메일침프 서버 프리픽스를 입력합니다.(예 : https://us14."
+"admin.mailchimp.com/ -> us14)</div>"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1346
+msgid "메일침프 리스트 ID"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1349
+msgid ""
+"메일침프 Audience 아이디를 입력해주세요.(위치는 매뉴얼을 참고해주세요.)"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1415
+msgid ""
+"개인정보 이용 안내 메일 발송 예약작업이 등록되어 있습니다. 다음 실행 예정 시"
+"간은 %s 입니다."
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-members.php:1423
+msgid ""
+"개인정보 이용 안내 메일 발송 기능이 활성화되어 있지만, 발송 처리를 위한 예약"
+"작업이 등록되지 않았습니다. 개인정보 설정을 확인하신 후, 저장 버튼을 클릭해"
+"주세요."
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-profile.php:114
+msgid "회원 등급"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-profile.php:128
+msgid "포함"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-profile.php:129
+msgid "제외"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-profile.php:134
+msgid "프로필 편집 폼"
+msgstr ""
+
+#: includes/admin/settings/class-msm-settings-profile.php:142
+msgid "프로필 조회 폼"
+msgstr ""
+
+#: includes/admin/update/plugin-updates/Puc/v4p11/Plugin/Ui.php:24
+msgid "View details"
+msgstr ""
+
+#: includes/admin/update/plugin-updates/Puc/v4p11/Plugin/Ui.php:47
+msgid "More information about %s"
+msgstr ""
+
+#: includes/admin/update/plugin-updates/Puc/v4p11/Plugin/Ui.php:85
+msgid "Check for updates"
+msgstr ""
+
+#: includes/admin/update/plugin-updates/Puc/v4p11/Plugin/Ui.php:163
+msgid "Unknown update checker status \"%s\""
+msgstr ""
+
+#: includes/admin/update/plugin-updates/Puc/v4p11/Vcs/PluginUpdateChecker.php:80
+msgid "There is no changelog available."
+msgstr ""
+
+#: includes/class-msm-ajax.php:72 includes/class-msm-ajax.php:82
+#: includes/class-msm-ajax.php:92
+msgid "사용권한이 없습니다."
+msgstr ""
+
+#: includes/class-msm-ajax.php:77
+msgid "엠샵 멤버스 기본 페이지가 생성되었습니다."
+msgstr ""
+
+#: includes/class-msm-ajax.php:87
+msgid "엠샵 멤버스 기본 템플릿이 생성되었습니다."
+msgstr ""
+
+#: includes/class-msm-ajax.php:97
+msgid "엠샵 멤버스 이용약관이 생성되었습니다."
+msgstr ""
+
+#: includes/class-msm-ajax.php:187
+msgid "잘못된 요청입니다. 페이지를 새로고침 하신 후 다시 시도해주세요."
+msgstr ""
+
+#: includes/class-msm-ajax.php:240 includes/class-msm-security.php:137
+msgid "잘못된 요청입니다"
+msgstr ""
+
+#: includes/class-msm-ajax.php:285
+msgid "약관에 동의하셔야 합니다."
+msgstr ""
+
+#: includes/class-msm-ajax.php:696
+#: templates/myaccount/email-authentication-fail.php:8
+msgid "잘못된 요청입니다."
+msgstr ""
+
+#: includes/class-msm-ajax.php:703
+msgid "이메일 형식이 올바르지 않습니다."
+msgstr ""
+
+#: includes/class-msm-ajax.php:712
+msgid "이미 사용중인 %s 입니다."
+msgstr ""
+
+#: includes/class-msm-ajax.php:715
+msgid "사용할 수 있는 %s 입니다."
+msgstr ""
+
+#: includes/class-msm-cron.php:521
+msgid "{고객명}"
+msgstr ""
+
+#: includes/class-msm-cron.php:525 includes/class-msm-cron.php:527
+msgid "코드엠샵"
+msgstr ""
+
+#: includes/class-msm-cron.php:529
+#: templates/form-field/agreement-accordion.php:10
+#: templates/form-field/agreement-page.php:10
+#: templates/form-field/agreement-standard.php:10
+msgid "{쇼핑몰명}"
+msgstr ""
+
+#: includes/class-msm-cron.php:533
+msgid "{휴면회원삭제대기일}"
+msgstr ""
+
+#: includes/class-msm-email-authenticate.php:117
+msgid "이미 사용중인 이메일입니다."
+msgstr ""
+
+#: includes/class-msm-email-authenticate.php:134
+msgid "[%s] 이메일 인증번호를 알려드립니다."
+msgstr ""
+
+#: includes/class-msm-email-authenticate.php:156
+#: includes/class-msm-phone-certification.php:193
+#: includes/class-msm-security.php:77 includes/class-msm-security.php:110
+msgid "인증 가능 횟수가 초과되었습니다."
+msgstr ""
+
+#: includes/class-msm-email-authenticate.php:162
+#: includes/class-msm-phone-certification.php:201
+msgid "인증 정보가 존재하지 않습니다."
+msgstr ""
+
+#: includes/class-msm-email-authenticate.php:166
+#: includes/class-msm-phone-certification.php:205
+msgid "인증 정보가 올바르지 않습니다."
+msgstr ""
+
+#: includes/class-msm-email-authenticate.php:170
+#: includes/class-msm-phone-certification.php:209
+msgid "올바르지 않은 인증번호입니다. 남은 시도횟수 : %d"
+msgstr ""
+
+#: includes/class-msm-install-data.php:33
+msgid "비밀번호찾기"
+msgstr ""
+
+#: includes/class-msm-install-data.php:39
+msgid "이용약관"
+msgstr ""
+
+#: includes/class-msm-install-data.php:45
+msgid "개인정보취급방침"
+msgstr ""
+
+#: includes/class-msm-install-data.php:60
+msgid "쇼핑몰 이용약관"
+msgstr ""
+
+#: includes/class-msm-install-data.php:71
+msgid "쇼핑몰 이용약관 (비회원)"
+msgstr ""
+
+#: includes/class-msm-install-data.php:82
+msgid "개인정보 수집항목"
+msgstr ""
+
+#: includes/class-msm-install-data.php:93
+msgid "개인정보 수집목적"
+msgstr ""
+
+#: includes/class-msm-install-data.php:104
+msgid "개인정보 보유 및 이용기간"
+msgstr ""
+
+#: includes/class-msm-install-data.php:115
+msgid "개인정보 제3자 제공동의"
+msgstr ""
+
+#: includes/class-msm-install-data.php:126
+msgid "회원 탈퇴 안내"
+msgstr ""
+
+#: includes/class-msm-message.php:51
+msgid "신규회원가입"
+msgstr ""
+
+#: includes/class-msm-myaccount.php:138
+msgid "Logout"
+msgstr ""
+
+#: includes/class-msm-phone-certification.php:105
+msgid "휴대폰 인증 기능을 활성화 해주세요."
+msgstr ""
+
+#: includes/class-msm-phone-certification.php:109
+msgid "휴대폰 번호가 누락되었습니다."
+msgstr ""
+
+#: includes/class-msm-phone-certification.php:113
+msgid "휴대폰 인증 기능을 이용하려면 엠샵 문자 알림 플러그인이 필요합니다."
+msgstr ""
+
+#: includes/class-msm-phone-certification.php:152
+msgid "이미 등록(인증)된 휴대폰 번호 입니다."
+msgstr ""
+
+#: includes/class-msm-phone-certification.php:154
+msgid "이미 등록(인증)된 휴대폰 번호 입니다. 로그인 후 이용해주세요."
+msgstr ""
+
+#: includes/class-msm-phone-certification.php:225
+msgid "문자발송"
+msgstr ""
+
+#: includes/class-msm-phone-certification.php:226
+msgid "알림톡발송"
+msgstr ""
+
+#: includes/class-msm-phone-certification.php:258
+msgid "알림톡 템플릿"
+msgstr ""
+
+#: includes/class-msm-phone-certification.php:266
+msgid "문자 대체 발송"
+msgstr ""
+
+#: includes/class-msm-phone-certification.php:272
+msgid "알림톡 내용전달"
+msgstr ""
+
+#: includes/class-msm-post-post-actions.php:60
+msgid "이메일 발송"
+msgstr ""
+
+#: includes/class-msm-post-post-actions.php:61
+msgid "엠샵 포스트 - 카테고리 설정"
+msgstr ""
+
+#: includes/class-msm-post-post-actions.php:62
+msgid "엠샵 포스트 - 컨텐츠 설정"
+msgstr ""
+
+#: includes/class-msm-post-post-actions.php:108
+msgid ""
+"<div class=\"desc2\">포스트 제목의 포맷을 입력하세요. {폼 위젯 아이디}를 입"
+"력하시면 사용자가 입력한 값으로 치환됩니다.</div>"
+msgstr ""
+
+#: includes/class-msm-post-post-actions.php:125
+msgid "아이디"
+msgstr ""
+
+#: includes/class-msm-post-post-types.php:17
+msgid "엠샵 포스트 목록"
+msgstr ""
+
+#: includes/class-msm-post-post-types.php:18
+msgid "엠샵 포스트 검색"
+msgstr ""
+
+#: includes/class-msm-post-post-types.php:19
+msgid "엠샵 포스트 항목이 없습니다."
+msgstr ""
+
+#: includes/class-msm-post-post-types.php:20
+msgid "휴지통에 엠샵포스트 항목이 없습니다."
+msgstr ""
+
+#: includes/class-msm-post-post-types.php:25
+#: includes/class-msm-post-types.php:151 includes/class-msm-post-types.php:221
+msgid "Description."
+msgstr ""
+
+#: includes/class-msm-post-post-types.php:50
+msgid "카테고리 검색"
+msgstr ""
+
+#: includes/class-msm-post-post-types.php:51
+msgid "모든 엠샵포스트 카테고리"
+msgstr ""
+
+#: includes/class-msm-post-post-types.php:52
+msgid "상위 엠샵포스트 카테고리"
+msgstr ""
+
+#: includes/class-msm-post-post-types.php:53
+msgid "상위 엠샵포스트 카테고리:"
+msgstr ""
+
+#: includes/class-msm-post-post-types.php:54
+msgid "엠샵포스트 카테고리 편집"
+msgstr ""
+
+#: includes/class-msm-post-post-types.php:55
+msgid "엠샵포스트 카테고리 수정"
+msgstr ""
+
+#: includes/class-msm-post-post-types.php:56
+msgid "엠샵포스트 카테고리 추가"
+msgstr ""
+
+#: includes/class-msm-post-post-types.php:57
+msgid "엠샵포스트 카테고리 이름"
+msgstr ""
+
+#: includes/class-msm-post-post-types.php:58
+msgid "엠샵포스트 카테고리"
+msgstr ""
+
+#: includes/class-msm-post-types.php:72
+msgid "이용약관 분류 검색"
+msgstr ""
+
+#: includes/class-msm-post-types.php:73
+msgid "모든 이용약관 분류"
+msgstr ""
+
+#: includes/class-msm-post-types.php:74
+msgid "상위 이용약관 분류"
+msgstr ""
+
+#: includes/class-msm-post-types.php:75
+msgid "상위 이용약관 분류:"
+msgstr ""
+
+#: includes/class-msm-post-types.php:76
+msgid "이용약관 분류 편집"
+msgstr ""
+
+#: includes/class-msm-post-types.php:77
+msgid "이용약관 분류 수정"
+msgstr ""
+
+#: includes/class-msm-post-types.php:78
+msgid "이용약관 분류 추가"
+msgstr ""
+
+#: includes/class-msm-post-types.php:79
+msgid "이용약관 분류 이름"
+msgstr ""
+
+#: includes/class-msm-post-types.php:80
+msgid "이용약관 분류"
+msgstr ""
+
+#: includes/class-msm-post-types.php:101
+msgid "템플릿 카테고리 검색"
+msgstr ""
+
+#: includes/class-msm-post-types.php:102
+msgid "모든 템플릿 카테고리"
+msgstr ""
+
+#: includes/class-msm-post-types.php:103
+msgid "상위 템플릿 카테고리"
+msgstr ""
+
+#: includes/class-msm-post-types.php:104
+msgid "상위 템플릿 카테고리:"
+msgstr ""
+
+#: includes/class-msm-post-types.php:105
+msgid "템플릿 카테고리 편집"
+msgstr ""
+
+#: includes/class-msm-post-types.php:106
+msgid "템플릿 카테고리 수정"
+msgstr ""
+
+#: includes/class-msm-post-types.php:107
+msgid "템플릿 카테고리 추가"
+msgstr ""
+
+#: includes/class-msm-post-types.php:108
+msgid "템플릿 카테고리 이름"
+msgstr ""
+
+#: includes/class-msm-post-types.php:109
+msgid "템플릿 카테고리"
+msgstr ""
+
+#: includes/class-msm-post-types.php:138
+msgid "멤버스 템플릿 추가"
+msgstr ""
+
+#: includes/class-msm-post-types.php:139
+msgid "신규 멤버스 템플릿"
+msgstr ""
+
+#: includes/class-msm-post-types.php:140
+msgid "멤버스 템플릿 편집"
+msgstr ""
+
+#: includes/class-msm-post-types.php:141
+msgid "멤버스 템플릿 보기"
+msgstr ""
+
+#: includes/class-msm-post-types.php:142
+msgid "모든 멤버스 템플릿"
+msgstr ""
+
+#: includes/class-msm-post-types.php:143
+msgid "멤버스 템플릿 검색"
+msgstr ""
+
+#: includes/class-msm-post-types.php:144
+msgid "상위 멤버스 템플릿:"
+msgstr ""
+
+#: includes/class-msm-post-types.php:145
+msgid "멤버스 템플릿이 없습니다."
+msgstr ""
+
+#: includes/class-msm-post-types.php:146
+msgid "휴지통에 멤버스 템플릿이 없습니다."
+msgstr ""
+
+#: includes/class-msm-post-types.php:176
+msgid "이용약관 추가"
+msgstr ""
+
+#: includes/class-msm-post-types.php:177
+msgid "신규 이용약관"
+msgstr ""
+
+#: includes/class-msm-post-types.php:178
+msgid "이용약관 수정"
+msgstr ""
+
+#: includes/class-msm-post-types.php:179
+msgid "이용약관 보기"
+msgstr ""
+
+#: includes/class-msm-post-types.php:180
+msgid "모든 이용약관"
+msgstr ""
+
+#: includes/class-msm-post-types.php:181
+msgid "이용약관 검색"
+msgstr ""
+
+#: includes/class-msm-post-types.php:182
+msgid "상위 이용약관:"
+msgstr ""
+
+#: includes/class-msm-post-types.php:183
+msgid "이용약관이 없습니다."
+msgstr ""
+
+#: includes/class-msm-post-types.php:184
+msgid "휴지통에 이용약관이 없습니다."
+msgstr ""
+
+#: includes/class-msm-post-types.php:189
+msgid "설명."
+msgstr ""
+
+#: includes/class-msm-post-types.php:214
+msgid "권한요청 검색"
+msgstr ""
+
+#: includes/class-msm-post-types.php:215
+msgid "권한요청 항목이 없습니다."
+msgstr ""
+
+#: includes/class-msm-post-types.php:216
+msgid "휴지통에 권한요청 항목이 없습니다."
+msgstr ""
+
+#: includes/class-msm-post-types.php:247
+msgid "Apply <span class=\"count\">(%s)</span>"
+msgid_plural "Apply <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-msm-post-types.php:255
+msgid "Approved <span class=\"count\">(%s)</span>"
+msgid_plural "Approved <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-msm-post-types.php:263
+msgid "Rejected <span class=\"count\">(%s)</span>"
+msgid_plural "Rejected <span class=\"count\">(%s)</span>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-msm-profile.php:121
+msgid "사용자 프로필 편집"
+msgstr ""
+
+#: includes/class-msm-profile.php:122
+msgid "사용자 프로필 보기"
+msgstr ""
+
+#: includes/class-msm-profile.php:123
+msgid "비밀번호 변경"
+msgstr ""
+
+#: includes/class-msm-rules.php:46
+msgid "로그인 사용자"
+msgstr ""
+
+#: includes/class-msm-rules.php:47
+msgid "관리자"
+msgstr ""
+
+#: includes/class-msm-rules.php:48
+msgid "등급변경 요청중"
+msgstr ""
+
+#: includes/class-msm-security.php:68 includes/class-msm-security.php:83
+msgid "휴대폰 인증 정보가 올바르지 않습니다."
+msgstr ""
+
+#: includes/class-msm-security.php:100
+msgid "에메일 인증 정보가 올바르지 않습니다."
+msgstr ""
+
+#: includes/class-msm-security.php:116
+msgid "이메일 인증 정보가 올바르지 않습니다."
+msgstr ""
+
+#: includes/class-msm-shortcodes.php:121
+msgid "더 안전한 비밀번호를 입력해주세요."
+msgstr ""
+
+#: includes/class-msm-shortcodes.php:131
+msgid "비밀번호를 입력하세요."
+msgstr ""
+
+#: includes/class-msm-shortcodes.php:158
+msgid "reCAPTCHA를 클릭해주세요."
+msgstr ""
+
+#: includes/class-msm-shortcodes.php:167
+msgid "간편인증을 진행해주세요."
+msgstr ""
+
+#: includes/class-msm-shortcodes.php:188
+msgid "휴대폰 인증을 진행해주세요"
+msgstr ""
+
+#: includes/class-msm-shortcodes.php:230
+msgid "이메일 인증을 진행해주세요."
+msgstr ""
+
+#: includes/class-msm-shortcodes.php:239
+msgid "%s 중복확인을 해주세요."
+msgstr ""
+
+#: includes/class-msm-social-login.php:249
+msgid "이미 연결된 소셜 채널입니다. [%s]"
+msgstr ""
+
+#: includes/emails/class-msm-email-authentication.php:17
+#: includes/emails/class-msm-email-authentication.php:23
+#: includes/emails/class-msm-email-authentication.php:88
+#: templates/emails/email-authentication.php:17
+msgid "이메일 인증"
+msgstr ""
+
+#: includes/emails/class-msm-email-authentication.php:18
+msgid "신규회원 가입시 이메일 인증을 위해 전달되는 메일입니다."
+msgstr ""
+
+#: includes/emails/class-msm-email-authentication.php:22
+#: includes/emails/class-msm-email-authentication.php:80
+msgid "[{site_title}] 이메일 인증"
+msgstr ""
+
+#: includes/emails/class-msm-email-authentication.php:71
+#: includes/emails/class-msm-email-new-role-application.php:91
+#: includes/emails/class-msm-email-personal-info.php:73
+#: includes/emails/class-msm-email-post.php:87
+msgid "Enable/Disable"
+msgstr ""
+
+#: includes/emails/class-msm-email-authentication.php:73
+#: includes/emails/class-msm-email-new-role-application.php:93
+#: includes/emails/class-msm-email-personal-info.php:75
+#: includes/emails/class-msm-email-post.php:89
+msgid "Enable this email notification"
+msgstr ""
+
+#: includes/emails/class-msm-email-authentication.php:77
+#: includes/emails/class-msm-email-new-role-application.php:105
+#: includes/emails/class-msm-email-personal-info.php:79
+#: includes/emails/class-msm-email-post.php:101
+msgid "Subject"
+msgstr ""
+
+#: includes/emails/class-msm-email-authentication.php:79
+#: includes/emails/class-msm-email-new-role-application.php:107
+#: includes/emails/class-msm-email-personal-info.php:81
+#: includes/emails/class-msm-email-post.php:103
+msgid ""
+"This controls the email subject line. Leave blank to use the default "
+"subject: <code>%s</code>."
+msgstr ""
+
+#: includes/emails/class-msm-email-authentication.php:85
+#: includes/emails/class-msm-email-new-role-application.php:113
+#: includes/emails/class-msm-email-post.php:110
+msgid "Email Heading"
+msgstr ""
+
+#: includes/emails/class-msm-email-authentication.php:87
+#: includes/emails/class-msm-email-new-role-application.php:115
+#: includes/emails/class-msm-email-post.php:112
+msgid ""
+"This controls the main heading contained within the email notification. "
+"Leave blank to use the default heading: <code>%s</code>."
+msgstr ""
+
+#: includes/emails/class-msm-email-authentication.php:93
+#: includes/emails/class-msm-email-new-role-application.php:121
+#: includes/emails/class-msm-email-personal-info.php:87
+#: includes/emails/class-msm-email-post.php:118
+msgid "Email type"
+msgstr ""
+
+#: includes/emails/class-msm-email-authentication.php:95
+#: includes/emails/class-msm-email-new-role-application.php:123
+#: includes/emails/class-msm-email-personal-info.php:89
+#: includes/emails/class-msm-email-post.php:120
+msgid "Choose which format of email to send."
+msgstr ""
+
+#: includes/emails/class-msm-email-new-role-application.php:19
+msgid "등급변경 요청"
+msgstr ""
+
+#: includes/emails/class-msm-email-new-role-application.php:20
+msgid "등급변경 요청이 접수되었을때, 관리자에게 전달되는 메일입니다."
+msgstr ""
+
+#: includes/emails/class-msm-email-new-role-application.php:24
+#: includes/emails/class-msm-email-new-role-application.php:25
+msgid "신규 등급변경 요청"
+msgstr ""
+
+#: includes/emails/class-msm-email-new-role-application.php:97
+#: includes/emails/class-msm-email-post.php:93
+msgid "Recipient(s)"
+msgstr ""
+
+#: includes/emails/class-msm-email-new-role-application.php:99
+#: includes/emails/class-msm-email-post.php:95
+msgid ""
+"Enter recipients (comma separated) for this email. Defaults to <code>%s</"
+"code>."
+msgstr ""
+
+#: includes/emails/class-msm-email-personal-info.php:17
+#: includes/emails/class-msm-email-personal-info.php:23
+msgid "개인정보 이용내역 안내"
+msgstr ""
+
+#: includes/emails/class-msm-email-personal-info.php:18
+msgid "개인정보 이용내역 안내를 위해 전달되는 메일입니다."
+msgstr ""
+
+#: includes/emails/class-msm-email-personal-info.php:22
+#: includes/emails/class-msm-email-personal-info.php:82
+msgid "[{site_title}] 개인정보 이용내역 안내"
+msgstr ""
+
+#: includes/emails/class-msm-email-personal-info.php:96
+msgid "사이트명"
+msgstr ""
+
+#: includes/emails/class-msm-email-personal-info.php:98
+msgid "사이트명 미 입력 시 워드프레스 기본 설정의 사이트 제목으로 대체됩니다."
+msgstr ""
+
+#: includes/emails/class-msm-email-personal-info.php:99
+msgid "사이트명을 입력해주세요."
+msgstr ""
+
+#: includes/emails/class-msm-email-personal-info.php:104
+msgid "개인정보 처리방침 링크"
+msgstr ""
+
+#: includes/emails/class-msm-email-personal-info.php:106
+#: includes/emails/class-msm-email-personal-info.php:107
+msgid "개인정보 처리방침 페이지의 링크를 입력해주세요."
+msgstr ""
+
+#: includes/emails/class-msm-email-personal-info.php:112
+msgid "색상 코드"
+msgstr ""
+
+#: includes/emails/class-msm-email-personal-info.php:114
+msgid "템플릿의 색상 코드를 입력해주세요. 기본값은 #000000 입니다."
+msgstr ""
+
+#: includes/emails/class-msm-email-personal-info.php:115
+msgid "이메일 템플릿의 색상 코드를 입력해주세요."
+msgstr ""
+
+#: includes/emails/class-msm-email-post.php:22
+#: includes/emails/class-msm-email-post.php:23
+#: includes/emails/class-msm-email-post.php:26
+#: includes/emails/class-msm-email-post.php:27
+msgid "포스트 등록 안내"
+msgstr ""
+
+#: includes/msm-functions.php:46
+msgid "Select"
+msgstr ""
+
+#: includes/msm-functions.php:47
+msgid "Text"
+msgstr ""
+
+#: templates/emails/email-authentication.php:13
+msgid "회원가입을 해 주셔서 감사합니다."
+msgstr ""
+
+#: templates/emails/email-authentication.php:14
+msgid ""
+"이메일 인증을 위해 클릭을 해 주세요.<br>이메일 인증 후 원할한 사이트 이용이 "
+"가능합니다."
+msgstr ""
+
+#: templates/emails/email-personal-information.php:90
+msgid "%s 개인정보 이용내역 안내"
+msgstr ""
+
+#: templates/emails/email-personal-information.php:94
+msgid "안녕하세요. %s입니다."
+msgstr ""
+
+#: templates/emails/email-personal-information.php:95
+msgid ""
+"본 메일은 개인정보 보호법 제 39조의8항 (개인정보 이용내역의 통지)에 의거, "
+"%s 회원님의 개인정보 이용내역을 안내드립니다."
+msgstr ""
+
+#: templates/emails/email-personal-information.php:98
+msgid "개인정보처리방침 자세히 보기"
+msgstr ""
+
+#: templates/emails/email-personal-information.php:101
+msgid ""
+"※ 본 메일은 법령에 따른 통지의무 사항으로 수신동의 여부와 관계없이 모든 회원"
+"님들께 연 1회 법적 고지로 발송되는 메일입니다."
+msgstr ""
+
+#: templates/emails/email-verification.php:8
+msgid "[%s] 고객님이 요청하신 인증번호를 발송해 드립니다."
+msgstr ""
+
+#: templates/emails/email-verification.php:11
+msgid "아래 인증번호 6자리를 인증번호 입력창에 입력해주세요."
+msgstr ""
+
+#: templates/emails/new-role-application.php:27
+msgid "등급변경 요청.."
+msgstr ""
+
+#: templates/form-field/agreement-accordion.php:11
+#: templates/form-field/agreement-page.php:11
+#: templates/form-field/agreement-standard.php:11
+msgid "{쇼핑몰URL}"
+msgstr ""
+
+#: templates/form-field/agreement-accordion.php:32
+msgid "동의합니다.</p>"
+msgstr ""
+
+#: templates/form-field/agreement-page.php:32
+#: templates/form-field/agreement-standard.php:32
+msgid "에 동의합니다.</p>"
+msgstr ""
+
+#: templates/form-field/birthday.php:53
+msgid "년"
+msgstr ""
+
+#: templates/form-field/birthday.php:62
+msgid "월"
+msgstr ""
+
+#: templates/form-field/birthday.php:70
+msgid "일"
+msgstr ""
+
+#: templates/form-field/date.php:55
+msgid "날짜 선택"
+msgstr ""
+
+#: templates/form-field/input.php:41 templates/form-field/phone.php:95
+msgid "인증번호 요청"
+msgstr ""
+
+#: templates/form-field/input.php:44
+msgid "중복확인"
+msgstr ""
+
+#: templates/form-field/input.php:52
+msgid "이메일로 전송된 인증번호를 입력해주세요"
+msgstr ""
+
+#: templates/form-field/input.php:55 templates/form-field/phone.php:108
+msgid "인증하기"
+msgstr ""
+
+#: templates/form-field/password.php:26
+msgid "매우 약함"
+msgstr ""
+
+#: templates/form-field/password.php:27 templates/form-field/password.php:28
+msgid "약함"
+msgstr ""
+
+#: templates/form-field/password.php:29
+msgid "보통"
+msgstr ""
+
+#: templates/form-field/password.php:32
+msgid ""
+" - 더 안전한 비밀번호를 입력해주세요.<br><span style=\"font-size: 0.85em; "
+"color: grey;\">힌트: 비밀번호는 최소한 12자 이상을 사용해야 합니다. 강한 비"
+"밀번호를 만드려면 영문 대문자, 소문자, 숫자와 ! \" ? $ % & &와 같은 특수문자"
+"를 사용하세요.</span>"
+msgstr ""
+
+#: templates/form-field/phone.php:71
+msgid "아이디 또는 이메일을 입력해주세요."
+msgstr ""
+
+#: templates/form-field/phone.php:105
+msgid "휴대폰으로 전송된 인증번호를 입력해주세요"
+msgstr ""
+
+#: templates/myaccount/email-authentication.php:8
+msgid "환영합니다! <span class=\"%s\">이메일 주소</span>를 인증해 주세요."
+msgstr ""
+
+#: templates/myaccount/email-authentication.php:9
+msgid "이메일 인증을 위한 메일이 발송되었습니다."
+msgstr ""
+
+#: templates/myaccount/email-authentication.php:9
+msgid "회원가입 완료를 위한 이메일 인증을 진행 해 주세요."
+msgstr ""
+
+#: templates/myaccount/email-authentication.php:11
+msgid "가입 이메일 주소 : %s"
+msgstr ""
+
+#: templates/myaccount/email-authentication.php:12
+msgid ""
+"이메일 주소를 잘못 입력하신 경우 <br>'고객문의'로 이메일 주소 수정을 요청해 "
+"주시기 바랍니다."
+msgstr ""
+
+#: templates/myaccount/email-authentication.php:13
+msgid "이메일을 받지 못하셨나요?"
+msgstr ""
+
+#: templates/myaccount/email-authentication.php:14
+msgid "이메일 다시 보내기"
+msgstr ""
+
+#: templates/myaccount/email-certified.php:11
+msgid "이메일 인증이 완료되었습니다."
+msgstr ""
+
+#: templates/myaccount/social-connect-status.php:14
+#: templates/myaccount/social-connect-status.php:23
+#: templates/myaccount/social-connected-info.php:5
+msgid "SNS 연동"
+msgstr ""
+
+#: templates/myaccount/social-connect-status.php:25
+#: templates/myaccount/social-connected-info.php:7
+msgid "%s 아이디로 로그인"
+msgstr ""
+
+#: templates/myaccount/social-connect-status.php:29
+msgid "OFF"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "엠샵 멤버스"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"쇼핑몰에서 필요한 회원가입 및 관리 운영에 필요한 기능을 지원하며, 다양한 템"
+"플릿 제작을 위한 폼 디자이너를 제공 합니다."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "CodeMShop"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://www.codemshop.com/"
+msgstr ""
+
+#: includes/admin/update/plugin-updates/Puc/v4p11/Plugin/Ui.php:153
+msgctxt "the plugin title"
+msgid "The %s plugin is up to date."
+msgstr ""
+
+#: includes/admin/update/plugin-updates/Puc/v4p11/Plugin/Ui.php:155
+msgctxt "the plugin title"
+msgid "A new version of the %s plugin is available."
+msgstr ""
+
+#: includes/admin/update/plugin-updates/Puc/v4p11/Plugin/Ui.php:157
+msgctxt "the plugin title"
+msgid "Could not determine if updates are available for %s."
+msgstr ""
+
+#: includes/class-msm-post-actions.php:214
+#: includes/class-msm-role-application.php:78
+msgctxt "timezone date format"
+msgid "Y-m-d H:i:s"
+msgstr ""
+
+#: includes/class-msm-post-post-types.php:13
+msgctxt "post type general name"
+msgid "엠샵 포스트"
+msgstr ""
+
+#: includes/class-msm-post-types.php:133
+msgctxt "post type general name"
+msgid "엠샵 멤버스 템플릿"
+msgstr ""
+
+#: includes/class-msm-post-types.php:171
+msgctxt "post type general name"
+msgid "엠샵 이용약관"
+msgstr ""
+
+#: includes/class-msm-post-types.php:209
+msgctxt "post type general name"
+msgid "권한요청 목록"
+msgstr ""
+
+#: includes/class-msm-post-post-types.php:14
+msgctxt "post type singular name"
+msgid "엠샵 포스트"
+msgstr ""
+
+#: includes/class-msm-post-types.php:134
+msgctxt "post type singular name"
+msgid "멤버스 템플릿"
+msgstr ""
+
+#: includes/class-msm-post-types.php:172
+msgctxt "post type singular name"
+msgid "이용약관"
+msgstr ""
+
+#: includes/class-msm-post-types.php:210
+msgctxt "post type singular name"
+msgid "권한요청 목록"
+msgstr ""
+
+#: includes/class-msm-post-post-types.php:15
+msgctxt "admin menu"
+msgid "엠샵 포스트"
+msgstr ""
+
+#: includes/class-msm-post-types.php:135
+msgctxt "admin menu"
+msgid "엠샵 멤버스"
+msgstr ""
+
+#: includes/class-msm-post-types.php:173
+msgctxt "admin menu"
+msgid "엠샵 이용약관"
+msgstr ""
+
+#: includes/class-msm-post-types.php:211
+msgctxt "admin menu"
+msgid "권한요청 목록"
+msgstr ""
+
+#: includes/class-msm-post-post-types.php:16
+msgctxt "add new on admin bar"
+msgid "엠샵 포스트"
+msgstr ""
+
+#: includes/class-msm-post-types.php:136
+msgctxt "add new on admin bar"
+msgid "엠샵 멤버스 템플릿"
+msgstr ""
+
+#: includes/class-msm-post-types.php:174
+msgctxt "add new on admin bar"
+msgid "엠샵 이용약관"
+msgstr ""
+
+#: includes/class-msm-post-types.php:212
+msgctxt "add new on admin bar"
+msgid "권한요청 목록"
+msgstr ""
+
+#: includes/class-msm-post-post-types.php:48
+msgctxt "taxonomy general name"
+msgid "카테고리"
+msgstr ""
+
+#: includes/class-msm-post-types.php:70
+msgctxt "taxonomy general name"
+msgid "이용약관 분류"
+msgstr ""
+
+#: includes/class-msm-post-types.php:99
+msgctxt "taxonomy general name"
+msgid "템플릿 카테고리"
+msgstr ""
+
+#: includes/class-msm-post-post-types.php:49
+msgctxt "taxonomy singular name"
+msgid "카테고리"
+msgstr ""
+
+#: includes/class-msm-post-types.php:71
+msgctxt "taxonomy singular name"
+msgid "이용약관 분류"
+msgstr ""
+
+#: includes/class-msm-post-types.php:100
+msgctxt "taxonomy singular name"
+msgid "템플릿 카테고리"
+msgstr ""
+
+#: includes/class-msm-post-types.php:130
+msgctxt "slug"
+msgid "product"
+msgstr ""
+
+#: includes/class-msm-post-types.php:137
+msgctxt "mshop_members_form"
+msgid "멤버스 템플릿 추가"
+msgstr ""
+
+#: includes/class-msm-post-types.php:175
+msgctxt "mshop_agreement"
+msgid "이용약관 추가"
+msgstr ""
+
+#: includes/class-msm-post-types.php:242
+msgctxt "Role Application Status"
+msgid "Apply"
+msgstr ""
+
+#: includes/class-msm-post-types.php:250
+msgctxt "Role Application Status"
+msgid "Approved"
+msgstr ""
+
+#: includes/class-msm-post-types.php:258
+msgctxt "Role Application Status"
+msgid "Rejected"
+msgstr ""
