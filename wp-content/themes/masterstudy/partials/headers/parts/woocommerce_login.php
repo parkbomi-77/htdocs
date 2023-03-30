@@ -24,7 +24,7 @@
                     <i class="fa fa-user"></i><?php _e('Login', 'masterstudy'); ?>
                 </a>
                 <span class="vertical_divider"></span>
-                <a href="<?php echo esc_url(STM_LMS_User::login_page_url()); ?>"><?php _e('Register', 'masterstudy'); ?></a>
+                <a href="<?php echo esc_url(get_home_url().'/register'); ?>"><?php _e('Register', 'masterstudy'); ?></a>
 			<?php endif; ?>
         </div>
     </div>
