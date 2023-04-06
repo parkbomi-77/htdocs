@@ -90,32 +90,47 @@ add_action( 'woocommerce_register_form_start', 'wooc_extra_register_fields' );*/
 
 
 add_filter('wp_head', function() {
-    $lang = get_locale();
+	// 접속국가 코드에 따른 통화변경 
     global $WOOCS;
-    switch ($lang)
+	$ipInfo = geoip_detect2_get_info_from_current_ip();
+	$countryCode = $ipInfo->country->isoCode;
+
+	// $countryCode = WC_Geolocation::geolocate_ip()['country'];
+	// $customer_country2 = WC_Geolocation::geolocate_ip();
+
+    switch ($countryCode)
     {
-        case 'ko_KR':
-            $WOOCS->set_currency('KRW');
-            break;
-        case 'en_US':
+        case 'KR':
             $WOOCS->set_currency('USD');
             break;
+        // case 'en_US':
+        //     $WOOCS->set_currency('USD');
+        //     break;
         default:
-            $WOOCS->set_currency('KRW');
+            $WOOCS->set_currency('USD');
             break;
     }
 });
 
 
-// $lang=get_locale();
-// global $WOOCS;
-// switch($lang){
-//  case 'ko_KR':
-//       $WOOCS->current_currency='KRW';
-//       $WOOCS->storage->set_val('woocs_current_currency', 'KRW');
-//    break;
-//  case 'en_US':
-//       $WOOCS->current_currency='USD';
-//       $WOOCS->storage->set_val('woocs_current_currency', 'USD');
-//    break;
-// }
+add_filter( 'woocommerce_available_payment_gateways', 'disable_payment_method_by_country' );
+
+function disable_payment_method_by_country( $gateways ) {
+    // global $woocommerce;
+
+	$ipInfo = geoip_detect2_get_info_from_current_ip();
+	$customer_country = $ipInfo->country->isoCode;
+
+    // 한국일 경우 페이팔 결제 안뜨도록 
+    if ( $customer_country == 'KR' ) {
+        unset( $gateways['ppcp-gateway'] ); 
+    } else { // 해외일 경우 토스 안뜨도록 
+		foreach ( $gateways as $gateway_id => $gateway ) {
+			if ( $gateway_id !== 'ppcp-gateway' ) {
+				unset( $gateways[ $gateway_id ] );
+			}
+		}
+	}
+    
+    return $gateways;
+}
