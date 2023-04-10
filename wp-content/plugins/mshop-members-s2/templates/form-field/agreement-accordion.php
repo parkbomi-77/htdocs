@@ -5,6 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $agreement = new MSM_Agreement( $agreement );
+$current_locale = get_locale();
 
 $terms = $agreement->content;
 $terms = str_replace( __( '{쇼핑몰명}', 'mshop-members-s2' ), get_option( 'company_name' ), $terms );
@@ -34,6 +35,11 @@ $required = 'yes' == $agreement->mandatory ? 'required' : '';
 		<?php endif; ?>
     </div>
     <div class="content <?php echo mfd_get( $element, 'class' ); ?> <?php echo $agreement->slug; ?>">
-        <textarea readOnly style="resize: none;"><?php echo strip_tags( $terms ); ?></textarea>
+        <?php if($current_locale === "en_US") : ?>
+            <span readOnly style="resize: none;"><?php echo strip_tags( $terms ); ?></span>
+        <?php else : ?>
+            <textarea readOnly style="resize: none;"><?php echo strip_tags( $terms ); ?></textarea>
+        <?php endif; ?>
+
     </div>
 </div>
