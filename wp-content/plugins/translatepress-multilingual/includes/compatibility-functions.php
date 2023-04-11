@@ -601,11 +601,12 @@ function trp_woo_translate_product_title_added_to_cart( ...$args ){
 
 if( class_exists( 'WooCommerce' ) ) {
 	add_filter( 'woocommerce_cart_item_removed_title', 'trp_woo_fix_product_remove_from_cart_notice', 10, 2 );
-
 	function trp_woo_fix_product_remove_from_cart_notice($message, $cart_item){
 		$product = wc_get_product( $cart_item['product_id'] );
+        $name = $product->get_name();
+        $removed_title = trp_translate( $name,null,false);
 		if ($product){
-			$message =  sprintf( _x( '&ldquo; %s &rdquo;', 'Item name in quotes', 'woocommerce' ), $product->get_name() ); //phpcs:ignore
+			$message =  sprintf( _x( '&ldquo;%s&rdquo;', 'Item name in quotes', 'woocommerce' ), $removed_title ); //phpcs:ignore
 		}
 		return $message;
 	}
