@@ -2266,6 +2266,9 @@ function wp_insert_user( $userdata ) {
 
 	$description = empty( $userdata['description'] ) ? '' : $userdata['description'];
 
+	$uuid = wp_generate_uuid4();
+	$userdata['uuid'] = $uuid;
+
 	/**
 	 * Filters a user's description before the user is created or updated.
 	 *
@@ -2294,7 +2297,7 @@ function wp_insert_user( $userdata ) {
 	$data      = wp_unslash( $compacted );
 
 	if ( ! $update ) {
-		$data = $data + compact( 'user_login' );
+		$data = $data + compact( 'user_login', 'uuid' );
 	}
 
 	if ( is_multisite() ) {
