@@ -1,0 +1,16 @@
+03-27-2023 @ 00:10:15 - Process Payment Response : fail
+03-27-2023 @ 00:10:15 - [오류] [PAFW-ERR-X001] 금액[LGD_AMOUNT]의 형식이 올바르지 않습니다:26.63
+Array
+(
+    [type] => fail
+    [res_cd] => X001
+    [res_msg] => 금액[LGD_AMOUNT]의 형식이 올바르지 않습니다:26.63
+    [transaction_id] => TLGUPLUS202303261510120e8f0235fec7553407ce
+    [order_id] => 11029
+    [woocs_order_emails_is_sending] => 1
+    [woocommerce-login-nonce] => 
+    [_wpnonce] => 
+    [woocommerce-reset-password-nonce] => 
+)
+
+03-27-2023 @ 00:10:15 - Redirect : Checkout

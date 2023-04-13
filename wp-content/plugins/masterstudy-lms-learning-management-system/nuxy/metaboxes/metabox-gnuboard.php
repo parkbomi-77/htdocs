@@ -132,7 +132,7 @@
         }
 
         $.ajax({
-            url: "http://localhost:8888/inflowbox-db.php",
+            url: "http://192.168.0.16:8888/inflowbox-db.php",
             type: "post",
             dataType : 'json',
             data: {

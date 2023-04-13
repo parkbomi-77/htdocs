@@ -12,7 +12,7 @@ if($vc['vc']){
 }
 
 
-//"http://localhost:8888/page-shop.php"
+//"http://192.168.0.16:8888/page-shop.php"
 
 if (G5_IS_MOBILE) {
     include_once(G5_MSHOP_PATH.'/item.php');

@@ -1,0 +1,16 @@
+03-30-2023 @ 15:13:24 - Process Payment Response : fail
+03-30-2023 @ 15:13:24 - [오류] [PAFW-ERR-S053] 사용자가 결제를 취소하였습니다
+Array
+(
+    [type] => fail
+    [res_cd] => S053
+    [res_msg] => 사용자가 결제를 취소하였습니다
+    [transaction_id] => TLGUPLUS20230330061244cef6dc21ec1df564356a
+    [order_id] => 11030
+    [woocs_order_emails_is_sending] => 1
+    [woocommerce-login-nonce] => 
+    [_wpnonce] => 
+    [woocommerce-reset-password-nonce] => 
+)
+
+03-30-2023 @ 15:13:24 - Redirect : Checkout

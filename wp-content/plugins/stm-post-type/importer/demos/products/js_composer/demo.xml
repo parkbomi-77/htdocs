@@ -27,13 +27,13 @@
 
 <channel>
 	<title>Masterstudy</title>
-	<link>http://localhost:8888/masterstudy-import</link>
+	<link>http://192.168.0.16:8888/masterstudy-import</link>
 	<description>Just another WordPress site</description>
 	<pubDate>Tue, 25 Aug 2020 06:49:35 +0000</pubDate>
 	<language>en-US</language>
 	<wp:wxr_version>1.2</wp:wxr_version>
-	<wp:base_site_url>http://localhost:8888/masterstudy-import</wp:base_site_url>
-	<wp:base_blog_url>http://localhost:8888/masterstudy-import</wp:base_blog_url>
+	<wp:base_site_url>http://192.168.0.16:8888/masterstudy-import</wp:base_site_url>
+	<wp:base_blog_url>http://192.168.0.16:8888/masterstudy-import</wp:base_blog_url>
 
 		<wp:author><wp:author_id>1</wp:author_id><wp:author_login><![CDATA[admin]]></wp:author_login><wp:author_email><![CDATA[a.salihov@stylemix.net]]></wp:author_email><wp:author_display_name><![CDATA[admin]]></wp:author_display_name><wp:author_first_name><![CDATA[]]></wp:author_first_name><wp:author_last_name><![CDATA[]]></wp:author_last_name></wp:author>
 
@@ -42,7 +42,7 @@
 
 		<item>
 		<title>Masterstudy WordPress</title>
-		<link>http://localhost:8888/masterstudy-import/product/masterstudy-wordpress/</link>
+		<link>http://192.168.0.16:8888/masterstudy-import/product/masterstudy-wordpress/</link>
 		<pubDate>Fri, 07 Jun 2013 10:46:01 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://demo2.woothemes.com/woocommerce/?post_type=product&#038;p=22</guid>
@@ -396,7 +396,7 @@
 					</item>
 					<item>
 		<title>Lords of Strategy</title>
-		<link>http://localhost:8888/masterstudy-import/product/ninja-silhouette-2/</link>
+		<link>http://192.168.0.16:8888/masterstudy-import/product/ninja-silhouette-2/</link>
 		<pubDate>Fri, 07 Jun 2013 11:07:19 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://demo2.woothemes.com/woocommerce/?post_type=product&#038;p=56</guid>
@@ -747,7 +747,7 @@
 					</item>
 					<item>
 		<title>Premium Quality</title>
-		<link>http://localhost:8888/masterstudy-import/product/premium-quality/</link>
+		<link>http://192.168.0.16:8888/masterstudy-import/product/premium-quality/</link>
 		<pubDate>Fri, 07 Jun 2013 10:41:52 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://demo2.woothemes.com/woocommerce/?post_type=product&#038;p=19</guid>
@@ -1013,7 +1013,7 @@ I'm ordering mine next week]]></wp:comment_content>
 					</item>
 					<item>
 		<title>Ship Your Idea</title>
-		<link>http://localhost:8888/masterstudy-import/product/ship-your-idea/</link>
+		<link>http://192.168.0.16:8888/masterstudy-import/product/ship-your-idea/</link>
 		<pubDate>Fri, 07 Jun 2013 11:00:28 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://demo2.woothemes.com/woocommerce/?post_type=product&#038;p=40</guid>
@@ -1368,7 +1368,7 @@ I'm ordering mine next week]]></wp:comment_content>
 					</item>
 					<item>
 		<title>The art of the deal</title>
-		<link>http://localhost:8888/masterstudy-import/product/happy-ninja-2/</link>
+		<link>http://192.168.0.16:8888/masterstudy-import/product/happy-ninja-2/</link>
 		<pubDate>Fri, 07 Jun 2013 11:05:37 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://demo2.woothemes.com/woocommerce/?post_type=product&#038;p=53</guid>
@@ -1639,7 +1639,7 @@ I'm ordering mine next week]]></wp:comment_content>
 					</item>
 					<item>
 		<title>Business Adventures</title>
-		<link>http://localhost:8888/masterstudy-import/product/flying-ninja/</link>
+		<link>http://192.168.0.16:8888/masterstudy-import/product/flying-ninja/</link>
 		<pubDate>Fri, 07 Jun 2013 11:25:01 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://demo2.woothemes.com/woocommerce/?post_type=product&#038;p=70</guid>
@@ -1977,7 +1977,7 @@ I'm ordering mine next week]]></wp:comment_content>
 					</item>
 					<item>
 		<title>Art of the Start</title>
-		<link>http://localhost:8888/masterstudy-import/product/woo-album-1/</link>
+		<link>http://192.168.0.16:8888/masterstudy-import/product/woo-album-1/</link>
 		<pubDate>Fri, 07 Jun 2013 11:33:05 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://demo2.woothemes.com/woocommerce/?post_type=product&#038;p=83</guid>
@@ -2189,7 +2189,7 @@ I'm ordering mine next week]]></wp:comment_content>
 							</item>
 					<item>
 		<title>Built to Last</title>
-		<link>http://localhost:8888/masterstudy-import/product/woo-album-2/</link>
+		<link>http://192.168.0.16:8888/masterstudy-import/product/woo-album-2/</link>
 		<pubDate>Fri, 07 Jun 2013 11:34:14 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://demo2.woothemes.com/woocommerce/?post_type=product&#038;p=87</guid>
@@ -2435,7 +2435,7 @@ I'm ordering mine next week]]></wp:comment_content>
 					</item>
 					<item>
 		<title>The Innovator&#039;s Dilemma</title>
-		<link>http://localhost:8888/masterstudy-import/product/woo-album-3/</link>
+		<link>http://192.168.0.16:8888/masterstudy-import/product/woo-album-3/</link>
 		<pubDate>Fri, 07 Jun 2013 11:35:18 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://demo2.woothemes.com/woocommerce/?post_type=product&#038;p=90</guid>
@@ -2678,7 +2678,7 @@ I'm ordering mine next week]]></wp:comment_content>
 					</item>
 					<item>
 		<title>The Lean Startup</title>
-		<link>http://localhost:8888/masterstudy-import/product/woo-single-1/</link>
+		<link>http://192.168.0.16:8888/masterstudy-import/product/woo-single-1/</link>
 		<pubDate>Fri, 07 Jun 2013 11:36:34 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://demo2.woothemes.com/woocommerce/?post_type=product&#038;p=93</guid>
@@ -2890,7 +2890,7 @@ I'm ordering mine next week]]></wp:comment_content>
 							</item>
 					<item>
 		<title>Good to Great</title>
-		<link>http://localhost:8888/masterstudy-import/product/woo-album-4/</link>
+		<link>http://192.168.0.16:8888/masterstudy-import/product/woo-album-4/</link>
 		<pubDate>Fri, 07 Jun 2013 11:37:23 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://demo2.woothemes.com/woocommerce/?post_type=product&#038;p=96</guid>
@@ -3162,7 +3162,7 @@ I'm ordering mine next week]]></wp:comment_content>
 					</item>
 					<item>
 		<title>How to Win Friends</title>
-		<link>http://localhost:8888/masterstudy-import/product/woo-single-2/</link>
+		<link>http://192.168.0.16:8888/masterstudy-import/product/woo-single-2/</link>
 		<pubDate>Fri, 07 Jun 2013 11:38:12 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://demo2.woothemes.com/woocommerce/?post_type=product&#038;p=99</guid>
@@ -3433,7 +3433,7 @@ I'm ordering mine next week]]></wp:comment_content>
 					</item>
 					<item>
 		<title>Woo Ninja</title>
-		<link>http://localhost:8888/masterstudy-import/product/woo-ninja/</link>
+		<link>http://192.168.0.16:8888/masterstudy-import/product/woo-ninja/</link>
 		<pubDate>Fri, 07 Jun 2013 10:52:06 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://demo2.woothemes.com/woocommerce/?post_type=product&#038;p=34</guid>
@@ -3636,7 +3636,7 @@ I'm ordering mine next week]]></wp:comment_content>
 							</item>
 					<item>
 		<title>Woo Logo</title>
-		<link>http://localhost:8888/masterstudy-import/product/woo-logo/</link>
+		<link>http://192.168.0.16:8888/masterstudy-import/product/woo-logo/</link>
 		<pubDate>Fri, 07 Jun 2013 10:35:51 +0000</pubDate>
 		<dc:creator><![CDATA[admin]]></dc:creator>
 		<guid isPermaLink="false">http://demo2.woothemes.com/woocommerce/?post_type=product&#038;p=15</guid>

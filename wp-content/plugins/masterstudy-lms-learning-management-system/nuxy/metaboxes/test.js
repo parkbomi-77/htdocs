@@ -49,7 +49,7 @@
     function del(e) {
         if(window.confirm("정말 삭제하시겠습니까?")){
             $.ajax({
-                url: "http://localhost:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-shoppingmall-deletecheck.php",
+                url: "http://192.168.0.16:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-shoppingmall-deletecheck.php",
                 type: "post",
                 dataType : 'text',
                 data: {
@@ -62,7 +62,7 @@
                         alert("해당 쇼핑몰의 광고중인 제품이 있습니다. 제품광고 비활성화 후 다시 시도해주세요.");
                     }else { // 광고중인 제품이 없는 경우 
                         $.ajax({
-                            url: "http://localhost:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-shoppingmall-save.php",
+                            url: "http://192.168.0.16:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-shoppingmall-save.php",
                             type: "post",
                             dataType : 'json',
                             data: {
@@ -101,7 +101,7 @@
                 alert("기한을 확인해주세요.")
             }else {
                 $.ajax({
-                    url: "http://localhost:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-shoppingmall-save.php",
+                    url: "http://192.168.0.16:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-shoppingmall-save.php",
                     type: "post",
                     dataType : 'json',
                     data: {
@@ -180,7 +180,7 @@
             e.parentElement.children[2].classList.add('none')
         }else { // 입력값이 들어왔을 경우 
             $.ajax({
-                url: "http://localhost:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-shoppingmall-check.php",
+                url: "http://192.168.0.16:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-shoppingmall-check.php",
                 type: "post",
                 dataType : 'text',
                 data: {
@@ -203,7 +203,7 @@
             e.parentElement.children[2].classList.add('none')
         }else {
             $.ajax({
-                url: "http://localhost:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-shoppingmall-check.php",
+                url: "http://192.168.0.16:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-shoppingmall-check.php",
                 type: "post",
                 dataType : 'text',
                 data: {

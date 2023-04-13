@@ -47,7 +47,7 @@
         $wpdb->get_results($wpdb->prepare($sql));
     
         if($registrationmall !== 1029){ // 벳스쿨 쇼핑몰 아닌 타 쇼피몰일 경우에만 광고 업데이트 api 보내기 
-            // 그누보드 쇼핑몰 shop_item DB에 광고여부 1로 업데이트 시켜주는 로직  http://localhost:8888/practice/gnuboard/product_list 
+            // 그누보드 쇼핑몰 shop_item DB에 광고여부 1로 업데이트 시켜주는 로직  http://192.168.0.16:8888/practice/gnuboard/product_list 
             $mall = $wpdb->get_results($wpdb->prepare("SELECT * from wp_shoppingmall where code =".$registrationmall));
             $start_date = $mall[0]->start_date;
             $end_date = $mall[0]->end_date;

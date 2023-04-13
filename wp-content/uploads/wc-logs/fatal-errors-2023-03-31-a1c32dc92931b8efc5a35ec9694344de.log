@@ -1,0 +1,22 @@
+2023-03-31T06:49:29+00:00 CRITICAL Uncaught Error: Call to undefined function geoip_detect2_get_info_from_current_ip() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/partials/headers/parts/woocommerce_login.php:6
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template.php(772): require()
+#1 /Applications/MAMP/htdocs/wp-includes/template.php(716): load_template('/Applications/M...', false, Array)
+#2 /Applications/MAMP/htdocs/wp-includes/general-template.php(204): locate_template(Array, true, false, Array)
+#3 /Applications/MAMP/htdocs/wp-content/themes/masterstudy/partials/headers/top-bar.php(19): get_template_part('partials/header...')
+#4 /Applications/MAMP/htdocs/wp-includes/template.php(772): require('/Applications/M...')
+#5 /Applications/MAMP/htdocs/wp-includes/template.php(716): load_template('/Applications/M...', false, Array)
+#6 /Applications/MAMP/htdocs/wp-includes/general-template.php(204): locate_template(Array, true, false, Array)
+#7 /Applications/MAMP/htdocs/wp-content/themes/masterstudy/partials/headers/main.php(2(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/partials/headers/parts/woocommerce_login.php, 줄 6)
+
+2023-03-31T06:49:49+00:00 CRITICAL Uncaught Error: Call to undefined function geoip_detect2_get_info_from_current_ip() in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/partials/headers/parts/woocommerce_login.php:6
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template.php(772): require()
+#1 /Applications/MAMP/htdocs/wp-includes/template.php(716): load_template('/Applications/M...', false, Array)
+#2 /Applications/MAMP/htdocs/wp-includes/general-template.php(204): locate_template(Array, true, false, Array)
+#3 /Applications/MAMP/htdocs/wp-content/themes/masterstudy/partials/headers/top-bar.php(19): get_template_part('partials/header...')
+#4 /Applications/MAMP/htdocs/wp-includes/template.php(772): require('/Applications/M...')
+#5 /Applications/MAMP/htdocs/wp-includes/template.php(716): load_template('/Applications/M...', false, Array)
+#6 /Applications/MAMP/htdocs/wp-includes/general-template.php(204): locate_template(Array, true, false, Array)
+#7 /Applications/MAMP/htdocs/wp-content/themes/masterstudy/partials/headers/main.php(2(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/partials/headers/parts/woocommerce_login.php, 줄 6)
+

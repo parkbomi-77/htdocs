@@ -24222,8 +24222,7 @@ msgstr "shipping"
 #: includes/wc-cart-functions.php:118
 msgid "%s has been added to your cart."
 msgid_plural "%s have been added to your cart."
-msgstr[0] "%s이(가) 장바구니에 추가되었습니다."
-msgstr[1] ""
+msgstr "%s이(가) 장바구니에 추가되었습니다."
 
 #: includes/admin/reports/class-wc-report-downloads.php:123
 #: includes/widgets/class-wc-widget-layered-nav-filters.php:27

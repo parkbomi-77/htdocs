@@ -20,6 +20,7 @@
 			</div>
 			<div class="right">
 				<?php if($content->uid && $board->isWriter()):?>
+				<input type="hidden" name="category1" value="<?php echo $content->category1?$content->category1:kboard_category1()?>">
 				<button type="submit" class="kboard-contact-form-button-small"><?php echo __('Save', 'kboard')?></button>
 				<?php endif?>
 			</div>

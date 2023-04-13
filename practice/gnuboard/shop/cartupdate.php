@@ -130,7 +130,7 @@ else if ($act == "alldelete") // 모두 삭제이면
     //         return $response;
     //     }
 
-    //     post('http://localhost:8888/sample.php', $result2);
+    //     post('http://192.168.0.16:8888/sample.php', $result2);
     // }
 
     $sql = " delete from {$g5['g5_shop_cart_table']}
@@ -425,7 +425,7 @@ else // 장바구니에 담기
             $sql = "select * from g5_shop_cart where od_id = '$tmp_cart_id' ";
             $result = sql_fetch($sql);
             if($result['ct_vetcode'] === 'vet'){
-                post('http://localhost:8888/sample.php', $result, $HTTP_HOST);
+                post('http://192.168.0.16:8888/sample.php', $result, $HTTP_HOST);
             }
     }
 }

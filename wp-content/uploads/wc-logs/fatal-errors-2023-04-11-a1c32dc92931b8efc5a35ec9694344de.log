@@ -1,0 +1,61 @@
+2023-04-11T07:09:50+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function trp_get_string_translation() in /Applications/MAMP/htdocs/wp-content/plugins/translatepress-multilingual/includes/compatibility-functions.php:609
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(307): trp_woo_fix_product_remove_from_cart_notice('#!trpst#trp-get...', Array)
+#1 /Applications/MAMP/htdocs/wp-includes/plugin.php(191): WP_Hook->apply_filters('#!trpst#trp-get...', Array)
+#2 /Applications/MAMP/htdocs/wp-content/plugins/woocommerce/includes/class-wc-form-handler.php(626): apply_filters('woocommerce_car...', '#!trpst#trp-get...', Array)
+#3 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(307): WC_Form_Handler::update_cart_action('')
+#4 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(331): WP_Hook->apply_filters(NULL, Array)
+#5 /Applications/MAMP/htdocs/wp-includes/plugin.php(476): WP_Hook->do_action(Array)
+#6 /Applications/MAMP/htdocs/wp-settings.php(629): do_action('wp_loaded')
+#7 /Applications/MAMP/htdocs/wp-config.php(1 in /Applications/MAMP/htdocs/wp-content/plugins/translatepress-multilingual/includes/compatibility-functions.php on line 609#!trpst#/trp-gettext#!trpen#
+
+2023-04-11T07:14:34+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function trp_get_string_translation() in /Applications/MAMP/htdocs/wp-content/plugins/woocommerce/includes/class-wc-form-handler.php:627
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(307): WC_Form_Handler::update_cart_action('')
+#1 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(331): WP_Hook->apply_filters(NULL, Array)
+#2 /Applications/MAMP/htdocs/wp-includes/plugin.php(476): WP_Hook->do_action(Array)
+#3 /Applications/MAMP/htdocs/wp-settings.php(629): do_action('wp_loaded')
+#4 /Applications/MAMP/htdocs/wp-config.php(177): require_once('/Applications/M...')
+#5 /Applications/MAMP/htdocs/wp-load.php(50): require_once('/Applications/M...')
+#6 /Applications/MAMP/htdocs/wp-blog-header.php(13): require_once('/Applications/M...')
+#7 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#8 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/plugins/woocommerce/includes/class-wc-form-handler.php on line 627#!trpst#/trp-gettext#!trpen#
+
+2023-04-11T07:15:58+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function trp_get_string_translation() in /Applications/MAMP/htdocs/wp-content/plugins/woocommerce/includes/class-wc-form-handler.php:627
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(307): WC_Form_Handler::update_cart_action('')
+#1 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(331): WP_Hook->apply_filters(NULL, Array)
+#2 /Applications/MAMP/htdocs/wp-includes/plugin.php(476): WP_Hook->do_action(Array)
+#3 /Applications/MAMP/htdocs/wp-settings.php(629): do_action('wp_loaded')
+#4 /Applications/MAMP/htdocs/wp-config.php(177): require_once('/Applications/M...')
+#5 /Applications/MAMP/htdocs/wp-load.php(50): require_once('/Applications/M...')
+#6 /Applications/MAMP/htdocs/wp-blog-header.php(13): require_once('/Applications/M...')
+#7 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#8 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/plugins/woocommerce/includes/class-wc-form-handler.php on line 627#!trpst#/trp-gettext#!trpen#
+
+2023-04-11T07:39:58+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to undefined function trp_get_string_translation() in /Applications/MAMP/htdocs/wp-content/plugins/woocommerce/includes/class-wc-form-handler.php:627
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(307): WC_Form_Handler::update_cart_action('')
+#1 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(331): WP_Hook->apply_filters(NULL, Array)
+#2 /Applications/MAMP/htdocs/wp-includes/plugin.php(476): WP_Hook->do_action(Array)
+#3 /Applications/MAMP/htdocs/wp-settings.php(629): do_action('wp_loaded')
+#4 /Applications/MAMP/htdocs/wp-config.php(177): require_once('/Applications/M...')
+#5 /Applications/MAMP/htdocs/wp-load.php(50): require_once('/Applications/M...')
+#6 /Applications/MAMP/htdocs/wp-blog-header.php(13): require_once('/Applications/M...')
+#7 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#8 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/plugins/woocommerce/includes/class-wc-form-handler.php on line 627#!trpst#/trp-gettext#!trpen#
+
+2023-04-11T09:53:01+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Call to a member function get_name() on null in /Applications/MAMP/htdocs/wp-content/plugins/translatepress-multilingual/includes/compatibility-functions.php:605
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(307): trp_woo_fix_product_remove_from_cart_notice('#!trpst#trp-get...', Array)
+#1 /Applications/MAMP/htdocs/wp-includes/plugin.php(191): WP_Hook->apply_filters('#!trpst#trp-get...', Array)
+#2 /Applications/MAMP/htdocs/wp-content/plugins/woocommerce/includes/class-wc-form-handler.php(627): apply_filters('woocommerce_car...', '#!trpst#trp-get...', Array)
+#3 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(307): WC_Form_Handler::update_cart_action('')
+#4 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(331): WP_Hook->apply_filters(NULL, Array)
+#5 /Applications/MAMP/htdocs/wp-includes/plugin.php(476): WP_Hook->do_action(Array)
+#6 /Applications/MAMP/htdocs/wp-settings.php(629): do_action('wp_loaded')
+#7 /Applications/MAMP/htdocs/wp-config.php(177): requir in /Applications/MAMP/htdocs/wp-content/plugins/translatepress-multilingual/includes/compatibility-functions.php on line 605#!trpst#/trp-gettext#!trpen#
+

@@ -307,7 +307,7 @@
         let nextBox = event.parentElement.nextElementSibling.firstElementChild;
 
         $.ajax({
-            url: "http://localhost:8888/wp-admin/edit-form-productlist.php",
+            url: "http://192.168.0.16:8888/wp-admin/edit-form-productlist.php",
             type: "post",
             dataType : 'json',
             data: {
@@ -327,7 +327,7 @@
 
         // 중분류
         $.ajax({
-            url: "http://localhost:8888/wp-admin/edit-form-productlist.php",
+            url: "http://192.168.0.16:8888/wp-admin/edit-form-productlist.php",
             type: "post",
             dataType : 'json',
             data: {

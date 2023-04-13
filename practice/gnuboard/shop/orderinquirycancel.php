@@ -153,7 +153,7 @@ function post($url, $fields, $host){
 }
 for($i=0; $result2 = sql_fetch_array($que); $i++) {
     if($result2['ct_vetcode'] === 'vet'){
-        post('http://localhost:8888/sample.php', $result2, $HTTP_HOST); 
+        post('http://192.168.0.16:8888/sample.php', $result2, $HTTP_HOST); 
     }
 }
 

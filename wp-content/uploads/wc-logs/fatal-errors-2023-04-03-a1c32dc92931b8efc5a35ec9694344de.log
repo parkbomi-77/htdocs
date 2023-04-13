@@ -1,0 +1,79 @@
+2023-04-03T05:34:43+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Using $this when not in object context in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:93
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 93#!trpst#/trp-gettext#!trpen#
+
+2023-04-03T05:34:57+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Using $this when not in object context in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:93
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 93#!trpst#/trp-gettext#!trpen#
+
+2023-04-03T05:35:15+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Using $this when not in object context in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:93
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 93#!trpst#/trp-gettext#!trpen#
+
+2023-04-03T05:35:39+00:00 CRITICAL #!trpst#trp-gettext data-trpgettextoriginal=645#!trpen#Uncaught Error: Using $this when not in object context in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:93
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 93#!trpst#/trp-gettext#!trpen#
+
+2023-04-03T05:35:55+00:00 CRITICAL Uncaught Error: Using $this when not in object context in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:93
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 93)
+
+2023-04-03T05:39:38+00:00 CRITICAL Uncaught Error: Using $this when not in object context in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php:93
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include()
+#1 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#2 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#3 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php, 줄 93)
+
+2023-04-03T05:41:42+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function WOOCS::get_currency_by_country(), 0 passed in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/functions.php on line 90 and exactly 1 expected in /Applications/MAMP/htdocs/wp-content/plugins/woocommerce-currency-switcher/classes/woocs.php:966
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-content/themes/masterstudy/functions.php(90): WOOCS->get_currency_by_country()
+#1 /Applications/MAMP/htdocs/wp-settings.php(567): include('/Applications/M...')
+#2 /Applications/MAMP/htdocs/wp-config.php(177): require_once('/Applications/M...')
+#3 /Applications/MAMP/htdocs/wp-load.php(50): require_once('/Applications/M...')
+#4 /Applications/MAMP/htdocs/wp-blog-header.php(13): require_once('/Applications/M...')
+#5 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#6 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/plugins/woocommerce-currency-switcher/classes/woocs.php, 줄 966)
+
+2023-04-03T06:21:31+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function WOOCS::get_currency_by_country(), 0 passed in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php on line 95 and exactly 1 expected in /Applications/MAMP/htdocs/wp-content/plugins/woocommerce-currency-switcher/classes/woocs.php:966
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-content/themes/masterstudy/page.php(95): WOOCS->get_currency_by_country()
+#1 /Applications/MAMP/htdocs/wp-includes/template-loader.php(106): include('/Applications/M...')
+#2 /Applications/MAMP/htdocs/wp-blog-header.php(19): require_once('/Applications/M...')
+#3 /Applications/MAMP/htdocs/index.php(17): require('/Applications/M...')
+#4 {main}
+  thrown(/Applications/MAMP/htdocs/wp-content/plugins/woocommerce-currency-switcher/classes/woocs.php, 줄 966)
+
+2023-04-03T06:29:29+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function WOOCS::get_currency_by_country(), 0 passed in /Applications/MAMP/htdocs/wp-content/themes/masterstudy/functions.php on line 97 and exactly 1 expected in /Applications/MAMP/htdocs/wp-content/plugins/woocommerce-currency-switcher/classes/woocs.php:966
+Stack trace:
+#0 /Applications/MAMP/htdocs/wp-content/themes/masterstudy/functions.php(97): WOOCS->get_currency_by_country()
+#1 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(307): {closure}('')
+#2 /Applications/MAMP/htdocs/wp-includes/class-wp-hook.php(331): WP_Hook->apply_filters(NULL, Array)
+#3 /Applications/MAMP/htdocs/wp-includes/plugin.php(476): WP_Hook->do_action(Array)
+#4 /Applications/MAMP/htdocs/wp-includes/general-template.php(3042): do_action('wp_head')
+#5 /Applications/MAMP/htdocs/wp-content/themes/masterstudy/header.php(10): wp_head()
+#6 /Applications/MAMP/htdocs/wp-includes/template.php(770): require_once('/Applications/M...')
+#7 /Applications/MAMP/htdocs/wp-includes/template.php(716(/Applications/MAMP/htdocs/wp-content/plugins/woocommerce-currency-switcher/classes/woocs.php, 줄 966)
+

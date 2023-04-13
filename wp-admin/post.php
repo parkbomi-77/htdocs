@@ -64,7 +64,7 @@ if ( ! $sendback ||
 		if ( ! empty( $post_type ) ) { 
 			// 이 함수를 사용하여 URL을 다시 작성하고 URL 쿼리에 쿼리 변수를 추가할 수 있습니다
 			// add_query_arg( 'key', 'value', 'http://example.com' );
-			// "http://localhost:8888/wp-admin/edit.php?post_type=stm-lessons"
+			// "http://192.168.0.16:8888/wp-admin/edit.php?post_type=stm-lessons"
 			$sendback = add_query_arg( 'post_type', $post_type, $sendback );
 		}
 	}

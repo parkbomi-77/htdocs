@@ -106,7 +106,7 @@ function wc_add_to_cart_message( $products, $show_qty = false, $return = false )
 	if ( ! $show_qty ) {
 		$products = array_fill_keys( array_keys( $products ), 1 );
 	}
-
+	// 장바구니에 담을때. 타이틀을 가져온다
 	foreach ( $products as $product_id => $qty ) {
 		/* translators: %s: product name */
 		$titles[] = apply_filters( 'woocommerce_add_to_cart_qty_html', ( $qty > 1 ? absint( $qty ) . ' &times; ' : '' ), $product_id ) . apply_filters( 'woocommerce_add_to_cart_item_name_in_quotes', sprintf( _x( '&ldquo;%s&rdquo;', 'Item name in quotes', 'woocommerce' ), strip_tags( get_the_title( $product_id ) ) ), $product_id );

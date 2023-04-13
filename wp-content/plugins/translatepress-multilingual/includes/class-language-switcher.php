@@ -100,6 +100,31 @@ class TRP_Language_Switcher{
         if ( $this->url_converter->is_sitemap_path() )
             return;
 
+        // 영문 로그인에서 휴대폰인증 페이지로 넘어갈때 
+        $ref = $_SERVER["HTTP_REFERER"];
+        $en_lang = strpos($ref, "/en/login");
+
+        $req = $_SERVER["REQUEST_URI"];
+        $ko_lang = strpos( $req, "certification" );
+        
+        if($en_lang) {
+            if(0 === $ko_lang || 0 < $ko_lang) {
+                $locale = "en_US"; 
+                $TRP_LANGUAGE = "en_US"; 
+                $TRP_NEEDED_LANGUAGE = "en_US"; 
+            }
+        }
+        // 영문 페이지에서 로그인으로 갈때 
+        $en_lang2 = strpos($ref, "/en");
+        $ko_lang2 = strpos( $req, "/login" );
+        if($en_lang2) {
+            if(0 === $ko_lang2 || 0 < $ko_lang2) {
+                $locale = "en_US"; 
+                $TRP_LANGUAGE = "en_US"; 
+                $TRP_NEEDED_LANGUAGE = "en_US"; 
+            }
+        }
+
         $link_to_redirect = apply_filters( 'trp_link_to_redirect_to', $this->url_converter->get_url_for_language( $TRP_NEEDED_LANGUAGE, null, '' ), $TRP_NEEDED_LANGUAGE );
 
         if( isset( $this->settings['add-subdirectory-to-default-language'] ) && $this->settings['add-subdirectory-to-default-language'] === 'yes' && isset( $this->settings['default-language'] ) && $this->settings['default-language'] === $TRP_NEEDED_LANGUAGE ) {

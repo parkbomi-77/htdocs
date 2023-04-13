@@ -304,7 +304,7 @@ It is often very useful to debug your API calls by viewing the raw HTTP request.
 ```php
 // FOR DEBUGGING ONLY
 $httpClient = new GuzzleHttp\Client([
-    'proxy' => 'localhost:8888', // by default, Charles runs on localhost port 8888
+    'proxy' => '192.168.0.16:8888', // by default, Charles runs on localhost port 8888
     'verify' => false, // otherwise HTTPS requests will fail.
 ]);
 

@@ -208,7 +208,7 @@ for($i=0; $i<count($category); $i++){
         let nopass = data.parentNode.children[2];
 
         $.ajax({
-            url: 'http://localhost:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-registration-overlap.php',
+            url: 'http://192.168.0.16:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-registration-overlap.php',
             type: 'POST',
             data: { //
                 name: data.value,
@@ -272,7 +272,7 @@ for($i=0; $i<count($category); $i++){
         let newname = nameinput[0].value;
 
         $.ajax({
-            url: 'http://localhost:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-display-save.php',
+            url: 'http://192.168.0.16:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-display-save.php',
             type: 'POST',
             data: { 
                 saveid : id,
@@ -315,7 +315,7 @@ for($i=0; $i<count($category); $i++){
         let productcode = val.querySelector(".editformproductcode").value;
 
         $.ajax({
-            url: 'http://localhost:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-registration-check.php',
+            url: 'http://192.168.0.16:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-registration-check.php',
             type: 'POST',
             data: { 
                 mallcode,
@@ -416,7 +416,7 @@ for($i=0; $i<count($category); $i++){
         let productcode = data.firstChild.value;
 
         $.ajax({
-            url: 'http://localhost:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-registration-check.php',
+            url: 'http://192.168.0.16:8888/wp-content/plugins/masterstudy-lms-learning-management-system/nuxy/metaboxes/metabox-registration-check.php',
             type: 'POST',
             data: { 
                 mallcode,

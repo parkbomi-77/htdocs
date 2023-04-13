@@ -19,17 +19,10 @@ unset($fields['account_last_name']);
 return $fields;
 }
 
-// add_filter( 'woocommerce_checkout_fields' , 'set_custom_checkout_fields_min_value' );
+add_filter( 'msm_is_phone_certification_page', function ( $flag, $request_url, $redirect_url ) {
+	if ( str_starts_with( $request_url, '/ko_kr/휴대폰 인증' ) ) {
+		$flag = true;
+	}
 
-// function set_custom_checkout_fields_min_value( $fields ) {
-//     $fields['billing']['billing_weight'] = array(
-//         'type'          => 'number',
-//         'label'         => __('몸무게(kg)', 'woocommerce'),
-//         'placeholder'   => _x('My Input Field Placeholder', 'placeholder', 'woocommerce'),
-//         'required'      => true,
-//         'class'         => array('input-text '),
-//         'min'           => 2,
-//     );
-
-//     return $fields;
-// }
+	return $flag;
+}, 10, 3 );

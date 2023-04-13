@@ -1,0 +1,48 @@
+03-25-2023 @ 22:05:03 - Process Payment Response : fail
+03-25-2023 @ 22:05:03 - [오류] [PAFW-ERR-X001] 금액[LGD_AMOUNT]의 형식이 올바르지 않습니다:26.63
+Array
+(
+    [type] => fail
+    [res_cd] => X001
+    [res_msg] => 금액[LGD_AMOUNT]의 형식이 올바르지 않습니다:26.63
+    [transaction_id] => TLGUPLUS20230325130501280ece75d78dcf7c426c
+    [order_id] => 11029
+    [woocs_order_emails_is_sending] => 1
+    [woocommerce-login-nonce] => 
+    [_wpnonce] => 
+    [woocommerce-reset-password-nonce] => 
+)
+
+03-25-2023 @ 22:05:04 - Redirect : Checkout
+03-25-2023 @ 22:05:52 - Process Payment Response : fail
+03-25-2023 @ 22:05:52 - [오류] [PAFW-ERR-X001] 금액[LGD_AMOUNT]의 형식이 올바르지 않습니다:26.63
+Array
+(
+    [type] => fail
+    [res_cd] => X001
+    [res_msg] => 금액[LGD_AMOUNT]의 형식이 올바르지 않습니다:26.63
+    [transaction_id] => TLGUPLUS202303251305517bca8635eba47193a09b
+    [order_id] => 11029
+    [woocs_order_emails_is_sending] => 1
+    [woocommerce-login-nonce] => 
+    [_wpnonce] => 
+    [woocommerce-reset-password-nonce] => 
+)
+
+03-25-2023 @ 22:05:52 - Redirect : Checkout
+03-25-2023 @ 22:49:13 - Process Payment Response : fail
+03-25-2023 @ 22:49:13 - [오류] [PAFW-ERR-X001] 금액[LGD_AMOUNT]의 형식이 올바르지 않습니다:26.63
+Array
+(
+    [type] => fail
+    [res_cd] => X001
+    [res_msg] => 금액[LGD_AMOUNT]의 형식이 올바르지 않습니다:26.63
+    [transaction_id] => TLGUPLUS20230325134911857f586dc06683421bd6
+    [order_id] => 11029
+    [woocs_order_emails_is_sending] => 1
+    [woocommerce-login-nonce] => 
+    [_wpnonce] => 
+    [woocommerce-reset-password-nonce] => 
+)
+
+03-25-2023 @ 22:49:13 - Redirect : Checkout

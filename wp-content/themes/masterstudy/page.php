@@ -152,6 +152,7 @@ for($i=0; $i<count($cate_results); $i++) {
                         </form>
                         ";
                     }
+
                     return $tr;
                 }
 
@@ -237,10 +238,20 @@ for($i=0; $i<count($cate_results); $i++) {
     let tbody = document.querySelector(".wish_table_body")
     let count = document.querySelector("#count")
 
+    let tbodyin = tbody.innerHTML
+
     function allbtn() {
-        tbody.innerHTML = `<?php echo table_list($results) ?>`
-        // console.log(tbody.lastElementChild.querySelector("td").innerText);
-        count.innerText = tbody.lastElementChild.querySelector("td").innerText;
+        tbody.innerHTML = tbodyin;
+
+        let trlength = tbody.querySelectorAll("tr").length
+
+        // 영문버전일때 null 나옴
+        let tbody_lang = tbody.lastElementChild.querySelector("td")
+        if(tbody_lang) {
+            count.innerText = tbody_lang.innerText;
+        }else {
+            count.innerText = tbody.querySelectorAll("tr")[trlength-1].querySelector("td").innerText;
+        }
     }
     function filterbtn() {
         let m_code = document.querySelector("#m_name").value;

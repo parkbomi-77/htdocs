@@ -95,29 +95,43 @@ add_filter('wp_head', function() {
 	$ipInfo = geoip_detect2_get_info_from_current_ip();
 	$countryCode = $ipInfo->country->isoCode;
 
-	// $countryCode = WC_Geolocation::geolocate_ip()['country'];
-	// $customer_country2 = WC_Geolocation::geolocate_ip();
-
     switch ($countryCode)
     {
         case 'KR':
             $WOOCS->set_currency('USD');
+            // $WOOCS->set_currency('KRW');
+
             break;
-        // case 'en_US':
-        //     $WOOCS->set_currency('USD');
-        //     break;
+
         default:
             $WOOCS->set_currency('USD');
             break;
     }
 });
 
+// 결제페이지에서 통화 강제로 바꾸기 
+// add_filter('wp_head',function(){    
+//     if(is_checkout()){
+//         global $WOOCS;
+// 		$ipInfo = geoip_detect2_get_info_from_current_ip();
+// 		$countryCode = $ipInfo->country->isoCode;
+	
+// 		switch ($countryCode)
+// 		{
+// 			case 'KR':
+// 				$WOOCS->set_currency('KRW');
+// 				break;
+	
+// 			default:
+// 				$WOOCS->set_currency('USD');
+// 				break;
+// 		}
+//     }
+// });
 
 add_filter( 'woocommerce_available_payment_gateways', 'disable_payment_method_by_country' );
 
 function disable_payment_method_by_country( $gateways ) {
-    // global $woocommerce;
-
 	$ipInfo = geoip_detect2_get_info_from_current_ip();
 	$customer_country = $ipInfo->country->isoCode;
 
@@ -131,6 +145,21 @@ function disable_payment_method_by_country( $gateways ) {
 			}
 		}
 	}
-    
     return $gateways;
 }
+
+// function add_uuid_to_users() {
+// 	global $wpdb;
+// 	$users = $wpdb->get_results( "SELECT ID FROM $wpdb->users" );
+// 	foreach ( $users as $user ) {
+// 	  $uuid = wp_generate_uuid4();
+// 	  $wpdb->update(
+// 		$wpdb->users,
+// 		array( 'uuid' => $uuid ),
+// 		array( 'ID' => $user->ID ),
+// 		array( '%s' ),
+// 		array( '%d' )
+// 	  );
+// 	}
+//   }
+//   add_action( 'init', 'add_uuid_to_users' );

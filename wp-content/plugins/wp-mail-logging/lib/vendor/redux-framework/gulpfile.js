@@ -32,7 +32,7 @@
 	// Project related.
 	// var project    = 'Redux Framework'; // Project Name.
 	// var productURL = './'; .
-var projectURL = 'http://127.0.0.1/redux-demo'; // Project URL. Could be something like localhost:8888.
+var projectURL = 'http://127.0.0.1/redux-demo'; // Project URL. Could be something like 192.168.0.16:8888.
 
 // Translation related.
 var text_domain = 'redux-framework';                         // Your textdomain here.

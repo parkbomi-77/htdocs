@@ -127,7 +127,7 @@ $sql4 = "SELECT * FROM wp_product_list where mall_code = {$code} and adv_state =
 $activate = $wpdb->get_results($wpdb->prepare($sql4)); // 갯수대로 가져옴 .. 
 if($activate && ($code !== 1029 )){ // 광고활성화된 상품이 있고, 벳스쿨이 아닐 경우 
     for($i=0; $i<count($activate); $i++){
-        // 그누보드 쇼핑몰 shop_item DB에 광고여부 1로 업데이트 시켜주는 로직  http://localhost:8888/practice/gnuboard/product_list 
+        // 그누보드 쇼핑몰 shop_item DB에 광고여부 1로 업데이트 시켜주는 로직  http://192.168.0.16:8888/practice/gnuboard/product_list 
         $mall = $wpdb->get_results($wpdb->prepare("SELECT * from wp_shoppingmall where code =".$code));
         $start_date = $mall[0]->start_date;
         $end_date = $mall[0]->end_date;

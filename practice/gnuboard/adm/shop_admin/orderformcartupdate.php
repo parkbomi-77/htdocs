@@ -176,7 +176,7 @@ for ($i=0; $i<$cnt; $i++)
     $result = sql_fetch($sql);
     if($result['ct_vetcode'] === 'vet'){
 
-        post('http://localhost:8888/sample.php', $result, $HTTP_HOST);
+        post('http://192.168.0.16:8888/sample.php', $result, $HTTP_HOST);
     }
 
     // it_id를 배열에 저장
