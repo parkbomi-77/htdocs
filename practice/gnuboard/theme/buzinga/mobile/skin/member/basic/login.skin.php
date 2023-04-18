@@ -8,10 +8,11 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 <div id="mb_login" class="mbskin">
     <h1><?php echo $g5['title'] ?></h1>
 
-    <form name="flogin" action="<?php echo $login_action_url ?>" onsubmit="return flogin_submit(this);" method="post" id="flogin">
-    <input type="hidden" name="url" value="<?php echo $login_url ?>">
+    <!-- <form name="flogin" action="<?php echo $login_action_url ?>" onsubmit="return flogin_submit(this);" method="post" id="flogin">
+    <input type="hidden" name="url" value="<?php echo $login_url ?>"> -->
 
-    <div id="login_frm">
+	<!-- 일반 로그인 폼 주석처리 -->
+    <!-- <div id="login_frm">
         <label for="login_id" class="sound_only">아이디<strong class="sound_only"> 필수</strong></label>
         <input type="text" name="mb_id" id="login_id" placeholder="아이디" required class="frm_input required" maxLength="20">
         <label for="login_pw" class="sound_only">비밀번호<strong class="sound_only"> 필수</strong></label>
@@ -24,11 +25,15 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 		<button type="submit" class="btn_submit">로그인</button>
     </div>
 
+	</form> -->
+
     <?php
     // 소셜로그인 사용시 소셜로그인 버튼
     @include_once(get_social_skin_path().'/social_login.skin.php');
-    ?>
+	// 벳스쿨 로그인 
+	include_once(G5_PATH.'/theme/buzinga/mobile/skin/member/basic/vetschool_login.skin.php');
 
+    ?>
     <section class="mb_login_join">
         <h2>회원로그인 안내</h2>
         <div>
@@ -36,7 +41,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
             <a href="./register.php">회원 가입</a>
         </div>
     </section>
-    </form>
+    
 
     <?php // 쇼핑몰 사용시 여기부터 ?>
     <?php if ($default['de_level_sell'] == 1) { // 상품구입 권한 ?>

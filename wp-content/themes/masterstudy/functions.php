@@ -148,18 +148,28 @@ function disable_payment_method_by_country( $gateways ) {
     return $gateways;
 }
 
-// function add_uuid_to_users() {
-// 	global $wpdb;
-// 	$users = $wpdb->get_results( "SELECT ID FROM $wpdb->users" );
-// 	foreach ( $users as $user ) {
-// 	  $uuid = wp_generate_uuid4();
-// 	  $wpdb->update(
-// 		$wpdb->users,
-// 		array( 'uuid' => $uuid ),
-// 		array( 'ID' => $user->ID ),
-// 		array( '%s' ),
-// 		array( '%d' )
-// 	  );
-// 	}
-//   }
-//   add_action( 'init', 'add_uuid_to_users' );
+add_action( 'rest_api_init', function () {
+	register_rest_route( 'myplugin/v1', '/login', array(
+	   'methods' => 'POST',
+	   'callback' => 'myplugin_login'
+	) );
+ } );
+ function myplugin_login(WP_REST_Request $request ) {
+    $creds = $request->get_params();
+    $user = wp_signon( $creds, false );
+	$user_login = $user->data->user_login;
+	$user_class = $user->roles[0];
+	$user_uuid = $user->data->uuid;
+    if ( is_wp_error( $user ) ) {
+        $error_data = $user->get_error_data();
+        if ( $error_data && isset( $error_data['type'] ) ) {
+            $error_type = $error_data['type'];
+            return new WP_Error( $error_type, $user->get_error_message( $error_type ), array( 'status' => 401 ) );
+        }
+        return new WP_Error( 'rest_login_failed', __( '로그인에 실패했습니다.' ), array( 'status' => 401 ) );
+    }
+    wp_set_current_user( $user->ID );
+    wp_set_auth_cookie( $user->ID );
+    do_action( 'wp_login', $user->user_login, $user );
+    return new WP_REST_Response( array( 'user_login' => $user_login ,'user_class' => $user_class, 'user_uuid' => $user_uuid ), 200 );
+}
