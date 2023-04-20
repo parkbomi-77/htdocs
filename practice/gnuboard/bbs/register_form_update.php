@@ -53,7 +53,7 @@ $mb_recommend   = isset($_POST['mb_recommend'])     ? trim($_POST['mb_recommend'
 $mb_mailling    = isset($_POST['mb_mailling'])      ? trim($_POST['mb_mailling'])    : "";
 $mb_sms         = isset($_POST['mb_sms'])           ? trim($_POST['mb_sms'])         : "";
 $mb_open        = isset($_POST['mb_open'])          ? trim($_POST['mb_open'])        : "0";
-$mb_1           = isset($_POST['mb_vetid'])         ? trim($_POST['mb_vetid'])       : "";
+$mb_1           = isset($_POST['mb_1'])             ? trim($_POST['mb_1'])       : "";
 $mb_2           = isset($_POST['mb_2'])             ? trim($_POST['mb_2'])           : "";
 $mb_3           = isset($_POST['mb_3'])             ? trim($_POST['mb_3'])           : "";
 $mb_4           = isset($_POST['mb_4'])             ? trim($_POST['mb_4'])           : "";
@@ -64,7 +64,21 @@ $mb_8           = isset($_POST['mb_8'])             ? trim($_POST['mb_8'])      
 $mb_9           = isset($_POST['mb_9'])             ? trim($_POST['mb_9'])           : "";
 $mb_10          = isset($_POST['mb_10'])            ? trim($_POST['mb_10'])          : "";
 
-$certification = isset($_POST["certification"])     ? (int)$_POST['certification']  : "";
+// 벳스쿨 회원등급 -> 제휴쇼핑몰 회원등급으로 
+$mb_class = isset($_POST["mb_class"])     ? trim($_POST['mb_class'])  : "";
+$mb_level;
+// 수의사
+if ($mb_class === "vet_role") {
+    $mb_level = 4;
+}else if ($mb_class === "student_role") { // 수의대생
+    $mb_level = 3;
+}else { // 일반회원
+    $mb_level = 2;
+}
+
+// UUID
+$mb_uuid = isset($_POST["mb_uuid"])     ? trim($_POST['mb_uuid'])  : "";
+
 
 $mb_name        = clean_xss_tags($mb_name);
 $mb_email       = get_email_address($mb_email);
@@ -96,10 +110,13 @@ if ($w == '' || $w == 'u') {
         alert('닉네임을 올바르게 입력해 주십시오.');
     }
 
-    if ($w == '' && !$mb_password)
-        alert('비밀번호가 넘어오지 않았습니다.');
-    if($w == '' && $mb_password != $mb_password_re)
-        alert('비밀번호가 일치하지 않습니다.');
+    // 벳스쿨 유저가 아닐 경우 비밀번호 체크
+    if(!$mb_uuid) {
+        if ($w == '' && !$mb_password)
+            alert('비밀번호가 넘어오지 않았습니다.');
+        if($w == '' && $mb_password != $mb_password_re)
+            alert('비밀번호가 일치하지 않습니다.');
+    }
 
     if ($msg = empty_mb_name($mb_name))       alert($msg, "", true, true);
     // if ($msg = empty_mb_nick($mb_nick))     alert($msg, "", true, true);
@@ -231,7 +248,7 @@ if ($w == '') {
                      mb_today_login = '".G5_TIME_YMDHIS."',
                      mb_datetime = '".G5_TIME_YMDHIS."',
                      mb_ip = '{$_SERVER['REMOTE_ADDR']}',
-                     mb_level = '{$certification}',
+                     mb_level = '{$mb_level}',
                      mb_recommend = '{$mb_recommend}',
                      mb_login_ip = '{$_SERVER['REMOTE_ADDR']}',
                      mb_mailling = '{$mb_mailling}',
@@ -248,7 +265,7 @@ if ($w == '') {
                      mb_8 = '{$mb_8}',
                      mb_9 = '{$mb_9}',
                      mb_10 = '{$mb_10}',
-                     mb_vetcode = '{$_COOKIE["vc"]}'
+                     mb_vetcode = '{$mb_uuid}'
                      {$sql_certify} ";
 
     // mb_level = '{$config['cf_register_level']}',

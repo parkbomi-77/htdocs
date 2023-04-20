@@ -22,15 +22,6 @@ if( isset($_REQUEST['provider']) && $_REQUEST['provider']  && function_exists('s
     }
 }
 
-// 벳스쿨 계정 회원이라면 1
-$vet_user = preg_match('/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i', $_SESSION['ss_mb_uuid']);
-if ($vet_user) {
-    $w = 'u';   //회원 수정으로 처리
-    $_POST['mb_id'] = $member['mb_id'];
-    $is_social_login_modify = true;
-} 
-
-
 if ($w == "") {
 
     // 회원 로그인을 한 경우 회원가입 할 수 없다
@@ -44,11 +35,11 @@ if ($w == "") {
     referer_check();
 
     if (!isset($_POST['agree']) || !$_POST['agree']) {
-        alert('회원가입약관의 내용에 동의하셔야 회원가입 하실 수 있습니다.', G5_BBS_URL.'/register.php');
+        alert('회원가입약관의 내용에 동의하셔야 회원가입 하실 수 있습니다.', G5_BBS_URL.'/vet_register.php');
     }
 
     if (!isset($_POST['agree2']) || !$_POST['agree2']) {
-        alert('개인정보 수집 및 이용의 내용에 동의하셔야 회원가입 하실 수 있습니다.', G5_BBS_URL.'/register.php');
+        alert('개인정보 수집 및 이용의 내용에 동의하셔야 회원가입 하실 수 있습니다.', G5_BBS_URL.'/vet_register.php');
     }
 
     $agree  = preg_replace('#[^0-9]#', '', $_POST['agree']);
@@ -163,11 +154,7 @@ $agree2 = isset($_REQUEST['agree2']) ? preg_replace('#[^0-9]#', '', $_REQUEST['a
 if ($config['cf_use_addr'])
     add_javascript(G5_POSTCODE_JS, 0);    //다음 주소 js
 
-if($vet_user) {
-    include_once($member_skin_path.'/vet_register_form.skin.php');
-}else {
-    include_once($member_skin_path.'/register_form.skin.php');
-}
+include_once($member_skin_path.'/vet_register_form.skin.php');
 
 run_event('register_form_after', $w, $agree, $agree2);
 

@@ -34,13 +34,13 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 	include_once(G5_PATH.'/theme/buzinga/mobile/skin/member/basic/vetschool_login.skin.php');
 
     ?>
-    <section class="mb_login_join">
+    <!-- <section class="mb_login_join">
         <h2>회원로그인 안내</h2>
         <div>
             <a href="<?php echo G5_BBS_URL ?>/password_lost.php" target="_blank" id="login_password_lost">회원정보찾기</a>
             <a href="./register.php">회원 가입</a>
         </div>
-    </section>
+    </section> -->
     
 
     <?php // 쇼핑몰 사용시 여기부터 ?>

@@ -34,6 +34,10 @@ if($url){
 
 $url = get_text($url);
 
+// 벳스쿨계정으로 가입한 경우
+
+goto_url(G5_BBS_URL.'/register_form.php');
+
 include_once($member_skin_path.'/member_confirm.skin.php');
 
 include_once('./_tail.sub.php');

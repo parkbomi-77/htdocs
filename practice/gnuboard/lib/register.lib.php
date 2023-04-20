@@ -11,7 +11,7 @@ function empty_mb_id($reg_mb_id)
 
 function valid_mb_id($reg_mb_id)
 {
-    if (preg_match("/[^0-9a-z_]+/i", $reg_mb_id))
+    if (preg_match("/[^0-9a-z_@.]+/i", $reg_mb_id))
         return "회원아이디는 영문자, 숫자, _ 만 입력하세요.";
     else
         return "";
@@ -36,21 +36,6 @@ function exist_mb_id($reg_mb_id)
     $row = sql_fetch($sql);
     if ($row['cnt'])
         return "이미 사용중인 회원아이디 입니다.";
-    else
-        return "";
-}
-
-function exist_vet_id($mb_vetid)
-{
-    global $g5;
-
-    $mb_vetid = trim($mb_vetid);
-    if ($mb_vetid == "") return "";
-
-    $sql = " select count(*) as cnt from `{$g5['member_table']}` where mb_1 = '$mb_vetid' ";
-    $row = sql_fetch($sql);
-    if ($row['cnt'])
-        return "이미 인증된 벳스쿨 계정입니다.";
     else
         return "";
 }

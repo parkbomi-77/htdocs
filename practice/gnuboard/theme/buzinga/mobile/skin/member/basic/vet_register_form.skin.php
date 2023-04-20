@@ -1,6 +1,10 @@
 <?php
 if (!defined('_GNUBOARD_')) exit; // 개별 페이지 접근 불가
 
+$mb_id = get_session('ss_mb_vetid');
+$mb_uuid = get_session('ss_mb_uuid');
+$mb_class = get_session('ss_mb_class');
+
 // add_stylesheet('css 구문', 출력순서); 숫자가 작을 수록 먼저 출력됨
 add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 0);
 ?>
@@ -25,21 +29,13 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
     <?php } ?>
 
     <div class="form_01">
-        <h2>사이트 이용정보 입력</h2>
+        <h2>회원 ID</h2>
         <ul>
 	        <li>
 	            <label for="reg_mb_id" class="sound_only">아이디<strong>필수</strong></label>
-	            <input type="text" name="mb_id" value="<?php echo $member['mb_id']?$member['mb_id'] : "" ?>" id="reg_mb_id" class="frm_input full_input <?php echo $required ?> <?php echo $readonly ?>" minlength="3" maxlength="20" <?php echo $required ?> <?php echo $readonly ?> placeholder="아이디">
-	            <span id="msg_mb_id"></span>
-	            <span class="frm_info">영문자, 숫자, _ 만 입력 가능. 최소 3자이상 입력하세요.</span>
-	        </li>
-	        <li class="password">
-	            <label for="reg_mb_password" class="sound_only">비밀번호<strong>필수</strong></label>
-	            <input type="password" name="mb_password" id="reg_mb_password" class="frm_input full_input <?php echo $required ?>" minlength="3" maxlength="20" <?php echo $required ?> placeholder="비밀번호">
-	        </li>
-	        <li>
-	            <label for="reg_mb_password_re" class="sound_only">비밀번호 확인<strong>필수</strong></label>
-	            <input type="password" name="mb_password_re" id="reg_mb_password_re" class="frm_input full_input <?php echo $required ?>" minlength="3" maxlength="20" <?php echo $required ?>  placeholder="비밀번호확인">
+	            <input type="text" name="mb_id" value="<?php echo $mb_id?$mb_id : "" ?>" id="reg_mb_id" class="frm_input full_input <?php echo $required ?> <?php echo $readonly ?>" <?php echo $required ?> readonly >
+                <input type="hidden" name="mb_uuid" value="<?php echo $mb_uuid?$mb_uuid : "" ?>">
+                <input type="hidden" name="mb_class" value="<?php echo $mb_class?$mb_class : "" ?>">
 	        </li>
         </ul>
     </div>
@@ -75,19 +71,6 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
 	            </div>
 	            <?php } ?>
 	        </li>
-	        <?php if ($req_nick) { ?>
-	        <li>
-	            <!-- <label for="reg_mb_nick" class="sound_only">닉네임<strong>필수</strong></label> -->
-	            
-	            <span class="frm_info">
-	                공백없이 한글,영문,숫자만 입력 가능 (한글2자, 영문4자 이상)<br>
-	                <!-- 닉네임을 바꾸시면 앞으로 <?php echo (int)$config['cf_nick_modify'] ?>일 이내에는 변경 할 수 없습니다. -->
-	            </span>
-	            <!-- <input type="hidden" name="mb_nick_default" value="<?php echo isset($member['mb_nick'])?get_text($member['mb_nick']):''; ?>"> -->
-	            <!-- <input type="text" name="mb_nick" value="<?php echo isset($member['mb_nick'])?get_text($member['mb_nick']):''; ?>" id="reg_mb_nick" required class="frm_input full_input required nospace" maxlength="20" placeholder="닉네임"> -->
-	            <span id="msg_mb_nick"></span>
-	        </li>
-	        <?php } ?>
 
 			<li>
             	<label for="reg_mb_email" class="sound_only">E-mail<strong>필수</strong></label>
@@ -350,31 +333,10 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
         // 회원아이디 검사
         if (f.w.value == "") {
             var msg = reg_mb_id_check();
+
             if (msg) {
                 alert(msg);
                 f.mb_id.select();
-                return false;
-            }
-        }
-
-        if (f.w.value == '') {
-            if (f.mb_password.value.length < 3) {
-                alert('비밀번호를 3글자 이상 입력하십시오.');
-                f.mb_password.focus();
-                return false;
-            }
-        }
-
-        if (f.mb_password.value != f.mb_password_re.value) {
-            alert('비밀번호가 같지 않습니다.');
-            f.mb_password_re.focus();
-            return false;
-        }
-
-        if (f.mb_password.value.length > 0) {
-            if (f.mb_password_re.value.length < 3) {
-                alert('비밀번호를 3글자 이상 입력하십시오.');
-                f.mb_password_re.focus();
                 return false;
             }
         }
@@ -396,18 +358,9 @@ add_stylesheet('<link rel="stylesheet" href="'.$member_skin_url.'/style.css">', 
         }
         <?php } ?>
 
-        // 닉네임 검사
-        // if ((f.w.value == "") || (f.w.value == "u" && f.mb_nick.defaultValue != f.mb_nick.value)) {
-        //     var msg = reg_mb_nick_check();
-        //     if (msg) {
-        //         alert(msg);
-        //         f.reg_mb_nick.select();
-        //         return false;
-        //     }
-        // }
-
         // E-mail 검사
         if ((f.w.value == "") || (f.w.value == "u" && f.mb_email.defaultValue != f.mb_email.value)) {
+
             var msg = reg_mb_email_check();
             if (msg) {
                 alert(msg);

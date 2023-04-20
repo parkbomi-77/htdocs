@@ -157,9 +157,33 @@ add_action( 'rest_api_init', function () {
  function myplugin_login(WP_REST_Request $request ) {
     $creds = $request->get_params();
     $user = wp_signon( $creds, false );
+	// 유저 아이디, 회원등급, UUID
 	$user_login = $user->data->user_login;
-	$user_class = $user->roles[0];
 	$user_uuid = $user->data->uuid;
+	$user_class_arr = $user->roles;
+
+	// 수의사인지
+	$vet_role_check = in_array('vet_role', $user_class_arr);
+	// 수의대생인지 
+	$student_role_check = in_array('student_role', $user_class_arr);
+	// 대기회원
+	$wait_check = in_array('wait', $user_class_arr);
+	// 일반회원, 관리자
+	$general_check = in_array('general_members', $user_class_arr);
+	$administrator_check = in_array('administrator', $user_class_arr);
+
+	$user_class = "customer";
+	if($vet_role_check) {
+		$user_class = "vet_role";
+	}else if($student_role_check) {
+		$user_class = "student_role";
+	}else if($wait_check) {
+		$user_class = "wait";
+	}else if($general_check || $administrator_check) {
+		$user_class = "general_members";
+	}
+	
+
     if ( is_wp_error( $user ) ) {
         $error_data = $user->get_error_data();
         if ( $error_data && isset( $error_data['type'] ) ) {

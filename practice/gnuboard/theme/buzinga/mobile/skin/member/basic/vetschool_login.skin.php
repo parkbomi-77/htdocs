@@ -53,9 +53,8 @@
                         type: "POST",
                         data: {response},
                         success: function(res) {
-                            console.log(res)
                             // 있으면 로그인처리 - id, uuid 
-                            if(res) {
+                            if(res == 1) {
                                 $.ajax({
                                     url: bbs_url+"/login_check.php",
                                     type: "POST",
@@ -71,8 +70,14 @@
                                         console.log("3 error");
                                     }
                                 });
-                            } else { // 회원가입처리 - id, 회원등급, uuid 
-
+                            } else if(res == 2) { // 벳스쿨 대기회원일시
+                                alert('벳스쿨 회원가입 대기단계입니다. 회원가입 완료 후 다시 시도해주세요.');
+                                return;
+                            } else if(res == 3) { // 벳스쿨 customer 등급
+                                alert('벳스쿨 회원등급이 명확하지않습니다. 관계자 문의 후 다시 시도해주세요.');
+                                return;
+                            } else { // 회원가입 - id, 회원등급, uuid 은 세션에 저장해둠 
+                                window.location.href = bbs_url+"/vet_register.php";
                             }
 
                         },
@@ -82,9 +87,7 @@
                     });
                 },
                 error: function(jqXHR, textStatus, errorThrown){ // 실패시 안내메시지 
-                    console.log(textStatus, errorThrown);
                     $(".misspelled").css('display','block'); 
-
                 }
             });
             
