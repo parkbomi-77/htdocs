@@ -107,7 +107,10 @@ if($act == "buy")
     if ($is_member) // 회원인 경우
         goto_url(G5_SHOP_URL.'/orderform.php');
     else
-        goto_url(G5_BBS_URL.'/login.php?url='.urlencode(G5_SHOP_URL.'/orderform.php'));
+        // goto_url(G5_BBS_URL.'/login.php?url='.urlencode(G5_SHOP_URL.'/orderform.php'));
+        alert('로그인 후 이용가능한 서비스입니다. 로그인 페이지로 이동합니다.',G5_BBS_URL.'/login.php');
+        // goto_url(G5_BBS_URL.'/login.php');
+
 }
 else if ($act == "alldelete") // 모두 삭제이면
 {
@@ -130,7 +133,7 @@ else if ($act == "alldelete") // 모두 삭제이면
     //         return $response;
     //     }
 
-    //     post('http://192.168.0.16:8888/sample.php', $result2);
+    //     post('http://localhost:8888/sample.php', $result2);
     // }
 
     $sql = " delete from {$g5['g5_shop_cart_table']}
@@ -425,7 +428,7 @@ else // 장바구니에 담기
             $sql = "select * from g5_shop_cart where od_id = '$tmp_cart_id' ";
             $result = sql_fetch($sql);
             if($result['ct_vetcode'] === 'vet'){
-                post('http://192.168.0.16:8888/sample.php', $result, $HTTP_HOST);
+                post('http://localhost:8888/sample.php', $result, $HTTP_HOST);
             }
     }
 }
