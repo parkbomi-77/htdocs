@@ -65,15 +65,15 @@
                         success: function(res) {
                             // 있으면 로그인처리 - id, uuid 
                             if(res == 1) {
-                                let checkbox = document.getElementById("vet_login_auto_login");
-                                if (checkbox.checked) {
-                                    // console.log('체크됨')
-                                    // document.cookie = `members_id=${username}; expires=Thu, 21 Apr 2024 12:00:00 UTC; path=/login.php`;
-                                } else {
-                                    // console.log('체크 안됨')
-                                    // document.cookie = `members_id=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/login.php`;
+                                // let checkbox = document.getElementById("vet_login_auto_login");
+                                // if (checkbox.checked) {
+                                //     console.log('체크됨')
+                                //     document.cookie = `members_id=${username}; expires=Thu, 21 Apr 2024 12:00:00 UTC; path=/login.php`;
+                                // } else {
+                                //     console.log('체크 안됨')
+                                //     document.cookie = `members_id=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/login.php`;
 
-                                }
+                                // }
 
                                 $.ajax({
                                     url: bbs_url+"/login_check.php",

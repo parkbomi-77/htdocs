@@ -654,7 +654,15 @@ $sql = "update {$g5['g5_shop_cart_table']}
            and ct_select = '1' ";
 $result = sql_query($sql, false);
 
-$sql3 = "select * from g5_shop_cart where od_id = '$od_id' ";
+// $sql3 = "select * from g5_shop_cart where od_id = '$od_id' ";
+
+// 벳스쿨 유입 회원이 구매한 물품 검색 ( UUID 검사하기)
+$sql3 = "select a.*,b.mb_vetcode from g5_shop_cart as a
+inner join g5_member as b
+on a.mb_id = b.mb_id
+where od_id = '$od_id' 
+and mb_vetcode is not null";
+
 $que = sql_query($sql3);
 function post($url, $fields, $host){
     // fields에 더하기 
@@ -672,9 +680,7 @@ function post($url, $fields, $host){
     return $response;
 }
 for($i=0; $result2 = sql_fetch_array($que); $i++) {
-    if($result2['ct_vetcode'] === 'vet'){
-        post('http://192.168.0.16:8888/sample.php', $result2, $HTTP_HOST); 
-    }
+    post('http://localhost:8888/sample.php', $result2, $HTTP_HOST); 
 }
 
 // 주문정보 입력 오류시 결제 취소
