@@ -5,7 +5,7 @@
 	Author: StylemixThemes
 	Author URI: http://stylemix.net
 	Template: masterstudy
-	Version: 3.0
+	Version: 3.1
 	License: GNU General Public License v2 or later
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	Tags: classes, courses, education, education center, learning center, tutoring, teaching, study, studying, learning, lessons, instructor, teacher, mentor
@@ -254,3 +254,14 @@ a.woocommerce-LoopProduct-link.woocommerce-loop-product__link {
 .widget_stm_recent_posts .cats_w {
     margin-left: 83px;
 }
+.sold-out-overlay {
+    background: #1c9941;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 5px 10px;
+    position: absolute;
+    right: 0;
+    bottom: 3px;
+    width: 100%;
+    }

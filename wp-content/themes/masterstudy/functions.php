@@ -157,10 +157,24 @@ add_action( 'rest_api_init', function () {
  function myplugin_login(WP_REST_Request $request ) {
     $creds = $request->get_params();
     $user = wp_signon( $creds, false );
+
 	// 유저 아이디, 회원등급, UUID
 	$user_login = $user->data->user_login;
 	$user_uuid = $user->data->uuid;
 	$user_class_arr = $user->roles;
+	
+	// 닉네임, 이메일 추출
+	$user_display_name = $user->data->display_name;
+	$user_email = $user->data->user_email;
+	
+	$user_id = $user->data->ID;
+	// 휴대폰 번호 얻기
+	$user_phone_number = get_user_meta( $user_id, 'billing_phone', true );
+
+	// 우편번호, 주소, 상세주소
+	$user_postcode = get_user_meta( $user_id, 'billing_postcode', true );
+	$user_address = get_user_meta( $user_id, 'billing_address_1', true );
+	$user_address2 = get_user_meta( $user_id, 'billing_address_2', true );
 
 	// 수의사인지
 	$vet_role_check = in_array('vet_role', $user_class_arr);
@@ -183,7 +197,6 @@ add_action( 'rest_api_init', function () {
 		$user_class = "general_members";
 	}
 	
-
     if ( is_wp_error( $user ) ) {
         $error_data = $user->get_error_data();
         if ( $error_data && isset( $error_data['type'] ) ) {
@@ -195,5 +208,26 @@ add_action( 'rest_api_init', function () {
     wp_set_current_user( $user->ID );
     wp_set_auth_cookie( $user->ID );
     do_action( 'wp_login', $user->user_login, $user );
-    return new WP_REST_Response( array( 'user_login' => $user_login ,'user_class' => $user_class, 'user_uuid' => $user_uuid ), 200 );
+    return new WP_REST_Response( array( 
+		'user_login' => $user_login ,
+		'user_class' => $user_class, 
+		'user_uuid' => $user_uuid, 
+		'user_display_name' => $user_display_name,
+		'user_email' => $user_email,
+		'user_phone_number' => $user_phone_number,
+		'user_postcode' => $user_postcode,
+		'user_address' => $user_address,
+		'user_address2' => $user_address2
+	), 200 );
 }
+
+
+// Add an out of stock overlay to product images when all variations are unavailable
+//상품 재고가 떨어지면 상품 이미지에 Out of Stock 오버레이 추가
+
+add_action( 'woocommerce_before_shop_loop_item_title', function() {
+	global $product;
+	if ( !$product->is_in_stock() ) {
+	echo '<span class="sold-out-overlay">Sold Out</span>';
+	}
+});
